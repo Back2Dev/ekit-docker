@@ -28,21 +28,16 @@ RUN \
     apt-get update -y && \
     apt-get upgrade -y && \
     apt-get -y clean \
-    
-
     links \
 	lynx \
 	elinks \
-	zip \
 	unzip \
 	ncftp2 \
 	ncftp \
 	telnet \
-	
 	locate \
 	subversion \
 	libdigest-sha1-perl \
-	
 	liburi-perl \
 	libmailtools-perl \
 	libmime-perl \
@@ -63,7 +58,6 @@ RUN \
 	libmail-sender-perl \
 	libtemplate-perl	\
 	libtemplate-perl-doc \
-
     libgd-gd2-perl \
 	libgd-text-perl \
 	libgd-graph-perl \
@@ -117,7 +111,7 @@ RUN \
 	libdatetime-locale-perl \
 	libmodule-versions-report-perl \
 	libclass-singleton-perl \
-libmldbm-perl \
+	libmldbm-perl \
 	libtree-simple-perl \
 	libio-all-perl \
 	libfont-afm-perl \
@@ -150,12 +144,6 @@ libmldbm-perl \
 	libtemplate-plugin-dbi-perl \
 	libparams-validate-perl \
 	libfcgi-perl \
-
-
-
-
-    
-    
 	libsub-uplevel-perl \
 	libexception-class-perl \
 	libtime-local-perl \
@@ -167,18 +155,19 @@ libmldbm-perl \
 	liblog-dispatch-perl \
 	libstorable-perl \
 	libspreadsheet-parseexcel-perl \
-	libtest-exception-perl \
+	libtest-exception-perl 
     	
 
 COPY localhost.conf /etc/apache2/sites-enabled/localhost.conf
+COPY ports.conf /etc/apache2/ports.conf
 
-COPY ./app /var/www/html
+COPY ./app /home/vhosts/ekit/htdocs
 
-RUN chmod 777 /var/www/html/
+RUN chmod 777 /home/vhosts/ekit
 RUN chmod 777 /usr/bin/perl
 
-VOLUME ["/var/www/html"]
+VOLUME ["/home/vhosts/ekit"]
 
-EXPOSE 80
+EXPOSE 8080
 
 ENTRYPOINT [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ]
