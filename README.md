@@ -1,11 +1,11 @@
 # perl-mysql-apache-on-docker
 
 ```sh
-$ git clone https://github.com/OHMORIYUSUKE/perl-mysql-apache-on-docker.git
-$ cd perl-mysql-apache-on-docker
+$ git clone https://github.com/Back2Dev/ekit-docker.git
+$ cd ekit-docker
 $ docker compose up --build
 ```
 
-[http://localhost/](http://localhost/)にアクセス
+[http://localhost:8080/](http://localhost:8080/)にアクセス
 
-[http://localhost:3030/](http://localhost:3030/) PHPMyAdmin
+[http://localhost:8090/](http://localhost:8090/) PHPMyAdmin
