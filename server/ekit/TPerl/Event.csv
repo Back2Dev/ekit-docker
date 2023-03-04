@@ -1,0 +1,39 @@
+CONSTANT_NAME,EVENT_CODE,EVENT_NAME,DESCRIPTION,DEF_SORT_ORDER
+UNKNOWN,0, Unknown, Unknown,0
+DELETE_RECIPIENT,15, Delete Recipient, Delete Recipient,15
+PREP_BATCH,17, Prep Batch, Prep Batch,17
+ADD_RECIPIENT,18, Add Recipient, Add Recipient,18
+RESET_RECIPIENT,19, Reset Recipient, Reset Recipient,19
+SEND_EMAIL,20, Send Email, Send Email,20
+SEND_REMINDER,21, Send Reminder, Send Reminder,21
+SEND_FAX,22, Send Fax, Send Fax,22
+REJECT_RECIPIENT,23, Reject Recipient, Reject Recipient,23
+PREP_REMINDER,24, Prep Reminder, Prep Reminder,24
+SEND_BATCH,25, Send Batch, Send Batch,25
+
+MAIL_OOO,26, Mail Ooo, Mail Ooo,26
+FAX_DELIVERY,27, Fax Delivery, Fax Delivery,27
+MAIL_BANNER_READ,216, Mail Banner Read, Mail Banner Read,216
+MAIL_CLICK_THROUGH,217, Mail Click Through, Mail Click Through,217
+MAIL_SERVICE_UNAVAILABLE,28, Mail Service Unavailable, Mail Service Unavailable,28
+MAIL_FORWARD,29, Mail Forward, Mail Forward,29
+MAIL_UNSUBSCRIBE,30, Mail Unsubscribe, Mail Unsubscribe,30
+MAIL_SPAM,31, Mail Spam, Mail Spam,31
+MAIL_RETURN,32, Mail Return, Mail Return,32
+MAIL_UNDELIVERABLE,80, Mail Undeliverable, Mail Undeliverable,80
+MAIL_WARNING,81, Mail Warning, Mail Warning,81
+MAIL_ACCEPTED,82,Mail Accepted,Mail Accepted,82
+
+SURVEY_START,33, Survey Start, Survey Start,33
+SURVEY_SAVE,34, Survey Save, Survey Save,34
+SURVEY_RESUME,35, Survey Resume, Survey Resume,35
+SURVEY_FINISH,36, Survey Finish, Survey Finish,36
+SURVEY_TERMINATE,37, Survey Terminate, Survey Terminate,37
+
+FILE_UPLOAD,65, File Upload, File Upload,65
+FILE_EXTRA_INFO,66, File Extra Info, File Extra Info,66
+
+DB_CREATE_TABLE,129, Db Create Table, Db Create Table,129
+DB_DROP_TABLE,130, Db Drop Table, Db Drop Table,130
+DB_EMPTY_TABLE,131, Db Empty Table, Db Empty Table,131
+DB_ALTER_TABLE,132, Db Alter Table, Db Alter Table,132

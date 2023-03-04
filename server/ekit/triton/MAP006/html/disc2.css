@@ -1,0 +1,164 @@
+/* ------------- Survey Layout Style --------------------------------------------------------- */
+.survey_body {margin-right: 0px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px;}
+.drop_langs {border: solid 1px black; background: #F6F8FA;}
+.headerContainerCell {height: 32px; background: url('http://ttisurvey.com/images/survey/headerBackground.jpg'); 
+                      border-bottom: solid 1px #5D5E60; padding: 0px;}
+.smallBoldFont {font-size: 9pt; font-weight: bold; text-decoration: none;}
+.content_cell {background: url('http://ttisurvey.com/images/survey/logo_fade.png') left center no-repeat;}
+.footerCell1 {height: 18px; background: url('http://ttisurvey.com/images/survey/footerBackground.jpg'); border-top: solid 1px #5D5E60;}
+.headerInnerTable {width: 100%; height: 100%;}
+.layoutTable {width: 100%; height: 100%; border-collapse: collapse;}
+.notice_panel {margin-top: 7px; border: solid 1px #CE0404; background: #FED8D8; padding: 0px; 
+               padding-top: 4px; padding-bottom: 4px; text-align: left; width: 764px;}
+.fieldWithErrors {border: solid 1px #CE0404; padding: 2px; background: #FED8D8;}
+.notice_cell {color: #620707;}
+.title_cell {width: 100%; text-align: left; font-size: 11pt;
+             font-weight: bold; text-decoration: none; padding-left: 6px; position: relative;}
+.ieCopyright {left: 0px; top: 6px; position: absolute;}
+.mozCopyright {left: 5px; top: 8px; position: absolute;}
+/* --------------- Custom fonts -------------------------------------------------- */
+font.blood {color: #A80808;}
+/* --------------- Respondent Login ---------------------------------------------- */
+.silver1Table {width: 400px; background: #F5F5F5; border: solid 1px #5D5E60; padding: 2px;}
+/* --------------- Welcome Screen ------------------------------------------------ */
+.welcomeOuter {padding-right: 5px; padding-left: 5px; width: 540px;
+               border: solid 1px blue; background-color: #A8C6E2; margin-top: 7px; margin-bottom: 7px;}
+.welcomeInner {width: 504px; padding: 10px; border: solid 1px blue; background-color: #F5F5F5;}
+/* --------------- Information Pages --------------------------------------------- */
+.info_cell {padding-left: 6px; padding-bottom: 4px;}
+/* --------------- Form Input Style ---------------------------------------------- */
+.textboxIDS {border: solid 1px #6A6D72; background: #F6F8FA; width: 220px;}
+.textboxIDSMed {border: solid 1px #6A6D72; background: #F6F8FA; width: 150px;}
+.rankInput {border: solid 1px #6A6D72; background: #F6F8FA; width: 35px; padding: 2px; padding-left: 6px;}
+/************************ IE ******************************/
+a.iehv {height: 22px; background: none;}
+a.iehvFocus {height: 22px; background: none;}
+a.iehv input.iebtn { 
+    padding-left: 12px; height: 22px; border-width: 0px; color: black; background: none; cursor: pointer; cursor: pointer; 
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/clear_button_left.png', sizingMethod=crop);}
+a.iehvFocus input.iebtn {
+    height: 22px; border-width: 0px; color: black; background: none; cursor: pointer; padding-left: 12px; cursor: pointer; 
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/blue_button_left.png', sizingMethod=crop);}
+a.iehv div.iecap {height: 22px; width: 12px; background: none; cursor: pointer;     
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/clear_button_right.png', sizingMethod=crop);}
+a.iehvFocus div.iecap {height: 22px; width: 12px; background: none; cursor: pointer;     
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/blue_button_right.png', sizingMethod=crop);}
+a.iehv:hover div.iecap {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/blue_button_right.png', sizingMethod=crop);}  
+a.iehv:hover input.iebtn {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/blue_button_left.png', sizingMethod=crop);}  
+/** Links **/
+a.iehv div.ieLink {cursor: pointer; height: 22px; width: 100%; background: none; cursor: pointer;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/clear_button_left.png', sizingMethod=crop);}
+a.iehv:hover div.ieLink {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/blue_button_left.png', sizingMethod=crop);}  
+a.ieLinkZone {padding-top: 3px; position: relative; width: 100%; height: 100%; color: black;}
+a.ieLinkZone:hover {color: black;}
+.ieLinkInner {width: 100%; padding-left: 20px; padding-right: 8px; cursor: pointer;}
+/* --------------- Basic Tags Style ----------------------------------------------- */
+body, td, th {font-family: helvetica, verdana, arial; font-size: 10pt;}
+a {text-decoration: none; color: blue;}
+a:hover {color: red;}
+/* --------------- Response Status ----------------------------------------------- */
+.status_head {background: #F5F5F5;}
+.status_cell {border-top: solid 1px #6A6D72; height: 40px;}
+/* --------------- Instrument Components ----------------------------------------- */
+.blue_panel {margin-top: 7px; border: solid 1px #6A6D72; background: #D5E6FA; padding: 0px; text-align: left; width: 764px;}
+.agreement_panel_cold {margin-top: 7px; border: solid 1px #6A6D72; background: #FAFAFA; padding: 0px; text-align: left; width: 764px;}
+.agreement_panel_hot {margin-top: 7px; border: solid 1px blue; background: white; padding: 0px; text-align: left; width: 764px;}
+.silver_shade_panel {margin-top: 7px; border: solid 1px #6A6D72; background: #FAFAFA; padding: 0px; text-align: left; width: 764px;}
+.white_panel {margin-top: 7px; border: solid 1px #6A6D72; background: white; padding: 0px; text-align: left; width: 764px;}
+#nav_hint {border: solid 1px #6A6D72; padding: 0px; text-align: left; width: 756px; background: #D5E5FA;}
+.nav_hint_cell {color: black; padding: 5px; padding-top: 2px; padding-bottom: 2px;}
+/* ------------- Navigation Bar Style -------------------------------------------------------- */
+.nav_bar_shell {margin-top: 6px; border: solid 1px #6A6D72; background: url('http://ttisurvey.com/images/survey/nav_bar_background.jpg');
+                width: 764px; margin-bottom: 6px; height: 32px; text-align: left; padding: 0px;}
+.navBarCell {width: 80px; padding: 2px; padding-left: 5px; padding-right: 5px;}
+/* ------------- New RANK frame style -------------------------------------------------------- */
+.coldRankCell {background: white; padding: 5px;}
+.hotRankCell {background: #FED8D8; padding: 5px;}
+/* ------------- New RANGE frame style ------------------------------------------------------- */
+/* Container slices */
+.range2tlCold {width: 15px; height: 15px; background: white;}
+.range2tlHot {width: 15px; height: 15px; background-image: url('http://ttisurvey.com/images/survey/b_top_left.jpg');}
+.range2tmCold {height: 15px; border-top: solid 1px white; background: white;}
+.range2tmHot {height: 15px; border-top: solid 1px #6A6D72; background: #D5E5FA;}
+.range2trCold {width: 15px; height: 15px; background: white;}
+.range2trHot {width: 15px; height: 15px; background-image: url('http://ttisurvey.com/images/survey/b_top_right.jpg');}
+.range2mlCold {border-left: solid 1px white; background: white;}
+.range2mlHot {border-left: solid 1px #6A6D72; background: #D5E5FA;}
+.range2centerCold {background: white;}
+.range2centerHot {background: #D5E5FA;}
+.range2mrCold {border-right: solid 1px white; background: white;}
+.range2mrHot {border-right: solid 1px #6A6D72; background: #D5E5FA;}
+.range2blCold {width: 15px; height: 15px; background: white;}
+.range2blHot {width: 15px; height: 15px; background-image: url('http://ttisurvey.com/images/survey/b_bottom_left.jpg');}
+.range2bmCold {height: 15px; border-bottom: solid 1px white; background: white;}
+.range2bmHot {height: 15px; border-bottom: solid 1px #6A6D72; background: #D5E5FA;}
+.range2brCold {width: 15px; height: 15px; background: white;}
+.range2brHot {width: 15px; height: 15px; background-image: url('http://ttisurvey.com/images/survey/b_bottom_right.jpg');}
+/* Javascript Checkboxes: */
+.mozRangeInnerSelected {width: 52px; height: 52px; cursor: pointer; background: none;	 
+    background-image: url('http://ttisurvey.com/images/survey/check_selected.png');}
+.mozRangeInnerHot {width: 52px; height: 52px; cursor: pointer; background: none;	 
+    background-image: url('http://ttisurvey.com/images/survey/check_hot.png');}
+.mozRangeInnerCold {width: 52px; height: 52px; cursor: pointer; background: none;	 
+    background-image: url('http://ttisurvey.com/images/survey/check_cold.png');}
+.ieRangeInnerSelected {width: 52px; height: 58px; cursor: pointer; background: none;	 
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/check_selected.png', sizingMethod=crop);}
+.ieRangeInnerHot {width: 52px; height: 58px; cursor: pointer; background: none;	 
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/check_hot.png', sizingMethod=crop);}
+.ieRangeInnerCold {width: 52px; height: 58px; cursor: pointer; background: none;	 
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/check_cold.png', sizingMethod=crop);}
+/* ------------- New MOSTLEAST frame style --------------------------------------------------- */
+.invisibleTextCold {width: 0px; height: 0px; border: 0px; background-color: white;}
+.invisibleTextHot {width: 0px; height: 0px;	border: 0px; background-color: #F6D1EA;}
+.ml2tlCold {width: 15px; height: 15px; background: white;}
+.ml2tlHot {width: 15px; height: 15px; background-image: url('http://ttisurvey.com/images/survey/b_top_left.jpg');}
+.ml2tmCold {height: 15px; border-top: solid 1px white; background: white;}
+.ml2tmHot {height: 15px; border-top: solid 1px #6A6D72; background: #D5E5FA;}
+.ml2trCold {width: 15px; height: 15px; background: white;}
+.ml2trHot {width: 15px; height: 15px; background-image: url('http://ttisurvey.com/images/survey/b_top_right.jpg');}
+.ml2centerCold {background: white; width: 62px;}
+.ml2centerHot {background: #D5E5FA; width: 62px; border-right: solid 1px #6A6D72; border-left: solid 1px #6A6D72;}
+.ml2blCold {width: 15px; height: 15px; background: white;}
+.ml2blHot {width: 15px; height: 15px; background-image: url('http://ttisurvey.com/images/survey/b_bottom_left.jpg');}
+.ml2bmCold {height: 15px; border-bottom: solid 1px white; background: white;}
+.ml2bmHot {height: 15px; border-bottom: solid 1px #6A6D72; background: #D5E5FA;}
+.ml2brCold {width: 15px; height: 15px; background: white;}
+.ml2brHot {width: 15px; height: 15px; background-image: url('http://ttisurvey.com/images/survey/b_bottom_right.jpg');}
+/* Javascript Checkboxes: */
+.mozMLInnerSelected {width: 52px; height: 52px; cursor: pointer; background: none;	 
+    background-image: url('http://ttisurvey.com/images/survey/check_selected.png');}
+.mozMLInnerHot {width: 52px; height: 52px; cursor: pointer; background: none;	 
+    background-image: url('http://ttisurvey.com/images/survey/check_hot.png');}
+.mozMLInnerCold {width: 52px; height: 52px; cursor: pointer; background: none;	 
+    background-image: url('http://ttisurvey.com/images/survey/check_cold.png');}
+.ieMLInnerSelected {width: 52px; height: 58px; cursor: pointer; background: none;	 
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/check_selected.png', sizingMethod=crop);}
+.ieMLInnerHot {width: 52px; height: 58px; cursor: pointer; background: none;	 
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/check_hot.png', sizingMethod=crop);}
+.ieMLInnerCold {width: 52px; height: 58px; cursor: pointer; background: none;	 
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://ttisurvey.com/images/survey/check_cold.png', sizingMethod=crop);}  
+/* --------------- Glass Buttons Style ---------------------------------------------- 
+# at the end of a line hides everything from that line on from SAFARI (ref a.hv below).
+@media screen and (min-width: 550px) below is only read by OPERA. Currently used to correct broken buttons in OPERA.
+*/
+a.hv {padding-right: 12px; margin: 0; height: 22px; display: table-cell; cursor: pointer;
+      background: url("http://ttisurvey.com/images/survey/clear_button_right.png") right no-repeat;#}
+a.hvFocus {padding-right: 12px; height: 22px; display: table-cell; cursor: pointer;    
+           background: url("http://ttisurvey.com/images/survey/blue_button_right.png") right no-repeat;}
+a.hv input.btn {background: url("http://ttisurvey.com/images/survey/clear_button_left.png") left no-repeat;
+                padding-left: 15px; height: 22px; border-width: 0px; color: black; cursor: pointer;}
+/* Opera Only hack */                
+@media screen and (min-width: 550px){
+   a.hv { padding-right: 10px;}
+   a.hv input.btn {margin-left: 10px; padding: 0px; padding-left: 10px;}
+}
+a.hvFocus input.btn {background: url("http://ttisurvey.com/images/survey/blue_button_left.png") left no-repeat; 
+                     padding-left: 15px; height: 22px; border-width: 0px; color: black; cursor: pointer;}
+a.hv:hover {background: url("http://ttisurvey.com/images/survey/blue_button_right.png") top right no-repeat;}
+a.hv:hover input.btn {background: url("http://ttisurvey.com/images/survey/blue_button_left.png") top left no-repeat;}    
+.cold_check {border: solid 1px #6A6D72; background: #F6F8FA; width: 100px; padding: 3px; cursor: default;}
+.hot_check {border: solid 1px blue; background: white; width: 100px; padding: 3px; cursor: default;}
+.locked_screen {border: solid 1px black; width: 450px; height: 170px;}

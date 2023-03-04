@@ -1,0 +1,5 @@
+[main]
+from_email=ctwebb@mapconsulting.com
+subject=Hello
+from_name=Cathy Webb
+smtp_host=localhost

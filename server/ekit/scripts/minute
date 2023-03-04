@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /home/vhosts/ekit/scripts
+perl escheme_work.pl --doit
+

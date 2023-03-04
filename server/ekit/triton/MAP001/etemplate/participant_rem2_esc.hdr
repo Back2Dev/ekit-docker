@@ -1,0 +1,4 @@
+[main]
+from_email=ctwebb@mapconsulting.com
+subject=Escalation Notice: Participant reminder 2 for [%fullname%]
+from_name=Cathy Webb

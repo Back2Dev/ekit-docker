@@ -1,0 +1,588 @@
+<head>
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" comment "ICRAonline v2.0" l gen true for "http://ekit.mappwi.com/"  r (nz 1 vz 1 lz 1 oz 1 cz 1) "http://www.rsac.org/ratingsv01.html" l gen true for "http://ekit.mappwi.com/"  r (n 0 s 0 v 0 l 0))'>
+<META HTTP-EQUIV="Expires" CONTENT="0"><link rel="stylesheet" href="style.css">
+<STYLE title="localStyle">
+	.BTN {color: blue; display:none}
+</STYLE>
+<SCRIPT language="JavaScript" SRC="/triton/stuff/iegoop.js">
+</SCRIPT>
+<TITLE>Triton Technology</TITLE>
+   <META NAME="Triton Technology"> 
+   <META NAME="Author" CONTENT="Mike King"> 
+   <META NAME="Copyright" CONTENT="Triton Technology 1995-2000, all rights reserved"> 
+
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+var numq = 11;
+function Can_Proceed_()
+	{
+	return false
+	}
+function QValid_()
+	{
+	return true;
+	}
+function clr_QAA()
+	{
+	}
+ 
+//-->
+</SCRIPT>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#FF0080" TEXT="#000000"  class="body">
+<DIV ID="Start"><FONT size="+2" face="Arial, Helvetica, sans-serif"> Welcome to Key Personnel List<BR><BR>
+Please wait a second while the survey loads...</font></DIV>
+<FORM NAME="triton" onsubmit="return false" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST">
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP010A">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT NAME="q_no" TYPE="hidden" VALUE="1">
+<DIV ID="Section1" style="display:none">
+<A NAME="A1">
+<SPAN class="prompt">AA. </SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="nextbtn1" tag="2" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section2" style="display:none">
+<A NAME="A2">
+<SPAN class="prompt"><BOGUS>$$ws_details<IMG SRC="/MAP001/banner600.gif">$$warning</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn2" tag="1" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn2" tag="3" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section3" style="display:none">
+<A NAME="A3">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check_it(n,fname,lname,email)
+	{
+	if ((fname == '') && (lname == '') && (email == ''))
+		return 1;		// All blanks is OK
+	if ((fname == '') || (lname == ''))
+		{
+		alert("Contact #"+n+" - Please supply both a first name and a last name");
+		return 0;
+		}
+	if (email == '')
+		{
+		alert("Contact #"+n+" - Please supply an email address for "+fname+' '+lname);
+		return 0;
+		}
+	return 1;
+	}
+	
+function QValid()
+	{
+	var n = 0;
+	n += check_it(1, document.q.peerfirstname1.value, document.q.peerlastname1.value, document.q.peeremail1.value);
+	n += check_it(2, document.q.peerfirstname2.value, document.q.peerlastname2.value, document.q.peeremail2.value);
+	n += check_it(3, document.q.peerfirstname3.value, document.q.peerlastname3.value, document.q.peeremail3.value);
+	n += check_it(4, document.q.peerfirstname4.value, document.q.peerlastname4.value, document.q.peeremail4.value);
+	n += check_it(5, document.q.peerfirstname5.value, document.q.peerlastname5.value, document.q.peeremail5.value);
+	n += check_it(6, document.q.peerfirstname6.value, document.q.peerlastname6.value, document.q.peeremail6.value);
+	n += check_it(7, document.q.peerfirstname7.value, document.q.peerlastname7.value, document.q.peeremail7.value);
+	n += check_it(8, document.q.peerfirstname8.value, document.q.peerlastname8.value, document.q.peeremail8.value);
+	n += check_it(9, document.q.peerfirstname9.value, document.q.peerlastname9.value, document.q.peeremail9.value);
+	n += check_it(10,document.q.peerfirstname10.value,document.q.peerlastname10.value,document.q.peeremail10.value);
+	n += check_it(11,document.q.peerfirstname11.value,document.q.peerlastname11.value,document.q.peeremail11.value);
+	n += check_it(12,document.q.peerfirstname12.value,document.q.peerlastname12.value,document.q.peeremail12.value);
+	n += check_it(13,document.q.peerfirstname13.value,document.q.peerlastname13.value,document.q.peeremail13.value);
+	n += check_it(14,document.q.peerfirstname14.value,document.q.peerlastname14.value,document.q.peeremail14.value);
+	n += check_it(15,document.q.peerfirstname15.value,document.q.peerlastname15.value,document.q.peeremail15.value);
+	n += check_it(16,document.q.peerfirstname16.value,document.q.peerlastname16.value,document.q.peeremail16.value);
+	n += check_it(17,document.q.peerfirstname17.value,document.q.peerlastname17.value,document.q.peeremail17.value);
+	n += check_it(18,document.q.peerfirstname18.value,document.q.peerlastname18.value,document.q.peeremail18.value);
+	n += check_it(19,document.q.peerfirstname19.value,document.q.peerlastname19.value,document.q.peeremail19.value);
+	n += check_it(20,document.q.peerfirstname20.value,document.q.peerlastname20.value,document.q.peeremail20.value);
+	if (n == 20)
+		return true;
+	else
+		return false;
+	}
+function loadme()
+	{
+	}
+//-->
+</SCRIPT>
+<TABLE cellspacing=0 cellpadding=0 border=1 >
+<TR><TD><TABLE cellspacing=0 cellpadding=1 border=0 width=596>
+	<TR class="details"><TH align="RIGHT">&nbsp;Participant:&nbsp;<TD>&nbsp; &nbsp;<TD width=10>&nbsp; <TH align="RIGHT">&nbsp;Organization:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Workshop Date:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Due Date:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Return Fax:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Appraiser:&nbsp;<TD>&nbsp;&nbsp;
+</TABLE></TABLE>
+
+<IMG SRC="/MAP001/banner600.gif">
+<TABLE width="600" cellspacing=0 cellpadding=5>
+	<TR ><TD class="warning" border=1 >
+	<B>Warning:</B> If you use the back button on your browser's tool bar you will lose your 
+	data on this page. Please use the navigation buttons at the bottom of each page to move from page 
+	to page. Doing this will save your responses automatically in our database as you go through each page.</TD></TR></table>
+
+<TABLE width=600><TR><TD class="heading">&nbsp;<BR>&nbsp;
+Key Personnel Questionnaire (Q10)<BR>&nbsp;</TD></TR>
+
+<TR><TD class="prompt">
+<P>The Key Personnel Questionnaire (Q10) should be given to people <U>inside</U> your organization 
+(people who report to you, colleagues, key support personnel, etc.).  </P>
+
+<P><font color="red"><B>NOTE:</B> Please do not give one of these forms to your supervising manager or partner as he/she will receive separate, more specialized questionnaires from MAP.</FONT>
+
+<P>If you would like for us to contact them and send them the form for you, we will be happy to do so.&nbsp; 
+If so, please provide their names and email addresses below, and we will send them an email, giving them the 
+opportunity to complete the form online.</P>
+
+<P>If you do not have their email address, you can print copies of the 
+<A target="_blank" HREF="/cgi-mr/getdoc.pl/Q10.doc?sid=MAP010A&tsid=MAP101&doc=Q10&token="><IMG src="/pwikit/word.gif" alt="Q10 as a Microsoft Word document, click to download" >
+Key Personnel Questionnaire (Q10)</A>
+ and give it to them personally.&nbsp; Please ask them to fax it to us at , no later than .
+
+<P>When you hand out this form, please ask each person to be frank and assure them that their input is 
+anonymous - you will not see their responses.&nbsp; Please follow up with each individual two days prior 
+to the deadline to remind them to complete the questionnaire <i>since this could affect your participation in the workshop</i>.</P>
+
+<P>And once again, please make sure to encourage those internal sources to complete and submit the form no later than .</P>
+  
+<P>Before distributing these questionnaires, please check with your manager or partner, if possible, to be sure on who should receive them.</P>
+
+</TABLE>
+   
+
+  <table cellpadding="8" cellspacing="0" class="mytable"  >
+    <tr class="heading"> 
+      <td  colspan=4 > 
+	Please provide the email addresses here:
+	</td></tr>
+    <tr class="heading"> 
+      <th  colspan=2 > 
+        First Name
+      </th>
+      <th  > 
+        Last Name
+      </th>
+      <th  > 
+        Email
+      </th>
+    </tr>
+    <tr class="options"> 
+      <td   align="right"> 
+        <B>1. </B>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname1" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname1" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail1" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>2. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname2" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname2" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail2" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>3. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname3" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname3" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail3" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>4. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname4" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname4" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail4" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>5. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname5" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname5" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail5" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>6. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname6" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname6" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail6" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>7. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname7" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname7" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail7" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>8. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname8" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname8" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail8" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>9. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname9" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname9" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail9" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>10. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname10" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname10" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail10" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>11. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname11" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname11" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail11" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>12. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname12" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname12" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail12" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>13. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname13" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname13" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail13" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>14. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname14" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname14" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail14" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>15. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname15" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname15" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail15" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>16. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname16" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname16" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail16" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>17. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname17" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname17" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail17" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>18. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname18" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname18" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail18" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>19. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname19" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname19" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail19" size="36" class="input"  >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>20. </B></div>
+      </td>
+      <td   > 
+        <input type="text" name="peerfirstname20" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peerlastname20" size="20" class="input" >
+      </td>
+      <td   > 
+        <input type="text" name="peeremail20" size="36" class="input"  >
+      </td>
+    </tr>
+  </table>
+
+
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn3" tag="2" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn3" tag="4" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section4" style="display:none">
+<A NAME="A4">
+<SPAN class="prompt">1A. Split names</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn4" tag="3" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn4" tag="5" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section5" style="display:none">
+<A NAME="A5">
+<SPAN class="prompt">1B. Receive names</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn5" tag="4" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn5" tag="6" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section6" style="display:none">
+<A NAME="A6">
+<SPAN class="prompt">2. Below is a list of the names you have provided. <P>We will send these people an email, giving them the opportunity to complete the form online. If they do so, they will not need to fax the form to us.<P>Please select which of these people should receive emails now:</SPAN><BR>
+<SPAN  class="instruction"><I>Click the NEXT button below to send emails to the names checked above</I></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn6" tag="5" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn6" tag="7" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section7" style="display:none">
+<A NAME="A7">
+<SPAN class="prompt">2B. Send out emails and assemble a story</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn7" tag="6" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn7" tag="8" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section8" style="display:none">
+<A NAME="A8">
+<SPAN class="prompt"><BOGUS>$$story You can come back and add to the list later if you wish.</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn8" tag="7" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn8" tag="9" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section9" style="display:none">
+<A NAME="A9">
+<SPAN class="prompt">CHECK. Check if we have enough data to allow submission of form</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn9" tag="8" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn9" tag="10" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section10" style="display:none">
+<A NAME="A10">
+	<STYLE TYPE="text/css">
+		.body { background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+	</STYLE>
+<IMG SRC="/MAP001/banner600.gif" width=500>
+<TABLE width="600"><TR><TD>
+
+<H3>
+You have reached the end of this form.<BR><BR>
+
+
+No responses were entered.<BR><BR>
+
+
+You will automatically be redirected to the list of forms.<BR><BR>
+
+<A HREF="/cgi-mr/pwikit_login.pl?id=&password=">Click here</A>
+ if you are NOT automatically redirected. 
+</H3>
+
+
+</TD></TR></TABLE>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn10" tag="9" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn10" tag="11" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section11" style="display:none">
+<A NAME="A11">
+<SPAN class="prompt"><IMG SRC="/MAP001/banner600.gif"><INPUT TYPE="HIDDEN" NAME="finish" value="1"><TABLE border="0"width="600"><TR><TD>You are now at the end of this form. If you are finished, please click the SUBMIT button to save your answers and submit them to the workshop leader. If you wish to corret or modify a responses you can re-enter the form and adjust your response. This must be done prior to <%duedate%>. <BR><BR><TABLE border=0 cellpadding="8"><TR><TH><INPUT type="SUBMIT" VALUE=" SUBMIT " onclick="document.q.finish.value='';"></TD><TD>My responses are complete,  and I would like to submit them now.</TD></TR><TR><TD> <INPUT TYPE="BUTTON" VALUE="NOT YET" onclick="document.q.finish.value='0';document.q.submit();"></TD><TD>My responses are not complete. I need to come back and review later before submission.</TD></TR><TR><TH> <INPUT TYPE="BUTTON" VALUE=" << BACK " tabindex="-1"  alt="BACK" onclick="history.back()"> <TD>Go back and review my responses.</tr></TABLE></TABLE></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn11" tag="10" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn11" tag="-2" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+</FORM>
+</BODY>
+</HTML>

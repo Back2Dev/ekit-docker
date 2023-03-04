@@ -1,0 +1,4 @@
+[main]
+from_email=ctwebb@mapconsulting.com
+subject=2nd Reminder: MAP Workshop Materials
+from_name=[%execname%]

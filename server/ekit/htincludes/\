@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+	<link rel="stylesheet" href="/themes/ekit/style.css">
+</head>
+<body class="body">
+<%qbanner%>
+<FORM NAME="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST"
+>
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+<INPUT NAME="jump_to" TYPE="hidden" VALUE="">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT TYPE="hidden" NAME="finish" >
+<INPUT TYPE="hidden" NAME="q_labs"  value="<%q_labs%>">
+<TABLE border="0"width="600px">
+	<TR>
+		<TD>You are now at the end of this form. If you are finished, please click the SUBMIT button to save your answers and submit them to the workshop leader. If you wish to modify a response after you have submitted the form, you can re-enter the form and adjust your response(s), by clicking the link in the original email. This must be done prior to <%duedate%>. <BR><BR>
+		<TABLE border=0 cellpadding="8">
+			<TR>
+				<TH><INPUT type="SUBMIT" VALUE=" SUBMIT " onclick="document.q.finish.value='';"></TD>
+				<TD>My responses are complete,  and I would like to submit them now.</TD></TR>
+			<TR>
+				<TH> <INPUT TYPE="BUTTON" VALUE="NOT YET" onclick="document.q.finish.value='0';document.q.submit();"></TD>
+				<TD>My responses are not complete. I need to come back and review later before submission.</TD></TR>
+			<TR>
+				<TH> <INPUT TYPE="BUTTON" VALUE=" GO BACK " tabindex="-1"  alt="BACK" onclick="mysubmitback()"> <INPUT TYPE="hidden" NAME="BACK2" >
+				<TD>Go back and review my responses.</tr>
+		</TABLE>
+</TABLE>
+
+ <HR>
+ <p>For technical support questions, please email 
+  <a href="mailto:ctwebb@mapconsulting.com">ctwebb@mapconsulting.com</a></font><br>
+</form>
+ </body>
+ </html>
+

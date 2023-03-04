@@ -1,0 +1,61 @@
+// $Id: footer.html,v 1.2 2012-11-28 22:11:52 triton Exp $
+// template file - each script tag contains HTML markup. The id defines its name
+// Comment lines start with // or #
+//
+<script type="text/template" id="footer">
+[%form.fields%]
+
+<TABLE BORDER="0" WIDTH="800px" class="buttontable">
+	<TR>
+		<TD colspan=5>
+			<HR class="divider">
+	<TR>
+		<TD width="100px"> 
+			[%backbutton%]
+		</TD>
+		<TD width="100px">
+			[%progress%]
+		</TD>
+		<TD width="250px" align="center">
+			[%custom_footer%]
+		<TD width="300px" align="right">
+			[%status%]
+		</TD>
+		<TD width="50px" align="right">
+			[%submitbutton%]
+		</TD>
+	</TR>
+</table>
+</script>
+
+<script type="text/template" id="status">
+<span class="status" id="status">
+	<span id="response" onclick="toggleoutput();"></span>
+<!-- Hide this completely, as it is messing up the layout, even when not visible
+<iframe  src="/blank.html" width="600" height="200" id="output" style="visibility:none;">
+	Ajax output will appear here...
+	</iframe>
+	-->
+</span>
+
+</script>
+
+<script type="text/template" id="custom_footer">
+<!-- You can put an image tag here, like this
+<img src="/[%survey_id%]/footer.png">
+-->
+</script>
+
+<script type="text/template" id="backbutton">
+		<INPUT class="button" TYPE="BUTTON" VALUE="[%btn_back%]" tabindex="-1"  alt="BACK" onclick="history.back();return false;"
+</script>
+
+<script type="text/template" id="submitbutton">
+		<INPUT class="button" TYPE="SUBMIT" VALUE="[%btn_next%]" TABINDEX="6" onclick="return mysubmit();" id="btn_submit" name="btn_submit">
+</script>
+
+<script type="text/template" id="progress">
+	<img src="/themes/[%theme%]/progress.png" alt="[%perc%]%"> 
+<!--	<img src="/themes/[%theme%]/progress[%percimg%].png" alt="[%perc%]%"> -->
+</script>
+

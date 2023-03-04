@@ -1,0 +1,4 @@
+[main]
+from_email=[%execemail%]
+subject=Key Personnel Q10A List for [%fullname%]
+from_name=[%execname%]

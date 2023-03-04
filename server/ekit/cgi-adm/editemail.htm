@@ -1,0 +1,354 @@
+<html lang="en-US">
+<!-- $Id: editemail.htm,v 1.4 2005-12-08 04:43:56 triton Exp $
+Copyright Triton Technology 2004
+# Edit email messages in web page. File editemail.pl is needed to partner with this file
+ -->
+<head>
+	<title>Triton Email Editor</title>
+	<link rel="stylesheet" type="text/css" href="/pix/style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<STYLE TYPE="text/css">
+a:hover {
+	color: #FF0000;
+}
+.cbtn {
+	BORDER-LEFT: #efedde 1px solid;
+	BORDER-RIGHT: #efedde 1px solid;
+	BORDER-TOP: #efedde 1px solid;
+	BORDER-BOTTOM: #efedde 1px solid; 
+}
+.txtbtn {font-family:tahoma; font-size:70%; color:menutext;}
+FORM SELECT {
+	font-family: 'Microsoft Sans Serif', Verdana, sans-serif;
+	background-color: #ffffe8;
+	font-size: 8pt;
+	color: #000000;
+}
+FORM INPUT {
+	background-color: #efefef;
+	font-family: 'Microsoft Sans Serif', sans-serif;
+	font-size: 10pt;
+}
+</STYLE>
+
+<script LANGUAGE="JavaScript">
+<!--
+function button_over(eButton)	{
+	eButton.style.backgroundColor = "#B5BDD6";
+	eButton.style.borderColor = "darkblue darkblue darkblue darkblue";
+	eButton.style.borderWidth = '1px';
+	eButton.style.borderStyle = 'solid'; 
+}
+
+function button_out(eButton) {
+	eButton.style.backgroundColor = "#efedde";
+	eButton.style.borderColor = "#efedde";
+}
+
+function button_down(eButton) {
+	eButton.style.backgroundColor = "#8494B5";
+	eButton.style.borderColor = "darkblue darkblue darkblue darkblue";
+}
+
+function button_up(eButton) {
+	eButton.style.backgroundColor = "#B5BDD6";
+	eButton.style.borderColor = "darkblue darkblue darkblue darkblue";
+	eButton = null; 
+}
+
+var isHTMLMode=false
+
+function document.onreadystatechange() {
+  	idContent.document.designMode = "On";
+}
+
+function cmdExec(cmd,opt) {
+  	if (isHTMLMode) {
+		alert("Please uncheck 'Edit HTML'");
+		return;
+	}
+  	idContent.document.execCommand(cmd,"",opt);
+	idContent.focus();
+}
+
+function setMode(bMode) {
+	var sTmp;
+  	isHTMLMode = bMode;
+  	if (isHTMLMode) {
+		sTmp=idContent.document.body.innerHTML;
+		idContent.document.body.innerText=sTmp;
+		toolbar.style.display = 'none';
+	} else {
+		sTmp=idContent.document.body.innerText;
+		idContent.document.body.innerHTML=sTmp;
+		toolbar.style.display = 'inline';
+	}
+  	idContent.focus();
+}
+
+function createLink() {
+	if (isHTMLMode) {
+		alert("Please uncheck 'Edit HTML'");
+		return;
+	}
+	cmdExec("CreateLink");
+}
+
+function insertImageLink() {
+	if (isHTMLMode) {
+		alert("Please uncheck 'Edit HTML'");
+		return;
+	}
+	var sImgSrc=prompt("Insert Image File (You can use your local image file) : ", "http://www.microsoft.com/library/homepage/images/mslogo-blue.gif");
+	if(sImgSrc!=null) cmdExec("InsertImage",sImgSrc);
+}
+
+function insertImageLocal() {
+	if (isHTMLMode) {
+		alert("Please uncheck 'Edit HTML'");
+		return;
+	}
+	var sImgSrc = showModalDialog("/pix/selectImage.htm","","dialogHeight: 500px; dialogWidth: 400px; dialogTop: px; dialogLeft: px; edge: Raised; center: Yes; help: No; resizable: Yes; status: No;");
+	if(sImgSrc!=null) cmdExec("InsertImage",sImgSrc);
+}
+
+function uploadImages() {
+	var newWindow;
+	var props = 'scrollBars=yes,resizable=yes,toolbar=no,menubar=no,location=no,directories=no,width=500,height=500,top=100,left=200';
+	newWindow = window.open('/pix/upload.htm', 'Upload_Images_to_server', props);
+}
+
+function SubmitContent() {
+	if (isHTMLMode) {
+		alert("Please uncheck 'Edit HTML'");
+		return (false);
+	}
+	document.editor.email_html.value = idContent.document.body.innerHTML;
+	document.editor.submit();
+}
+
+function foreColor()	{
+	var arr = showModalDialog("/pix/selcolor.htm","","font-family:Verdana; font-size:12; dialogWidth:45em; dialogHeight:24em" );
+	if (arr != null) cmdExec("ForeColor",arr);	
+}
+
+function tableDialog()
+{
+   //----- Creates A Table Dialog And Passes Values To createTable() -----
+   var rtNumRows = null;
+   var rtNumCols = null;
+   var rtTblAlign = null;
+   var rtTblWidth = null;
+   showModalDialog("/pix/table.htm",window,"status:false;dialogWidth:16em;dialogHeight:13em");
+}
+
+function createTable()
+{
+   //----- Creates User Defined Tables -----
+   var cursor = idContent.document.selection.createRange();
+   if (rtNumRows == "" || rtNumRows == "0")
+   {
+      rtNumRows = "1";
+   }
+   if (rtNumCols == "" || rtNumCols == "0")
+   {
+      rtNumCols = "1";
+   }
+   var rttrnum=1
+   var rttdnum=1
+   var rtNewTable = "<table class='mytable' border='0' align='" + rtTblAlign + "' cellpadding='5' cellspacing='0' width='" + rtTblWidth + "'>"
+   var tro = "<tr class='heading'>";
+   while (rttrnum <= rtNumRows)
+   {
+      rttrnum=rttrnum+1
+      rtNewTable = rtNewTable + tro;
+      while (rttdnum <= rtNumCols)
+      	{
+         rtNewTable = rtNewTable + "<td>&nbsp;</td>"
+         rttdnum=rttdnum+1
+      	}
+      rttdnum=1
+      rtNewTable = rtNewTable + "</tr>"
+   	  if (((rttrnum % 2) == 0) && (rttrnum > 0))
+   	  	{ tro = "<tr class='options'>"; }
+   	  else
+   	  	{ tro = "<tr class='options2'>"; }
+   }
+   rtNewTable = rtNewTable + "</table>"
+   idContent.focus();
+   cursor.pasteHTML(rtNewTable);
+}
+
+function doPreview(){
+     temp = idContent.document.body.innerHTML;
+     preWindow= open('', 'previewWindow', 'width=500,height=440,status=yes,scrollbars=yes,resizable=yes,toolbar=no,menubar=yes');
+     preWindow.document.open();
+     preWindow.document.write(temp);
+     preWindow.document.close();
+}
+
+function SetParagraph(name,value) {
+	idContent.focus();
+	if (value == '<body>')
+	{
+		idContent.document.execCommand('formatBlock','','Normal');
+		idContent.document.execCommand('removeFormat');
+		return;
+	}
+	idContent.document.execCommand('formatblock','',value);
+}
+
+	
+function loadme()
+	{
+//	alert("Data = "+document.editor.email_html.value);
+	document.all("idContent").width = document.body.clientWidth-80;
+	document.all("idContent").height = (document.body.clientHeight/2)-50;
+	setTimeout("fillit()",200);
+	}
+
+function fillit()
+	{
+	idContent.document.createStyleSheet("/pix/style.css",0);
+	idContent.document.body.style.fontFamily = "arial";
+	idContent.document.body.innerHTML = document.editor.email_html.value;
+	idContent.focus();
+	}
+
+function copy2text()
+	{
+	document.editor.email_text.value = idContent.document.body.innerText;
+	}
+	
+function load_msg() 
+	{
+	document.editor.email_html.value = '';
+	document.editor.email_text.value = '';
+	document.editor.submit();
+	}
+
+-->
+</script>
+	<title>Triton Email Editor</title>
+</head>
+
+<body class="body" onload="loadme()">
+<font color="red">[%errormsg%]</font>
+<form name="editor" method="post" action="/cgi-adm/editemail.pl">
+
+Survey ID (SID): <input type="text" name="SID" value="[%SID%]">
+&nbsp;&nbsp;Message:
+	<input type="radio" value="invitation1" [%invitation1_checked%] id="msg1" name="email_msg"><label for="msg1">Invitation</label>&nbsp;
+	<input type="radio" value="reminder1"   [%reminder1_checked%] id="msg2" name="email_msg"><label for="msg2">Reminder 1</label>&nbsp;
+	<input type="radio" value="reminder2"   [%reminder2_checked%] id="msg3" name="email_msg"><label for="msg3">Reminder 2</label>&nbsp;
+	<input type="radio" value="reminder3"   [%reminder3_checked%] id="msg4" name="email_msg"><label for="msg4">Reminder 3</label>&nbsp;
+	<input type="radio" value="reminder4"   [%reminder4_checked%] id="msg5" name="email_msg"><label for="msg5">Reminder 4</label>&nbsp;
+	<input type="radio" value="other"   [%other_checked%] id="msg6" name="email_msg"><label for="msg6">Other:</label> <input type="text" name="other_email" value="[%other_email%]">&nbsp;
+	<input type="button" value=" L O A D " onclick="load_msg();">
+<!--Editor starts here -->
+<table border="0" cellpadding="1" cellspacing="0">
+<tr>
+  <td bgcolor="#d2b48c">
+  <table border="0" cellpadding="0" cellspacing="0">
+  <tr id="toolbar">
+  	<td align="top" bgcolor="#efedde">
+  		<table border="0" cellpadding="0" cellspacing="0">
+  		<tr>
+  			<td>&nbsp;
+  			<select onchange="SetParagraph(this[this.selectedIndex].innerText,this[this.selectedIndex].value);this.selectedIndex=0">
+  				<option selected>Style</option>
+  				<option value="<body>">Normal</option>
+  				<option value="<h1>">Heading 1</option>
+  				<option value="<h2>">Heading 2</option>
+  				<option value="<h3>">Heading 3</option>
+  				<option value="<h4>">Heading 4</option>
+  				<option value="<h5>">Heading 5</option>
+  				<option value="<dir>">Directory List</option>
+  				<option value="<menu>">Menu List</option>
+  				<option value="<pre>">Formatted</option>
+  				<option value="<address>">Address</option>
+  			</select>
+  			<select onchange="cmdExec('fontname',this[this.selectedIndex].value);">
+  				<option selected>Font</option>
+  				<option value="Arial">Arial</option>
+  				<option value="Arial Black">Arial Black</option>
+  				<option value="Arial Narrow">Arial Narrow</option>
+  				<option value="Comic Sans MS">Comic Sans MS</option>
+  				<option value="Courier New">Courier New</option>
+  				<option value="System">System</option>
+  				<option value="Tahoma">Tahoma</option>
+  				<option value="Times New Roman">Times New Roman</option>
+  				<option value="Verdana">Verdana</option>
+  				<option value="Wingdings">Wingdings</option>
+  			</select>
+  			<select onchange="cmdExec('fontsize',this[this.selectedIndex].value);">
+  				<option selected>Size</option>
+  				<option value="1">1</option>
+  				<option value="2">2</option>
+  				<option value="3">3</option>
+  				<option value="4">4</option>
+  				<option value="5">5</option>
+  				<option value="6">6</option>
+  				<option value="7">7</option>
+  				<option value="8">8</option>
+  				<option value="10">10</option>
+  				<option value="12">12</option>
+  				<option value="14">14</option>
+  			</select>
+  			</td>
+  			    <td nowrap height="22">&nbsp;
+<!--  			    	<img class="cbtn" hspace="1" vspace="1" align=absmiddle src="/pix/imageUpload.gif" alt="Upload Images" onClick="uploadImages()" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);">
+  			    	<img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/imageLocal.gif" alt="Insert Local Image" onClick="insertImageLocal()" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);">
+-->
+  			   		<img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/imageLink.gif" alt="Insert Link to External Image" onClick="insertImageLink()" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);">
+  			   		<img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Link.gif" alt="Insert Link" onClick="cmdExec('createLink')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);">
+						&nbsp;</td>
+  		</tr>
+  		</table>
+  		<table border="0" cellpadding="0" cellspacing="0" ID="Table1">
+				<tr>
+					    <td nowrap height="22">&nbsp;<img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/preview.gif" alt="Page Preview" onClick="doPreview();" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Cut.gif" alt="Cut" onClick="cmdExec('cut')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Copy.gif" alt="Copy" onClick="cmdExec('copy')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Paste.gif" alt="Paste" onClick="cmdExec('paste')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Undo.gif" alt="Undo" onClick="cmdExec('Undo')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/redo.gif" alt="Redo" onClick="cmdExec('Redo')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);">
+						</td>
+						<td width="2"><img src="/pix/vertical_line.gif" width="2" height="22"></td>
+						<td nowrap><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Bold.gif" alt="Bold" onClick="cmdExec('bold')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Italic.gif" alt="Italics" onClick="cmdExec('italic')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/under.gif" alt="Underline" onClick="cmdExec('underline')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Strikethrough.gif" alt="Strike-through" onClick="cmdExec('StrikeThrough')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Superscript.gif" alt="Superscript" onClick="cmdExec('SuperScript')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Subscript.gif" alt="Subscript" onClick="cmdExec('SubScript')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);">
+						</td>
+						<td width="2"><img src="/pix/vertical_line.gif" width="2" height="22"></td>
+						<td nowrap><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/left.gif" alt="Justify Left" onClick="cmdExec('justifyleft')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/Center.gif" alt="Center" onClick="cmdExec('justifycenter')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/right.gif" alt="Justify Right" onClick="cmdExec('justifyright')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);">
+						</td>
+						<td width="2"><img src="/pix/vertical_line.gif" width="2" height="22"></td>
+						<td nowrap><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/numlist.gif" alt="Ordered List" onClick="cmdExec('insertorderedlist')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/bullist.gif" alt="Unordered List" onClick="cmdExec('insertunorderedlist')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/inindent.gif" alt="Increase Indent" onClick="cmdExec('indent')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/outdent.gif" alt="Decrease Indent" onClick="cmdExec('outdent')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);">
+						</td>
+						<td width="2"><img src="/pix/vertical_line.gif" width="2" height="22"></td>
+						<td nowrap><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/HR.gif" alt="Insert Horizontal Rule" onClick="cmdExec('InsertHorizontalRule')" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/fgcolor.gif" alt="Forecolor" onClick="foreColor()" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);"><img class="cbtn" hspace="1" vspace=1 align=absmiddle src="/pix/table.gif" alt="Insert Table" onClick="tableDialog();" onmouseover="button_over(this);" onmouseout="button_out(this);" onmousedown="button_down(this);" onmouseup="button_up(this);">
+						&nbsp;</td>
+				</tr>
+				</table>
+  	</td>
+  </tr>
+  <tr>
+  	<td><iframe width="600" id="idContent" height="280"></iframe></td>
+  </tr>
+  <tr>
+  	<td bgcolor="#efedde" align="right">
+  	&nbsp;<BR>
+  		<table border="0" cellpadding="0" cellspacing="0" align="left">
+  		<tr>
+  			<td bgcolor="#efedde" ><input type="checkbox" onclick="setMode(this.checked)" id="html"><LABel for="html" bgcolor="#efedde" ><font face="arial">Edit HTML</font></label>&nbsp;
+<span style="display:none" id="hidden">  			<textarea name="email_html">[%email_html%]</textarea></span></td><TD> <input type="button" value="Copy -> Text " onclick="copy2text();">
+  		</tr>
+  		</table>
+  	<B><input type="button" name="save" value="  S  A  V  E  " onclick="SubmitContent();">&nbsp;</B>
+  	<BR>&nbsp;
+  	</td>
+  </tr>
+  </table>
+</td>
+</tr>
+</table>
+Text only version:<BR>
+<TEXTAREA name="email_text" cols="100" rows="18">[%email_text%]</TEXTAREA>
+</form>
+<!-- editor ends here -->
+<p>&nbsp;</p>
+</body>
+</html>

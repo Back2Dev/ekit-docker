@@ -1,0 +1,17 @@
+[%fullname%] Is Attending The MAP Workshop
+------------------------------------------------------
+
+[%name%]
+[%companyname%]
+
+On behalf of [%fullname%]:
+
+Dear [%name%],
+
+As part of our focus on continuous improvement, I will soon be participating in a special executive development program conducted by Management Action Programs (MAP). To help set the stage for this custom-designed process, MAP is being very thorough in getting to know my organization and me.  This is accomplished through surveys of key internal sources and key people outside my organization.  As one of the key individuals whose expertise I respect and whose opinions I value, I have asked MAP to contact you to ask you some important questions about me.
+
+You may, in the near future, be contacted by a MAP representative that should only take a few minutes.  Your responses will be treated anonymously so please be candid with him or her.
+
+Thank you very much for your contribution to this important process.
+
+[%fullname%]

@@ -1,0 +1,4 @@
+[main]
+from_email=[%adminemail%]
+subject=[%fullname%]: Key Personnel List (Q10A)
+from_name=[%adminname%]

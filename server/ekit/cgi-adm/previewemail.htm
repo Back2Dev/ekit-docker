@@ -1,0 +1,67 @@
+<html lang="en-US">
+<!-- $Id: previewemail.htm,v 1.6 2005-12-09 02:25:44 triton Exp $
+Copyright Triton Technology 2004
+# Preview email messages in web page. File previewemail.pl is needed to partner with this file
+ -->
+<head>
+	<title>Triton Email Preview</title>
+	<link rel="stylesheet" type="text/css" href="/pix/style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script LANGUAGE="JavaScript">
+<!--
+	
+function loadme()
+	{
+//	alert("Data = "+document.preview.email_html.value);
+	}
+
+function fillit()
+	{
+	}
+
+	
+function load_msg() 
+	{
+	document.preview.submit();
+	}
+
+-->
+</script>
+	<title>Triton Email Preview</title>
+</head>
+
+<body class="body" onload="loadme()">
+<font color="red">[%errormsg%]</font>
+<form name="preview" method="post" action="/cgi-adm/previewemail.pl">
+
+Survey ID (SID): <input type="text" name="SID" value="[%SID%]">
+&nbsp;&nbsp;Message:
+	<input type="radio" value="invitation1" [%invitation1_checked%] id="msg1" name="email_msg"><label for="msg1">Invitation</label>&nbsp;
+	<input type="radio" value="reminder1"   [%reminder1_checked%] id="msg2" name="email_msg"><label for="msg2">Reminder 1</label>&nbsp;
+	<input type="radio" value="reminder2"   [%reminder2_checked%] id="msg3" name="email_msg"><label for="msg3">Reminder 2</label>&nbsp;
+	<input type="radio" value="reminder3"   [%reminder3_checked%] id="msg4" name="email_msg"><label for="msg4">Reminder 3</label>&nbsp;
+	<input type="radio" value="reminder4"   [%reminder4_checked%] id="msg5" name="email_msg"><label for="msg5">Reminder 4</label>&nbsp;
+	<input type="radio" value="other"   [%other_checked%] id="msg6" name="email_msg"><label for="msg6">Other: </label><input type="text" name="other_email" value="[%other_email%]">&nbsp;
+	<input type="button" value=" L O A D " onclick="load_msg();">
+<CENTER>
+<table bgcolor="white" border="2" cellpadding="10" cellspacing="0" width="90%">
+<tr class="heading">
+  <td > &nbsp;<BR>The message below is a HTML formatted email message, which is close to what the recipient will see in their email program when they read this message. The message is sent as a multi-part message, meaning that a PLAIN TEXT version is sent as well as the HTML version. The PLAIN TEXT version  appears after the HTML version.<BR>&nbsp;
+<tr>
+  <td >
+[%email_html%]</td>
+  </tr>
+</table>
+<HR>
+<table bgcolor="white" border="2" cellpadding="10" cellspacing="0"  width="90%">
+<tr class="heading">
+  <td > &nbsp;<BR>The text below is the PLAIN TEXT version of the email. It is formatted in a fixed width font, to make it representative of how it would be viewed by a text-only email program. Any hyperlinks or email addresses in the message do not appear as clickable links here, but it is usual for the text based email program to interpret them correctly, and to make them cickable.<BR>&nbsp;
+  <tr>
+  <td wrap>
+<font face="Courier New">[%email_text%]</font>
+</table>
+</form>
+</center>
+<p>&nbsp;</p>
+</body>
+</html>

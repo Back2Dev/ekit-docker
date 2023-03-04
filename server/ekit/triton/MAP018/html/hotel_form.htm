@@ -1,0 +1,495 @@
+<HTML>
+<link rel="stylesheet" href="/themes/ekit/style.css">
+<SCRIPT language="JavaScript">
+<!--
+var f1 = false;
+function focusme(ctl)
+	{
+	if (!f1)
+		{
+		ctl.focus();
+		f1 = true;
+		}
+	}
+function getradio(control)
+	{
+	var selectedButton = "";
+	for (var j=0;j< control.length;j++)
+		{
+		if (control[j].checked)
+			{
+			selectedButton = control[j].value;
+			break;
+			}
+		}
+	return selectedButton;
+	}
+function enforceradio(control)
+	{
+	var msg = '';
+	if (getradio(control) == '')
+		{
+		msg = ' - Please select a response for : "'+control[0].title+'"\n';
+		focusme(control[0]);
+		}
+	return msg;
+	}
+function enforce(control)
+	{
+	var msg = '';
+	if (control.value == '')
+		{
+		msg = ' - Please fill in field: "'+control.title+'"\n';
+		focusme(control);
+		}
+	return msg;
+	}
+function enforcemmyy(control)
+	{
+	var msg = enforce(control);
+	if (msg == '')
+		{		
+	    var exp = new RegExp ("\\d\\d\/\\d\\d");
+	    if (!exp.test (control.value))
+			{
+			msg = ' - "'+control.title+'" must be in the format MM/YY (eg "05/09")\n';
+			focusme(control);
+			}
+		}
+	return msg;
+	}
+function enforcetime(control)
+	{
+	var msg = enforce(control);
+	if (msg == '')
+		{		
+	    var exp = new RegExp ("^(?:0?[1-9]:[0-5]|1(?=[012])\\d:[0-5])\\d\\s*(?:[ap]m)\\s*\$");
+	    if (!exp.test (control.value))
+			{
+			msg = ' - "'+control.title+'" must be in the format HH:MM am/pm (eg "05:30 pm")\n (We understand that arrival time is approximate, so please provide a time plus or minus an hour)';
+			focusme(control);
+			}
+		}
+	return msg;
+	}
+function QValid()
+	{
+	f1 = false;
+	var errmsg = '';
+	errmsg = errmsg + enforceradio(document.q.occupancy);
+//	errmsg = errmsg + enforceradio(document.q.smoker);
+	errmsg = errmsg + enforceradio(document.q.early);
+	if (document.q.early[0].checked)
+		errmsg = errmsg + enforcetime(document.q.arrivaltime);
+	errmsg = errmsg + enforceradio(document.q.guest);
+	if (document.q.guest[0].checked)
+		{
+		errmsg = errmsg + enforceradio(document.q.day1guest);
+		errmsg = errmsg + enforceradio(document.q.day2guest);
+		}
+	errmsg = errmsg + enforce(document.q.cardname);
+	errmsg = errmsg + enforceradio(document.q.cardtype);
+	errmsg = errmsg + enforceradio(document.q.fax_ccno);
+	errmsg = errmsg + enforcemmyy(document.q.cardexpiry);
+	if ((document.q.cardno.value != '') || ((document.q.fax_ccno[1].checked) && ("<%ext_cardno_obscure%>" == "")))
+		{	
+		errmsg = errmsg + enforce(document.q.cardno);
+		if (!checkCreditCard (document.q.cardno.value, getradio(document.q.cardtype)))
+			{
+			errmsg = errmsg + "Error: "+ccErrors[ccErrorNo];
+			focusme(document.q.cardno);
+			}
+		}
+	if (errmsg != '')
+		{
+		alert('I am sorry, you have the following error(s):\n\n'+errmsg);
+		return false;
+		}
+	return true;
+	}
+function showcc()
+	{
+	document.getElementById("enter_cardno").style.display = "";
+	}
+function obscure()
+ 	{
+ 	if ("<%ext_cardno_obscure%>"+"" == "")
+ 		{
+		document.getElementById("show_cardno").style.display = "none";
+		document.getElementById("enter_cardno").style.display = "";
+ 		}
+ 	}
+/*============================================================================*/
+
+/*
+
+This routine checks the credit card number. The following checks are made:
+
+1. A number has been provided
+2. The number is a right length for the card
+3. The number has an appropriate prefix for the card
+4. The number has a valid modulus 10 number check digit if required
+
+If the validation fails an error is reported.
+
+The structure of credit card formats was gleaned from a variety of sources on 
+the web, although the best is probably on Wikepedia ("Credit card number"):
+
+  http://en.wikipedia.org/wiki/Credit_card_number
+
+Parameters:
+            cardnumber           number on the card
+            cardname             name of card as defined in the card list below
+
+Author:     John Gardner
+Date:       1st November 2003
+Updated:    26th Feb. 2005      Additional cards added by request
+Updated:    27th Nov. 2006      Additional cards added from Wikipedia
+
+*/
+
+/*
+   If a credit card number is invalid, an error reason is loaded into the 
+   global ccErrorNo variable. This can be be used to index into the global error  
+   string array to report the reason to the user if required:
+   
+   e.g. if (!checkCreditCard (number, name) alert (ccErrors(ccErrorNo);
+*/
+
+var ccErrorNo = 0;
+var ccErrors = new Array ()
+
+ccErrors [0] = "Unknown card type";
+ccErrors [1] = "No card number provided";
+ccErrors [2] = "Credit card number is in invalid format (must be 14-16 digits long)";
+ccErrors [3] = "Credit card number is invalid (check card type)";
+ccErrors [4] = "Credit card number has an inappropriate number of digits";
+
+function checkCreditCard (cardnumber, cardname) {
+     
+  // Array to hold the permitted card characteristics
+  var cards = new Array();
+
+  // Define the cards we support. You may add addtional card types.
+  
+  //  Name:      As in the selection box of the form - must be same as user's
+  //  Length:    List of possible valid lengths of the card number for the card
+  //  prefixes:  List of possible prefixes for the card
+  //  checkdigit Boolean to say whether there is a check digit
+  
+  cards [0] = {name: "Visa", 
+               length: "13,16", 
+               prefixes: "4",
+               checkdigit: true};
+  cards [1] = {name: "MasterCard", 
+               length: "16", 
+               prefixes: "51,52,53,54,55",
+               checkdigit: true};
+  cards [2] = {name: "DinersClub", 
+               length: "14,16", 
+               prefixes: "300,301,302,303,304,305,36,38,55",
+               checkdigit: true};
+  cards [3] = {name: "CarteBlanche", 
+               length: "14", 
+               prefixes: "300,301,302,303,304,305,36,38",
+               checkdigit: true};
+  cards [4] = {name: "AmEx", 
+               length: "15", 
+               prefixes: "34,37",
+               checkdigit: true};
+  cards [5] = {name: "Discover", 
+               length: "16", 
+               prefixes: "6011,650",
+               checkdigit: true};
+  cards [6] = {name: "JCB", 
+               length: "15,16", 
+               prefixes: "3,1800,2131",
+               checkdigit: true};
+  cards [7] = {name: "enRoute", 
+               length: "15", 
+               prefixes: "2014,2149",
+               checkdigit: true};
+  cards [8] = {name: "Solo", 
+               length: "16,18,19", 
+               prefixes: "6334, 6767",
+               checkdigit: true};
+  cards [9] = {name: "Switch", 
+               length: "16,18,19", 
+               prefixes: "4903,4905,4911,4936,564182,633110,6333,6759",
+               checkdigit: true};
+  cards [10] = {name: "Maestro", 
+               length: "16", 
+               prefixes: "5020,6",
+               checkdigit: true};
+  cards [11] = {name: "VisaElectron", 
+               length: "16", 
+               prefixes: "417500,4917,4913",
+               checkdigit: true};
+               
+  // Establish card type
+  var cardType = -1;
+  for (var i=0; i<cards.length; i++) {
+
+    // See if it is this card (ignoring the case of the string)
+    if (cardname.toLowerCase () == cards[i].name.toLowerCase()) {
+      cardType = i;
+      break;
+    }
+  }
+  
+  // If card type not found, report an error
+  if (cardType == -1) {
+     ccErrorNo = 0;
+     return false; 
+  }
+   
+  // Ensure that the user has provided a credit card number
+  if (cardnumber.length == 0)  {
+     ccErrorNo = 1;
+     return false; 
+  }
+    
+  // Now remove any spaces from the credit card number
+  cardnumber = cardnumber.replace (/\s/g, "");
+  
+  // Check that the number is numeric
+  var cardNo = cardnumber
+  var cardexp = /^[0-9]{13,19}$/;
+  if (!cardexp.exec(cardNo))  {
+     ccErrorNo = 2;
+     return false; 
+  }
+       
+  // Now check the modulus 10 check digit - if required
+  if (cards[cardType].checkdigit) {
+    var checksum = 0;                                  // running checksum total
+    var mychar = "";                                   // next char to process
+    var j = 1;                                         // takes value of 1 or 2
+  
+    // Process each digit one by one starting at the right
+    var calc;
+    for (i = cardNo.length - 1; i >= 0; i--) {
+    
+      // Extract the next digit and multiply by 1 or 2 on alternative digits.
+      calc = Number(cardNo.charAt(i)) * j;
+    
+      // If the result is in two digits add 1 to the checksum total
+      if (calc > 9) {
+        checksum = checksum + 1;
+        calc = calc - 10;
+      }
+    
+      // Add the units element to the checksum total
+      checksum = checksum + calc;
+    
+      // Switch the value of j
+      if (j ==1) {j = 2} else {j = 1};
+    } 
+  
+    // All done - if checksum is divisible by 10, it is a valid modulus 10.
+    // If not, report an error.
+    if (checksum % 10 != 0)  {
+     ccErrorNo = 3;
+     return false; 
+    }
+  }  
+
+  // The following are the card-specific checks we undertake.
+  var LengthValid = false;
+  var PrefixValid = false; 
+  var undefined; 
+
+  // We use these for holding the valid lengths and prefixes of a card type
+  var prefix = new Array ();
+  var lengths = new Array ();
+    
+  // Load an array with the valid prefixes for this card
+  prefix = cards[cardType].prefixes.split(",");
+      
+  // Now see if any of them match what we have in the card number
+  for (i=0; i<prefix.length; i++) {
+    var exp = new RegExp ("^" + prefix[i]);
+    if (exp.test (cardNo)) PrefixValid = true;
+  }
+      
+  // If it isn't a valid prefix there's no point at looking at the length
+  if (!PrefixValid) {
+     ccErrorNo = 3;
+     return false; 
+  }
+    
+  // See if the length is valid for this card
+  lengths = cards[cardType].length.split(",");
+  for (j=0; j<lengths.length; j++) {
+    if (cardNo.length == lengths[j]) LengthValid = true;
+  }
+  
+  // See if all is OK by seeing if the length was valid. We only check the 
+  // length if all else was hunky dory.
+  if (!LengthValid) {
+     ccErrorNo = 4;
+     return false; 
+  };   
+  
+  // The credit card is in the required format.
+  return true;
+}
+
+/*============================================================================*///-->
+</SCRIPT>
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+
+<BODY class="soria" onload="obscure();">
+<!-- CHANGE THIS BACK FOR PRODUCTION 
+<FORM NAME="q" id="q" ACTION="https://ekit.mappwi.com/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST" onsubmit="return QValid()">
+-->
+<FORM NAME="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST" onsubmit="return QValid()">
+
+<%qbanner%>
+<table class="mytable" border="0" cellpadding="4" cellspacing="0" width="650">
+<TR class="options">
+	<TD colspan=4>
+	<CENTER><h2>HOTEL RESERVATION<BR>for <%salutation%> <%fullname%></h2>
+Accommodations for <%workshopdate%> at <%location%><BR>&nbsp;</CENTER>
+</table>
+<table class="mytable" border="0" cellpadding="4" cellspacing="0" width="650">
+<TR class="options">
+	<TD valign="top" width="30%"><B>1. Room occupancy: 
+	<TD valign="top" colspan="2">
+		<INPUT onchange="yuk(this)" name="occupancy" type="radio" id="occupancy_1" value="One Person" title="Room occupancy"><label for="occupancy_1">One person (one bed)</label><BR>
+		<INPUT onchange="yuk(this)" name="occupancy" type="radio" id="occupancy_2" value="Two (1 bed)"> <label for="occupancy_2">Two people (one bed)</label><BR>
+		<INPUT onchange="yuk(this)" name="occupancy" type="radio" id="occupancy_3" value="Two (2 bed)"><label for="occupancy_3">Two people (two beds)</label><BR>
+		<INPUT onchange="yuk(this)" name="occupancy" type="radio" id="occupancy_4" value="Meals Only"><label for="occupancy_4">No Lodging (meals, refreshment services, tax, service charge, parking if applicable)</label><BR>
+	<td valign="top">
+		* Hotel is a non-smoking facility.
+		<!--
+		<INPUT onchange="yuk(this)" name="smoker" type="radio" id="smoker_1" value="Yes" title="Smoker ?"><label for="smoker_1">Smoking</label><BR>
+		<INPUT onchange="yuk(this)" name="smoker" type="radio" id="smoker_2" value="No"><label for="smoker_2">Non-smoking</label>
+		-->
+<TR class="options2">
+	<TD valign="top">
+		<B>2. Will you arrive early and need a room on <%dayprior%> ?
+	<TD valign="top" nowrap>
+		<INPUT onchange="yuk(this)" name="early" type="radio" id="early_1" value="Yes" title="Early arrival ?"><label for="early_1">Yes</label>
+		<INPUT onchange="yuk(this)" name="early" type="radio" id="early_2" value="No"><label  for="early_2">No </label>
+	<TD valign="top" align="right">
+		<B>Arrival time: (if arriving early)
+	<TD valign="top">
+<!--		<INPUT onchange="yuk(this)" name="arrivaltime" type="text" title="Arrival time" maxlength="11"> -->
+			<SELECT onchange="yuk(this)" name="arrivaltime" title="Arrival time" >
+				<OPTION value=''></OPTIO>
+				<OPTION value="01:00 am"> 1 am</OPTION>
+				<OPTION value="02:00 am"> 2 am</OPTION>
+				<OPTION value="03:00 am"> 3 am</OPTION>
+				<OPTION value="04:00 am"> 4 am</OPTION>
+				<OPTION value="05:00 am"> 5 am</OPTION>
+				<OPTION value="06:00 am"> 6 am</OPTION>
+				<OPTION value="07:00 am"> 7 am</OPTION>
+				<OPTION value="08:00 am"> 8 am</OPTION>
+				<OPTION value="09:00 am"> 9 am</OPTION>
+				<OPTION value="10:00 am">10 am</OPTION>
+				<OPTION value="11:00 am">11 am</OPTION>
+				<OPTION value="12:00 am">12 am</OPTION>
+				<OPTION value="01:00 pm"> 1 pm</OPTION>
+				<OPTION value="02:00 pm"> 2 pm</OPTION>
+				<OPTION value="03:00 pm"> 3 pm</OPTION>
+				<OPTION value="04:00 pm"> 4 pm</OPTION>
+				<OPTION value="05:00 pm"> 5 pm</OPTION>
+				<OPTION value="06:00 pm"> 6 pm</OPTION>
+				<OPTION value="07:00 pm"> 7 pm</OPTION>
+				<OPTION value="08:00 pm"> 8 pm</OPTION>
+				<OPTION value="09:00 pm"> 9 pm</OPTION>
+				<OPTION value="10:00 pm">10 pm</OPTION>
+				<OPTION value="11:00 pm">11 pm</OPTION>
+				<OPTION value="12:00 pm">12 pm</OPTION>
+			</SELECT>
+<TR class="options">
+	<TD valign="top"><B>3. Do you plan to have a guest?	
+	<TD valign="top">
+		<INPUT onchange="yuk(this)" name="guest" type="radio" id="guest_1" value="Yes" title="Will you bring a guest for dinner?"><label for="guest_1">Yes</label>
+		<INPUT onchange="yuk(this)" name="guest" type="radio" id="guest_2" value="No"><label  for="guest_2">No </label>
+	<TD valign="top" align="left" colspan="2">
+		<B>If yes, will the guest join the group for dinner?
+	<P>
+	<%day1%>: <INPUT onchange="yuk(this)" name="day1guest" type="radio" id="day1guest_1" value="Yes" title="<%day1%> dinner guest?"><label for="day1guest_1">Yes</label>
+		<INPUT onchange="yuk(this)" name="day1guest" type="radio" id="day1guest_2" value="No"><label  for="day1guest_2">No </label><BR>
+	<%day2%>: <INPUT onchange="yuk(this)" name="day2guest" type="radio" id="day2guest_1" value="Yes" title="<%day2%> dinner guest?"><label for="day2guest_1">Yes</label>
+		<INPUT onchange="yuk(this)" name="day2guest" type="radio" id="day2guest_2" value="No"><label  for="day2guest_2">No </label><BR>
+<TR class="options">
+	<td colspan="4" align="right">Please note, you will be charged for cancelled meals after <%meals_charge%>
+<TR class="options2">
+	<TD valign="top"><B>4. Do you have any comments?
+	<TD valign="top" colspan="3">
+		<textarea onchange="yuk(this)" name="dietnotes" cols="40" rows="5" title="Comments"></textarea>
+<TR class="options">
+	<TD valign="top" colspan="4"><B>5. Credit card information is required in order to reserve lodging and/or meals. Please complete the information below:
+<TR class="options">
+	<TD align="right"><B>Name on credit card: <cardname>
+	<TD valign="top" colspan="3">
+		<INPUT onchange="yuk(this)" name="cardname" type="text"  size="30" title="Name on credit card">
+<TR class="options">
+	<TD align="right"><B>Credit card type:
+	<TD valign="top" colspan="3">
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_1" value="Mastercard" title="Credit Card type"><label for="cardtype_1">Mastercard</label>
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_2" value="Visa"><label for="cardtype_2">Visa</label>
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_3" value="Amex"><label for="cardtype_3">American Express</label>
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_4" value="Diners"><label for="cardtype_4">Diners</label>
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_5" value="Discover"><label for="cardtype_5">Discover</label>
+<TR class="options">
+<TD valign="top" align="right"><B>Fax credit card no?</b>
+<TD valign="top" colspan="3">
+				<INPUT onchange="yuk(this)" name="fax_ccno" type="radio" id="fax_ccno_1" value="1" title="Fax credit card no ?"><label for="fax_ccno_1">I will print and fax the next page to MAP</label><BR>
+				<INPUT onchange="yuk(this)" name="fax_ccno" type="radio" id="fax_ccno_2" value="0"><label for="fax_ccno_2">I will enter the card number here</label>
+<TR class="options">
+	<TD align="right" valign="top"><B>Credit card number:
+	<TD valign="top" colspan="3">
+		<span id="enter_cardno" style="display:none">
+		<INPUT onchange="yuk(this)" name="cardno" type="text"  size="20" 
+		title="Fake Credit Card number"
+		value="4111111111111111"> </span>
+		<span id="show_cardno" onclick="showcc();">
+	<font color="red"><U>We have cardno: <%ext_cardno_obscure%> on file for you. Click here if you need to change it.</u></font></span>
+				<INPUT onchange="yuk(this)" name="cardno_obscure" type="hidden"  size="20" title="Obscured Credit Card number" value="<%ext_cardno_obscure%>">
+<TR class="options">
+	<TD  align="right"><B>Credit card expiration date (MM/YY):
+	<TD valign="top" colspan="3">
+		<INPUT onchange="yuk(this)" name="cardexpiry" type="text"  size="10" title="Credit Card expiry date" value="12/29">
+<TR class="warning"><TD colspan="4"><font size="-1">
+		No charge will be made to your credit card at this time. 
+		Management Action Programs will provide these details to the hotel for confirmation of your reservation only. 
+		Payment for hotel charges will be made when you check out of the hotel. 
+		
+<TR class="options2">
+	<TD valign="top" colspan="4"><B>6. Your name and title as they appear on our records:
+		<font color="blue"><B><%salutation%> <%fullname%>, <%title%></B></font><BR>
+<TR class="options2">
+	<TD valign="top" >&nbsp;
+	<TD valign="top" colspan="3">
+		<B>If you want your name or title to appear differently, please make the changes here:
+<TR class="options2">
+	<TD valign="top" >&nbsp;
+	<TD valign="top" colspan="3">
+		<INPUT onchange="yuk(this)" name="revisedfullname" type="text" value="<%salutation%> <%fullname%>, <%title%>"  size="60">
+</table>
+      <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+      <INPUT NAME="seqno" TYPE="hidden" VALUE="<%seqno%>">
+      <INPUT NAME="q_labs" TYPE="hidden" VALUE="<%q_labs%>">
+	<INPUT NAME="jump_to" TYPE="hidden" VALUE="">
+	<INPUT NAME="session" TYPE="hidden" VALUE="">
+</FORM>
+</body>
+</html>

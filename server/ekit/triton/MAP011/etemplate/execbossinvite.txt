@@ -1,0 +1,16 @@
+Dear [%execname%]:
+
+[%fullname%]'s boss, ([%bossfullname%]) has been invited to complete BOSS forms.
+
+BOSS EMAIL INVITATION SENT 
+--------------------------
+
+Participant: [%fullname%] ([%email%])
+Supervising Manager or Partner: [%bossfullname%] ([%bossemail%])
+Company: [%company%]
+Due Date: [%duedate%]
+Workshop Date: [%workshopdate%]
+Location: [%location%]
+Administrator: Cathy Webb
+
+No action is needed from this email.

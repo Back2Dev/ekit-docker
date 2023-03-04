@@ -1,0 +1,76 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html lang="en-US"><head><title>Participant Welcome email</title>
+<style type="text/css">
+
+.default {  }
+.leftprog { background-color: #ff8888; color:YELLOW; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 7pt; font-style: normal; }
+.instruction {  font-family: Calibri, Arial, Helvetica, sans-serif; font-style: italic; font-size: 9pt; }
+
+.prompt {  font-family: Calibri, Verdana, Arial, Helvetica, sans-serif; font-size: 11pt; font-style: normal; font-weight: bold; }
+.heading { background-color: #e0e0e0; color:#45526e; font-family: Calibri, Verdana, Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: bold; }
+.body { background-color: #FFFFFF; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 9pt}
+.soria { background-color: #FFFFFF; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 9pt}
+.mytable { color:black; border-width:0px; border-color:#666666; border-style:none;}
+.warning { color:red; background-color: #EEEEEE; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 10pt; border-color:red;border-style:solid;border-width:1px;}
+table { background-color: #FFFFFF; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 9pt; font-weight: normal;}
+
+.bluebar{font-family:Calibri,Arial,Helvetica,sans-serif;font-size:14pt; color:white;height:28px; width:600px; background-color:#455370; } 
+</style>
+</head>
+
+<body class="body">
+<table border=0 cellpadding=5 cellspacing=0 style="margin:0;" width="600px">
+<tr>
+<TD ><img src='http://[%vhost%]/themes/ekit/maplogo.png' alt="Management Action Programs, Inc." title="Management Action Programs, Inc.">
+<tr>
+<TD class="bluebar">&nbsp;&nbsp; Welcome to MAP
+</table>
+
+<table border="0" width="600">
+	<tbody>
+		<tr>
+			<td>
+			<p>
+			<strong>Congratulations and Welcome to MAP!</strong> 			
+			</p>
+			<p>
+			We are delighted you are going to participate in the MAP Program and have reserved a place for you in the [%workshopdate%] MAP Workshop which will be held at the [%location%].&nbsp; 			
+			</p>
+			<p>
+			<strong>Please Confirm Your Email</strong> 			
+			</p>
+			<P>
+			We need you to confirm your email address by clicking this link: <p>
+<a href="http://[%vhost%]/cgi-mr/pwikit_clickthru.pl?password=[%password%]&id=[%id%]">http://[%vhost%]/cgi-mr/pwikit_clickthru.pl?password=[%password%]&id=[%id%]</a>
+<p>This lets us know that we have the right email for you.
+			<p>
+			<strong>Please Mark Your Calendar!</strong> 			
+			</p>
+			<p>
+			Six weeks prior to your Workshop, you will receive the MAP Pre-Workshop Questionnaires and hotel reservation information via email.&nbsp; The completed Questionnaires will help us to tailor your MAP Workshop to your unique role within your organization.&nbsp; If you have not received the emailed Pre-Workshop Questionnaires by [%invitedate%] please contact MAP Workshop Operations at 800.540.9003, ext. 225. 			
+			</p>
+			<p>
+			<strong>Please keep in mind that if you are unable to participate in the Workshop scheduled above, you must notify us in writing at least 7 days prior to that date or you may incur a $500 reschedule fee.&nbsp; In addition, the cancellation of your hotel reservation in less than 7 days may cause you to incur hotel charges. 			</strong>
+			</p>
+			<p>
+			Please be sure to add ctwebb@mapconsulting.com to your safe senders list to ensure your Ekit does not go to your spam folders.
+			</p>
+			<p>
+			If you have any questions or require assistance, please call or reply to this email.&nbsp; We look forward to working with you.&nbsp;
+			</p>
+			<p>
+			Sincerely, 			
+			</p>
+			<p>
+			[%execname%]<br />
+			</p>
+			</td>
+		</tr>
+		<tr><TD>
+<HR>
+<center><img src="http://[%vhost%]/themes/ekit/ekit.daa.png" alt="Discipline Accountability Achievement"></center>
+	</tbody>
+</table>
+</body>
+</html>

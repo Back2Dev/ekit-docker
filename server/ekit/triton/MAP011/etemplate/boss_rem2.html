@@ -1,0 +1,32 @@
+  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+  <html>
+  <head>
+  <title>Survey invitation</title>
+<!--  <link type="text/css" rel="stylesheet" href= "http://ekit.mappwi.com/MAP011/style.css"> not USED - SEE INLINE STYLESHEET THAT FOLLOWS -->
+  <STYLE TYPE="text/css">
+.prompt {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal;  }
+.qlabel {  color: darkslateblue;font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal;  }
+.heading { background-color: darkslateblue; color:white; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: bold; }
+.options { background-color: lightcyan; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: bold; }
+.options2 { background-color: lightblue; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: bold; }
+.instruction {  font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 9pt; }
+.default {  }
+.links {  font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.body { background-color: white; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.mytable { background-color: darkslateblue; color:yellow; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: bold; border-width:2px; border-color:darkslateblue; border-style:solid;}
+.notes { background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 7pt}
+  </STYLE>
+  </head>
+  <body class="body">
+[%banner%]<BR>Dear [%firstname%]:<BR><BR>
+<P>While preparing for [%fullname%]'s [%workshopdate%] workshop, we discovered that we are missing vital information about [%himher%]. Please go online and complete the forms no later than [%duedate%]. 
+<P><FONT color=blue></FONT> 
+<P>We need this information to make the workshop uniquely useful and valuable to [%aboutname%]. 
+<P>Please click <A href="http://[%vhost%]/cgi-mr/pwikit_login.pl?survey_id=pwikit&amp;password=[%password%]&amp;id=[%id%]">here</A> to complete the forms now. 
+<P>If you have questions, please contact [%adminname%] at [%adminphone%]. 
+<P>Thank you, 
+<P>[%execname%] 
+<HR>
+<FONT size=-2>The above link should log you on to our system. In the event of the link not opening, you may be asked to enter an ID and password. Your ID is [%id%] and your password is [%password%] <BR>Alternatively, go to http://[%vhost%]/ and enter the id and password as above. <BR>If you are still having trouble, please email <A href="mailto:ctwebb@mapconsulting.com">ctwebb@mapconsulting.com</A> for further assistance. </FONT>
+  </body>
+  </html>

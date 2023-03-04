@@ -1,0 +1,95 @@
+#
+# Generated Survey syntax file for MAP011 (Tue Jun 18 10:35:14 2002);
+# 
+
++survey_name=Questionnaire for supervising manager or partner
++window_title=Q11 - Questionnaire for supervising manager or partner
++one_at_a_time=0
++block_size=6
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++written_cols=80
++written_rows=10
++focus_off=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp;  Questionnaire for Supervising Manager or Partner<TH class="bluebarq">Q11</table>
++qscale=<P><%q_label%> 
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C	warning=warning
+C	ws_details=ws_details
+C	fullname=fullname
+C	firstname=firstname
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q A. <%qbanner%><TABLE width="600"><TR><TD class="prompt">As <%fullname%>'s supervising manager or partner, your candid and thoughtful answers to the following questions are critical in guiding us to help <%fullname%> achieve the goals of this program: increased productivity and overall management effectiveness.  Our staff discreetly uses this information.  However, certain comments may require anonymity.  Please designate those accordingly.</TD></TR></TABLE>
++qtype=instruction
+
+Q 1. Please describe the leadership/management strengths of <%fullname%>.
++qtype=written
+
+Q 2. Every leader/manager has opportunities for growth and improvement. What are the management <br>and/or leadership skills in which <%fullname%> could improve?
++qtype=written
+
+Q 3. What are <%fullname%>'s measurable performance goals ($, #, %, etc.) for the next 12 months? 
++qtype=written
+
+Q 4. What are <%fullname%>'s measurable performance goals ($, #, %, etc.) that should be achieved within the <br>next 30 - 45 days?
++qtype=written
+
+Q 5. What are the main challenges <%fullname%> must solve in order to achieve the above goals?
++qtype=written
+
+Q 6. <%qbanner%><P><%q_label%> What is the realistic personal career goal(s) for <%fullname%> within the organization?
++qtype=written
+
+Q 7. What are the main COMMUNICATING challenges that <%fullname%> faces (e.g., style, effectiveness, <br>frequency, internal, external, etc.)?  <I>Please be specific.</I>
++qtype=written
+
+Q 8. What are the main PLANNING challenges <%fullname%> faces (e.g., no formal planning, unclear goals, <br>projects, etc.)?  <I>Please be specific.</I>
++qtype=written
+
+Q 9. What are the main ORGANIZING challenges <%fullname%> faces (e.g., personal organization, availability of <br>supplies, equipment, financial resources, time, organizational structure, etc.)?  <I>Please be specific.</I>
++qtype=written
+
+Q 10. What are the main STAFFING challenges <%fullname%> faces (e.g., recruiting, selecting right people, training, <br>development, retaining, etc.)?  <I>Please be specific.</I>
++qtype=written
+
+Q 11. What are the main CONTROLLING challenges <%fullname%> faces (e.g., accountability, follow-through, <br>taking corrective action, cost and inventory control, productivity, quality, etc.)?  <I>Please be specific.</I>
++qtype=written
++required=3
+
+Q 12. <%qbanner%><P><%q_label%> What are the main LEADING challenges <%fullname%> faces (e.g., clear vision, motivation, teamwork, <br>initiating action, innovation, commitment to team goals, etc.)?<BR> <I>Please be specific.</I>
++qtype=written
+
+Q 13. What would you expect <%fullname%> to gain from this management process?  How will you know when <br>those expectations have been met?
++qtype=written
++buttons=1
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)}
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++buttons=0
++sscript=../scripts/pwikit_prime_status.pl

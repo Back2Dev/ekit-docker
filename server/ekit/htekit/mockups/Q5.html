@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"><script language="JavaScript">
+<!--
+function Can_Proceed_0()
+	{
+	return false
+	}
+function Can_Proceed_1()
+	{
+	return false
+	}
+function QValid()
+	{
+//
+// OK, we have passed all the checks and are about to allow the form to be submitted. 
+// So we gray it out to make sure it cannot be clicked again
+//
+	document.q.btn_submit.value = "Submitting...";
+	document.q.btn_submit.disabled = true;
+	return true;
+	}
+function QValid_0()
+	{
+	return true;
+	}
+function QValid_1()
+	{
+	return true;
+	}
+function clr_Q1()
+	{
+	}
+function clr_QA()
+	{
+	}
+ 
+//-->
+</script>
+
+
+<title>Triton Technology</title>
+<link rel="stylesheet" href="Q5_files/style.css"><script language="JavaScript">
+<!--
+function check_it(n,name,company,email,title,phone)
+	{
+	if ((name == '') && (company == '') && (email == '') && (title == '')  && (phone == ''))
+		return 1;		// All blanks is OK
+	if (name == '')
+		{
+		alert("Contact #"+n+" - Please supply a name");
+		return 0;
+		}
+	if (company == '')
+		{
+		alert("Contact #"+n+" - Please supply a company name for "+name);
+		return 0;
+		}
+	if ((email == '') && (phone == ''))
+		{
+		alert("Contact #"+n+" - Please supply either an email address or phone number for "+name);
+		return 0;
+		}
+	return 1;
+	}
+	
+function QValid()
+	{
+	var n = 0;
+	n += check_it(1,document.q.name1.value,document.q.company1.value,document.q.email1.value,document.q.title1.value,document.q.phone1.value);
+	n += check_it(2,document.q.name2.value,document.q.company2.value,document.q.email2.value,document.q.title2.value,document.q.phone2.value);
+	n += check_it(3,document.q.name3.value,document.q.company3.value,document.q.email3.value,document.q.title3.value,document.q.phone3.value);
+	n += check_it(4,document.q.name4.value,document.q.company4.value,document.q.email4.value,document.q.title4.value,document.q.phone4.value);
+	n += check_it(5,document.q.name5.value,document.q.company5.value,document.q.email5.value,document.q.title5.value,document.q.phone5.value);
+	n += check_it(6,document.q.name6.value,document.q.company6.value,document.q.email6.value,document.q.title6.value,document.q.phone6.value);
+	n += check_it(7,document.q.name7.value,document.q.company7.value,document.q.email7.value,document.q.title7.value,document.q.phone7.value);
+	n += check_it(8,document.q.name8.value,document.q.company8.value,document.q.email8.value,document.q.title8.value,document.q.phone8.value);
+	if (n == 8)
+		return true;
+	else
+		return false;
+	}
+//-->
+</script></head>
+
+
+<body class="body">
+<table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr><td><table border="0" cellpadding="1" cellspacing="0" width="596">
+	<tbody><tr class="details"><th align="RIGHT">&nbsp;Participant:&nbsp;</th><td>&nbsp;731224 A.J. Widacki&nbsp;</td><td width="10">&nbsp; </td><th align="RIGHT">&nbsp;Organization:&nbsp;</th><td>&nbsp;Michael Baker, Jr., Inc.&nbsp;
+	</td></tr><tr class="details"><th align="RIGHT">&nbsp;Workshop Date:&nbsp;</th><td>&nbsp;March 9-11, 2011&nbsp;</td><td>&nbsp;</td><th align="RIGHT">&nbsp;Due Date:&nbsp;</th><td>&nbsp;03/17/2011&nbsp;
+	</td></tr><tr class="details"><th align="RIGHT">&nbsp;Return Fax:&nbsp;</th><td>&nbsp;(818) 981-2717&nbsp;</td><td>&nbsp;</td><th align="RIGHT">&nbsp;Appraiser:&nbsp;</th><td>&nbsp;A.J. Widacki&nbsp;
+</td></tr></tbody></table></td></tr></tbody></table>
+<img src="Q5_files/banner600.gif"><table cellpadding="5" cellspacing="0" width="600">
+	<tbody><tr><td class="warning" border="1">
+	<b>Warning:</b> If you use the back button on your browser's tool bar you will lose your 
+	data on this page. Please use the navigation buttons at the bottom of each page to move from page 
+	to page. Doing this will save your responses automatically in our database as you go through each page.</td></tr></tbody></table>
+<br>
+<table width="600"><tbody><tr><td class="prompt">Please provide names of business people <b><u>outside your organization </u></b>
+  whose business expertise you respect and whose opinions you would value regarding 
+  yourself and your organization during this workshop. These individuals may be 
+  called and asked for anonymous feedback. We suggest that 
+  you consider the following: industry peers, prior employees, mentors, professional 
+  advisors, and heads of customer and vendor companies. 
+  <p class="warning"> &nbsp;Please do not include your supervising manager/partner or colleagues in this list.
+  </p><p>To assist you, if you would like for us to send a letter that explains this 
+	on your behalf, kindly provide their Email addresses next to each name.  <br>
+	Thank you!
+
+</p></td></tr></tbody></table>
+<form name="q" action="/donotuse-mr/godb.pl" enctype="www-x-formencoded" method="POST" onsubmit="return QValid()">
+    <input name="survey_id" value="MAP005" type="hidden">
+    <input name="seqno" value="1040170" type="hidden">
+    <input name="q_labs" value="A.q1" type="hidden">
+  <table class="mytable" cellpadding="3" cellspacing="0" width="720">
+  <tbody><tr class="heading"><td colspan="6"><br>
+    <b>Please contact these individuals and inform them we might be contacting them soon. Or, to save you time,
+  fill in the email address and a notification letter will be automatically sent on your behalf.<br>&nbsp;
+</b></td></tr>
+    <tr class="options"> 
+      <td nowrap="nowrap"> 
+        <b>1. </b>Name:
+      </td>
+      <td colspan="2"> 
+        <input name="name1" value="Greg Ranft" size="30" class="input" type="text">
+      </td>
+      <td colspan="3" align="right" nowrap="nowrap"> 
+        &nbsp;&nbsp;&nbsp;Company Name:&nbsp; 
+        <input name="company1" value="TxDOT Houston District" size="37" class="input" type="text">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td align="right"> 
+        Title:
+      </td>
+      <td> 
+        <input name="title1" value="Area Engineer" size="24" class="input" type="text">
+      </td>
+      <td> 
+        Phone:
+      </td>
+      <td> 
+        <input name="phone1" value="713-934-5900" size="15" class="input" type="text">
+      </td>
+      <td> 
+        Email:
+      </td>
+      <td> 
+        <input name="email1" value="Greg.Ranft@txdot.gov" size="29" class="input" type="text">
+      </td>
+    </tr>
+    <tr bgcolor="#336633" height="2"> 
+      <td colspan="6" "="" height="2"></td>
+    </tr>
+    <tr class="options2"> 
+      <td nowrap="nowrap"> 
+        <b>2. </b>Name:
+      </td>
+      <td colspan="2"> 
+        <input name="name2" value="Darrin Willer" size="30" class="input2" type="text">
+      </td>
+      <td colspan="3" align="right" nowrap="nowrap"> 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input name="company2" value="HNTB" size="37" class="input2" type="text">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td align="right"> 
+        Title:
+      </td>
+      <td> 
+        <input name="title2" value="Senior Project Manager" size="24" class="input2" type="text">
+      </td>
+      <td> 
+        Phone:
+      </td>
+      <td> 
+        <input name="phone2" value="713-354-1504" size="15" class="input2" type="text">
+      </td>
+      <td> 
+        Email:
+      </td>
+      <td> 
+        <input name="email2" value="darrin.willer@hntb.com" size="29" class="input2" type="text">
+      </td>
+    </tr>
+    <tr bgcolor="#336633" height="2"> 
+      <td colspan="6" "="" height="2"></td>
+    </tr>
+    <tr class="options"> 
+      <td nowrap="nowrap"> 
+        <b>3. </b>Name:
+      </td>
+      <td colspan="2"> 
+        <input name="name3" value="Jeff Collins" size="30" class="input" type="text">
+      </td>
+      <td colspan="3" align="right" nowrap="nowrap"> 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input name="company3" value="LJA Engineering and Surveying" size="37" class="input" type="text">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td align="right"> 
+        Title:
+      </td>
+      <td> 
+        <input name="title3" value="Senior Vice President" size="24" class="input" type="text">
+      </td>
+      <td> 
+        Phone:
+      </td>
+      <td> 
+        <input name="phone3" value="713-953-5207" size="15" class="input" type="text">
+      </td>
+      <td> 
+        Email:
+      </td>
+      <td> 
+        <input name="email3" value="jcollins@ljaengineering.com" size="29" class="input" type="text">
+      </td>
+    </tr>
+    <tr bgcolor="#336633" height="2"> 
+      <td colspan="6" "="" height="2"></td>
+    </tr>
+    <tr class="options2"> 
+      <td nowrap="nowrap"> 
+        <b>4. </b>Name:
+      </td>
+      <td colspan="2"> 
+        <input name="name4" value="Rich Squire" size="30" class="input2" type="text">
+      </td>
+      <td colspan="3" align="right" nowrap="nowrap"> 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input name="company4" value="URS" size="37" class="input2" type="text">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td align="right"> 
+        Title:
+      </td>
+      <td> 
+        <input name="title4" value="Manager Engineering &amp; Construction" size="24" class="input2" type="text">
+      </td>
+      <td> 
+        Phone:
+      </td>
+      <td> 
+        <input name="phone4" value="713-914-6436" size="15" class="input2" type="text">
+      </td>
+      <td> 
+        Email:
+      </td>
+      <td> 
+        <input name="email4" value="rich_squire@urscorp.com" size="29" class="input2" type="text">
+      </td>
+    </tr>
+    <tr bgcolor="#336633" height="2"> 
+      <td colspan="6" "="" height="2"></td>
+    </tr>
+    <tr class="options"> 
+      <td nowrap="nowrap"> 
+        <b>5. </b>Name:
+      </td>
+      <td colspan="2"> 
+        <input name="name5" value="Scott Hopman" size="30" class="input" type="text">
+      </td>
+      <td colspan="3" align="right" nowrap="nowrap"> 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input name="company5" value="Harris County Toll Road Authority" size="37" class="input" type="text">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td align="right"> 
+        Title:
+      </td>
+      <td> 
+        <input name="title5" value="Senior Project Manager" size="24" class="input" type="text">
+      </td>
+      <td> 
+        Phone:
+      </td>
+      <td> 
+        <input name="phone5" value="713-587-7875" size="15" class="input" type="text">
+      </td>
+      <td> 
+        Email:
+      </td>
+      <td> 
+        <input name="email5" value="Scott.Hopman@hctra.com" size="29" class="input" type="text">
+      </td>
+    </tr>
+    <tr bgcolor="#336633" height="2"> 
+      <td colspan="6" "="" height="2"></td>
+    </tr>
+    <tr class="options2"> 
+      <td nowrap="nowrap"> 
+        <b>6. </b>Name:
+      </td>
+      <td colspan="2"> 
+        <input name="name6" value="Chris Chestnut" size="30" class="input2" type="text">
+      </td>
+      <td colspan="3" align="right" nowrap="nowrap"> 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input name="company6" value="HNTB" size="37" class="input2" type="text">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td align="right"> 
+        Title:
+      </td>
+      <td> 
+        <input name="title6" value="Senior Project Manager" size="24" class="input2" type="text">
+      </td>
+      <td> 
+        Phone:
+      </td>
+      <td> 
+        <input name="phone6" value="713-354-1543" size="15" class="input2" type="text">
+      </td>
+      <td> 
+        Email:
+      </td>
+      <td> 
+        <input name="email6" value="cchestnut@hntb.com" size="29" class="input2" type="text">
+      </td>
+    </tr>
+    <tr bgcolor="#336633" height="2"> 
+      <td colspan="6" "="" height="2"></td>
+    </tr>
+    <tr class="options"> 
+      <td nowrap="nowrap"> 
+        <b>7. </b>Name:
+      </td>
+      <td colspan="2"> 
+        <input name="name7" value="John Bailie" size="30" class="input" type="text">
+      </td>
+      <td colspan="3" align="right" nowrap="nowrap"> 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input name="company7" value="Tetratech" size="37" class="input" type="text">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td align="right"> 
+        Title:
+      </td>
+      <td> 
+        <input name="title7" value="Regional Vice President" size="24" class="input" type="text">
+      </td>
+      <td> 
+        Phone:
+      </td>
+      <td> 
+        <input name="phone7" value="832-251-5160" size="15" class="input" type="text">
+      </td>
+      <td> 
+        Email:
+      </td>
+      <td> 
+        <input name="email7" value="john.bailie@tetratech.com" size="29" class="input" type="text">
+      </td>
+    </tr>
+    <tr bgcolor="#336633" height="2"> 
+      <td colspan="6" "="" height="2"></td>
+    </tr>
+    <tr class="options2"> 
+      <td nowrap="nowrap"> 
+        <b>8. </b>Name:
+      </td>
+      <td colspan="2"> 
+        <input name="name8" value="Elvia Cardinal" size="30" class="input2" type="text">
+      </td>
+      <td colspan="3" align="right" nowrap="nowrap"> 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input name="company8" value="TxDOT East Region Support Center" size="37" class="input2" type="text">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td align="right"> 
+        Title:
+      </td>
+      <td> 
+        <input name="title8" value="Asst. Director Project Delivery" size="24" class="input2" type="text">
+      </td>
+      <td> 
+        Phone:
+      </td>
+      <td> 
+        <input name="phone8" value="713-802-5687" size="15" class="input2" type="text">
+      </td>
+      <td> 
+        Email:
+      </td>
+      <td> 
+        <input name="email8" value="Elvia.Cardinal@txdot.gov" size="29" class="input2" type="text">
+      </td>
+    </tr>
+  </tbody></table>
+
+<input name="jump_to" value="" type="hidden"><hr class="mytable"><table border="0" width="100%">
+<tbody><tr>
+		<td width="90"> 
+		<input class="input" value=" &lt;&lt; BACK " tabindex="-1" alt="BACK" onclick="document.q.BACK2.value='1';document.q.submit()" type="BUTTON">
+		<input name="BACK2" type="HIDDEN">
+		</td>
+		<td width="90">
+		<input class="input" value=" NEXT &gt;&gt; " onclick='document.q.jump_to.value="";document.q.BACK2.value=""; document.q.onsubmit=new Function("return QValid()")' id="btn_submit" type="SUBMIT">
+		</td>
+<td><p><font face="Arial, Helvetica, sans-serif" size="-2">&nbsp;Survey provided by
+        <a href="http://www.market-research.com/" tabindex="-1" target="triton_home"> Triton Information Technology </a> 
+        <br>&nbsp;© Triton Information Technology 1995-2001 all rights reserved.
+        &nbsp;&nbsp;<a href="mailto:pwisupport@mapconsulting.com?subject=MAP005" tabindex="-1">
+        email : info@market-research.com</a></font><br></p>
+	</td>
+</tr></tbody></table>
+</form>
+
+
+</body></html>

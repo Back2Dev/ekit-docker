@@ -1,0 +1,39 @@
+ MAP POST WORKSHOP SURVEY
+--------------------------
+
+Dear [%firstname%]: 
+
+We noticed that you may not have yet participated in our post workshop survey.  
+We are sending a reminder in anticipation that you may not have received the 
+original email invitation or have had time to complete the survey.
+
+Thank you for participating in the MAP Workshop. We enjoyed working with you 
+and look forward to reviewing your progress at the upcoming MAP II Session. 
+Now the next phase begins and it's all about execution of the 
+fundamentals.
+
+MAP is committed to the continuous improvement of our products and services.
+Your feedback is very important in this effort.  Please take a few minutes 
+to complete an online survey regarding your workshop experience.
+
+Please click here to start the survey:
+http://ekit.mappwi.com/survey/start/MAP026/[%password%]/[%id%]
+
+If this link does not take you directly to the survey, copy the following 
+survey address into your browser.
+
+Survey address: http://ekit.mappwi.com/workshop.html
+
+User ID: [%id%]
+Password: [%password%] (your password is case sensitive.)
+
+We appreciate your feedback, suggestions and comments.  Thank you again 
+for your participation.
+
+Best regards and great success in achieving your goals.
+
+Sincerely,
+
+John Manning
+President 
+Management Action Programs Inc.

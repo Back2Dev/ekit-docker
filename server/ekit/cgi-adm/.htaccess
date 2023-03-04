@@ -1,0 +1,4 @@
+AuthUserFile /home/vhosts/ekit/auth/authdb 
+AuthName "ekit Control Panel"
+AuthType Basic
+require valid-user

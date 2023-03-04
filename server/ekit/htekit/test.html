@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="/cgi-mr/getjs.pl?extras=/themes/ekit/config.js"></scripT>
+</script>
+<script type="text/javascript" >
+function testme(){
+	document.getElementById("dj").innerHTML = extras.dojo.enabled;
+	document.getElementById("jq").innerHTML = extras.jquery.enabled;
+
+document.getElementById("status").innerHTML = "OK";
+
+}
+</scripT>
+<body onload="testme()">
+<div id="xx">x</div>
+Dojo<div id="dj">x</div>
+JQuery<div id="jq">x</div>
+<div id="status">x</div>
+</body>
+</html>

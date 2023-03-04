@@ -1,0 +1,360 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="/themes/ekit/style.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check_it(n,name,company,email,title,phone)
+	{
+	if ((name == '') && (company == '') && (email == '') && (title == '')  && (phone == ''))
+		return 1;		// All blanks is OK
+	if (name == '')
+		{
+		alert("Contact #"+n+" - Please supply a name");
+		return 0;
+		}
+	if (company == '')
+		{
+		alert("Contact #"+n+" - Please supply a company name for "+name);
+		return 0;
+		}
+	if ((email == '') && (phone == ''))
+		{
+		alert("Contact #"+n+" - Please supply either an email address or phone number for "+name);
+		return 0;
+		}
+	return 1;
+	}
+	
+function QValid()
+	{
+	var n = 0;
+	n += check_it(1,document.q.name1.value,document.q.company1.value,document.q.email1.value,document.q.title1.value,document.q.phone1.value);
+	n += check_it(2,document.q.name2.value,document.q.company2.value,document.q.email2.value,document.q.title2.value,document.q.phone2.value);
+	n += check_it(3,document.q.name3.value,document.q.company3.value,document.q.email3.value,document.q.title3.value,document.q.phone3.value);
+	n += check_it(4,document.q.name4.value,document.q.company4.value,document.q.email4.value,document.q.title4.value,document.q.phone4.value);
+	n += check_it(5,document.q.name5.value,document.q.company5.value,document.q.email5.value,document.q.title5.value,document.q.phone5.value);
+	n += check_it(6,document.q.name6.value,document.q.company6.value,document.q.email6.value,document.q.title6.value,document.q.phone6.value);
+	n += check_it(7,document.q.name7.value,document.q.company7.value,document.q.email7.value,document.q.title7.value,document.q.phone7.value);
+	n += check_it(8,document.q.name8.value,document.q.company8.value,document.q.email8.value,document.q.title8.value,document.q.phone8.value);
+	if (n == 8)
+		return true;
+	else
+		return false;
+	}
+//-->
+</SCRIPT>
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+<BODY class="soria">
+<table border=0 cellpadding=0 cellspacing=0 style="margin:0;"><tr><TD style="background-image: url('/themes/ekit/maplogo.png');background-repeat:no-repeat;" width="60px" height="90px" >&nbsp;<TD width="50px" >&nbsp;<tr><TD style="background-image:url('/themes/ekit/bluebar.png');font-family:Calibri;font-size:14pt; color:white;" height="30px" width=600px> &nbsp;&nbsp; Key Outside Influences List<TH style="background-image:url('/themes/ekit/bluebar.png');font-family:Calibri;font-size:14pt; color:white;">Q5</table>
+<TABLE width="600"><TR><TD class="prompt">Please provide names of business colleagues <B><U>outside your organization </B></U>
+  whose business expertise you respect and whose opinions you would value regarding 
+  yourself and your organization during this workshop. These individuals will be 
+  called and asked for anonymous feedback. We suggest that 
+  you consider the following: industry peers, prior employees, mentors, professional 
+  advisors, and heads of customer and vendor companies. 
+  <P class="warning"> &nbsp;Please do not include your supervising manager/partner or colleagues in this list.
+  <P>If you would like for us to send an email that explains this 
+	on your behalf, kindly provide their Email addresses next to each name.  <BR>
+	Thank you!
+
+</TD></TR></TABLE>
+<FORM NAME="q" id="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST" onsubmit="return QValid()">
+    <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+    <INPUT NAME="seqno" TYPE="hidden" VALUE="">
+    <INPUT NAME="q_labs" TYPE="hidden" VALUE="<%q_labs%>">
+      <INPUT NAME="session" TYPE="hidden" VALUE="">
+  <table cellpadding="6" cellspacing="0"  class="mytable" width=720>
+  <TR class="heading"><TD colspan=6><BR>
+    <B>Please contact these individuals and inform them we will be contacting them soon. Or, to save you time,
+  fill in the email address and a notification letter will be automatically sent on your behalf.<BR>&nbsp;
+</B></td></tr>
+    <tr class="options"> 
+      <td  nowrap > 
+        <B>1. </B>Name:
+      </td>
+      <td  colspan=2> 
+        <input onchange="yuk()" type="text" name="name1" size="30" class="input">
+      </td>
+      <td   colspan=3 nowrap align="right"> 
+        &nbsp;&nbsp;&nbsp;Company Name:&nbsp; 
+        <input onchange="yuk()" type="text" name="company1" size="37" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td  align="right" > 
+        Title:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="title1" size="24" class="input">
+      </td>
+      <td   > 
+        Phone:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="phone1" size="15" class="input">
+      </td>
+      <td   > 
+        Email:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="email1" size="29" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2"> 
+      <td colspan="6" " height="2" ></td>
+    </tr>
+    <tr class="options2"> 
+      <td   nowrap> 
+        <B>2. </B>Name:
+      </td>
+      <td   colspan=2> 
+        <input onchange="yuk()" type="text" name="name2" size="30" class="input2">
+      </td>
+      <td   colspan=3 nowrap align="right"> 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input onchange="yuk()" type="text" name="company2" size="37" class="input2">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   align="right"> 
+        Title:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="title2" size="24" class="input2">
+      </td>
+      <td   > 
+        Phone:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="phone2" size="15" class="input2">
+      </td>
+      <td   > 
+        Email:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="email2" size="29" class="input2">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2"> 
+      <td colspan="6" " height="2" ></td>
+    </tr>
+    <tr class="options"> 
+      <td   nowrap> 
+        <B>3. </B>Name:
+      </td>
+      <td  colspan=2 > 
+        <input onchange="yuk()" type="text" name="name3" size="30" class="input">
+      </td>
+      <td   colspan=3 nowrap align="right"> 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input onchange="yuk()" type="text" name="company3" size="37" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   align="right"> 
+        Title:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="title3" size="24" class="input">
+      </td>
+      <td   > 
+        Phone:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="phone3" size="15" class="input">
+      </td>
+      <td   > 
+        Email:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="email3" size="29" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2"> 
+      <td colspan="6" " height="2" ></td>
+    </tr>
+    <tr class="options2"> 
+      <td  nowrap > 
+        <B>4. </B>Name:
+      </td>
+      <td  colspan=2 > 
+        <input onchange="yuk()" type="text" name="name4" size="30" class="input2">
+      </td>
+      <td  colspan=3 nowrap align="right" > 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input onchange="yuk()" type="text" name="company4" size="37" class="input2">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   align="right"> 
+        Title:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="title4" size="24" class="input2">
+      </td>
+      <td   > 
+        Phone:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="phone4" size="15" class="input2">
+      </td>
+      <td   > 
+        Email:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="email4" size="29" class="input2">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2"> 
+      <td colspan="6" " height="2" ></td>
+    </tr>
+    <tr class="options"> 
+      <td  nowrap> 
+        <B>5. </B>Name:
+      </td>
+      <td   colspan=2> 
+        <input onchange="yuk()" type="text" name="name5" size="30" class="input">
+      </td>
+      <td  colspan=3 nowrap align="right" > 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input onchange="yuk()" type="text" name="company5" size="37" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   align="right"> 
+        Title:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="title5" size="24" class="input">
+      </td>
+      <td   > 
+        Phone:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="phone5" size="15" class="input">
+      </td>
+      <td   > 
+        Email:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="email5" size="29" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2"> 
+      <td colspan="6" " height="2" ></td>
+    </tr>
+    <tr class="options2"> 
+      <td  nowrap > 
+        <B>6. </B>Name:
+      </td>
+      <td  colspan=2 > 
+        <input onchange="yuk()" type="text" name="name6" size="30" class="input2">
+      </td>
+      <td  colspan=3 nowrap align="right" > 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input onchange="yuk()" type="text" name="company6" size="37" class="input2">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   align="right"> 
+        Title:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="title6" size="24" class="input2">
+      </td>
+      <td   > 
+        Phone:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="phone6" size="15" class="input2">
+      </td>
+      <td   > 
+        Email:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="email6" size="29" class="input2">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2"> 
+      <td colspan="6" " height="2" ></td>
+    </tr>
+    <tr class="options"> 
+      <td  nowrap > 
+        <B>7. </B>Name:
+      </td>
+      <td  colspan=2 > 
+        <input onchange="yuk()" type="text" name="name7" size="30" class="input">
+      </td>
+      <td  colspan=3 nowrap align="right" > 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input onchange="yuk()" type="text" name="company7" size="37" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   align="right"> 
+        Title:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="title7" size="24" class="input">
+      </td>
+      <td   > 
+        Phone:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="phone7" size="15" class="input">
+      </td>
+      <td   > 
+        Email:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="email7" size="29" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2"> 
+      <td colspan="6" " height="2" ></td>
+    </tr>
+    <tr class="options2"> 
+      <td   nowrap> 
+        <B>8. </B>Name:
+      </td>
+      <td   colspan=2> 
+        <input onchange="yuk()" type="text" name="name8" size="30" class="input2">
+      </td>
+      <td  colspan=3 nowrap align="right" > 
+&nbsp;&nbsp;&nbsp;Company Name:&nbsp;        <input onchange="yuk()" type="text" name="company8" size="37" class="input2">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   align="right"> 
+        Title:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="title8" size="24" class="input2">
+      </td>
+      <td   > 
+        Phone:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="phone8" size="15" class="input2">
+      </td>
+      <td   > 
+        Email:
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="email8" size="29" class="input2">
+      </td>
+    </tr>
+  </table>
+
+</FORM>
+
+</BODY>
+</HTML>

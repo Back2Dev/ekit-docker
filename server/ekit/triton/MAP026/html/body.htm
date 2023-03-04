@@ -1,0 +1,1192 @@
+<head>
+<link rel="stylesheet" href="style.css">
+<STYLE title="localStyle">
+	.BTN {color: blue; display:}
+</STYLE>
+<SCRIPT language="JavaScript" SRC="/MAP026/iegoop.js">
+</SCRIPT>
+<TITLE>Triton Technology</TITLE>
+   <META NAME="Triton Technology"> 
+   <META NAME="Author" CONTENT="Mike King"> 
+   <META NAME="Copyright" CONTENT="Triton Technology 1995-2000, all rights reserved"> 
+
+<link id="themeStyles" rel="stylesheet" href="/dojo/dijit/themes/soria/soria.css">
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+
+var numq = 9;
+function Can_Proceed_()
+	{
+	return false
+	}
+function QValid_()
+	{
+    var res = validate_grid_("Q1. ",document.q.gridQ1_0,document.q.gridQ1_1,document.q.gridQ1_2);
+return res;
+	return true;
+	}
+function clrradio(control)
+	{
+//
+// Generic script to clear a single select question
+//
+	var len = new Number(control.length);
+//	alert("len="+len);
+	if (isNaN(len))
+   		{
+		control.checked = false;
+		document.getElementById("TD"+control.id).className = toggle_highlight(document.getElementById("TD"+control.id).className,false);
+		}
+	else
+		for (var i=0;i< len;i++)
+			{
+//			alert("Clearing "+control[i].id);
+			control[i].checked = false;
+			document.getElementById("TD"+control[i].id).className = toggle_highlight(document.getElementById("TD"+control[i].id).className,false);
+			}
+	}
+function getradio(control)
+	{
+	var selectedButton = "";
+	var len = new Number(control.length);
+	if (isNaN(len))
+		selectedButton = control.checked == '1'
+	else
+		for (var j=0;j< len;j++)
+			{
+			if (control[j].checked)
+				{
+				selectedButton = control[j].value;
+				break;
+				}
+			}
+	return selectedButton;
+	}
+function getradiolastother(control)
+	{
+	var ok = true;
+	var sel
+	var len = new Number(control.length);
+	var oname;
+	if (isNaN(len))
+		{
+		sel = control.checked;
+		oname = control.name+"other";
+		}
+	else
+		{
+		sel = control[len-1].checked;
+		oname = control[len-1].name+"other";
+		}
+	if (sel && (document.getElementById(oname)))
+		{
+		ok = (document.getElementById(oname).value != '');
+		}
+	return ok;
+	}
+function getradiolastspec(control)
+	{
+	var ok = true;
+	var sel
+	var len = new Number(control.length);
+	var oname;
+	if (isNaN(len))
+		{
+		sel = control.checked;
+		oname = control.name.replace(/(\d+)$/,"other$1");
+		}
+	else
+		{
+		sel = control[len-1].checked;
+		oname = control[len-1].name.replace(/(\d+)$/,"other$1");
+		}
+	if (sel && (document.getElementById(oname)))
+		{
+		ok = (document.getElementById(oname).value != '');
+		}
+	return ok;
+	}
+function getradioothertext(control)
+	{
+	var ok = true;
+	var sel
+	var len = new Number(control.length);
+	var oname;
+	if (isNaN(len))
+		{
+		sel = control.checked;
+		oname = control.name+"other";
+		}
+	else
+		{
+		sel = control[len-1].checked;
+		oname = control[len-1].name+"other";
+		}
+	if (document.getElementById(oname).value)
+		{
+		ok = sel;
+		}
+	return ok;
+	}
+function highlightgrid(control)
+	{
+//
+// Generic script to highlight selections in a grid
+//
+//	alert("Looking for "+control.name);
+	var radios = document.getElementsByName(control.name);
+	if (radios)
+		{
+		var len = new Number(radios.length);
+//		alert("Len="+len);
+		if (isNaN(len))
+			{
+//			alert("id="+radios.id");
+			if (radios.id)
+				document.getElementById("TD"+radios.id).className = toggle_highlight(document.getElementById("TD"+radios.id).className,(radios.checked == '1'));
+			}
+		else
+			for (var i=0;i<len;i++)
+				{
+//				alert("Looking for TD"+radios[i].id);
+				if (radios[i].id)
+					document.getElementById("TD"+radios[i].id).className = toggle_highlight(document.getElementById("TD"+radios[i].id).className,(radios[i].checked == '1'));
+				}
+		}
+	}
+function toggle_highlight(class_name,on_off)
+	{
+//
+// Toggle function
+//
+	var reg = /\D+/;
+	var myclass = class_name;
+	if (myclass == "grid_options" || myclass == "grid_options2" || myclass == "grid_highlight"  || myclass == "grid_highlight2") {
+		var newclass = (on_off) ? 'grid_highlight' : 'grid_options';
+	} else {
+		var newclass = (on_off) ? 'highlight' : 'options';
+	}
+	var newname = myclass.replace(reg,newclass);
+	//alert("Replacing "+myclass+" with "+newname+", "+on_off+", "+newclass);
+	return newname;
+	}
+function validate_grid_()
+	{
+var errs = 0;
+for (i=1;i<validate_grid_.arguments.length;i++)
+	{
+	if (!getradio(validate_grid_.arguments[i]))
+		errs++;
+	}
+if (errs != 0)
+	{
+	alert(validate_grid_.arguments[0]+" Error: please make one choice from each row");
+	document.q.gridQ1_0[0].focus();
+	return false;
+	}
+return true;	
+	}
+ 
+</SCRIPT>
+
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+			dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+		<BODY  onload="resetme()"  class=" soria " >
+<DIV ID="Start"><FONT size="+2" face="Arial, Helvetica, sans-serif"> Welcome to Post Workshop Survey<BR><BR>
+Please wait a second while the survey loads...</font></DIV>
+<FORM NAME="q" onsubmit="return false" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST">
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP026">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT NAME="q_no" TYPE="hidden" VALUE="1">
+<DIV ID="Section1" style="display:none">
+<A NAME="A1">
+<SPAN class="prompt"><%qbanner%><%qscale%> Please rate the following aspects of your experience with MAP:</SPAN><BR>
+<TABLE CELLPADDING="0" cellspacing="0" border=0 class="mytable">
+<TR class="heading">
+		<TH class="heading"></TD>	<TH class="heading" COLSPAN="4" ALIGN="LEFT">Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading">&nbsp;&nbsp;</TH>	<TH class="heading" COLSPAN="4" ALIGN="RIGHT">&nbsp;&nbsp;Excellent <BR>==&gt;&nbsp;</TH>
+<TH class="heading">&nbsp;</TH><TH class="heading">&nbsp;</TH></TR>
+	<TR class="heading">
+		<TH class="heading"></TD>
+		<TH class="heading">&nbsp;1&nbsp;</TH>
+		<TH class="heading">&nbsp;2&nbsp;</TH>
+		<TH class="heading">&nbsp;3&nbsp;</TH>
+		<TH class="heading">&nbsp;4&nbsp;</TH>
+		<TH class="heading">&nbsp;5&nbsp;</TH>
+		<TH class="heading">&nbsp;6&nbsp;</TH>
+		<TH class="heading">&nbsp;7&nbsp;</TH>
+		<TH class="heading">&nbsp;8&nbsp;</TH>
+		<TH class="heading">&nbsp;9&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>		<TH class="heading">NA</TH>   </TR>		<TR class="options" >
+			<TD class="options" >&nbsp;1. The overall MAP experience so far &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;2. Pre-workshop communication &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;3. Feedback from within your organization &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="9">
+</CENTER></TD>
+		</TR>
+</TABLE>
+<SPAN  class="instruction"><I>(SELECT ONE ITEM PER ROW)</I></SPAN><BR>
+<DIV class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="nextbtn1" data-tag="2" data-validate="validate_grid('gridQ1_0','gridQ1_1','gridQ1_2')" onclick="gofwd(this)" data-setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section2" style="display:none">
+<A NAME="A2">
+<SPAN class="prompt">2. Please rate the presentation of the MAP Management System:</SPAN><BR>
+<TABLE CELLPADDING="0" cellspacing="0" border=0 class="mytable">
+<TR class="heading">
+		<TH class="heading"></TD>	<TH class="heading" COLSPAN="4" ALIGN="LEFT">Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading">&nbsp;&nbsp;</TH>	<TH class="heading" COLSPAN="4" ALIGN="RIGHT">&nbsp;&nbsp;Excellent <BR>==&gt;&nbsp;</TH>
+<TH class="heading">&nbsp;</TH><TH class="heading">&nbsp;</TH></TR>
+	<TR class="heading">
+		<TH class="heading"></TD>
+		<TH class="heading">&nbsp;1&nbsp;</TH>
+		<TH class="heading">&nbsp;2&nbsp;</TH>
+		<TH class="heading">&nbsp;3&nbsp;</TH>
+		<TH class="heading">&nbsp;4&nbsp;</TH>
+		<TH class="heading">&nbsp;5&nbsp;</TH>
+		<TH class="heading">&nbsp;6&nbsp;</TH>
+		<TH class="heading">&nbsp;7&nbsp;</TH>
+		<TH class="heading">&nbsp;8&nbsp;</TH>
+		<TH class="heading">&nbsp;9&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>		<TH class="heading">NA</TH>   </TR>		<TR class="options" >
+			<TD class="options" >&nbsp;4. Overall explanation of MMS &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ2_0" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;5. Business goal setting &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ2_1" VALUE="9">
+</CENTER></TD>
+		</TR>
+</TABLE>
+<SPAN  class="instruction"><I>(SELECT ONE ITEM PER ROW)</I></SPAN><BR>
+<DIV class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn2" data-tag="1" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn2" data-tag="3" data-validate="validate_grid('gridQ2_0','gridQ2_1')" onclick="gofwd(this)" data-setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section3" style="display:none">
+<A NAME="A3">
+<SPAN class="prompt">3. Please rate the presentation of the MAP program modules:</SPAN><BR>
+<TABLE CELLPADDING="0" cellspacing="0" border=0 class="mytable">
+<TR class="heading">
+		<TH class="heading"></TD>	<TH class="heading" COLSPAN="4" ALIGN="LEFT">Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading">&nbsp;&nbsp;</TH>	<TH class="heading" COLSPAN="4" ALIGN="RIGHT">&nbsp;&nbsp;Excellent <BR>==&gt;&nbsp;</TH>
+<TH class="heading">&nbsp;</TH><TH class="heading">&nbsp;</TH></TR>
+	<TR class="heading">
+		<TH class="heading"></TD>
+		<TH class="heading">&nbsp;1&nbsp;</TH>
+		<TH class="heading">&nbsp;2&nbsp;</TH>
+		<TH class="heading">&nbsp;3&nbsp;</TH>
+		<TH class="heading">&nbsp;4&nbsp;</TH>
+		<TH class="heading">&nbsp;5&nbsp;</TH>
+		<TH class="heading">&nbsp;6&nbsp;</TH>
+		<TH class="heading">&nbsp;7&nbsp;</TH>
+		<TH class="heading">&nbsp;8&nbsp;</TH>
+		<TH class="heading">&nbsp;9&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>		<TH class="heading">NA</TH>   </TR>		<TR class="options" >
+			<TD class="options" >&nbsp;6. Personal Growth Program &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ3_0" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;7. Controlling &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ3_1" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;8. Communicating &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ3_2" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;9. Planning &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ3_3" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;10. Organizing &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ3_4" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;11. Time Management &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ3_5" VALUE="9">
+</CENTER></TD>
+		</TR>
+<TR class="heading">
+		<TH class="heading"></TD>	<TH class="heading" COLSPAN="4" ALIGN="LEFT">Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading">&nbsp;&nbsp;</TH>	<TH class="heading" COLSPAN="4" ALIGN="RIGHT">&nbsp;&nbsp;Excellent <BR>==&gt;&nbsp;</TH>
+<TH class="heading">&nbsp;</TH><TH class="heading">&nbsp;</TH></TR>
+	<TR class="heading">
+		<TH class="heading"></TD>
+		<TH class="heading">&nbsp;1&nbsp;</TH>
+		<TH class="heading">&nbsp;2&nbsp;</TH>
+		<TH class="heading">&nbsp;3&nbsp;</TH>
+		<TH class="heading">&nbsp;4&nbsp;</TH>
+		<TH class="heading">&nbsp;5&nbsp;</TH>
+		<TH class="heading">&nbsp;6&nbsp;</TH>
+		<TH class="heading">&nbsp;7&nbsp;</TH>
+		<TH class="heading">&nbsp;8&nbsp;</TH>
+		<TH class="heading">&nbsp;9&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>		<TH class="heading">NA</TH>   </TR>		<TR class="options" >
+			<TD class="options" >&nbsp;12. Staffing &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ3_6" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;13. Leading &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ3_7" VALUE="9">
+</CENTER></TD>
+		</TR>
+</TABLE>
+<SPAN  class="instruction"><I>(SELECT ONE ITEM PER ROW)</I></SPAN><BR>
+<DIV class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn3" data-tag="2" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn3" data-tag="4" data-validate="validate_grid('gridQ3_0','gridQ3_1','gridQ3_2','gridQ3_3','gridQ3_4','gridQ3_5','gridQ3_6','gridQ3_7')" onclick="gofwd(this)" data-setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section4" style="display:none">
+<A NAME="A4">
+<SPAN class="prompt"><%qbanner%><%qscale%> Please rate the following:</SPAN><BR>
+<TABLE CELLPADDING="0" cellspacing="0" border=0 class="mytable">
+<TR class="heading">
+		<TH class="heading"></TD>	<TH class="heading" COLSPAN="4" ALIGN="LEFT">Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading">&nbsp;&nbsp;</TH>	<TH class="heading" COLSPAN="4" ALIGN="RIGHT">&nbsp;&nbsp;Excellent <BR>==&gt;&nbsp;</TH>
+<TH class="heading">&nbsp;</TH><TH class="heading">&nbsp;</TH></TR>
+	<TR class="heading">
+		<TH class="heading"></TD>
+		<TH class="heading">&nbsp;1&nbsp;</TH>
+		<TH class="heading">&nbsp;2&nbsp;</TH>
+		<TH class="heading">&nbsp;3&nbsp;</TH>
+		<TH class="heading">&nbsp;4&nbsp;</TH>
+		<TH class="heading">&nbsp;5&nbsp;</TH>
+		<TH class="heading">&nbsp;6&nbsp;</TH>
+		<TH class="heading">&nbsp;7&nbsp;</TH>
+		<TH class="heading">&nbsp;8&nbsp;</TH>
+		<TH class="heading">&nbsp;9&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>		<TH class="heading">NA</TH>   </TR>		<TR class="options" >
+			<TD class="options" >&nbsp;14. Checklists / Handouts &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_0" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;15. Wall Charts &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_1" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;16. Video/slide presentation &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_2" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;17. Life Planning &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_3" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;18. Communication video &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_4" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;19. Twelve O'clock High recap &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_5" VALUE="9">
+</CENTER></TD>
+		</TR>
+<TR class="heading">
+		<TH class="heading"></TD>	<TH class="heading" COLSPAN="4" ALIGN="LEFT">Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading">&nbsp;&nbsp;</TH>	<TH class="heading" COLSPAN="4" ALIGN="RIGHT">&nbsp;&nbsp;Excellent <BR>==&gt;&nbsp;</TH>
+<TH class="heading">&nbsp;</TH><TH class="heading">&nbsp;</TH></TR>
+	<TR class="heading">
+		<TH class="heading"></TD>
+		<TH class="heading">&nbsp;1&nbsp;</TH>
+		<TH class="heading">&nbsp;2&nbsp;</TH>
+		<TH class="heading">&nbsp;3&nbsp;</TH>
+		<TH class="heading">&nbsp;4&nbsp;</TH>
+		<TH class="heading">&nbsp;5&nbsp;</TH>
+		<TH class="heading">&nbsp;6&nbsp;</TH>
+		<TH class="heading">&nbsp;7&nbsp;</TH>
+		<TH class="heading">&nbsp;8&nbsp;</TH>
+		<TH class="heading">&nbsp;9&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>		<TH class="heading">NA</TH>   </TR>		<TR class="options" >
+			<TD class="options" >&nbsp;20. DISC Style Analysis &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_6" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;21. FIRO-B &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_7" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;22. Archer Team Project and Video Playback &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_8" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;23. Hotel Facility &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_9" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;24. Hotel Food Quality &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_10" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;25. Hotel Service &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ4_11" VALUE="9">
+</CENTER></TD>
+		</TR>
+</TABLE>
+<SPAN  class="instruction"><I>(SELECT ONE ITEM PER ROW)</I></SPAN><BR>
+<DIV class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn4" data-tag="3" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn4" data-tag="5" data-validate="validate_grid('gridQ4_0','gridQ4_1','gridQ4_2','gridQ4_3','gridQ4_4','gridQ4_5','gridQ4_6','gridQ4_7','gridQ4_8','gridQ4_9','gridQ4_10','gridQ4_11')" onclick="gofwd(this)" data-setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section5" style="display:none">
+<A NAME="A5">
+<SPAN class="prompt">5. Please rate your workshop leader on the following:</SPAN><BR>
+<TABLE CELLPADDING="0" cellspacing="0" border=0 class="mytable">
+<TR class="heading">
+		<TH class="heading"></TD>	<TH class="heading" COLSPAN="4" ALIGN="LEFT">Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading">&nbsp;&nbsp;</TH>	<TH class="heading" COLSPAN="4" ALIGN="RIGHT">&nbsp;&nbsp;Excellent <BR>==&gt;&nbsp;</TH>
+<TH class="heading">&nbsp;</TH><TH class="heading">&nbsp;</TH></TR>
+	<TR class="heading">
+		<TH class="heading"></TD>
+		<TH class="heading">&nbsp;1&nbsp;</TH>
+		<TH class="heading">&nbsp;2&nbsp;</TH>
+		<TH class="heading">&nbsp;3&nbsp;</TH>
+		<TH class="heading">&nbsp;4&nbsp;</TH>
+		<TH class="heading">&nbsp;5&nbsp;</TH>
+		<TH class="heading">&nbsp;6&nbsp;</TH>
+		<TH class="heading">&nbsp;7&nbsp;</TH>
+		<TH class="heading">&nbsp;8&nbsp;</TH>
+		<TH class="heading">&nbsp;9&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>		<TH class="heading">NA</TH>   </TR>		<TR class="options" >
+			<TD class="options" >&nbsp;26. Overall effectiveness &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_0" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;27. Presentation skills overall &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_1" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;28. Facilitated vs. lectured &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_2" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;29. Knowledge of materials &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_3" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;30. Keeping the workshop fast paced &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_4" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;31. Encouraged and listened to participant's comments &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_5" VALUE="9">
+</CENTER></TD>
+		</TR>
+<TR class="heading">
+		<TH class="heading"></TD>	<TH class="heading" COLSPAN="4" ALIGN="LEFT">Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading">&nbsp;&nbsp;</TH>	<TH class="heading" COLSPAN="4" ALIGN="RIGHT">&nbsp;&nbsp;Excellent <BR>==&gt;&nbsp;</TH>
+<TH class="heading">&nbsp;</TH><TH class="heading">&nbsp;</TH></TR>
+	<TR class="heading">
+		<TH class="heading"></TD>
+		<TH class="heading">&nbsp;1&nbsp;</TH>
+		<TH class="heading">&nbsp;2&nbsp;</TH>
+		<TH class="heading">&nbsp;3&nbsp;</TH>
+		<TH class="heading">&nbsp;4&nbsp;</TH>
+		<TH class="heading">&nbsp;5&nbsp;</TH>
+		<TH class="heading">&nbsp;6&nbsp;</TH>
+		<TH class="heading">&nbsp;7&nbsp;</TH>
+		<TH class="heading">&nbsp;8&nbsp;</TH>
+		<TH class="heading">&nbsp;9&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>		<TH class="heading">NA</TH>   </TR>		<TR class="options" >
+			<TD class="options" >&nbsp;32. Making the workshop interesting &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_6" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;33. Enthusiasm and confidence &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_7" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;34. Sensitivity to needs of the group &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_8" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;35. Asked challenging questions of the participants &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_9" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;36. Balanced communication with participants &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_10" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;37. Could help your organization achieve its goals &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ5_11" VALUE="9">
+</CENTER></TD>
+		</TR>
+</TABLE>
+<SPAN  class="instruction"><I>(SELECT ONE ITEM PER ROW)</I></SPAN><BR>
+<DIV class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn5" data-tag="4" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn5" data-tag="6" data-validate="validate_grid('gridQ5_0','gridQ5_1','gridQ5_2','gridQ5_3','gridQ5_4','gridQ5_5','gridQ5_6','gridQ5_7','gridQ5_8','gridQ5_9','gridQ5_10','gridQ5_11')" onclick="gofwd(this)" data-setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section6" style="display:none">
+<A NAME="A6">
+<SPAN class="prompt">6. Please rate the following attributes of the workshop:</SPAN><BR>
+<TABLE CELLPADDING="0" cellspacing="0" border=0 class="mytable">
+<TR class="heading">
+		<TH class="heading"></TD>	<TH class="heading" COLSPAN="4" ALIGN="LEFT">Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading">&nbsp;&nbsp;</TH>	<TH class="heading" COLSPAN="4" ALIGN="RIGHT">&nbsp;&nbsp;Excellent <BR>==&gt;&nbsp;</TH>
+<TH class="heading">&nbsp;</TH><TH class="heading">&nbsp;</TH></TR>
+	<TR class="heading">
+		<TH class="heading"></TD>
+		<TH class="heading">&nbsp;1&nbsp;</TH>
+		<TH class="heading">&nbsp;2&nbsp;</TH>
+		<TH class="heading">&nbsp;3&nbsp;</TH>
+		<TH class="heading">&nbsp;4&nbsp;</TH>
+		<TH class="heading">&nbsp;5&nbsp;</TH>
+		<TH class="heading">&nbsp;6&nbsp;</TH>
+		<TH class="heading">&nbsp;7&nbsp;</TH>
+		<TH class="heading">&nbsp;8&nbsp;</TH>
+		<TH class="heading">&nbsp;9&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>		<TH class="heading">NA</TH>   </TR>		<TR class="options" >
+			<TD class="options" >&nbsp;38. Highly participative &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ6_0" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;39. Life changing &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ6_1" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;40. Practical &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ6_2" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;41. Not intimidating &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ6_3" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;42. Inspirational &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ6_4" VALUE="9">
+</CENTER></TD>
+		</TR>
+		<TR class="options" >
+			<TD class="options" >&nbsp;43. Very structured &nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="0"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="1"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="2"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="3"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="4"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="5"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="6"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="7"></CENTER></TD>
+			<TD class="options" ><CENTER><INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="8"></CENTER></TD>
+			<TD class="options" ><CENTER>&nbsp;</CENTER></TD>
+			<TD class="options" ><CENTER>
+<INPUT TYPE="RADIO" NAME="gridQ6_5" VALUE="9">
+</CENTER></TD>
+		</TR>
+</TABLE>
+<SPAN  class="instruction"><I>(SELECT ONE ITEM PER ROW)</I></SPAN><BR>
+<DIV class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn6" data-tag="5" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn6" data-tag="7" data-validate="validate_grid('gridQ6_0','gridQ6_1','gridQ6_2','gridQ6_3','gridQ6_4','gridQ6_5')" onclick="gofwd(this)" data-setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section7" style="display:none">
+<A NAME="A7">
+<SPAN class="prompt"><%qbanner%> <P><%q_label%> The length of the workshop was:</SPAN><BR>
+<BLOCKQUOTE><TABLE CELLPADDING="0" cellspacing="0">
+<TR class="options" ><TD class="options" ><INPUT NAME="radioQ7" ID="radioQ7_0" TYPE="radio" VALUE="0" onclick="setskip(7,)">&nbsp;<LABEL FOR="radioQ7_0">Very long</LABEL>&nbsp;</TD>
+</TR>
+<TR class="options" ><TD class="options" ><INPUT NAME="radioQ7" ID="radioQ7_1" TYPE="radio" VALUE="1" onclick="setskip(7,)">&nbsp;<LABEL FOR="radioQ7_1">Moderately long</LABEL>&nbsp;</TD>
+</TR>
+<TR class="options" ><TD class="options" ><INPUT NAME="radioQ7" ID="radioQ7_2" TYPE="radio" VALUE="2" onclick="setskip(7,)">&nbsp;<LABEL FOR="radioQ7_2">Too short</LABEL>&nbsp;</TD>
+</TR>
+<TR class="options" ><TD class="options" ><INPUT NAME="radioQ7" ID="radioQ7_3" TYPE="radio" VALUE="3" onclick="setskip(7,)">&nbsp;<LABEL FOR="radioQ7_3">Moderately short</LABEL>&nbsp;</TD>
+</TR>
+<TR class="options" ><TD class="options" ><INPUT NAME="radioQ7" ID="radioQ7_4" TYPE="radio" VALUE="4" onclick="setskip(7,)">&nbsp;<LABEL FOR="radioQ7_4">Just right</LABEL>&nbsp;</TD>
+</TR>
+<TR class="options" ><TD class="options" ><INPUT NAME="radioQ7" ID="radioQ7_5" TYPE="radio" VALUE="5" onclick="setskip(7,)">&nbsp;<LABEL FOR="radioQ7_5">NA</LABEL>&nbsp;</TD>
+</TR>
+</TABLE></BLOCKQUOTE>
+
+<SPAN  class="instruction"><I>(SELECT ONE ONLY)</I></SPAN><BR>
+<DIV class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn7" data-tag="6" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn7" data-tag="8" data-validate="validate_one('radioQ7','')" onclick="gofwd(this)" data-setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section8" style="display:none">
+<A NAME="A8">
+<SPAN class="prompt">8. What would you add, delete, or change about the workshop?</SPAN><BR>
+<BLOCKQUOTE><TEXTAREA NAME="writtenQ8" WRAP="PHYSICAL" COLS="50" ROWS="8"></TEXTAREA><BR>
+<INPUT TYPE="checkbox" id="written_naQ8" name="written_naQ8" VALUE="1">
+<LABEL FOR="written_naQ8">Nothing</LABEL></BLOCKQUOTE>
+
+<SPAN  class="instruction"><I>(PLEASE TYPE YOUR RESPONSE)</I></SPAN><BR>
+<DIV class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn8" data-tag="7" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn8" data-tag="9" data-validate="validate_written('writtenQ8')" onclick="gofwd(this)" data-setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section9" style="display:none">
+<A NAME="A9">
+<SPAN class="prompt">9. What feedback do you have regarding your workshop leader?</SPAN><BR>
+<BLOCKQUOTE><TEXTAREA NAME="writtenQ9" WRAP="PHYSICAL" COLS="50" ROWS="8"></TEXTAREA><BR>
+<INPUT TYPE="checkbox" id="written_naQ9" name="written_naQ9" VALUE="1">
+<LABEL FOR="written_naQ9">Nothing</LABEL></BLOCKQUOTE>
+
+<SPAN  class="instruction"><I>(PLEASE TYPE YOUR RESPONSE)</I></SPAN><BR>
+<DIV class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn9" data-tag="8" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn9" data-tag="-2" data-validate="validate_written('writtenQ9')" onclick="gofwd(this)" data-setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+</FORM>
+
+<br><br><br><br>
+</BODY>
+</HTML>

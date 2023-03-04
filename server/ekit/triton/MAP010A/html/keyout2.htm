@@ -1,0 +1,404 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="/themes/ekit/style.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check_it(n,fname,lname,email)
+	{
+	if ((fname == '') && (lname == '') && (email == ''))
+		return 1;		// All blanks is OK
+	if ((fname == '') || (lname == ''))
+		{
+		alert("Contact #"+n+" - Please supply both a first name and a last name");
+		return 0;
+		}
+	if (email == '')
+		{
+		alert("Contact #"+n+" - Please supply an email address for "+fname+' '+lname);
+		return 0;
+		}
+	return 1;
+	}
+	
+function QValid()
+	{
+	var n = 0;
+	n += check_it(1, document.q.peerfirstname1.value, document.q.peerlastname1.value, document.q.peeremail1.value);
+	n += check_it(2, document.q.peerfirstname2.value, document.q.peerlastname2.value, document.q.peeremail2.value);
+	n += check_it(3, document.q.peerfirstname3.value, document.q.peerlastname3.value, document.q.peeremail3.value);
+	n += check_it(4, document.q.peerfirstname4.value, document.q.peerlastname4.value, document.q.peeremail4.value);
+	n += check_it(5, document.q.peerfirstname5.value, document.q.peerlastname5.value, document.q.peeremail5.value);
+	n += check_it(6, document.q.peerfirstname6.value, document.q.peerlastname6.value, document.q.peeremail6.value);
+	n += check_it(7, document.q.peerfirstname7.value, document.q.peerlastname7.value, document.q.peeremail7.value);
+	n += check_it(8, document.q.peerfirstname8.value, document.q.peerlastname8.value, document.q.peeremail8.value);
+	n += check_it(9, document.q.peerfirstname9.value, document.q.peerlastname9.value, document.q.peeremail9.value);
+	n += check_it(10,document.q.peerfirstname10.value,document.q.peerlastname10.value,document.q.peeremail10.value);
+	n += check_it(11,document.q.peerfirstname11.value,document.q.peerlastname11.value,document.q.peeremail11.value);
+	n += check_it(12,document.q.peerfirstname12.value,document.q.peerlastname12.value,document.q.peeremail12.value);
+	n += check_it(13,document.q.peerfirstname13.value,document.q.peerlastname13.value,document.q.peeremail13.value);
+	n += check_it(14,document.q.peerfirstname14.value,document.q.peerlastname14.value,document.q.peeremail14.value);
+	n += check_it(15,document.q.peerfirstname15.value,document.q.peerlastname15.value,document.q.peeremail15.value);
+	n += check_it(16,document.q.peerfirstname16.value,document.q.peerlastname16.value,document.q.peeremail16.value);
+	n += check_it(17,document.q.peerfirstname17.value,document.q.peerlastname17.value,document.q.peeremail17.value);
+	n += check_it(18,document.q.peerfirstname18.value,document.q.peerlastname18.value,document.q.peeremail18.value);
+	n += check_it(19,document.q.peerfirstname19.value,document.q.peerlastname19.value,document.q.peeremail19.value);
+	n += check_it(20,document.q.peerfirstname20.value,document.q.peerlastname20.value,document.q.peeremail20.value);
+	if (n == 20)
+		return true;
+	else
+		return false;
+	}
+//-->
+</SCRIPT>
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+<BODY class="soria" >
+
+<%qbanner%>
+<TABLE width=600>
+
+<TR><TD class="prompt">
+
+The <A target="_blank" HREF="/cgi-mr/getdoc.pl/Q10.doc?sid=<%survey_id%>&tsid=MAP101&doc=Q10&token=<%password%>"><IMG src="/pwikit/word.gif" alt="Q10 as a Microsoft Word document, click to download" >
+Key Personnel Questionnaire (Q10)</A> is for people <u>inside</u> your organization to complete.  
+(People who report to you, colleagues, key support personnel, etc.) 
+Please provide names and email addresses below of those who should receive the Q10, 
+and we will send them an email giving them the opportunity to complete the form online.
+
+<P><B><font color="red">Do not put your supervising manager or partner on this list as 
+he/she will receive separate, more specialized questionnaires from MAP. It is important, 
+however, that you review with your manager/partner as to who should receive the Key Personnel
+ Questionnaire. A copy of the completed Key Personnel List below (Q10A) will be sent to
+ your manager/partner and your MAP Consultant. 
+</font></b>
+
+<P>If you do not have their email addresses, you can print copies of the <A target="_blank" HREF="/cgi-mr/getdoc.pl/Q10.doc?sid=<%survey_id%>&tsid=MAP101&doc=Q10&token=<%password%>"><IMG src="/pwikit/word.gif" alt="Q10 as a Microsoft Word document, click to download" >
+Key Personnel Questionnaire (Q10)</A> and give it to them personally. &nbsp;
+Please ask them to fax it to us at 818-981-2717, no later than <%duedate%>.
+
+<P>It's a good idea to let the people on the list know that they will be receiving a questionnaire from MAP regarding your workshop participation.  Please ask each person to be frank and assure them that their input is anonymous - <font color="red">you will not see their responses</font>.  Please follow up with each individual two days prior to the deadline to remind them to complete the questionnaire <I>since this could affect your participation in the workshop.</i>
+
+<P>Again, the deadline to submit the completed form is <%duedate%>.
+  
+</TABLE>
+<FORM NAME="q" id="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST" onsubmit="return QValid()">
+   
+    <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+    <INPUT NAME="seqno" TYPE="hidden" VALUE="">
+    <INPUT NAME="q_labs" TYPE="hidden" VALUE="<%q_labs%>">
+
+  <table cellpadding="8" cellspacing="0" class="mytable"  >
+    <tr class="heading"> 
+      <td  colspan=4 > 
+	Please provide the email addresses here:
+	</td></tr>
+    <tr class="heading"> 
+      <th  colspan=2 > 
+        First Name
+      </th>
+      <th  > 
+        Last Name
+      </th>
+      <th  > 
+        Email
+      </th>
+    </tr>
+    <tr class="options"> 
+      <td   align="right"> 
+        <B>1. </B>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname1" size="12" class="input" <%disabled1%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname1" size="12" class="input" <%disabled1%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail1" size="36" class="input" <%disabled1%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>2. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname2" size="12" class="input" <%disabled2%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname2" size="12" class="input" <%disabled2%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail2" size="36" class="input"  <%disabled2%>>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>3. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname3" size="12" class="input" <%disabled3%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname3" size="12" class="input" <%disabled3%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail3" size="36" class="input"  <%disabled3%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>4. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname4" size="12" class="input" <%disabled4%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname4" size="12" class="input" <%disabled4%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail4" size="36" class="input"  <%disabled4%>>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>5. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname5" size="12" class="input" <%disabled5%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname5" size="12" class="input" <%disabled5%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail5" size="36" class="input"  <%disabled5%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>6. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname6" size="12" class="input" <%disabled6%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname6" size="12" class="input" <%disabled6%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail6" size="36" class="input"  <%disabled6%>>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>7. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname7" size="12" class="input" <%disabled7%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname7" size="12" class="input" <%disabled7%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail7" size="36" class="input"  <%disabled7%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>8. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname8" size="12" class="input" <%disabled8%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname8" size="12" class="input" <%disabled8%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail8" size="36" class="input"  <%disabled8%>>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>9. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname9" size="12" class="input" <%disabled9%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname9" size="12" class="input" <%disabled9%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail9" size="36" class="input"  <%disabled9%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>10. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname10" size="12" class="input" <%disabled10%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname10" size="12" class="input" <%disabled10%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail10" size="36" class="input"  <%disabled10%>>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>11. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname11" size="12" class="input" <%disabled11%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname11" size="12" class="input" <%disabled11%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail11" size="36" class="input"  <%disabled11%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>12. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname12" size="12" class="input" <%disabled12%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname12" size="12" class="input" <%disabled12%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail12" size="36" class="input"  <%disabled12%>>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>13. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname13" size="12" class="input" <%disabled13%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname13" size="12" class="input" <%disabled13%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail13" size="36" class="input"  <%disabled13%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>14. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname14" size="12" class="input" <%disabled14%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname14" size="12" class="input" <%disabled14%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail14" size="36" class="input"  <%disabled14%>>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>15. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname15" size="12" class="input" <%disabled15%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname15" size="12" class="input" <%disabled15%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail15" size="36" class="input"  <%disabled15%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>16. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname16" size="12" class="input" <%disabled16%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname16" size="12" class="input" <%disabled16%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail16" size="36" class="input"  <%disabled16%>>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>17. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname17" size="12" class="input" <%disabled17%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname17" size="12" class="input" <%disabled17%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail17" size="36" class="input"  <%disabled17%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>18. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname18" size="12" class="input" <%disabled18%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname18" size="12" class="input" <%disabled18%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail18" size="36" class="input"  <%disabled18%>>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>19. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname19" size="12" class="input" <%disabled19%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname19" size="12" class="input" <%disabled19%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail19" size="36" class="input"  <%disabled19%>>
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>20. </B></div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerfirstname20" size="12" class="input" <%disabled20%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peerlastname20" size="12" class="input" <%disabled20%>>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="peeremail20" size="36" class="input"  <%disabled20%>>
+      </td>
+    </tr>
+  </table>
+
+</FORM>
+
+</BODY>
+</HTML>

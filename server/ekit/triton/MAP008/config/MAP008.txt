@@ -1,0 +1,97 @@
+#
+# Generated Survey syntax file for MAP008 (Tue Jun 18 10:34:59 2002);
+# 
++survey_name=Organizational Summary
++window_title=Q8 - Organizational Summary
++one_at_a_time=0
++block_size=5
+#+show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++focus_off=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Organizational Summary<TH class="bluebarq">Q8</table>
++qscale=<P><%q_label%> 
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	returnfax=returnfax
+C	adminemail=adminemail
+C	ws_details=ws_details
+C	warning=warning
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q A. <%qbanner%>
++qtype=instruction
+
+Q 1. General information
++qtype=text
++required=0
+# --- Attributes follow
+	A Type of business/institution:
+	A Number of employees:
+	A Annual revenue, sales or budget:
+	A Annual profit or surplus:
+
+Q 2. Please list the major business goals for the organization in the next three years.
++qtype=written
+
+Q 3. Please list your own major professional goals over the next three years.
++qtype=written
+
+Q 4. What obstacles must you overcome to achieve the goals for your organization?
++qtype=text
++required=0
+# --- Attributes follow
+	A A
+	A B
+	A C
+
+Q 5. <%qbanner%><P><%q_label%> What obstacles must you overcome to achieve your own professional goals?
++qtype=text
++required=0
+# --- Attributes follow
+	A A
+	A B
+	A C
+
+Q 6. On a separate sheet of paper, diagram your present organization structure.&nbsp; (Attach a chart if you have it.&nbsp; <br>Please include on it the names of key people and their respective positions.)&nbsp; You can fax this to us <br>at $$returnfax, email it to <a href="mailto:ctwebb@mapconsulting.com">ctwebb@mapconsulting.com</a>, or you can mail it to <p>Cathy Webb, <br>14140 Ventura Boulevard, <br>Suite 208, <br>Sherman Oaks, <br>CA 91423.
++qtype=instruction
+A x
++skip=7
+
+Q 7. describe the main strengths and opportunities for improvement of the key people in your own senior management team:
++qtype=instruction
++external=keyppl.htm
+
+Q 8. Branch offices, affiliates satelites or divisions (Name of unit/Location/Phone/Person in charge)
++qtype=instruction
++external=branches.htm
++buttons=1
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)}
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++buttons=0
++sscript=../scripts/pwikit_prime_status.pl

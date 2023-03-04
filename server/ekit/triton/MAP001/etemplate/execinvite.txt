@@ -1,0 +1,15 @@
+Dear [%execname%]:
+
+This is a quick note from the PWI system to let you know that [%fullname%] has just been sent an email to complete [%hisher%] PWI forms online. You will receive another similar email when they first sign on to the system.
+
+EMAIL INVITATION SENT 
+---------------------
+
+Participant: [%fullname%] ([%email%])
+Company: [%company%]
+Due Date: [%duedate%]
+Workshop Date: [%workshopdate%]
+Location: [%location%]
+Administrator: Cathy Webb
+
+No action is needed from this email.

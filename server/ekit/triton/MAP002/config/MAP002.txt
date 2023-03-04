@@ -1,0 +1,170 @@
+#
+# Generated Survey syntax file for MAP002 (Tue Jun 18 10:34:43 2002);
+# 
++survey_name=Management and Leadership Inventory: Participant
++window_title=Q2 - Management and Leadership Inventory: Participant
++one_at_a_time=0
++block_size=4
+#+show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++no_validation=1
++focus_off=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Management And Leadership Inventory<TH class="bluebarq">Q2</table>
++qscale=<TABLE width="600px"><TR><TD class="prompt">Please select the numbers which best describe your management and leadership abilities, 1 being poor, 9 being excellent.  Your supervising manager or partner will complete the same form and the comparative results will be used as a coaching tool.  Please be candid and frank.</TD></TR></TABLE><P><%q_label%> 
+
+Q A
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C	warning=warning
+C	ws_details=ws_details
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q 1. <BOGUS><%qbanner%><%qscale%> Communicating Abilities (Ability to convey meaning and obtain understanding).
++qtype=grid
++required=2
++left_word=Poor
++middle=Average
++right_word=Excellent
+#+dk=N/A
++scale=9
+# --- Attributes follow
+	A Speaking one-on-one
+	A Speaking in groups
+	A Writing skills
+	A Listening
+	A Relating to supervising manager/partner
+	A Relating to peers
+	A Relating to direct reports
+
+Q 2. Planning Abilities (Ability to develop goals and strategies for future action).
++qtype=grid
++required=2
++left_word=Poor
++right_word=Excellent
+#+dk=N/A
++scale=9
+# --- Attributes follow
+	A Foreseeing problems and opportunities
+	A Analyzing problems and facts
+	A Setting clear, measurable goals
+	A Developing strategies
+	A Scheduling work and planning time
+
+Q 3. Organizing Abilities (Ability to align work and resources productively in relation to goals).
++qtype=grid
++required=all
++left_word=Poor
++right_word=Excellent
+#+dk=N/A
++scale=9
+# --- Attributes follow
+	A Allocating resources
+	A Coordinating the work of others
+	A Sorting the vital from the less important
+	A Delegating
+	A Each team member understands job responsibilities
+
+Q 4. Staffing Abilities (Ability to recruit, select, develop and retain people).
++qtype=grid
++required=all
++left_word=Poor
++right_word=Excellent
+#+dk=N/A
++scale=9
+# --- Attributes follow
+	A Aligning staffing needs with company goals
+	A Recruiting
+	A Selecting the right people
+	A Providing training opportunities
+	A Retaining people
+	A Developing potential in people
+
+Q 5. <%qbanner%><%qscale%> Controlling Abilities (Measuring performance and taking appropriate action).
++qtype=grid
++required=all
++left_word=Poor
++right_word=Excellent
+#+dk=N/A
++scale=9
+# --- Attributes follow
+	A Setting standards
+	A Assessing performance
+	A Following through
+	A Holding people accountable
+	A Taking corrective action
+
+Q 6. Teamwork Abilities (Ability to work together to  achieve common goals).
++qtype=grid
++required=all
++left_word=Poor
++right_word=Excellent
+#+dk=N/A
++scale=9
+# --- Attributes follow
+	A Causes a high level of teamwork
+	A Commits self to team goals
+	A Gives support to others' programs
+	A Coordinates with others to achieve goals
+
+Q 7. Leading Abilities (Ability to inspire people to achieve goals).
++qtype=grid
++required=all
++left_word=Poor
++right_word=Excellent
+#+dk=N/A
++scale=9
++buttons=1
+# --- Attributes follow
+	A Clearly communicates vision and values
+	A Demonstrates determination and relentless resolve
+	A Demonstrates integrity
+	A Shows confidence
+	A Develops trust
+	A Is an excellent coach and mentor
+	A Inspires continuous improvement
+	A Demonstrates personal humility
+	A Demonstrates passion and commitment
+	A Confronts difficult issues and finds resolution
+	A Attracts strong people to the organization
+	A Maintains the focus of the organization
+	A Each team member has clear, quantifiable goals
+	A Demonstrates empathy
+	A Encourages excellence
+	A Job duties of the team are aligned with the organization's direction
+	A Discovers and develops the strengths of others
+	A Embraces and implements change
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)}
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+Q BREAK
++qtype=eval
++buttons=0
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++sscript=../scripts/pwikit_prime_status.pl
++buttons=0
+
+#<%qbanner%><INPUT TYPE="HIDDEN" NAME="finish"><TABLE border="0"width="600px"><TR><TD>You are now at the end of this form. If you are finished, please click the SUBMIT button to save your answers and submit them to the workshop leader. If you wish to correct or modify a responses you can re-enter the form and adjust your response. This must be done prior to <%duedate%>. <BR><BR><TABLE border=0 cellpadding="8"><TR><TH><INPUT type="SUBMIT" VALUE=" SUBMIT " onclick="document.q.finish.value='';"></TD><TD>My responses are complete,  and I would like to submit them now.</TD></TR><TR><TH> <INPUT TYPE="BUTTON" VALUE="NOT YET" onclick="document.q.finish.value='0';document.q.submit();"></TD><TD>My responses are not complete. I need to come back and review later before submission.</TD></TR><TR><TH> <INPUT TYPE="BUTTON" VALUE=" GO BACK " tabindex="-1"  alt="BACK" onclick="history.back()"> <TD>Go back and review my responses.</tr></TABLE></TABLE>
+

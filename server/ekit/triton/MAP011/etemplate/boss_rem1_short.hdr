@@ -1,0 +1,4 @@
+[main]
+from_email=[%adminemail%]
+subject=Reminder: MAP - [%duedate%] deadline - MAP Workshop Materials For [%aboutname%]
+from_name=MAP Workshop Administrator

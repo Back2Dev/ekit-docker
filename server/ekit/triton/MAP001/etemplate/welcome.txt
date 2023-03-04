@@ -1,0 +1,31 @@
+Welcome to MAP
+--------------
+
+Congratulations and Welcome to MAP!
+
+We are delighted you are going to participate in the MAP Program and have reserved a place for you in the [%workshopdate%] MAP Workshop which will be held at the [%location%]. 
+
+Please Confirm Your Email
+-------------------------
+
+We need you to confirm your email address by clicking this link: 
+
+	http://[%vhost%]/cgi-mr/pwikit_clickthru.pl?password=[%password%]&id=[%id%]
+
+this lets us know that we have the right email for you.
+
+Please Mark Your Calendar!
+--------------------------
+
+Six weeks prior to your Workshop, you will receive the MAP Pre-Workshop Questionnaires and hotel reservation information via email.  The completed Questionnaires will help us to tailor your MAP Workshop to your unique role within your organization.  If you have not received the emailed Pre-Workshop Questionnaires by [%invitedate%] please contact MAP Workshop Operations at 800.540.9003, ext. 225.
+
+Please keep in mind that if you are unable to participate in the Workshop scheduled above, you must notify us in writing at least 7 days prior to that date or you may incur a $500 reschedule fee.  In addition, the cancellation of your hotel reservation in less than 7 days may cause you to incur hotel charges.
+
+Please be sure to add ctwebb@mapconsulting.com to your safe senders list to ensure your Ekit does not go to your spam folders.
+
+If you have any questions or require assistance, please call or reply to this email.  We look forward to working with you. 
+
+Sincerely,
+
+[%execname%]
+

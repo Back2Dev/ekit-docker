@@ -1,0 +1,22 @@
+Dear [%firstname%]:
+
+While preparing for [%aboutname%]'s [%workshopdate%] workshop, we discovered that we are missing vital information about [%himher%]. Please go online and complete the forms no later than [%duedate%].
+
+	
+
+We need this information to make the workshop uniquely useful and valuable to [%aboutname%].  
+
+Please click here to complete the forms now.
+
+http://[%vhost%]/cgi-mr/tokendb.pl?survey_id=[%SID%]&token=[%password%]&id=[%id%]
+
+If you have questions, please contact Cathy Webb at [%adminphone%].
+
+Thank you,
+
+[%execname%]
+
+---------------
+The above link should log you on to our system. In the event of the link not opening, you may be asked to enter an ID and password. Your ID is [%id%] and your password is [%password%]
+Alternatively, go to http://[%vhost%]/ and enter the id and password as above.
+If you are still having trouble, please email pwisupport@mapconsulting.com for further assistance.

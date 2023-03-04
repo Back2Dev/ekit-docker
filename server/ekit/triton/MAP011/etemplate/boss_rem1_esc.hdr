@@ -1,0 +1,4 @@
+[main]
+from_email=suveysupport@[%vhost%]
+subject=Manager Partner Reminder1 Escalation
+from_name=Survey Support

@@ -1,0 +1,4 @@
+[main]
+from_email=[%adminemail%]
+subject=MAP Workshop Materials For [%aboutname%]
+from_name=MAP Workshop Administrator

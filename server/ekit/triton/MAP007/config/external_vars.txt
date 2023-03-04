@@ -1,0 +1,32 @@
+{
+  order => ["nodata.htm", "last.htm"],
+  pages => {
+             "last.htm"   => {
+                               names    => ["finish", "q_labs", undef, "BACK2"],
+                               options  => {
+                                             "" => {
+                                                   onclick => "document.q.finish.value='';",
+                                                   type    => "SUBMIT",
+                                                   value   => " SUBMIT ",
+                                                 },
+                                             BACK2 => { name => "BACK2", type => "hidden" },
+                                             finish => { name => "finish", type => "hidden" },
+                                           },
+                               "values" => { "" => [" SUBMIT ", "NOT YET", " GO BACK "] },
+                             },
+             "nodata.htm" => {
+                               names    => [undef, "BACK2"],
+                               options  => {
+                                             "" => {
+                                                   alt => "HOME",
+                                                   onclick => "document.location='/cgi-mr/pwikit_login.pl?id=<%id%>&password=<%token%>'",
+                                                   tabindex => -1,
+                                                   type => "BUTTON",
+                                                   value => " HOME ",
+                                                 },
+                                             BACK2 => { name => "BACK2", type => "hidden" },
+                                           },
+                               "values" => { "" => [" HOME ", " GO BACK "] },
+                             },
+           },
+}

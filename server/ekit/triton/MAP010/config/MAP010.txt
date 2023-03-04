@@ -1,0 +1,127 @@
+#
+# Generated Survey syntax file for MAP010 (Tue Jun 18 10:35:08 2002);
+# 
+
++survey_name=Key Personnel Questionnaire
++window_title=Q10 - Key Personnel Questionnaire
++one_at_a_time=0
++block_size=5
+#+show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++written_cols=80
++written_rows=10
++no_validation=1
++dive_in=1
++focus_off=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Key Personnel Questionnaire<TH class="bluebarq">Q10</table>
++qscale=<P><%q_label%> 
+
+Q AA
++qtype=code
+C	abouthimher=abouthimher
+C	hisher=hisher
+C	fullname=fullname
+C	firstname=firstname
+C	duedate=duedate
+C	id=id
+C	token=token
+C	ws_details=ws_details
+C	warning=warning
+C	q_label=q_label
+C	login_page=login_page
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q A.  <%qbanner%><TABLE width="600"><TR><TD class="prompt">As a key person in this organization, your candid and thoughtful answers to the following questions about <%fullname%> will be helpful in guiding us to help <%abouthimher%> achieve the goals of this management program: increased productivity and overall management effectiveness.<BR><BR>Please be candid.  You need not identify yourself.  Your answers will be summarized along with the replies of other anonymous respondents.</TD></TR></TABLE>
++qtype=instruction
+
+Q 1. Please describe the leadership/management strengths of <%fullname%>.
++qtype=written
+
+Q 2. Every leader/manager has opportunities for growth and improvement. What are the management <BR>and/or leadership skills in which <%fullname%> could improve?
++qtype=written
+
+Q 3. What are the main COMMUNICATING challenges that <%fullname%> faces (e.g., style, effectiveness, <br>frequency, internal, external, etc.)?   Please make specific comments.
++qtype=written
+
+Q 4. What are the main PLANNING challenges that <%fullname%> faces (e.g., no formal planning, unclear <br>goals, projects, etc.)?  Please make specific comments.
++qtype=written
+
+Q 5. <%qbanner%><P><%q_label%> What are the main ORGANIZING challenges that <%fullname%> faces (e.g., personal organization, <br>availability of supplies, equipment, financial resources, time, organizational structure, etc.)?  <br>Please make specific comments.
++qtype=written
+
+Q 6. What are the main STAFFING challenges that <%fullname%> faces (e.g., recruiting, selecting right <br>people, training, development, retaining, etc.)?  <br>Please make specific comments.
++qtype=written
+
+Q 7. What are the main CONTROLLING challenges that <%fullname%> faces (e.g., accountability, <br>follow-through, taking corrective action, cost and inventory control, productivity, quality, etc.)?  <br>Please make specific comments.
++qtype=written
+
+Q 8. What are the main LEADING challenges that <%fullname%> faces (e.g., clear vision, motivation, <br>teamwork, initiating action, innovation, commitment to team goals, etc.)?  <br>Please make specific comments.
++qtype=written
+
+Q 9. If you could be <%fullname%>'s consultant, what specific suggestions would you give to solve any of the <br>above issues?
++qtype=written
+
+Q 10. <%qbanner%><P><%q_label%> Leading Abilities (<%fullname%>'s ability to inspire people to achieve goals)<BR><BR> <SPAN class="body">Please select the numbers which best describe <%fullname%>'s management and leadership abilities, 1 being poor, 9 being excellent.  <BR><%fullname%> and <%hisher%> manager or partner will complete the same form and the comparative results will be used as a coaching tool. <BR>Please be candid.</span>
++qtype=grid
++left_word=Poor
++right_word=Excellent
+#+dk=N/A
++scale=9
++buttons=1
+# --- Attributes follow
+	A Clearly communicates vision and values
+	A Demonstrates determination and relentless resolve
+	A Demonstrates integrity
+	A Shows confidence
+	A Develops trust
+	A Is an excellent coach and mentor
+	A Inspires continuous improvement
+	A Demonstrates personal humility
+	A Demonstrates passion and commitment
+	A Confronts difficult issues and finds resolution
+	A Attracts strong people to the organization
+	A Maintains the focus of the organization
+	A Each team member has clear, quantifiable goals
+	A Demonstrates empathy
+	A Encourages excellence
+	A Job duties of the team are aligned with the organization's direction
+	A Discovers and develops the strengths of others
+	A Embraces and implements change
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)}
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+
+Q BREAK
++qtype=code
++buttons=0
+C	duedate=duedate
+C	id=id
+C	token=token
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++buttons=0
++sscript=../scripts/pwikit_prime_status.pl
+
+Q LAST1 Final reset of APPROVED flag
++qtype=perl_code
+C   &db_conn;&db_do("UPDATE MAP010 set APPROVED=0 where PWD='$resp{token}'");
+

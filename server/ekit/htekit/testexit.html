@@ -1,0 +1,17 @@
+<html>
+<script language="javascript">
+//alert ("Starting up");
+window.onbeforeunload=checkdirty;
+
+function checkdirty(){
+if (document.q.dirty.checked)
+	return "Don't go";
+}
+</script>
+<body>
+<form name="q" method="get">
+<input type=checkbox name=dirty>
+<input type=submit>
+</form>
+</body>
+</html>

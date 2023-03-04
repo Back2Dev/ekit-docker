@@ -1,0 +1,16 @@
+Dear [%execname%]:
+
+[%fullname%]'s boss, ([%bossfullname%]) has signed on to the PWI system for the first time.
+
+FIRST SIGN ON
+---------------------
+
+Participant: [%fullname%] ([%part_email%])
+Supervising Manager or Partner: [%bossfullname%] ([%bossemail%])
+Company: [%company%]
+Due Date: [%duedate%]
+Workshop Date: [%workshopdate%]
+Location: [%location%]
+Administrator: [%adminname%]
+
+No action is needed from this email.

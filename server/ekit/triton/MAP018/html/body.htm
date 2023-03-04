@@ -1,0 +1,854 @@
+<head>
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" comment "ICRAonline v2.0" l gen true for "http://ekit.mappwi.com/"  r (nz 1 vz 1 lz 1 oz 1 cz 1) "http://www.rsac.org/ratingsv01.html" l gen true for "http://ekit.mappwi.com/"  r (n 0 s 0 v 0 l 0))'>
+<META HTTP-EQUIV="Expires" CONTENT="0"><link rel="stylesheet" href="style.css">
+<STYLE title="localStyle">
+	.BTN {color: blue; display:none}
+</STYLE>
+<SCRIPT language="JavaScript" SRC="/triton/stuff/iegoop.js">
+</SCRIPT>
+<TITLE>Triton Technology</TITLE>
+   <META NAME="Triton Technology"> 
+   <META NAME="Author" CONTENT="Mike King"> 
+   <META NAME="Copyright" CONTENT="Triton Technology 1995-2000, all rights reserved"> 
+
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+var numq = 10;
+function QValid()
+	{
+//
+// OK, we have passed all the checks and are about to allow the form to be submitted. 
+// So we gray it out to make sure it cannot be clicked again
+//
+	document.q.btn_submit.value = "Submitting...";
+	document.q.btn_submit.disabled = true;
+	return true;
+	return true;
+	}
+function clr_QAA()
+	{
+	}
+ 
+//-->
+</SCRIPT>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#FF0080" TEXT="#000000"  class="body">
+<DIV ID="Start"><FONT size="+2" face="Arial, Helvetica, sans-serif"> Welcome to Hotel Reservation<BR><BR>
+Please wait a second while the survey loads...</font></DIV>
+<FORM NAME="triton" onsubmit="return false" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST">
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP018">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT NAME="q_no" TYPE="hidden" VALUE="1">
+<DIV ID="Section1" style="display:none">
+<A NAME="A1">
+<SPAN class="prompt">AA. </SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="nextbtn1" tag="2" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section2" style="display:none">
+<A NAME="A2">
+<SPAN class="prompt">AB. perl code to calculate some things</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn2" tag="1" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn2" tag="3" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section3" style="display:none">
+<A NAME="A3">
+
+
+     <TABLE cellspacing=0 cellpadding=0 border=1 >
+<TR><TD><TABLE cellspacing=0 cellpadding=1 border=0 width=596>
+	<TR class="details"><TH align="RIGHT">&nbsp;Participant:&nbsp;<TD>&nbsp; &nbsp;<TD width=10>&nbsp; <TH align="RIGHT">&nbsp;Organization:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Workshop Date:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Due Date:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Return Fax:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Appraiser:&nbsp;<TD>&nbsp;&nbsp;
+</TABLE></TABLE>
+<IMG SRC="/MAP001/banner600.gif">
+<TABLE width="600" cellspacing=0 cellpadding=5>
+	<TR ><TD class="warning" border=1 >
+	<B>Warning:</B> If you use the back button on your browser's tool bar you will lose your 
+	data on this page. Please use the navigation buttons at the bottom of each page to move from page 
+	to page. Doing this will save your responses automatically in our database as you go through each page.</TD></TR></table>
+
+<TABLE width="600"><TR><TD class="prompt">
+<H3><U>About Your Workshop Logistics</U></H3>
+<P>We're excited about your upcoming  workshop and we look forward to working with you.
+
+<h3><U>Your Hotel</U></H3> 
+	<P>You'll be staying at the  at , . 
+	 
+	that shows the location of the hotel. 
+	(Tip: The map has a "Directions" button that will provide driving details from your home address).
+
+<h3><U>Your Room and Meals</U></h3> 
+	<P>The package price for your room and meals comes to approximately $, including tax and tips. 
+	You will be expected to pay this to the hotel when you check out. 
+
+<h3><U>Confirming Your Accommodations</U></h3> 
+	<P>To confirm your accommodations, please complete the hotel reservation form today (on the next page). 
+	Most participants choose a single room. However, if you have a guest, he or she is welcome to join the 
+	group for the social hour and dinner - at an additional cost to you. Please let us know on the form. 
+
+<h3><U>If You Reschedule Your Workshop</U></h3>  
+	<P><B>If you are unable to participate in the workshop scheduled above, you must notify us in writing 
+	at least 14 days before that date or there will be a $300 reschedule fee. 
+	In addition, late cancellation of hotel reservations may incur hotel charges.</B> 
+
+<h3><U>Workshop Start Time</U></h3> 
+	<P>Please review the enclosed schedule and note that the workshop begins promptly at 9:30 AM . 
+	We urge you to arrive on time because we don't want you to miss anything important in this very full schedule. 
+
+	<P>If we can help, please call us. Click the NEXT button below to proceed to the hotel reservation form.
+</TD></TR>
+</TABLE>
+
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn3" tag="2" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn3" tag="4" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section4" style="display:none">
+<A NAME="A4">
+<SCRIPT language="JavaScript">
+<!--
+var f1 = false;
+function focusme(ctl)
+	{
+	if (!f1)
+		{
+		ctl.focus();
+		f1 = true;
+		}
+	}
+function getradio(control)
+	{
+	var selectedButton = "";
+	for (var j=0;j< control.length;j++)
+		{
+		if (control[j].checked)
+			{
+			selectedButton = control[j].value;
+			break;
+			}
+		}
+	return selectedButton;
+	}
+function enforceradio(control)
+	{
+	var msg = '';
+	if (getradio(control) == '')
+		{
+		msg = ' - Please select a response for : "'+control[0].title+'"\n';
+		focusme(control[0]);
+		}
+	return msg;
+	}
+function enforce(control)
+	{
+	var msg = '';
+	if (control.value == '')
+		{
+		msg = ' - Please fill in field: "'+control.title+'"\n';
+		focusme(control);
+		}
+	return msg;
+	}
+function QValid()
+	{
+	f1 = false;
+	var errmsg = '';
+	errmsg = errmsg + enforceradio(document.q.occupancy);
+//	errmsg = errmsg + enforceradio(document.q.smoker);
+	errmsg = errmsg + enforceradio(document.q.early);
+	if (document.q.early[0].checked)
+		errmsg = errmsg + enforce(document.q.arrivaltime);
+	errmsg = errmsg + enforceradio(document.q.guest);
+	if (document.q.guest[0].checked)
+		{
+		errmsg = errmsg + enforceradio(document.q.day1guest);
+		errmsg = errmsg + enforceradio(document.q.day2guest);
+		}
+	errmsg = errmsg + enforce(document.q.cardname);
+	errmsg = errmsg + enforceradio(document.q.cardtype);
+	errmsg = errmsg + enforceradio(document.q.fax_ccno);
+	errmsg = errmsg + enforce(document.q.cardexpiry);
+	if ((document.q.cardno.value != '') || ((document.q.fax_ccno[1].checked) && ("" == "")))
+		{	
+		errmsg = errmsg + enforce(document.q.cardno);
+		if (!checkCreditCard (document.q.cardno.value, getradio(document.q.cardtype)))
+			{
+			errmsg = errmsg + "Error: "+ccErrors[ccErrorNo];
+			focusme(document.q.cardno);
+			}
+		}
+	if (errmsg != '')
+		{
+		alert('I am sorry, you have the following error(s):\n\n'+errmsg);
+		return false;
+		}
+	return true;
+	}
+function showcc()
+	{
+	document.getElementById("enter_cardno").style.display = "";
+	}
+function obscure()
+ 	{
+ 	if (""+"" == "")
+ 		{
+		document.getElementById("show_cardno").style.display = "none";
+		document.getElementById("enter_cardno").style.display = "";
+ 		}
+ 	}
+/*============================================================================*/
+
+/*
+
+This routine checks the credit card number. The following checks are made:
+
+1. A number has been provided
+2. The number is a right length for the card
+3. The number has an appropriate prefix for the card
+4. The number has a valid modulus 10 number check digit if required
+
+If the validation fails an error is reported.
+
+The structure of credit card formats was gleaned from a variety of sources on 
+the web, although the best is probably on Wikepedia ("Credit card number"):
+
+  http://en.wikipedia.org/wiki/Credit_card_number
+
+Parameters:
+            cardnumber           number on the card
+            cardname             name of card as defined in the card list below
+
+Author:     John Gardner
+Date:       1st November 2003
+Updated:    26th Feb. 2005      Additional cards added by request
+Updated:    27th Nov. 2006      Additional cards added from Wikipedia
+
+*/
+
+/*
+   If a credit card number is invalid, an error reason is loaded into the 
+   global ccErrorNo variable. This can be be used to index into the global error  
+   string array to report the reason to the user if required:
+   
+   e.g. if (!checkCreditCard (number, name) alert (ccErrors(ccErrorNo);
+*/
+
+var ccErrorNo = 0;
+var ccErrors = new Array ()
+
+ccErrors [0] = "Unknown card type";
+ccErrors [1] = "No card number provided";
+ccErrors [2] = "Credit card number is in invalid format (must be 14-16 digits long)";
+ccErrors [3] = "Credit card number is invalid (check card type)";
+ccErrors [4] = "Credit card number has an inappropriate number of digits";
+
+function checkCreditCard (cardnumber, cardname) {
+     
+  // Array to hold the permitted card characteristics
+  var cards = new Array();
+
+  // Define the cards we support. You may add addtional card types.
+  
+  //  Name:      As in the selection box of the form - must be same as user's
+  //  Length:    List of possible valid lengths of the card number for the card
+  //  prefixes:  List of possible prefixes for the card
+  //  checkdigit Boolean to say whether there is a check digit
+  
+  cards [0] = {name: "Visa", 
+               length: "13,16", 
+               prefixes: "4",
+               checkdigit: true};
+  cards [1] = {name: "MasterCard", 
+               length: "16", 
+               prefixes: "51,52,53,54,55",
+               checkdigit: true};
+  cards [2] = {name: "DinersClub", 
+               length: "14,16", 
+               prefixes: "300,301,302,303,304,305,36,38,55",
+               checkdigit: true};
+  cards [3] = {name: "CarteBlanche", 
+               length: "14", 
+               prefixes: "300,301,302,303,304,305,36,38",
+               checkdigit: true};
+  cards [4] = {name: "AmEx", 
+               length: "15", 
+               prefixes: "34,37",
+               checkdigit: true};
+  cards [5] = {name: "Discover", 
+               length: "16", 
+               prefixes: "6011,650",
+               checkdigit: true};
+  cards [6] = {name: "JCB", 
+               length: "15,16", 
+               prefixes: "3,1800,2131",
+               checkdigit: true};
+  cards [7] = {name: "enRoute", 
+               length: "15", 
+               prefixes: "2014,2149",
+               checkdigit: true};
+  cards [8] = {name: "Solo", 
+               length: "16,18,19", 
+               prefixes: "6334, 6767",
+               checkdigit: true};
+  cards [9] = {name: "Switch", 
+               length: "16,18,19", 
+               prefixes: "4903,4905,4911,4936,564182,633110,6333,6759",
+               checkdigit: true};
+  cards [10] = {name: "Maestro", 
+               length: "16", 
+               prefixes: "5020,6",
+               checkdigit: true};
+  cards [11] = {name: "VisaElectron", 
+               length: "16", 
+               prefixes: "417500,4917,4913",
+               checkdigit: true};
+               
+  // Establish card type
+  var cardType = -1;
+  for (var i=0; i<cards.length; i++) {
+
+    // See if it is this card (ignoring the case of the string)
+    if (cardname.toLowerCase () == cards[i].name.toLowerCase()) {
+      cardType = i;
+      break;
+    }
+  }
+  
+  // If card type not found, report an error
+  if (cardType == -1) {
+     ccErrorNo = 0;
+     return false; 
+  }
+   
+  // Ensure that the user has provided a credit card number
+  if (cardnumber.length == 0)  {
+     ccErrorNo = 1;
+     return false; 
+  }
+    
+  // Now remove any spaces from the credit card number
+  cardnumber = cardnumber.replace (/\s/g, "");
+  
+  // Check that the number is numeric
+  var cardNo = cardnumber
+  var cardexp = /^[0-9]{13,19}$/;
+  if (!cardexp.exec(cardNo))  {
+     ccErrorNo = 2;
+     return false; 
+  }
+       
+  // Now check the modulus 10 check digit - if required
+  if (cards[cardType].checkdigit) {
+    var checksum = 0;                                  // running checksum total
+    var mychar = "";                                   // next char to process
+    var j = 1;                                         // takes value of 1 or 2
+  
+    // Process each digit one by one starting at the right
+    var calc;
+    for (i = cardNo.length - 1; i >= 0; i--) {
+    
+      // Extract the next digit and multiply by 1 or 2 on alternative digits.
+      calc = Number(cardNo.charAt(i)) * j;
+    
+      // If the result is in two digits add 1 to the checksum total
+      if (calc > 9) {
+        checksum = checksum + 1;
+        calc = calc - 10;
+      }
+    
+      // Add the units element to the checksum total
+      checksum = checksum + calc;
+    
+      // Switch the value of j
+      if (j ==1) {j = 2} else {j = 1};
+    } 
+  
+    // All done - if checksum is divisible by 10, it is a valid modulus 10.
+    // If not, report an error.
+    if (checksum % 10 != 0)  {
+     ccErrorNo = 3;
+     return false; 
+    }
+  }  
+
+  // The following are the card-specific checks we undertake.
+  var LengthValid = false;
+  var PrefixValid = false; 
+  var undefined; 
+
+  // We use these for holding the valid lengths and prefixes of a card type
+  var prefix = new Array ();
+  var lengths = new Array ();
+    
+  // Load an array with the valid prefixes for this card
+  prefix = cards[cardType].prefixes.split(",");
+      
+  // Now see if any of them match what we have in the card number
+  for (i=0; i<prefix.length; i++) {
+    var exp = new RegExp ("^" + prefix[i]);
+    if (exp.test (cardNo)) PrefixValid = true;
+  }
+      
+  // If it isn't a valid prefix there's no point at looking at the length
+  if (!PrefixValid) {
+     ccErrorNo = 3;
+     return false; 
+  }
+    
+  // See if the length is valid for this card
+  lengths = cards[cardType].length.split(",");
+  for (j=0; j<lengths.length; j++) {
+    if (cardNo.length == lengths[j]) LengthValid = true;
+  }
+  
+  // See if all is OK by seeing if the length was valid. We only check the 
+  // length if all else was hunky dory.
+  if (!LengthValid) {
+     ccErrorNo = 4;
+     return false; 
+  };   
+  
+  // The credit card is in the required format.
+  return true;
+}
+
+/*============================================================================*///-->
+</SCRIPT>
+
+<TABLE cellspacing=0 cellpadding=0 border=1 >
+<TR><TD><TABLE cellspacing=0 cellpadding=1 border=0 width=596>
+	<TR class="details"><TH align="RIGHT">&nbsp;Participant:&nbsp;<TD>&nbsp; &nbsp;<TD width=10>&nbsp; <TH align="RIGHT">&nbsp;Organization:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Workshop Date:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Due Date:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Return Fax:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Appraiser:&nbsp;<TD>&nbsp;&nbsp;
+</TABLE></TABLE>
+<IMG SRC="/MAP001/banner600.gif"><TABLE width="600" cellspacing=0 cellpadding=5>
+	<TR ><TD class="warning" border=1 >
+	<B>Warning:</B> If you use the back button on your browser's tool bar you will lose your 
+	data on this page. Please use the navigation buttons at the bottom of each page to move from page 
+	to page. Doing this will save your responses automatically in our database as you go through each page.</TD></TR></table>
+
+<table class="mytable" border="0" cellpadding="4" cellspacing="0" width="600">
+<TR class="options">
+	<TD colspan=4>
+	<CENTER><h2>HOTEL RESERVATION<BR>for  </h2>
+Accommodations for  at <BR>&nbsp;</CENTER>
+</table>
+<table class="mytable" border="0" cellpadding="4" cellspacing="0" width="600">
+<TR class="options">
+	<TD valign="top" width="30%"><B>1. Room occupancy: 
+	<TD valign="top" colspan="2">
+		<INPUT name="occupancy" type="radio" id="occupancy_1" value="One Person" title="Room occupancy"><label for="occupancy_1">One person (one bed)</label><BR>
+		<INPUT name="occupancy" type="radio" id="occupancy_2" value="Two people"> <label for="occupancy_2">Two people (one bed)</label><BR>
+		<INPUT name="occupancy" type="radio" id="occupancy_3" value="Two people"><label for="occupancy_3">Two people (two beds)</label><BR>
+		<INPUT name="occupancy" type="radio" id="occupancy_4" value="Meals Only"><label for="occupancy_4">Meals Only (no lodging)</label><BR>
+	<td valign="top">
+		* Hotel is a non-smoking facility.
+		<!--
+		<INPUT name="smoker" type="radio" id="smoker_1" value="Yes" title="Smoker ?"><label for="smoker_1">Smoking</label><BR>
+		<INPUT name="smoker" type="radio" id="smoker_2" value="No"><label for="smoker_2">Non-smoking</label>
+		-->
+<TR class="options2">
+	<TD valign="top">
+		<B>2. Will you arrive early and need a room on  ?
+	<TD valign="top">
+		<INPUT name="early" type="radio" id="early_1" value="Yes" title="Early arrival ?"><label for="early_1">Yes</label>
+		<INPUT name="early" type="radio" id="early_2" value="No"><label  for="early_2">No </label>
+	<TD valign="top" align="right">
+		<B>Arrival time: (if arriving early)
+	<TD valign="top">
+		<INPUT name="arrivaltime" type="text" title="Arrival time">
+<TR class="options">
+	<TD valign="top"><B>3. Do you plan to have a guest?	
+	<TD valign="top">
+		<INPUT name="guest" type="radio" id="guest_1" value="Yes" title="Will you bring a guest for dinner?"><label for="guest_1">Yes</label>
+		<INPUT name="guest" type="radio" id="guest_2" value="No"><label  for="guest_2">No </label>
+	<TD valign="top" align="right">
+		<B>If yes, will the guest join the group for dinner?
+	<TD valign="top">
+	 <INPUT name="day1guest" type="radio" id="day1guest_1" value="Yes" title=" dinner guest?"><label for="day1guest_1">Yes</label>
+		<INPUT name="day1guest" type="radio" id="day1guest_2" value="No"><label  for="day1guest_2">No </label><BR>
+	 <INPUT name="day2guest" type="radio" id="day2guest_1" value="Yes" title=" dinner guest?"><label for="day2guest_1">Yes</label>
+		<INPUT name="day2guest" type="radio" id="day2guest_2" value="No"><label  for="day2guest_2">No </label><BR>
+<TR class="options">
+	<td colspan="4" align="right">Please note, you will be charged for cancelled meals after 
+<TR class="options2">
+	<TD valign="top"><B>4. Do you have any dietary restrictions?
+	<TD valign="top" colspan="3">
+		<textarea name="dietnotes" cols="40" rows="5" title="Dietary restrictions"></textarea>
+<TR class="options">
+	<TD valign="top" colspan="4"><B>5. Credit card information is required in order to reserve lodging and/or meals. Please complete the information below:
+<TR class="options">
+	<TD align="right"><B>Name on credit card: <cardname>
+	<TD valign="top" colspan="3">
+		<INPUT name="cardname" type="text"  size="30" title="Name on credit card">
+<TR class="options">
+	<TD align="right"><B>Credit card type:
+	<TD valign="top" colspan="3">
+		<INPUT name="cardtype" type="radio" id="cardtype_1" value="Mastercard" title="Credit Card type"><label for="cardtype_1">Mastercard</label>
+		<INPUT name="cardtype" type="radio" id="cardtype_2" value="Visa"><label for="cardtype_2">Visa</label>
+		<INPUT name="cardtype" type="radio" id="cardtype_3" value="Amex"><label for="cardtype_3">American Express</label>
+		<INPUT name="cardtype" type="radio" id="cardtype_4" value="Diners"><label for="cardtype_4">Diners</label>
+		<INPUT name="cardtype" type="radio" id="cardtype_5" value="Discover"><label for="cardtype_5">Discover</label>
+<TR class="options">
+<TD valign="top" align="right"><B>Fax credit card no?</b>
+<TD valign="top" colspan="3">
+				<INPUT name="fax_ccno" type="radio" id="fax_ccno_1" value="1" title="Fax credit card no ?"><label for="fax_ccno_1">I will print and fax the next page to MAP</label><BR>
+				<INPUT name="fax_ccno" type="radio" id="fax_ccno_2" value="0"><label for="fax_ccno_2">I will enter the card number here</label>
+<TR class="options">
+	<TD align="right" valign="top"><B>Credit card number:
+	<TD valign="top" colspan="3">
+		<span id="enter_cardno" style="display:none">
+		<INPUT name="cardno" type="text"  size="20" title="Credit Card number"> </span>
+		<span id="show_cardno" onclick="showcc();">
+	<font color="red"><U>We have cardno:  on file for you. Click here if you need to change it.</u></font></span>
+<TR class="options">
+	<TD  align="right"><B>Credit card expiration date (MM/YY):
+	<TD valign="top" colspan="3">
+		<INPUT name="cardexpiry" type="text"  size="10" title="Credit Card expiry date">
+<TR class="warning"><TD colspan="4"><font size="-1">
+		No charge will be made to your credit card at this time. 
+		Management Action Programs will provide these details to the hotel for confirmation of your reservation only. 
+		Payment for hotel charges will be made when you check out of the hotel. 
+		
+<TR class="options2">
+	<TD valign="top" colspan="4"><B>6. Your name and title as they appear on our records:
+		<font color="blue"><B> , </B></font><BR>
+<TR class="options2">
+	<TD valign="top">
+		<B>If you want your name or title to appear differently, please make the changes here:
+	<TD valign="top" colspan="3">
+		<INPUT name="revisedfullname" type="text" value=" , "  size="60">
+</table>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn4" tag="3" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn4" tag="5" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section5" style="display:none">
+<A NAME="A5">
+<SPAN class="prompt">1A. Did they give me data at this point ?</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn5" tag="4" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn5" tag="6" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section6" style="display:none">
+<A NAME="A6">
+<SCRIPT language="JavaScript">
+<!--
+var f1 = false;
+function focusme(ctl)
+	{
+	if (!f1)
+		{
+		ctl.focus();
+		f1 = true;
+		}
+	}
+function getradio(control)
+	{
+	var selectedButton = "";
+	for (var j=0;j< control.length;j++)
+		{
+		if (control[j].checked)
+			{
+			selectedButton = control[j].value;
+			break;
+			}
+		}
+	return selectedButton;
+	}
+function enforceradio(control)
+	{
+	var msg = '';
+	if (getradio(control) == '')
+		{
+		msg = ' - Please select a response for : "'+control[0].title+'"\n';
+		focusme(control[0]);
+		}
+	return msg;
+	}
+function enforce(control)
+	{
+	var msg = '';
+	if (control.value == '')
+		{
+		msg = ' - Please fill in field: "'+control.title+'"\n';
+		focusme(control);
+		}
+	return msg;
+	}
+function QValid()
+	{
+	f1 = false;
+	var errmsg = '';
+	errmsg = errmsg + enforceradio(document.q.occupancy);
+//	errmsg = errmsg + enforceradio(document.q.smoker);
+	errmsg = errmsg + enforceradio(document.q.early);
+	if (document.q.early[0].checked)
+		errmsg = errmsg + enforce(document.q.arrivaltime);
+	errmsg = errmsg + enforceradio(document.q.guest);
+	if (document.q.guest[0].checked)
+		{
+		errmsg = errmsg + enforceradio(document.q.day1guest);
+		errmsg = errmsg + enforceradio(document.q.day2guest);
+		}
+	errmsg = errmsg + enforce(document.q.cardname);
+	errmsg = errmsg + enforceradio(document.q.cardtype);
+//	errmsg = errmsg + enforce(document.q.cardno);
+	errmsg = errmsg + enforce(document.q.cardexpiry);
+	if (errmsg != '')
+		{
+		alert('I am sorry, you have the following error(s):\n\n'+errmsg);
+		return false;
+		}
+	return true;
+	}
+ 
+//-->
+</SCRIPT>
+
+<TABLE cellspacing=0 cellpadding=0 border=1 >
+<TR><TD><TABLE cellspacing=0 cellpadding=1 border=0 width=596>
+	<TR class="details"><TH align="RIGHT">&nbsp;Participant:&nbsp;<TD>&nbsp; &nbsp;<TD width=10>&nbsp; <TH align="RIGHT">&nbsp;Organization:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Workshop Date:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Due Date:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Return Fax:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Appraiser:&nbsp;<TD>&nbsp;&nbsp;
+</TABLE></TABLE>
+<IMG SRC="/MAP001/banner600.gif"><TABLE width="600" cellspacing=0 cellpadding=5>
+	<TR ><TD class="warning" border=1 >
+	<B>Warning:</B> If you use the back button on your browser's tool bar you will lose your 
+	data on this page. Please use the navigation buttons at the bottom of each page to move from page 
+	to page. Doing this will save your responses automatically in our database as you go through each page.</TD></TR></table>
+
+<table class="mytable" border="0" cellpadding="4" cellspacing="0" width="600">
+<TR class="options">
+	<TD colspan=4>
+	<CENTER><h2>HOTEL RESERVATION<BR>for  </h2>
+Accommodations for  at <BR>&nbsp;</CENTER>
+</table>
+<table class="mytable" border="0" cellpadding="4" cellspacing="0" width="600">
+<TR class="options">
+	<TD valign="top" width="30%"><B>1. Room occupancy: 
+	<TD valign="top" colspan="2">
+		<INPUT name="occupancy" type="radio" id="occupancy_1" value="One Person" title="Room occupancy"><label for="occupancy_1">One person (one bed)</label><BR>
+		<INPUT name="occupancy" type="radio" id="occupancy_2" value="Two people"> <label for="occupancy_2">Two people (one bed)</label><BR>
+		<INPUT name="occupancy" type="radio" id="occupancy_3" value="Two people"><label for="occupancy_3">Two people (two beds)</label><BR>
+		<INPUT name="occupancy" type="radio" id="occupancy_4" value="Meals Only"><label for="occupancy_4">Meals Only (no lodging)</label><BR>
+	<td valign="top">
+		* Hotel is a non-smoking facility.
+		<!--
+		<INPUT name="smoker" type="radio" id="smoker_1" value="Yes" title="Smoker ?"><label for="smoker_1">Smoking</label><BR>
+		<INPUT name="smoker" type="radio" id="smoker_2" value="No"><label for="smoker_2">Non-smoking</label>
+-->
+<TR class="options2">
+	<TD valign="top">
+		<B>2. Will you arrive early and need a room on  ?
+	<TD valign="top">
+		<INPUT name="early" type="radio" id="early_1" value="Yes" title="Early arrival ?"><label for="early_1">Yes</label>
+		<INPUT name="early" type="radio" id="early_2" value="No"><label  for="early_2">No </label>
+	<TD valign="top" align="right">
+		<B>Arrival time: (if arriving early)
+	<TD valign="top">
+		<INPUT name="arrivaltime" type="text" title="Arrival time">
+<TR class="options">
+	<TD valign="top"><B>3. Do you plan to have a guest? 	
+	<TD valign="top">
+		<INPUT name="guest" type="radio" id="guest_1" value="Yes" title="Will you bring a guest for dinner?"><label for="guest_1">Yes</label>
+		<INPUT name="guest" type="radio" id="guest_2" value="No"><label  for="guest_2">No </label>
+	<TD valign="top" align="right">
+		<B>If yes, will the guest join the group for dinner?
+	<TD valign="top">
+	 <INPUT name="day1guest" type="radio" id="day1guest_1" value="Yes" title=" dinner guest?"><label for="day1guest_1">Yes</label>
+		<INPUT name="day1guest" type="radio" id="day1guest_2" value="No"><label  for="day1guest_2">No </label><BR>
+	 <INPUT name="day2guest" type="radio" id="day2guest_1" value="Yes" title=" dinner guest?"><label for="day2guest_1">Yes</label>
+		<INPUT name="day2guest" type="radio" id="day2guest_2" value="No"><label  for="day2guest_2">No </label><BR>
+<TR class="options">
+	<td colspan="4" align="right">Please note, you will be charged for cancelled meals after 
+<TR class="options2">
+	<TD valign="top"><B>4. Do you have any dietary restrictions?
+	<TD valign="top" colspan="3">
+		<textarea name="dietnotes" cols="40" rows="5" title="Dietary restrictions"></textarea>
+<TR class="options">
+	<TD valign="top" colspan="4"><B>5. Credit card information is required in order to reserve lodging and/or meals. Please complete the information below:
+<TR class="options">
+	<TD align="right"><B>Name on credit card: <cardname>
+	<TD valign="top" colspan="3">
+		<INPUT name="cardname" type="text"  size="30" title="Name on credit card">
+<TR class="options">
+	<TD align="right"><B>Credit card type:
+	<TD valign="top" colspan="3">
+		<INPUT name="cardtype" type="radio" id="cardtype_1" value="Mastercard" title="Credit Card type"><label for="cardtype_1">Mastercard</label>
+		<INPUT name="cardtype" type="radio" id="cardtype_2" value="Visa"><label for="cardtype_2">Visa</label>
+		<INPUT name="cardtype" type="radio" id="cardtype_3" value="Amex"><label for="cardtype_3">American Express</label>
+		<INPUT name="cardtype" type="radio" id="cardtype_4" value="Diners"><label for="cardtype_4">Diners</label>
+		<INPUT name="cardtype" type="radio" id="cardtype_5" value="Discover"><label for="cardtype_5">Discover</label>
+<TR class="options">
+	<TD align="right" valign="top"><B>Credit card number:
+	<TD valign="top" colspan="3">
+		<INPUT name="cardno" type="text"  size="20" desc="Credit Card number"> <span class="warning">Write this on form after printing</font>
+<TR class="options">
+	<TD  align="right"><B>Credit card expiration date (MM/YY):
+	<TD valign="top" colspan="3">
+		<INPUT name="cardexpiry" type="text"  size="10" title="Credit Card expiry date">
+<TR class="warning"><TD colspan="4"><font size="-1">
+		No charge will be made to your credit card at this time. 
+		Management Action Programs will provide these details to the hotel for confirmation of your reservation only. 
+		Payment for hotel charges will be made when you check out of the hotel. 
+		
+<TR class="options2">
+	<TD valign="top" colspan="4"><B>6. Your name and title as they appear on our records:
+		<font color="blue"><B> , </B></font><BR>
+<TR class="options2">
+	<TD valign="top">
+		<B>If you want your name or title to appear differently, please make the changes here:
+	<TD valign="top" colspan="3">
+		<INPUT name="revisedfullname" type="text" value=" , "  size="60">
+</table>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn6" tag="5" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn6" tag="7" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section7" style="display:none">
+<A NAME="A7">
+
+<style  type="text/css" media="all">
+.loc {color:red; font-weight:bold;}
+TH { background-color: #FFFFFF; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt;}
+TD { background-color: #FFFFFF; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt;}
+.day1 th {border-width:2px 0 0 0; border-color:#666666; border-style:solid; text-align:left;}
+.day2 th {border-width:2px 0 0 0; border-color:#666666; border-style:solid; text-align:left;}
+.day3 th {border-width:2px 0 0 0; border-color:#666666; border-style:solid; text-align:left;}
+.sched { color:#ffffff; background-color: #E00000; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12pt; font-weight:bold;}
+
+</style>
+     <TABLE cellspacing=0 cellpadding=0 border=1 >
+<TR><TD><TABLE cellspacing=0 cellpadding=1 border=0 width=596>
+	<TR class="details"><TH align="RIGHT">&nbsp;Participant:&nbsp;<TD>&nbsp; &nbsp;<TD width=10>&nbsp; <TH align="RIGHT">&nbsp;Organization:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Workshop Date:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Due Date:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Return Fax:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Appraiser:&nbsp;<TD>&nbsp;&nbsp;
+</TABLE></TABLE>
+<IMG SRC="/MAP001/banner600.gif">
+
+
+<TABLE width="600" class="schedule" border="0" cellspacing="0" cellpadding="5">
+    <TR><TD colspan="3" class="sched"> Workshop Schedule
+    <TR><TD colspan="3" > &nbsp;
+    <TR class="day1"><TH>First Day <Th>&nbsp;<TH>LOCATION
+        <TR><TD align="right"> 9:30 - 12:45 <td>First Group Meeting <TD class="loc"> Meeting Room
+        <TR><TD align="right">12:45 - 1:30  <td>Lunch 				<TD class="loc"> Dining Room
+        <TR><TD align="right"> 1:30 - 6:45  <td>Group Meeting 		<TD class="loc"> Meeting Room
+        <TR><TD align="right"> 7:00 - 8:00  <td>Group Dinner 		<TD class="loc"> Dining Room
+
+    <TR class="day2"><TH>Second Day<Th colspan="2">&nbsp;
+        <TR><TD align="right"> 7:00 -  8:00  <td>Breakfast and Team Meetings <TD class="loc"> Dining Room
+        <TR><TD align="right"> 8:00 - 12:00  <td>Group Meeting 				 <TD class="loc"> Meeting Room
+        <TR><TD align="right">12:00 -  2:00  <td>Lunch 						 <TD class="loc"> Dining Room
+        <TR><TD align="right"> 2:00 -  6:35  <td>Group Meeting 				 <TD class="loc"> Meeting Room
+        <TR><TD align="right"> 7:00 -  8:00  <td>Group Dinner				 <TD class="loc"> Dining Room
+
+    <TR class="day3"><TH>Third Day<Th colspan="2">&nbsp;
+        <TR><TD align="right">7:00 - 8:00  <td>Breakfast and Team Meetings 	<TD class="loc">Dining Room
+        <TR><TD align="right">8:00 - 12:30 <td>Team Meeting					<TD class="loc">Meeting Room
+        <TR><TD align="right">12:30 <TD colspan="2">Adjourn
+</table>
+
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn7" tag="6" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn7" tag="8" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section8" style="display:none">
+<A NAME="A8">
+<SPAN class="prompt">CHECK. Check if we have enough data to allow submission of form</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn8" tag="7" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn8" tag="9" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section9" style="display:none">
+<A NAME="A9">
+	<STYLE TYPE="text/css">
+		.body { background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+	</STYLE>
+<IMG SRC="/MAP001/banner600.gif" width=500>
+<TABLE width="600"><TR><TD>
+
+<H3>
+You have reached the end of this form.<BR><BR>
+
+
+No responses were entered.<BR><BR>
+
+
+You will automatically be redirected to the list of forms.<BR><BR>
+
+<A HREF="/cgi-mr/pwikit_login.pl?id=&password=">Click here</A>
+ if you are NOT automatically redirected. 
+</H3>
+
+
+</TD></TR></TABLE>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn9" tag="8" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn9" tag="10" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section10" style="display:none">
+<A NAME="A10">
+<SPAN class="prompt"><IMG SRC="/MAP001/banner600.gif"><INPUT TYPE="HIDDEN" NAME="finish"><TABLE border="0"width="600"><TR><TD>You are now at the end of this form. If you are finished, please click the SUBMIT button to save your answers and submit them to the workshop leader. If you wish to corret or modify a responses you can re-enter the form and adjust your response. This must be done prior to <%duedate%>. <BR><BR><TABLE border=0 cellpadding="8"><TR><TH><INPUT type="SUBMIT" VALUE=" SUBMIT " onclick="document.q.finish.value='';"></TD><TD>My responses are complete,  and I would like to submit them now.</TD></TR><TR><TD> <INPUT TYPE="BUTTON" VALUE="NOT YET" onclick="document.q.finish.value='0';document.q.submit();"></TD><TD>My responses are not complete. I need to come back and review later before submission.</TD></TR><TR><TH> <INPUT TYPE="BUTTON" VALUE=" << BACK " tabindex="-1"  alt="BACK" onclick="history.back()"> <TD>Go back and review my responses.</tr></TABLE></TABLE></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn10" tag="9" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn10" tag="-2" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+</FORM>
+</BODY>
+</HTML>

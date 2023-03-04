@@ -1,0 +1,26 @@
+MAP Workshop Materials
+----------------------
+
+Do NOT share or forward this email to anyone. 
+
+Click here to start: http://[%vhost%]/survey/pwikit_login.pl?id=[%id%]&password=[%password%]
+
+Alternatively: http://[%vhost%]/    LoginID:  [%id%]     Password:  [%password%] 
+--------------------------------------------------------------------------------------------
+
+On behalf of [%aboutname%]:
+
+Dear [%who%]:
+
+ You have been identified by [%aboutname%] as an individual within your organization whose opinions matter to [%himher%].  [%firstname%] will be attending a management and leadership workshop through Management Action Programs (MAP) soon, and as such, your specific comments on [%hisher%] management abilities from your perspective are appreciated.
+
+We have provided an online form for you to complete no later than [%duedate%]. Your comments will be treated completely anonymously, and thus, your candor is greatly appreciated.
+
+Our preference is to receive all forms online through this process; however, we have also provided the option for you to download, print and fax the completed questions to us. Our fax number is [%returnfax%].
+
+Should you have any questions, please call us at [%adminphone%], or reply to this email.  Thank you, and we look forward to working with [%firstname%]! 
+
+Sincerely,
+[%execname%]
+
+If you are having trouble, please email ctwebb@mapconsulting.com for further assistance. 

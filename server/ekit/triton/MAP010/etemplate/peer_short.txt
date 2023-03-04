@@ -1,0 +1,27 @@
+To: [%peerfullname%]
+Company: [%company%]
+Workshop Date: [%workshopdate%]
+Location: [%location%]
+
+Do NOT share or forward this email to anyone. Doing so, may result in others seeing your responses.
+
+On behalf of [%aboutname%]:
+
+Dear [%peerfirstname%]:
+
+You have been identified by [%aboutname%] as an individual within the organization whose opinions matter to [%himher%].  [%firstname%] will be attending a management and leadership workshop through Management Action Programs soon, and as such, your comments on [%hisher%] management abilities from your perspective are appreciated. 
+
+To make the process easy for you, we have provided an electronic form for you to complete no later than [%duedate%], and as [%firstname%] has probably shared with you, your comments will be treated completely anonymously, and thus, your candor is greatly appreciated.
+
+Our preference is that all forms be completed electronically and submitted to us through this process, however, we have also provided the option for you to download and print them and then fax to us at [%returnfax%]. 
+
+
+If you should have any questions, please do not hesitate to give us a call at [%adminphone%], or reply to this email.  Thank you, and we look forward to working with [%firstname%]!
+Sincerely,
+[%execname%]
+Please click here to begin the process. 
+http://[%vhost%]/cgi-mr/start/MAP010/[%password%]/[%id%]
+
+The above link should log you on to our system. In the event of the link not opening, you may be asked to enter an ID and password. Your ID is [%id%] and your password is [%password%] 
+Alternatively, go to http://[%vhost%]/MAP010/ and enter the id and password as above. 
+If you are still having trouble, please email support for further assistance. 

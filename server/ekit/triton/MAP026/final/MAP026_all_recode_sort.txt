@@ -1,0 +1,1 @@
+Status	Seqno	SurveyID	Email	Ipaddr	Duration	Year	Month	Day	Weekday	hour	min	Token	Id	lastq	WSLeader	Exec	WSDate	Location	Q1x1	Q1x2	Q1x3	Q2x4	Q2x5	Q3x6	Q3x7	Q3x8	Q3x9	Q3x10	Q3x11	Q3x12	Q3x13	Q4x14	Q4x15	Q4x16	Q4x17	Q4x18	Q4x19	Q4x20	Q4x21	Q4x22	Q4x23	Q4x24	Q4x25	Q5x26	Q5x27	Q5x28	Q5x29	Q5x30	Q5x31	Q5x32	Q5x33	Q5x34	Q5x35	Q5x36	Q5x37	Q6x38	Q6x39	Q6x40	Q6x41	Q6x42	Q6x43	Q7	Q8	Q9

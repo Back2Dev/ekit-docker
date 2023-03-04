@@ -1,0 +1,4 @@
+[main]
+from_email=ctwebb@mapconsulting.com
+subject=PWI START: [%fullname%] Has Signed On
+from_name=Cathy Webb

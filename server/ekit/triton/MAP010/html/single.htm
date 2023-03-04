@@ -1,0 +1,47 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="style.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+var numq = 16;
+function Can_Proceed_()
+	{
+	return false
+	}
+function QValid_()
+	{
+	return true;
+	}
+function clr_QAA()
+	{
+	}
+ 
+//-->
+</SCRIPT>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#FF0080" TEXT="#000000"  class="body">
+<FORM NAME="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST"
+>
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP010">
+<INPUT NAME="jump_to" TYPE="hidden" VALUE="">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT NAME="q_no" TYPE="hidden" VALUE="1">
+<SPAN class="prompt"><SPAN class="qlabel">AA.</SPAN> </SPAN> <BR>
+<BR>
+<HR class="mytable"><TABLE BORDER="0" WIDTH="100%">
+<TR>
+		<TD width="90">
+		<INPUT class="input" TYPE="SUBMIT" VALUE="Next" TABINDEX="" onclick='document.q.jump_to.value=""; document.q.onsubmit=new Function("return QValid()")' id="btn_submit">
+		</TD>
+<TD><P><FONT size="-2" face="Arial, Helvetica, sans-serif">&nbsp;Survey provided by
+        <A HREF="http://www.market-research.com/" TABINDEX="-1" target="triton_home"> Triton Information Technology </A> 
+        <br>&nbsp;&copy; Triton Information Technology 1995-2001 all rights reserved.
+        &nbsp;&nbsp;<A HREF="mailto:ctwebb@mapconsulting.com?subject=MAP010" TABINDEX="-1">
+        email : info@market-research.com</a></FONT><BR></P>
+	</TD>
+</TR></TABLE>
+</FORM>
+</BODY>
+</HTML>

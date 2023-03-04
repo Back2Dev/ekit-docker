@@ -1,0 +1,5 @@
+[%adminname%]
+
+It appears we are unable to successfully send [%fullname%], [%company%], [%startdate%],
+[%batchname%], [%hisher%] initial e-kit invitation. You might consider contacting this
+participant directly, and see if assistance is required.

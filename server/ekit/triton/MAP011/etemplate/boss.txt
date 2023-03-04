@@ -1,0 +1,41 @@
+MAP Workshop Materials
+----------------------
+
+Do NOT share or forward this email to anyone. 
+
+Click here to start: http://[%vhost%]/survey/pwikit_login.pl?id=[%id%]&password=[%password%]
+
+Alternatively: http://[%vhost%]/    LoginID:  [%id%]     Password:  [%password%] 
+--------------------------------------------------------------------------------------------
+
+Dear [%who%]:
+
+We are looking forward to working with [%aboutname%] in [%abouthisher%] upcoming management and 
+leadership process through Management Action Programs (MAP).
+
+As [%abouthisher%] supervising manager or partner, your feedback is critical in guiding 
+us to help [%firstname%] achieve the goals of this program: to increase productivity and 
+overall management effectiveness.   Your responses will be shared with [%firstname%] during 
+the Workshop.  If there are certain comments you do not want shared, please designate those 
+accordingly.  To make the process of providing this important feedback to us easier, we 
+have provided a link to some online questionnaires for you to complete no later than [%duedate%]. 
+
+It is critical that these forms are completed and returned to us by this deadline to ensure 
+[%firstname%]'s successful participation in the workshop.  In addition to completing the 
+Manager / Partner Questionnaire contained in the link above, please discuss with [%aboutname%]
+the list of co-workers who should receive the Key Personnel Questionnaires (Q10). A copy 
+of the completed Key Personnel List (Q10A) will be sent to you.
+
+Our preference is that all forms be completed online and submitted online through this 
+process; however, we have also provided the option for you to download and print them and 
+then fax to us at 818-981-2717. 
+
+If you should have any questions, please do not hesitate to give us a call at 818-380-1177 x225, 
+or reply to this email.  Thank you, and we look forward to working with [%firstname%]! 
+
+Sincerely,
+
+[%execname%]
+
+---------------
+If you are having trouble, please email ctwebb@mapconsulting.com for further assistance.

@@ -1,0 +1,24 @@
+MAP Workshop Materials
+----------------------
+
+Do NOT share or forward this email to anyone to avoid others seeing your responses.
+
+Click here to start: http://[%vhost%]/survey/pwikit_login.pl?id=[%id%]&password=[%password%]
+
+Alternatively: http://[%vhost%]/    LoginID:  [%id%]     Password:  [%password%] 
+--------------------------------------------------------------------------------------------
+
+Dear [%who%]:
+
+While preparing for [%aboutname%]'s [%workshopdate%] workshop, we discovered that we are missing vital information about [%himher%]. Please go online and complete the forms no later than [%duedate%].
+
+We need this information to make the workshop uniquely useful and valuable to [%aboutname%].  
+
+If you have questions, please contact Cathy Webb at [%adminphone%].
+
+Thank you,
+
+[%execname%]
+
+---------------
+If you are having trouble, please email ctwebb@mapconsulting.com for further assistance.

@@ -1,0 +1,7 @@
+Cathy Webb
+
+According to the eKit database, the participant [%fullname%], [%startdate%], [%batchname%], has not yet completed all of the mandatory forms. It is possible that they have not received the email at all due to spam blocking.
+
+Please check their status, and if there are still missing forms, contact them directly and ask them to complete the forms.
+
+If they have completed the forms already, please ignore this message.

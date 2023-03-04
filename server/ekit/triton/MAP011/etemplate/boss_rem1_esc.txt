@@ -1,0 +1,2 @@
+[%adminname%]
+It appears we are unable to successfully send [%who%], supervisor/manager for [%aboutname%], [%workshopdate%], [%id%], [%hisher%] first  e-kit reminder. You might consider contacting this participant directly, and see if assistance is required.

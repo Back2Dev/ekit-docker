@@ -1,0 +1,53 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html lang="en-US"><head><title>Untitled Document</title>
+<style type="text/css">
+.prompt { color:#336633; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11pt; font-style: normal; font-weight: bold; }
+.heading { background-color: #336633; color:#ffffff; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: bold; }
+.options { background-color: #ffffcc; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style:normal; font-weight: normal; }
+.options2 { background-color: #ffffff; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style:normal; font-weight: normal; }
+.instruction {  font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 9pt; }
+.default {  }
+.qlabel { background-color: #ffffff;color:#336633; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-size: 18pt; border:1}
+.links {  font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.body { background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.details { color:#336633; background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.warning { color:red; background-color: #EEEEEE; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; border-color:red;border-style:solid;border-width:1px;}
+.mytable { color:black; border-width:2px; border-color:#336633; border-style:solid;}
+
+</style>
+</head>
+<body class="body">
+
+[%banner%]<br />
+Dear [%firstname%]:<br />
+<br />
+<p>
+While preparing for [%aboutname%]&#39;s [%workshopdate%] workshop, we discovered that we are missing vital information about [%himher%]. Please go online and complete the forms no later than [%duedate%]. 
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+We need this information to make the workshop uniquely useful and valuable to [%aboutname%]. 
+</p>
+<p>
+Please click <a href="http://[%vhost%]/cgi-mr/tokendb.pl?survey_id=[%SID%]&amp;token=[%password%]&amp;id=[%id%]">here</a> to complete the forms now. 
+</p>
+<p>
+If you have questions, please contact [%adminname%] at [%adminphone%]. 
+</p>
+<p>
+Thank you, 
+</p>
+<p>
+[%execname%] 
+<hr />
+<font size="1">The above link should log you on to our system. In the event of the link not opening, you may be asked to enter an ID and password. Your ID is [%id%] and your password is [%password%] <br />
+Alternatively, go to http://[%vhost%]/[%SID%]/ and enter the id and password as above. <br />
+If you are still having trouble, please email <a href="mailto:ctwebb@mapconsulting.com">ctwebb@mapconsulting.com</a> for further assistance. </font>
+</p>
+
+
+</body>
+</html>

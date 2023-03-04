@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"><script language="JavaScript">
+<!--
+function Can_Proceed_0()
+	{
+	return false
+	}
+function Can_Proceed_1()
+	{
+	return false
+	}
+function QValid()
+	{
+//
+// OK, we have passed all the checks and are about to allow the form to be submitted. 
+// So we gray it out to make sure it cannot be clicked again
+//
+	document.q.btn_submit.value = "Submitting...";
+	document.q.btn_submit.disabled = true;
+	return true;
+	}
+function QValid_0()
+	{
+	return true;
+	}
+function QValid_1()
+	{
+	return true;
+	}
+function clr_Q1()
+	{
+	}
+function clr_QA()
+	{
+	}
+ 
+//-->
+</script>
+
+
+<title>Triton Technology</title>
+<link rel="stylesheet" href="Q4_files/style.css"><script language="JavaScript">
+function QValid()
+	{
+   var selectedButton = "";
+   for (var i=0;i< document.q.radioQ1.length;i++)
+      {
+      if (document.q.radioQ1[i].checked=="1")
+         {
+         selectedButton=document.q.radioQ1[i].value;
+         }
+      }
+if (selectedButton == "")
+   {
+   alert("Please select one of the items in the list");
+   return false;
+   }
+	return true;
+	}
+ 
+</script><link rel="stylesheet" href="Q4_files/style.css"></head>
+
+
+
+
+<body class="body">
+<form name="q" action="/donotuse-mr/godb.pl" enctype="www-x-formencoded" method="POST">
+  <p> 
+      <input name="survey_id" value="MAP004" type="hidden">
+      <input name="seqno" value="1040183" type="hidden">
+      <input name="q_no" value="2.3" type="hidden">
+</p><table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr><td><table border="0" cellpadding="1" cellspacing="0" width="596">
+	<tbody><tr class="details"><th align="RIGHT">&nbsp;Participant:&nbsp;</th><td>&nbsp;731224 A.J. Widacki&nbsp;</td><td width="10">&nbsp; </td><th align="RIGHT">&nbsp;Organization:&nbsp;</th><td>&nbsp;Michael Baker, Jr., Inc.&nbsp;
+	</td></tr><tr class="details"><th align="RIGHT">&nbsp;Workshop Date:&nbsp;</th><td>&nbsp;March 9-11, 2011&nbsp;</td><td>&nbsp;</td><th align="RIGHT">&nbsp;Due Date:&nbsp;</th><td>&nbsp;03/17/2011&nbsp;
+	</td></tr><tr class="details"><th align="RIGHT">&nbsp;Return Fax:&nbsp;</th><td>&nbsp;(818) 981-2717&nbsp;</td><td>&nbsp;</td><th align="RIGHT">&nbsp;Appraiser:&nbsp;</th><td>&nbsp;A.J. Widacki&nbsp;
+</td></tr></tbody></table></td></tr></tbody></table>
+<img src="Q4_files/banner600.gif"><table cellpadding="5" cellspacing="0" width="600">
+	<tbody><tr><td class="warning" border="1">
+	<b>Warning:</b> If you use the back button on your browser's tool bar you will lose your 
+	data on this page. Please use the navigation buttons at the bottom of each page to move from page 
+	to page. Doing this will save your responses automatically in our database as you go through each page.</td></tr></tbody></table>
+<br>
+    <span class="qlabel">1.</span> <span class="prompt"> Please fill in the following details for A.J. Widacki:</span> <p></p>
+  <table class="mytable" cellpadding="5" cellspacing="0">
+    <tbody><tr class="options"> 
+      <td>&nbsp;Home Address:</td>
+      <td> 
+        <input name="address" value="8541 Ivy Falls Court" maxlength="100" size="30" class="input" type="text">
+      </td>
+      <td> 
+        <div align="right">&nbsp; Birth Date (MM/DD/YY):</div>
+      </td>
+      <td> 
+        <input name="dob" value="9/15/57" size="20" class="input" type="text">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td>
+        <div align="right">Phone:</div>
+      </td>
+      <td colspan="3"> 
+        <input name="phone" value="281-785-1250" size="15" class="input" type="text">
+      </td>
+    </tr>
+    <tr class="options">
+      <td>
+        <div align="right">&nbsp;City:&nbsp;</div>
+      </td>
+      <td> 
+        <input name="city" value="Jersey Village" maxlength="20" size="20" class="input" type="text">
+      </td>
+      <td> 
+        <div align="right">&nbsp;Marital Status:</div>
+      </td>
+      <td> 
+        <p>Single 
+          <input name="married" value="0" type="radio">
+          Married 
+          <input name="married" value="1" checked="checked" type="radio">
+        </p>
+      </td>
+    </tr>
+    <tr class="options">
+      <td>
+        <div align="right">State:</div>
+      </td>
+      <td> 
+        <input name="state" value="Texas" size="20" class="input" type="text">
+      </td>
+      <td> 
+        <div align="right">Children:</div>
+      </td>
+      <td class="options"> 
+        <input name="children" value="2" size="10" class="input" type="text">
+      </td>
+    </tr>
+    <tr class="options">
+      <td>
+        <div align="right">Zip Code:</div>
+      </td>
+      <td> 
+        <input name="zip" value="77040-1129" size="10" class="input" type="text">
+      </td>
+      <td> 
+        <div align="right">Ages:</div>
+      </td>
+      <td class="options"> 
+        <input name="age" value="21 &amp; 35" size="20" class="input" type="text">
+      </td>
+    </tr>
+  </tbody></table>
+ 
+<input name="jump_to" value="" type="hidden"><hr class="mytable"><table border="0" width="100%">
+<tbody><tr>
+		<td width="90"> 
+		<input class="input" value=" &lt;&lt; BACK " tabindex="-1" alt="BACK" onclick="document.q.BACK2.value='1';document.q.submit()" type="BUTTON">
+		<input name="BACK2" type="HIDDEN">
+		</td>
+		<td width="90">
+		<input class="input" value=" NEXT &gt;&gt; " onclick='document.q.jump_to.value="";document.q.BACK2.value=""; document.q.onsubmit=new Function("return QValid()")' id="btn_submit" type="SUBMIT">
+		</td>
+<td><p><font face="Arial, Helvetica, sans-serif" size="-2">&nbsp;Survey provided by
+        <a href="http://www.market-research.com/" tabindex="-1" target="triton_home"> Triton Information Technology </a> 
+        <br>&nbsp;© Triton Information Technology 1995-2001 all rights reserved.
+        &nbsp;&nbsp;<a href="mailto:pwisupport@mapconsulting.com?subject=MAP004" tabindex="-1">
+        email : info@market-research.com</a></font><br></p>
+	</td>
+</tr></tbody></table>
+</form>
+
+
+</body></html>

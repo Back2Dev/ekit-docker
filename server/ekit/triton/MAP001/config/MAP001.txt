@@ -1,0 +1,90 @@
+#
+# Generated Survey syntax file for MAP001 (Tue Jun 18 10:34:39 2002);
+# 
++survey_name=Participant's Questionnaire
++window_title=MAP001 - Participant's Questionnaire
++one_at_a_time=0
++block_size=5
+#+show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++focus_off=1
++mike=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Participant's Questionnaire<TH class="bluebarq">Q1</table>
++qscale=<P><%q_label%> 
+
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C	warning=warning
+C	ws_details=ws_details
+C   qbanner=qbanner
+C   qscale=qscale
+
+
+Q 1. <%qbanner%><%qscale%> Please describe your leadership/management strengths as a manager.
++qtype=written
+
+Q 2. Every leader/manager has opportunities for growth and improvement. What are the management <BR>and/or leadership skills in which you could improve?
++qtype=written
+
+Q 3. What are your personal career goals in the organization?
++qtype=written
+
+Q 4. What are the one-year measurable goals ($, #, %, etc.) in your area of responsibility?
++qtype=written
+
+Q 5. What are your short-term measurable department goals ($, #, %, etc.) that can be achieved within the <BR>next 30 to 45 days?
++qtype=written
+
+Q 6. <%qbanner%><%qscale%> What do you believe are the significant challenges you must resolve in order to achieve the above goals?
++qtype=written
+
+Q 7. What are your main COMMUNICATING challenges (e.g., style, effectiveness, frequency, internal, <BR>external, etc.)?
++qtype=written
+
+Q 8. What are your main PLANNING challenges (e.g., no formal planning, unclear goals, projects, etc.)?
++qtype=written
+
+Q 9. What are your main ORGANIZING challenges (e.g., personal organization, availability of supplies, <BR>equipment, financial resources, time, organizational structure, etc.)?
++qtype=written
+
+Q 10. What are your main STAFFING challenges (e.g., recruiting, selecting the right people, training, <br>development, retaining, etc.)?
++qtype=written
+
+Q 11. <%qbanner%><%qscale%> What are your main CONTROLLING challenges (e.g., accountability, follow-through, taking <br>corrective action, cost and inventory control, productivity, quality, etc.)?
++qtype=written
+
+Q 12. What are your main LEADING challenges (e.g., clear vision, motivation, teamwork, initiating action, <br>innovation, commitment to team goals, etc.)?
++qtype=written
+
+Q 13. What do you expect to gain from this management process? <BR>How will you know when those expectations have been met?
++qtype=written
++buttons=1
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)}
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++sscript=../scripts/pwikit_prime_status.pl
++buttons=0

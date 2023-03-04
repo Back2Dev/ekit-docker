@@ -1,0 +1,109 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="/themes/ekit/style.css">
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+<BODY class="soria" >
+
+<FORM NAME="q" id="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST">
+  <p> 
+      <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+      <INPUT NAME="seqno" TYPE="hidden" VALUE="<%seqno%>">
+      <INPUT NAME="q_labs" TYPE="hidden" VALUE="<%q_labs%>">
+      <INPUT NAME="session" TYPE="hidden" VALUE="">
+<%qbanner%>
+<p class="prompt"> Branch offices, affiliates, satellites or divisions:<BR>(or click NEXT if not applicable to your situation)</P> 
+  </p>
+  <table cellpadding="5" cellspacing="0"  class="mytable"  >
+    <tr class="heading"> 
+      <td   >Name of unit:</td>
+      <td   > Location:</td>
+      <td   > 
+        <div align="left">Phone:</div>
+      </td>
+      <td   > Person in charge:</td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <input onchange="yuk()" type="text" name="unit1" class="input">
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="location1" class="input">
+      </td>
+      <td   > 
+        <div align="right"> 
+          <input onchange="yuk()" type="text" name="phone1" class="input">
+        </div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="incharge1" class="input">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <input onchange="yuk()" type="text" name="unit2" class="input">
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="location2" class="input">
+      </td>
+      <td   > 
+        <div align="right"> 
+          <input onchange="yuk()" type="text" name="phone2" class="input">
+        </div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="incharge2" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <input onchange="yuk()" type="text" name="unit3" class="input">
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="location3" class="input">
+      </td>
+      <td   > 
+        <div align="right"> 
+          <input onchange="yuk()" type="text" name="phone3" class="input">
+        </div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="incharge3" class="input">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <input onchange="yuk()" type="text" name="unit4" class="input">
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="location4" class="input">
+      </td>
+      <td   > 
+        <div align="right"> 
+          <input onchange="yuk()" type="text" name="phone4" class="input">
+        </div>
+      </td>
+      <td   > 
+        <input onchange="yuk()" type="text" name="incharge4" class="input">
+      </td>
+    </tr>
+  </table>
+ 
+</FORM>
+
+</BODY>
+</HTML>

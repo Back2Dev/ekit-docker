@@ -161,7 +161,7 @@ RUN \
 COPY localhost.conf /etc/apache2/sites-enabled/localhost.conf
 COPY ports.conf /etc/apache2/ports.conf
 
-COPY ./app /home/vhosts/ekit/htdocs
+COPY ./ekit /home/vhosts/ekit
 
 RUN chmod 777 /home/vhosts/ekit
 RUN chmod 777 /usr/bin/perl

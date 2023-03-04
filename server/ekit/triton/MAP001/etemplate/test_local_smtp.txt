@@ -1,0 +1,7 @@
+
+
+Hello
+
+Just testing a new smtp server, to make sure this does not end up as spam.
+
+ Andrew Creer 

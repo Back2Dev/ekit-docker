@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>MAP001 - Participant's Questionnaire</TITLE>
+   <META NAME="Hand Made">
+   <META NAME="Author" CONTENT="Mike King">
+   <META NAME="Copyright" CONTENT="Triton Survey Systems">
+</HEAD>
+<link rel="stylesheet" href="style.css">
+<SCRIPT Language="JavaScript">
+<!--
+function loadme()
+	{
+	var w = window.parent;
+	var s = new String(w.location);
+//	alert(s);
+	var x = s.indexOf('password=',0);
+	if (x != -1)
+		{
+		var rest;
+		rest = s.substring(x+9);
+//		alert("rest="+rest);
+		if (rest != "")
+			q.token.value = rest;
+		}
+	}
+
+function QValid()
+	{
+    if (document.q.token.value == "")
+       {
+       alert("Please fill the password from the email invitation that you received, and try again");
+       return false;
+       }
+	return true;
+	}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY onload="loadme()" BGCOLOR=#FFFFFF class="body">
+<FORM name="q" action="/cgi-mr/tokendb.pl" METHOD="POST" onsubmit="return(QValid())">
+
+<TABLE BORDER="0" CELLPADDING="10" CELLSPACING="0">
+	<TR class="heading">
+		<TD COLSPAN=3>
+			<P> This survey should only take a few minutes of your time<P>
+		</TD>
+	</TR>
+
+	<TR class="options">
+		<TH>Please enter your password: </TH>
+		<TD>
+			<INPUT TYPE="TEXT" NAME="token">
+		</TD>
+		<TD>
+            <INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP001">
+		    <INPUT TYPE="SUBMIT" VALUE="Start survey">
+		</TD>
+	</TR>
+		
+      <TD COLSPAN="3"> <I><font size="-1">The password field should be filled 
+        in automatically for you. If not, just enter the password from the email 
+        message.</font></I> </TD>
+	<TR>
+	</TR>
+</TABLE>
+    
+  <font face="Arial, Helvetica, sans-serif" size="-1"><b>Notes:</b> <br>
+  1) This survey is to be completed by invitation only. Each password can only 
+  be used once. If you experience any difficulties in completing the survey, or 
+  have any questions, please contact <a href="mailto:ctwebb@mapconsulting.com">Cathy 
+  Webb at Management Action Programs</a></font> <br>
+
+</BODY>
+</HTML>

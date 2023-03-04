@@ -1,0 +1,68 @@
+<HTML>
+
+<HEAD>
+<link id="themeStyles" rel="stylesheet" href="/dojo/dijit/themes/soria/soria.css">
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.HorizontalSlider");
+	dojo.require("dijit.form.HorizontalRule");
+	dojo.require("dijit.form.HorizontalRuleLabels");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+</script>
+
+
+</head>
+<body class="soria">
+    <!-- create rules and labels above horizontal slider -->
+    <ol data-dojo-type="dijit.form.HorizontalRuleLabels"
+        data-dojo-props="
+            container: 'topDecoration',
+            style: 'height: 1.2em; font-weight: bold',
+            count: 11,
+            numericMargin: 1">
+    </ol>
+    <div data-dojo-type="dijit.form.HorizontalRule"
+        data-dojo-props="
+            container: 'topDecoration',
+            count: 11,
+            style: 'height: 5px; margin: 0 12px;'"></div>
+ 
+    <!-- declaratively create a slider without buttons, values from 0-10 -->
+    <input id="hslider" type="range"
+        data-dojo-type="dijit.form.HorizontalSlider"
+        data-dojo-props="
+            minimum: 0,
+            maximum: 10,
+            value: 3,
+            showButtons: false,
+            discreteValues: 11">
+ 
+    <!-- create rules and labels below horizontal slider -->
+    <div data-dojo-type="dijit.form.HorizontalRule"
+        data-dojo-props="
+            container: 'bottomDecoration',
+            count: 5,
+            style: 'height: 5px; margin: 0 12px;'"></div>
+    <ol data-dojo-type="dijit.form.HorizontalRuleLabels"
+        data-dojo-props="
+            container: 'bottomDecoration',
+            style: 'height: 1em; font-weight: bold;'">
+        <li>lowest</li>
+        <li>normal</li>
+        <li>highest</li>
+    </ol>
+ 
+    <script>
+        // Require parser since we are performing declarative instantiation
+        dojo.require("dojo.parser");
+        // Require the slider class
+        dojo.require("dijit.form.HorizontalSlider");
+        // Require rule/labels classes
+        dojo.require("dijit.form.HorizontalRuleLabels");
+        dojo.require("dijit.form.HorizontalRule");
+    </script>
+</body>

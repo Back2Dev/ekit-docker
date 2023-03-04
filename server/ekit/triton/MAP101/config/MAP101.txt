@@ -1,0 +1,8 @@
++survey_name=Under construction
++window_title=XXX101 - Under construction
++one_at_a_time=1
++from_name=info@market-research.com
++from_email=support@mappwi.com
+Q A. Welcome !
++instr=We are currently working on this survey. As soon as we have it finished we'll invite you to do it properly. Right now you can proceed at your own risk
++qtype=instruction

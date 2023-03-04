@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<link rel="stylesheet" href="style.css">
+<SCRIPT language="JavaScript" src="/pix/date-picker.js"> </script>
+<SCRIPT language="JavaScript" src="/pix/date-validate.js"></script>
+<SCRIPT language="JavaScript">
+<!--
+/**
+ * DHTML date validation script. Courtesy of SmartWebby.com (http://www.smartwebby.com/dhtml/)
+ */
+// Declaring valid date character, minimum year and maximum year
+//		var dtCh= "/";
+//		var minYear=1900;
+//		var maxYear=2100;
+//		
+//		function isInteger(s)
+//			{
+//			var i;
+//		    for (i = 0; i < s.length; i++)
+//				{   
+//		        // Check that current character is number.
+//		        var c = s.charAt(i);
+//		        if (((c < "0") || (c > "9"))) return false;
+//				}
+//		    // All characters are numbers.
+//		    return true;
+//			}
+//		
+//		function stripCharsInBag(s, bag)
+//			{
+//			var i;
+//		    var returnString = "";
+//		    // Search through string's characters one by one.
+//		    // If character is not in bag, append to returnString.
+//		    for (i = 0; i < s.length; i++)
+//				{   
+//		        var c = s.charAt(i);
+//		        if (bag.indexOf(c) == -1) returnString += c;
+//				}
+//		    return returnString;
+//			}
+//		
+//		function daysInFebruary (year)
+//			{
+//			// February has 29 days in any year evenly divisible by four,
+//		    // EXCEPT for centurial years which are not also divisible by 400.
+//		    return (((year % 4 == 0) && ( (!(year % 100 == 0)) || (year % 400 == 0))) ? 29 : 28 );
+//			}
+//		function DaysArray(n) 
+//			{
+//			for (var i = 1; i <= n; i++) 
+//				{
+//				this[i] = 31
+//				if (i==4 || i==6 || i==9 || i==11) {this[i] = 30}
+//				if (i==2) {this[i] = 29}
+//			   } 
+//		   return this
+//			}
+//		
+//		function isDate(dtStr,name)
+//			{
+//			var daysInMonth = DaysArray(12)
+//			var pos1=dtStr.indexOf(dtCh)
+//			var pos2=dtStr.indexOf(dtCh,pos1+1)
+//			var strMonth=dtStr.substring(0,pos1)
+//			var strDay=dtStr.substring(pos1+1,pos2)
+//			var strYear=dtStr.substring(pos2+1)
+//			strYr=strYear
+//			if (strDay.charAt(0)=="0" && strDay.length>1) strDay=strDay.substring(1)
+//			if (strMonth.charAt(0)=="0" && strMonth.length>1) strMonth=strMonth.substring(1)
+//			for (var i = 1; i <= 3; i++) 
+//				{
+//				if (strYr.charAt(0)=="0" && strYr.length>1) strYr=strYr.substring(1)
+//				}
+//			month=parseInt(strMonth)
+//			day=parseInt(strDay)
+//			year=parseInt(strYr)
+//			if (pos1==-1 || pos2==-1)
+//				{
+//				alert(name+": The date format should be : mm/dd/yyyy")
+//				return false
+//				}
+//			if (strMonth.length<1 || month<1 || month>12)
+//				{
+//				alert(name+": Please enter a valid month")
+//				return false
+//				}
+//			if (strDay.length<1 || day<1 || day>31 || (month==2 && day>daysInFebruary(year)) || day > daysInMonth[month])
+//				{
+//				alert(name+": Please enter a valid day")
+//				return false
+//				}
+//			if (strYear.length != 4 || year==0 || year<minYear || year>maxYear)
+//				{
+//				alert(name+": Please enter a valid 4 digit year between "+minYear+" and "+maxYear)
+//				return false
+//				}
+//			if (dtStr.indexOf(dtCh,pos2+1)!=-1 || isInteger(stripCharsInBag(dtStr, dtCh))==false)
+//				{
+//				alert(name+": Please enter a valid date")
+//				return false
+//				}
+//			return true
+//			}
+//		
+	function QValid()
+	    {
+	    if (!check(document.q.title))    return false;
+		[%invite_check%]
+		[%reminder1_check%]
+		[%reminder2_check%]
+	    return true;
+	    }
+//-->
+</SCRIPT>
+</HEAD>
+<BODY class="body">
+<FORM name="q" action="/cgi-adm/upload_csv_file.pl" method="POST" enctype="multipart/form-data" onsubmit="return QValid()">
+<CENTER>
+<TABLE BORDER=0 CELLPADDING=10 class="mytable" cellspacing=0 width=700>
+<TR><TH colspan=2 class="heading">&nbsp;<BR>
+
+<BR>&nbsp;Upload page for email addresses<BR>&nbsp;</TH></TR>
+	<TR><TD colspan="2" class="options2"> 
+Welcome to the email upload site for [%SID%]
+
+	
+	</TD></TR>
+<TR class="options"><TD>Please describe this Batch
+	<BR><font color="red" size="+1">*</font><input name="title" type="text" title="Batch title" value="" size=50> </tr>
+
+
+<TR class="options2"><TD>
+	[%upload_format%]</tr>
+
+<TR class="options2"><TD>
+	[%invite_html%]</tr>
+
+<TR class="options2"><TD>
+	[%reminder1_html%]</tr>
+
+<TR class="options2"><TD>
+	[%reminder2_html%]</tr>
+
+<TR class="highlight" border=1>
+	<TD class="highlight" colspan=2><B>Select file to upload: </B> <INPUT TYPE="FILE" name="filename" > <= Be sure to click this button to upload
+	<font color="red"><B>[%warning%]</B></font> </TD></TR>
+<TR><TH colspan=2 class="options">&nbsp;<BR><INPUT TYPE="SUBMIT" VALUE="Upload email addresses"><BR>&nbsp;</TH></TR>
+
+<TR class="options2"><TD colspan="2">
+<center>If you have any questions, please contact <A HREF="mailto:surveySupport@market-research.com">surveysupport@market-research.com</A></center>
+
+</TABLE>
+<input type="hidden" name="SID" value="[%SID%]">
+<input type="hidden" name="password" value="[%token%]">
+</FORM></center>
+</BODY>
+</HTML>
+

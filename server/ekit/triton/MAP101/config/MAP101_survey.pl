@@ -1,0 +1,37 @@
+bless({
+  _SID           => "MAP101",
+  _TritonRoot    => "/home/vhosts/ekit.mappwi.com/triton",
+  _config_subdir => "config",
+  _data_subdir   => "web",
+  _doc_root      => undef,
+  _doc_subdir    => "doc",
+  _final_subdir  => "final",
+  _html_subdir   => "html",
+  _masks         => {},
+  _options       => {
+                      from_email    => "support\@mappwi.com",
+                      from_name     => "info\@market-research.com",
+                      one_at_a_time => 1,
+                      survey_name   => "Under construction",
+                      window_title  => "XXX101 - Under construction",
+                    },
+  _questions     => [
+                      bless({
+                        _a_varnames => [],
+                        _attributes => [],
+                        _dataInfo   => [],
+                        _label      => "A",
+                        _opt        => {
+                                         instr => "We are currently working on this survey. As soon as we have it finished we'll invite you to do it properly. Right now you can proceed at your own risk",
+                                         scale => 0,
+                                       },
+                        _prompt     => "Welcome !",
+                        _qnum       => 1,
+                        _qtype      => 7,
+                        _scores     => [],
+                        _setvalues  => [],
+                        _skips      => [],
+                        _vars       => [],
+                      }, "TPerl::Survey::Question"),
+                    ],
+}, "TPerl::Survey")

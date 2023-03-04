@@ -1,0 +1,5 @@
+[%adminname%]
+
+It appears we are unable to successfully send participant [%fullname%], [%company%], [%startdate%],
+[%batchname%], [%hisher%] first e-kit reminder. You might consider contacting this
+participant directly, and see if assistance is required.

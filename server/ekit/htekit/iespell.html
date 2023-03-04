@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<TITLE>Triton Information Technology : Participant's Questionnaire (1314/6) </TITLE>
+
+	<META NAME="Triton Information Technology">
+	<META NAME="Author" CONTENT="Mike King">
+	<META NAME="Copyright" CONTENT="Triton Information Technology 1995-2011">
+<!-- ICRA no longer exists, but leave it in place in case of residual support -->
+	<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" comment "ICRAonline v2.0" l gen true for "http://lpwidev/"  r (nz 1 vz 1 lz 1 oz 1 cz 1) "http://www.rsac.org/ratingsv01.html" l gen true for "http://lpwidev/"  r (n 0 s 0 v 0 l 0))'>
+<!-- This line prevents the browser from caching the page: -->
+	<META HTTP-EQUIV="Expires" CONTENT="0">
+<!-- Technically this is not standards compliant, but it does seem to work in all browsers. Not worth fighting it, can't find a compliant solution :( -->
+	<NOscRipt>
+	<meta http-equiv="Refresh" content="0;URL=/cgi-mr/noscript.pl?survey_id=MAP001&amp;seqno=1314" />
+	</NOscript>	
+	
+<link rel="stylesheet" href="/themes/ekit/style.css">
+
+<link id="themeStyles" rel="stylesheet" href="/dojo/dijit/themes/soria/soria.css">
+
+<!--[if IE]>
+	<link rel="stylesheet" type="text/css" media="screen" href="css/spellchecker.css" />
+	<style type="text/css">
+		.status {
+			padding: 0.5em 8px;
+			font-size: small;
+			color: #a0a0a0;
+		}
+	</style>
+<![endif]-->
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+// GLOBAL CODE: 
+<!--[if IE]>
+		// check the spelling on a textarea
+	$("#btnwrittenQ6").click(checkit);
+<![endif]-->
+<!--[if IE]>
+		// check the spelling on a textarea
+	$("#btnwrittenQ7").click(checkit);
+<![endif]-->
+<!--[if IE]>
+		// check the spelling on a textarea
+	$("#btnwrittenQ8").click(checkit);
+<![endif]-->
+<!--[if IE]>
+		// check the spelling on a textarea
+	$("#btnwrittenQ9").click(checkit);
+<![endif]-->
+<!--[if IE]>
+		// check the spelling on a textarea
+	$("#btnwrittenQ10").click(checkit);
+<![endif]-->
+
+function Can_Proceed_0()
+	{
+	return false
+	}
+function Can_Proceed_1()
+	{
+	return false
+	}
+function Can_Proceed_2()
+	{
+	return false
+	}
+function Can_Proceed_3()
+	{
+	return false
+	}
+function Can_Proceed_4()
+	{
+	return false
+	}
+function QValid()
+	{
+	if (!QValid_0()) return false;
+	if (!QValid_1()) return false;
+	if (!QValid_2()) return false;
+	if (!QValid_3()) return false;
+	if (!QValid_4()) return false;
+//
+// OK, we have passed all the checks and are about to allow the form to be submitted. 
+// So we gray it out to make sure it cannot be clicked again
+//
+	document.q.btn_submit.value = "Submitting..";
+//	document.q.btn_submit.disabled = true;
+	return true;
+	}
+function QValid_0()
+	{
+	return true;
+	}
+function QValid_1()
+	{
+	return true;
+	}
+function QValid_2()
+	{
+	return true;
+	}
+function QValid_3()
+	{
+	return true;
+	}
+function QValid_4()
+	{
+	return true;
+	}
+function del_cookie(cookie_name)
+	{
+
+			var d = new Date();
+			document.cookie = cookie_name+"=0;expires=" + d.toGMTString() + ";path=/;domain=lpwidev;";
+			}
+function get_cookie(cookie_name)
+	{
+
+			var cs = document.cookie ;
+			if (cs.length != 0) {
+				var cv = cs.match ( '(^|;)[s]*' + cookie_name + '=([^;]*)' );
+				return decodeURIComponent ( cv[2] ) ;
+			}
+			return '' ;
+			}
+function loadme()
+	{
+
+			if (locals){
+				document.q.session.value = (typeof localStorage["sessionMAP001"] != 'undefined') ? localStorage["sessionMAP001"]: '';
+			} else {
+				document.q.session.value = get_cookie("sessionMAP001");
+			}
+			var mynow = new Number(new Date); 	// Perl epoch is in seconds, this is milliseconds
+			if (!document.q.session.value) {
+				if (locals){
+					localStorage["sessionMAP001"] = mynow;
+					document.q.session.value = localStorage["sessionMAP001"];
+				} else {
+					document.cookie = "sessionMAP001="+mynow+"; path=/; domain=lpwidev;" ;
+					document.q.session.value = get_cookie("sessionMAP001");
+				}
+			}
+			document.q.btn_submit.value = 'Next';	//this is where the problem is with external html files and language encoding in the next button!!
+			}
+function locals()
+	{
+try {
+				return 'localStorage' in window && window['localStorage'] !== null;
+			} catch (e) {
+				return false;
+				}
+				}
+ 
+//-->
+</SCRIPT>
+
+
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+			dojo.require("dijit.form.SimpleTextarea");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+		<BODY   class=" soria " >
+<FORM name="q" id="q" method="POST" ACTION="/cgi-mr/godb.pl"
+		ENCTYPE="x-www-form-encoded"
+		OnSubmit="return QValid()"
+> 
+
+<SPAN class="prompt"><table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Participant's Questionnaire<TH class="bluebarq">Q1</table><P><SPAN class="qlabel">6.</SPAN> What do you believe are the significant problems you must resolve in order to achieve the above goals?</SPAN> <BR>
+<BLOCKQUOTE><TEXTAREA class="written" NAME="writtenQ6" ID="btnwrittenQ6" TABINDEX="1" onchange="yuk();" WRAP="PHYSICAL" COLS="50" ROWS="8" data-dojo-type="dijit.form.SimpleTextarea" style="width:600px;height:100px;">Huh?</TEXTAREA><BR>
+<!--[if IE]>
+			<button id="btnwrittenQ6">
+				Check Spelling
+			</button>&nbsp;
+			<span id="okwrittenQ6" class="status"></span>
+<![endif]-->
+</BLOCKQUOTE><BR>
+<SPAN class="prompt"><SPAN class="qlabel">7.</SPAN> What are your main COMMUNICATING problems (e.g., style, effectiveness, frequency, internal, external, etc.)?</SPAN> <BR>
+<BLOCKQUOTE><TEXTAREA class="written" NAME="writtenQ7" ID="btnwrittenQ7" TABINDEX="2" onchange="yuk();" WRAP="PHYSICAL" COLS="50" ROWS="8" data-dojo-type="dijit.form.SimpleTextarea" style="width:600px;height:100px;"></TEXTAREA><BR>
+<!--[if IE]>
+			<button id="btnwrittenQ7">
+				Check Spelling
+			</button>&nbsp;
+			<span id="okwrittenQ7" class="status"></span>
+<![endif]-->
+</BLOCKQUOTE><BR>
+<SPAN class="prompt"><SPAN class="qlabel">8.</SPAN> What are your main PLANNING problems (e.g., no formal planning, unclear goals, projects, etc.)?</SPAN> <BR>
+<BLOCKQUOTE><TEXTAREA class="written" NAME="writtenQ8" ID="btnwrittenQ8" TABINDEX="3" onchange="yuk();" WRAP="PHYSICAL" COLS="50" ROWS="8" data-dojo-type="dijit.form.SimpleTextarea" style="width:600px;height:100px;"></TEXTAREA><BR>
+<!--[if IE]>
+			<button id="btnwrittenQ8">
+				Check Spelling
+			</button>&nbsp;
+			<span id="okwrittenQ8" class="status"></span>
+<![endif]-->
+</BLOCKQUOTE><BR>
+<SPAN class="prompt"><SPAN class="qlabel">9.</SPAN> What are your main ORGANIZING problems (e.g., personal organization, availability of supplies, <BR>equipment, financial resources, time, organizational structure, etc.)?</SPAN> <BR>
+<BLOCKQUOTE><TEXTAREA class="written" NAME="writtenQ9" ID="btnwrittenQ9" TABINDEX="4" onchange="yuk();" WRAP="PHYSICAL" COLS="50" ROWS="8" data-dojo-type="dijit.form.SimpleTextarea" style="width:600px;height:100px;">Something here</TEXTAREA><BR>
+<!--[if IE]>
+			<button id="btnwrittenQ9">
+				Check Spelling
+			</button>&nbsp;
+			<span id="okwrittenQ9" class="status"></span>
+<![endif]-->
+</BLOCKQUOTE><BR>
+<SPAN class="prompt"><SPAN class="qlabel">10.</SPAN> What are your main STAFFING problems (e.g., recruiting, selecting the right people, training, development, <BR>retaining, etc.)?</SPAN> <BR>
+<BLOCKQUOTE><TEXTAREA class="written" NAME="writtenQ10" ID="btnwrittenQ10" TABINDEX="5" onchange="yuk();" WRAP="PHYSICAL" COLS="50" ROWS="8" data-dojo-type="dijit.form.SimpleTextarea" style="width:600px;height:100px;">I'd like to know more about this.
+I s</TEXTAREA><BR>
+<!--[if IE]>
+			<button id="btnwrittenQ10">
+				Check Spelling
+			</button>&nbsp;
+			<span id="okwrittenQ10" class="status"></span>
+<![endif]-->
+</BLOCKQUOTE><BR>
+<HR class="divider"><br>
+<TABLE BORDER="0" WIDTH="600" class="buttontable">
+<TR>
+		<TD width="90"> 
+		<INPUT class="button" TYPE="BUTTON" VALUE="Back" tabindex="-1"  alt="BACK" onclick="document.q.BACK2.value='1';document.q.submit()">
+		<INPUT TYPE="HIDDEN" name="BACK2">
+		</TD>
+		<TD width="90">
+		<INPUT class="button" TYPE="SUBMIT" VALUE="Next" TABINDEX="6" onclick='document.q.jump_to.value="";document.q.BACK2.value=""; document.q.onsubmit=new Function("return mysubmit()")' id="btn_submit" name="btn_submit">
+		</TD>
+</TR>
+</table>
+<table width=100% class='custom_footer'>
+<tr><center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center></TR></TABLE>
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP001">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="1314">
+<INPUT NAME="q_labs" TYPE="hidden" VALUE="q6.q10">
+<INPUT NAME="jump_to" TYPE="hidden" VALUE="">
+<INPUT NAME="session" TYPE="hidden" VALUE="">
+
+
+<span class="status">
+<div id="response" onclick="toggleoutput();"></div>
+<iframe  src="/blank.html" width="600" height="200" id="output" style="visibility:hidden;">
+Ajax output will appear here...
+</iframe>
+</span>
+
+
+<!--[if IE]>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.spellchecker.js"></script>
+	<script type="text/javascript">
+var src;
+function checkit(e){
+		e.preventDefault();
+		$("#ok"+this.id).html("Requesting spellcheck...");
+		src = this.id;
+		src.replace("btn", "");
+
+		$("#t"+src)
+		.spellchecker({
+			lang: "en",
+			engine: "google",
+			suggestBoxPosition: "above"
+		})
+		.spellchecker("check", function(result){
+
+			// spell checker has finished checking words
+			$("#ok"+src).html("Click on words above for spelling suggestions ");				
+
+			// if result is true then there are no badly spelt words
+			if (result) {
+				$("#ok"+src).html("OK");				
+			}
+		});
+	}
+	</script>
+<![endif]-->
+
+</FORM>
+
+<br><br><br><br>
+</BODY>
+</HTML>

@@ -1,0 +1,27 @@
+Management Action Programs
+Key Personnel Q10a List for [%aboutname%]
+----------------------------------------------
+
+			To: [%bossfullname%]
+			Company: [%company%]
+			Workshop date: [%workshopdate%]
+			Location: [%location%]
+
+Do NOT share or forward this email to anyone. 
+
+----------------------------------------------
+Dear [%bossfullname%]:
+
+Below is the Key Personnel List (Q10a) [%aboutname%] recently submitted.
+
+This list includes the names that [%aboutname%] identified as peers/subordinates within [%company%] who will receive a key personnel questionnaire for [%hisher%] upcoming MAP Workshop.
+
+If you have any questions please call  Cathy Webb at 818.380.1177, ext. 225 or email ctwebb@mapconsulting.com.
+
+Sincerely,
+[%execname%] 
+
+KEY PERSONNEL LIST
+------------------
+
+[%peerlisttxt%]

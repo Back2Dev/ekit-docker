@@ -1,0 +1,120 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="style.css">
+<SCRIPT LANGUAGE="JavaScript">
+function QValid()
+	{
+    return validate_grid(document.q.gridQ1_0,document.q.gridQ1_1,document.q.gridQ1_2);	return true;
+	}
+function validate_grid()
+	{
+var errs = 0;
+for (i=0;i<validate_grid.arguments.length;i++)
+	{
+	control = validate_grid.arguments[i];
+//		alert("Control for validation is "+control+", length="+control.length);
+	var selectedButton = "";
+	for (var j=0;j< control.length;j++)
+		{
+		if (control[j].checked == "1")
+			{
+			selectedButton = control[j].value;
+			break;
+			}
+		}
+	if (selectedButton == "")
+		{
+		errs++;
+		}
+	}
+if (errs != 0)
+	{
+	alert("Error: please make one choice from each row");
+	return false;
+	}
+return true;	
+	}
+ 
+</SCRIPT>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#FF0080" TEXT="#000000"  class="body">
+<FORM NAME="q" ACTION="/cgi-mr/go.pl" ENCTYPE="www-x-formencoded" METHOD="POST"
+		OnSubmit="return QValid()"
+>
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP101">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT NAME="q_no" TYPE="hidden" VALUE="1">
+<INPUT NAME="survey_name" TYPE="hidden" VALUE="Post Workshop Satisfaction Survey">
+<INPUT NAME="browser" TYPE="hidden" VALUE="ns">
+<SPAN class="prompt"><B>1.</B> Please rate the following aspects of your experience with MAP:</SPAN><BR>
+<TABLE CELLPADDING="5">	<TR class="heading">
+		<TD>&nbsp;</TD>
+		<TH class="heading"><CENTER>&nbsp;1 &nbsp;</CENTER></TH>
+		<TH class="heading"><CENTER>&nbsp;2 &nbsp;</CENTER></TH>
+		<TH class="heading"><CENTER>&nbsp;3 &nbsp;</CENTER></TH>
+		<TH class="heading"><CENTER>&nbsp;4 &nbsp;</CENTER></TH>
+		<TH class="heading"><CENTER>&nbsp;5 &nbsp;</CENTER></TH>
+   </TR>
+	<TR class="heading">
+		<TH class="heading">&nbsp;</TH>
+		<TH class="heading">&nbsp;Very Poor&nbsp;</TH>
+		<TH class="heading">&nbsp;Poor&nbsp;</TH>
+		<TH class="heading">&nbsp;Average&nbsp;</TH>
+		<TH class="heading">&nbsp;Good&nbsp;</TH>
+		<TH class="heading">&nbsp;Excellent&nbsp;</TH>
+</TR>
+		<TR class="options">
+			<TD class="options">The overall MAP experience so far&nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="0"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="1"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="2"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="3"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_0" VALUE="4"></CENTER></TD>
+		</TR>
+		<TR class="options">
+			<TD class="options">Pre-workshop content, overall&nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="0"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="1"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="2"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="3"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_1" VALUE="4"></CENTER></TD>
+		</TR>
+		<TR class="options">
+			<TD class="options">The workshop content, overall&nbsp;&nbsp;&nbsp;</TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="0"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="1"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="2"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="3"></CENTER></TD>
+			<TD class="options"><CENTER><INPUT TYPE="RADIO" NAME="gridQ1_2" VALUE="4"></CENTER></TD>
+		</TR>
+</TABLE>
+
+<HR>
+<TABLE BORDER="0">
+<TR>
+<TD width="70"> 
+<p align="center"> 
+  <INPUT TYPE="SUBMIT" VALUE="NEXT"></P></TD>
+<TD>
+	<table width="100" border="0" cellpadding="0" cellspacing="0" >
+	  <tr> 
+	    <td height="15" width="0%" align="center" class="heading"> 
+	      
+	    </td>
+	    <td height="15" align="Center" class="options">0%</td>
+	  </tr>
+	</table>
+
+</TD>
+<TD><P><FONT size="-2" face="Arial, Helvetica, sans-serif">Survey provided by
+        <A HREF="http://www.market-research.com/" target="triton_home">Triton Technology</A>
+        <br>&copy; Triton Technology 1995-2000 all rights reserved.
+        &nbsp;&nbsp;<A HREF="mailto:info@market-research.com?subject=MAP101">
+        email : info@market-research.com</a></FONT><BR></P>
+	</TD>
+</TR></TABLE>
+</FORM>
+
+</BODY>
+</HTML>

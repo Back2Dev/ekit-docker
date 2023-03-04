@@ -1,0 +1,13 @@
+.prompt {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; font-weight: bold; }
+.qlabel { color:red; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; font-weight: bold; }
+.heading { background-color: dodgerblue; color:darkslategray; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; font-weight: bold; }
+.options { background-color: SKYBLUE; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal;  }
+.options2 { background-color: lightblue; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal;  }
+.input { background-color: #FFFFE0; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; font-weight: bold; }
+.instruction {  color:#0000FF; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-size: 10pt; font-weight: bold; }
+.default {  }
+.links {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt}
+.body { background-color: #F5FFFA; font-family: Arial, Helvetica, sans-serif; font-size: 10pt}
+body { background-color: #F5FFFA; font-family: Arial, Helvetica, sans-serif; font-size: 10pt}
+.notes { background-color: POWDERBLUE; font-family: Arial, Helvetica, sans-serif; font-size: 7pt}
+.mytable { color:black; border-width:2px; border-color:INDIGO; border-style:solid;}

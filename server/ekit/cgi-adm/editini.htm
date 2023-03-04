@@ -1,0 +1,89 @@
+<html lang="en-US">
+<!-- $Id: editini.htm,v 1.5 2004-09-08 04:25:21 triton Exp $
+Copyright Triton Technology 2004
+# Edit email messages in web page. File editemail.pl is needed to partner with this file
+ -->
+<head>
+	<title>Triton .ini file Editor</title>
+	<link rel="stylesheet" type="text/css" href="/[%SID%]/style.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<STYLE TYPE="text/css">
+a:hover {
+	color: #FF0000;
+}
+.cbtn {
+	BORDER-LEFT: #efedde 1px solid;
+	BORDER-RIGHT: #efedde 1px solid;
+	BORDER-TOP: #efedde 1px solid;
+	BORDER-BOTTOM: #efedde 1px solid; 
+}
+.txtbtn {font-family:tahoma; font-size:70%; color:menutext;}
+FORM SELECT {
+	font-family: 'Microsoft Sans Serif', Verdana, sans-serif;
+	background-color: #ffffe8;
+	font-size: 8pt;
+	color: #000000;
+}
+FORM INPUT {
+	background-color: #efefef;
+	font-family: 'Microsoft Sans Serif', sans-serif;
+	font-size: 10pt;
+}
+</STYLE>
+
+<script LANGUAGE="JavaScript">
+<!--
+function loadme()
+	{
+	}
+function toggle(target,ctl)
+	{
+//	alert("Toggling display");
+	if (target.style.display == "none")
+		{
+		target.style.display = "";
+		ctl.innerHTML = '(<font color="blue"><U>hide</U></font>)';
+		}
+	else
+		{
+		target.style.display = "none";
+		ctl.innerHTML = '(<font color="blue"><U>show</U></font>)';
+		}
+	}
+function QValid()
+	{
+	return true;
+	}
+-->
+</script>
+	<title>Triton .ini file editor</title>
+</head>
+
+<body class="body" onload="loadme()">
+<h2>Triton .ini file Editor</h2>
+<form name="iedit" method="post" action="/cgi-adm/editini.pl" onsubmit="alert('Please click either LOAD or SAVE');return false;">
+
+<Table border="0" class="mytable" cellspacing="0" cellpadding="5">
+<TR class="options">
+	<TD>Survey ID (SID): 
+	<TD><input type="text" name="SID" value="[%SID%]">
+<TR class="options">
+	<TD>.ini file: 
+	<TD><input type="text" name="inifile" value="[%inifile%]"> [%ini_files%]
+<TR class="options">
+	<td>&nbsp;<td><input type="button" value=" L O A D " onclick="document.iedit.submit();"> 
+</table>
+<font color="red">[%errormsg%]</font>
+<HR>
+<Table border="0" class="mytable" cellspacing="0" cellpadding="5">
+<TR class="options">
+	<TD>[%ini_sections%]
+<TR class="heading">
+	<TD>	<input type="hidden" name="save">
+			<input type="button" value=" S A V E "  onclick="document.iedit.save.value=1;document.iedit.submit();"><BR>
+<input type="checkbox" name="cleanup" id="cleanup" value="1" ><label for="cleanup">Delete empty sections</label>
+</table>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>

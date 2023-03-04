@@ -1,0 +1,240 @@
+<head>
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" comment "ICRAonline v2.0" l gen true for "http://ekit.mappwi.com/"  r (nz 1 vz 1 lz 1 oz 1 cz 1) "http://www.rsac.org/ratingsv01.html" l gen true for "http://ekit.mappwi.com/"  r (n 0 s 0 v 0 l 0))'>
+<META HTTP-EQUIV="Expires" CONTENT="0"><link rel="stylesheet" href="style.css">
+<STYLE title="localStyle">
+	.BTN {color: blue; display:none}
+</STYLE>
+<SCRIPT language="JavaScript" SRC="/triton/stuff/iegoop.js">
+</SCRIPT>
+<TITLE>Triton Technology</TITLE>
+   <META NAME="Triton Technology"> 
+   <META NAME="Author" CONTENT="Mike King"> 
+   <META NAME="Copyright" CONTENT="Triton Technology 1995-2000, all rights reserved"> 
+
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+var numq = 5;
+function Can_Proceed_()
+	{
+	return false
+	}
+function QValid_()
+	{
+	return true;
+	}
+function clr_QAA()
+	{
+	}
+ 
+//-->
+</SCRIPT>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#FF0080" TEXT="#000000"  class="body">
+<DIV ID="Start"><FONT size="+2" face="Arial, Helvetica, sans-serif"> Welcome to Time Allocation<BR><BR>
+Please wait a second while the survey loads...</font></DIV>
+<FORM NAME="triton" onsubmit="return false" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST">
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP003">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT NAME="q_no" TYPE="hidden" VALUE="1">
+<DIV ID="Section1" style="display:none">
+<A NAME="A1">
+<SPAN class="prompt">AA. </SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="nextbtn1" tag="2" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section2" style="display:none">
+<A NAME="A2">
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function QValid()
+	{
+	if (!QValid_1()) return false;
+	return true;
+	}
+function QValid_1()
+	{
+	var cnt = 0;
+	if (document.q.opensq1_1.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_2.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_3.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_4.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_5.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_6.value != "")
+		cnt = cnt + 1;
+	if (cnt == 0)
+		return true;
+	if (cnt < 4)
+		{	
+		alert("Q3. Please fill in at least "+4+" activities");
+		return false;
+		}
+	return true;
+	}
+ 
+//-->
+</SCRIPT>
+
+		ENCTYPE="x-www-form-encoded"
+		OnSubmit="return QValid()"
+> 
+
+<SPAN class="prompt"><TABLE cellspacing=0 cellpadding=0 border=1 >
+<TR><TD><TABLE cellspacing=0 cellpadding=1 border=0 width=596>
+	<TR class="details"><TH align="RIGHT">&nbsp;Participant:&nbsp;<TD>&nbsp; &nbsp;<TD width=10>&nbsp; <TH align="RIGHT">&nbsp;Organization:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Workshop Date:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Due Date:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Return Fax:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Appraiser:&nbsp;<TD>&nbsp;&nbsp;
+</TABLE></TABLE>
+<IMG SRC="/MAP001/banner600.gif"></SPAN><BR><TABLE width="600" cellspacing=0 cellpadding=5>
+	<TR ><TD class="warning" border=1 >
+	<B>Warning:</B> If you use the back button on your browser's tool bar you will lose your 
+	data on this page. Please use the navigation buttons at the bottom of each page to move from page 
+	to page. Doing this will save your responses automatically in our database as you go through each page.</TD></TR></table>
+
+<SPAN class="prompt">
+ <SPAN class="qlabel">1.</SPAN> Analyze how you spend time devoted to your work. <BR><BR>
+ <SPAN class="qlabel">2.</SPAN> Group your activities into four, five, or six general categories.  
+  For example: planning, sales, customer service, administrative, coaching and developing team, self-development, etc.<BR><BR>
+ <SPAN class="qlabel">3.</SPAN> Write these categories in the column under the heading "Activity."<BR><BR>
+ <SPAN class="qlabel">4.</SPAN> Write the approximate percentage of your time devoted to each activity in the column on the left.<BR><BR>
+ <SPAN class="qlabel">5.</SPAN> Write the percentage of your time you should be spending in each activity in the column to the right.<BR><BR>
+ <SPAN class="qlabel">6.</span> Indicate the number of hours in your typical work week in the "Total hours" column. 
+
+</SPAN>
+<BLOCKQUOTE><TABLE CELLPADDING="5" CELLSPACING="0" class="mytable">
+<TR class="options">
+	<TH class="heading">&nbsp;% of time <BR>now spent &nbsp;</Th>
+	<TH class="heading">&nbsp; &nbsp;</Th>
+	<TH class="heading" valign="center">&nbsp; Activity &nbsp;</Th>
+	<TH class="heading">&nbsp;% of time <BR>that should <BR>be spent &nbsp;</Th>
+	</TR>
+<TR class="options">
+	<TD><INPUT NAME="spentq1_1" class="input" TYPE="TEXT" TABINDEX="1" size="6" maxlength="3" ></TD>	
+	<TD class="options" align="right">&nbsp;1</TD>
+	<TD><INPUT NAME="opensq1_1" class="input" TYPE="TEXT" TABINDEX="2" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_1" class="input" TYPE="TEXT" TABINDEX="3" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TD><INPUT NAME="spentq1_2" class="input" TYPE="TEXT" TABINDEX="4" size="6" maxlength="3" ></TD>	
+	<TD class="options" align="right">&nbsp;2</TD>
+	<TD><INPUT NAME="opensq1_2" class="input" TYPE="TEXT" TABINDEX="5" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_2" class="input" TYPE="TEXT" TABINDEX="6" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TD><INPUT NAME="spentq1_3" class="input" TYPE="TEXT" TABINDEX="7" size="6" maxlength="3" ></TD>	
+	<TD class="options" align="right">&nbsp;3</TD>
+	<TD><INPUT NAME="opensq1_3" class="input" TYPE="TEXT" TABINDEX="8" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_3" class="input" TYPE="TEXT" TABINDEX="9" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TD><INPUT NAME="spentq1_4" class="input" TYPE="TEXT" TABINDEX="10" size="6" maxlength="3" ></TD>	
+	<TD class="options" align="right">&nbsp;4</TD>
+	<TD><INPUT NAME="opensq1_4" class="input" TYPE="TEXT" TABINDEX="11" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_4" class="input" TYPE="TEXT" TABINDEX="12" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TD><INPUT NAME="spentq1_5" class="input" TYPE="TEXT" TABINDEX="13" size="6" maxlength="3" ></TD>	
+	<TD class="options" align="right">&nbsp;5</TD>
+	<TD><INPUT NAME="opensq1_5" class="input" TYPE="TEXT" TABINDEX="14" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_5" class="input" TYPE="TEXT" TABINDEX="15" size="6" maxlength="3" ></TD>	
+	</TR>
+<TR class="options">
+	<TD><INPUT NAME="spentq1_6" class="input" TYPE="TEXT" TABINDEX="16" size="6" maxlength="3" ></TD>	
+	<TD class="options" align="right">&nbsp;6</TD>
+	<TD><INPUT NAME="opensq1_6" class="input" TYPE="TEXT" TABINDEX="17" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_6" class="input" TYPE="TEXT" TABINDEX="18" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TH>100%</TH>	
+	<TH class="options" align="right"></TH>
+	<TH>TOTALS</TH>
+	<TH>100%</TD>	
+	</TR>	
+<TR class="options">
+	<TD><INPUT NAME="spenttot" class="input" TYPE="TEXT" TABINDEX="19" size="6" maxlength="3" ></TD>	
+	<TH colspan=2><===  TOTAL HOURS WORKED  ===></TH>
+	<TD><INPUT NAME="shouldtot" class="input" TYPE="TEXT" TABINDEX="20" size="6" maxlength="3" ></TD>	
+	</TR>	
+</TABLE>
+</BLOCKQUOTE>
+<SPAN class="instruction">Columns should add up to 100%.</SPAN>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn2" tag="1" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn2" tag="3" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section3" style="display:none">
+<A NAME="A3">
+<SPAN class="prompt">CHECK. Check if we have enough data to allow submission of form</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn3" tag="2" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn3" tag="4" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section4" style="display:none">
+<A NAME="A4">
+	<STYLE TYPE="text/css">
+		.body { background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+	</STYLE>
+<IMG SRC="/MAP001/banner600.gif">
+<TABLE width="600"><TR><TD>
+
+<H3>
+You have reached the end of this form.<BR><BR>
+
+
+No responses were entered.<BR><BR>
+
+
+You will automatically be redirected to the list of forms.<BR><BR>
+
+<A HREF="/cgi-mr/pwikit_login.pl?id=&password=">Click here</A>
+ if you are NOT automatically redirected. 
+</H3>
+
+
+</TD></TR></TABLE>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn4" tag="3" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn4" tag="5" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section5" style="display:none">
+<A NAME="A5">
+<SPAN class="prompt"><IMG SRC="/MAP001/banner600.gif"><INPUT TYPE="HIDDEN" NAME="finish"><TABLE border="0"width="600"><TR><TD>You are now at the end of this form. If you are finished, please click the SUBMIT button to save your answers and submit them to the workshop leader. If you should change your mind before <%duedate%>, you can come back and change your answers. <BR><BR><TABLE border=0 cellpadding="8"><TR><TH><INPUT type="SUBMIT" VALUE=" SUBMIT " onclick="document.q.finish.value='';"></TD><TD>I am happy with my responses and would like to submit them now</TD></TR><TR><TD> <INPUT TYPE="BUTTON" VALUE="NOT YET" onclick="document.q.finish.value='0';document.q.submit();"></TD><TD>I am not done yet. I need to come back and review my answers later.</TD></TR><TR><TH> <INPUT TYPE="BUTTON" VALUE=" << BACK " tabindex="-1"  alt="BACK" onclick="history.back()"> <TD>Go back and review my answers</tr></TABLE></TABLE></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn5" tag="4" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn5" tag="-2" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+</FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,332 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="/MAP010A/style.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check_it(n,name,email)
+	{
+	if ((name == '') && (email == ''))
+		return 1;		// All blanks is OK
+	if (name == '')
+		{
+		alert("Contact #"+n+" - Please supply a name");
+		return 0;
+		}
+	if (email == '')
+		{
+		alert("Contact #"+n+" - Please supply an email address for "+name);
+		return 0;
+		}
+	return 1;
+	}
+	
+function QValid()
+	{
+	var n = 0;
+	n += check_it(1,document.q.peerfullname1.value,document.q.peeremail1.value);
+	n += check_it(2,document.q.peerfullname2.value,document.q.peeremail2.value);
+	n += check_it(3,document.q.peerfullname3.value,document.q.peeremail3.value);
+	n += check_it(4,document.q.peerfullname4.value,document.q.peeremail4.value);
+	n += check_it(5,document.q.peerfullname5.value,document.q.peeremail5.value);
+	n += check_it(6,document.q.peerfullname6.value,document.q.peeremail6.value);
+	n += check_it(7,document.q.peerfullname7.value,document.q.peeremail7.value);
+	n += check_it(8,document.q.peerfullname8.value,document.q.peeremail8.value);
+	n += check_it(9,document.q.peerfullname9.value,document.q.peeremail9.value);
+	n += check_it(10,document.q.peerfullname10.value,document.q.peeremail10.value);
+	n += check_it(11,document.q.peerfullname11.value,document.q.peeremail11.value);
+	n += check_it(12,document.q.peerfullname12.value,document.q.peeremail12.value);
+	n += check_it(13,document.q.peerfullname13.value,document.q.peeremail13.value);
+	n += check_it(14,document.q.peerfullname14.value,document.q.peeremail14.value);
+	n += check_it(15,document.q.peerfullname15.value,document.q.peeremail15.value);
+	n += check_it(16,document.q.peerfullname16.value,document.q.peeremail16.value);
+	n += check_it(17,document.q.peerfullname17.value,document.q.peeremail17.value);
+	n += check_it(18,document.q.peerfullname18.value,document.q.peeremail18.value);
+	n += check_it(19,document.q.peerfullname19.value,document.q.peeremail19.value);
+	n += check_it(20,document.q.peerfullname20.value,document.q.peeremail20.value);
+	if (n == 20)
+		return true;
+	else
+		return false;
+	}
+function loadme()
+	{
+	}
+//-->
+</SCRIPT>
+<BODY class="body" onload="loadme()">
+<%ws_details%>
+<IMG SRC="/MAP001/banner600.gif">
+<%warning%>
+<TABLE width=600><TR><TD class="heading">&nbsp;<BR>&nbsp;
+Key Personnel Questionnaire (Q10)<BR>&nbsp;</TD></TR>
+
+<TR><TD class="prompt">
+<P>The Key Personnel Questionnaire (Q10) should be given to people <U>inside</U> your organization 
+(people who report to you, colleagues, key support personnel, etc.).  </P>
+
+<TR><TD class="prompt"><font color="red"><B>NOTE:</B> Please do not give one of these forms to your supervising manager or partner as he/she will receive separate, more specialized questionnaires from MAP.</FONT>
+
+<P>If you would like for us to contact them and send them the form for you, we will be happy to do so.&nbsp; 
+If so, please provide their names and email addresses below, and we will send them an email, giving them the 
+opportunity to complete the form online.</P>
+
+<P>If you do not have their email address, you can print copies of the 
+<A target="_blank" HREF="/cgi-mr/getdoc.pl/Q10.doc?sid=<%survey_id%>&tsid=MAP101&doc=Q10&token=<%password%>"><IMG src="/pwikit/word.gif" alt="Q10 as a Microsoft Word document, click to download" >
+Key Personnel Questionnaire (Q10)</A>
+ and give it to them personally.&nbsp; Please ask them to fax it to us at <%returnfax%>, no later than <%duedate%>.<BR><BR>
+
+<TR><TD class="prompt">When you hand out this form, please ask each person to be frank and assure them that their input is 
+anonymous - you will not see their responses.&nbsp; Please follow up with each individual two days prior 
+to the deadline to remind them to complete the questionnaire <i>since this could affect your participation in the workshop</i>.</P>
+
+<TR><TD class="prompt">And once again, please make sure to encourage those internal sources to complete and submit the form no later than <%duedate%>.</P>
+  
+<TR><TD class="prompt">Before distributing these questionnaires, please check with your manager or partner, if possible, to be sure on who should receive them.</P>
+
+</TABLE>
+<FORM NAME="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST" onsubmit="return QValid()">
+   
+    <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+    <INPUT NAME="seqno" TYPE="hidden" VALUE="">
+    <INPUT NAME="q_labs" TYPE="hidden" VALUE="<%q_labs%>">
+
+  <table cellpadding="8" cellspacing="0" class="mytable"  >
+    <tr class="heading"> 
+      <td  colspan=3 > 
+	Please provide the email addresses here:
+	</td></tr>
+    <tr class="heading"> 
+      <th  colspan=2 > 
+        Name
+      </th>
+      <th  > 
+        Email
+      </th>
+    </tr>
+    <tr class="options"> 
+      <td   align="right"> 
+        <B>1. </B><input type="hidden" name="peerpassword1">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname1" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail1" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>2. </B></div><input type="hidden" name="peerpassword2">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname2" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail2" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>3. </B></div><input type="hidden" name="peerpassword3">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname3" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail3" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>4. </B></div><input type="hidden" name="peerpassword4">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname4" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail4" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>5. </B></div><input type="hidden" name="peerpassword5">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname5" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail5" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>6. </B></div><input type="hidden" name="peerpassword6">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname6" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail6" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>7. </B></div><input type="hidden" name="peerpassword7">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname7" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail7" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>8. </B></div><input type="hidden" name="peerpassword8">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname8" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail8" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>9. </B></div><input type="hidden" name="peerpassword9">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname9" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail9" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>10. </B></div><input type="hidden" name="peerpassword10">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname10" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail10" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>11. </B></div><input type="hidden" name="peerpassword11">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname11" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail11" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>12. </B></div><input type="hidden" name="peerpassword12">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname12" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail12" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>13. </B></div><input type="hidden" name="peerpassword13">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname13" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail13" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>14. </B></div><input type="hidden" name="peerpassword14">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname14" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail14" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>15. </B></div><input type="hidden" name="peerpassword15">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname15" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail15" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>16. </B></div><input type="hidden" name="peerpassword16">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname16" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail16" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>17. </B></div><input type="hidden" name="peerpassword17">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname17" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail17" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>18. </B></div><input type="hidden" name="peerpassword18">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname18" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail18" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td   > 
+        <div align="right"><B>19. </B></div><input type="hidden" name="peerpassword19">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname19" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail19" size="36" class="input" >
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td   > 
+        <div align="right"><B>20. </B></div><input type="hidden" name="peerpassword20">
+      </td>
+      <td   > 
+        <input type="text" name="peerfullname20" size="20" class="input">
+      </td>
+      <td   > 
+        <input type="text" name="peeremail20" size="36" class="input" >
+      </td>
+    </tr>
+  </table>
+
+</FORM>
+
+</BODY>
+</HTML>

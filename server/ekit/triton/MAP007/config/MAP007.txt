@@ -1,0 +1,161 @@
+#
+# Generated Survey syntax file for MAP007 (Tue Jun 18 10:34:56 2002);
+# 
++survey_name=FIRO-B
++window_title=Q7 - FIRO-B
++one_at_a_time=0
++block_size=5
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++focus_off=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; FIRO-B<TH class="bluebarq">Q7</table>
++qscale=<P><%q_label%> 
++mike=1
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C	warning=warning
+C	ws_details=ws_details
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q A. <%qbanner%> <TABLE WIDTH=600"><TR><TD class="prompt"><P>This questionnaire explores the typical ways you interact with people.  There are no right or wrong answers.<BR><BR>Sometimes people are tempted to answer questions like these in terms of what they think a person <I>should</I> do.  This is <I>not</I> what is wanted here.  We would like to know how you actually behave.<BR><BR>Some items may seem similar to others.  However, each item is different so please answer each one without regard to the others.  There is no time limit, but do not debate long over any items.<BR><BR>Please answer each and every question, or the questionnaire cannot be submitted.&nbsp; Thank you.<BR><BR><font size="-2"> &copy; 2012 by Consulting Psychologists Press, Inc. FIRO-B is a trademark of Consulting Psychologists Press, Inc.</font></TD></TR></TABLE>
++qtype=instruction
+	A No attrib required
+	+skip=1
+
+Q 1. <%qbanner%><P><%q_label%> For each statement below, decide which of the following answers best applies to you. <BR>Select your answer to the right of the statement.  <BR>Please be as honest as you can.<BR><BR>1. Never&nbsp;&nbsp;&nbsp;&nbsp;2. Rarely&nbsp;&nbsp;&nbsp;&nbsp;3. Occasionally&nbsp;&nbsp;&nbsp;&nbsp;4. Sometimes&nbsp;&nbsp;&nbsp;&nbsp;5. Often&nbsp;&nbsp;&nbsp;&nbsp;6. Usually
++qtype=grid
++required=all
+# --- Grid headings follow
+	G Never
+	G Rarely
+	G Occasionally
+	G Sometimes
+	G Often
+	G Usually
+# --- Attributes follow
+	A 1. I try to be with people.
+	A 2. I let other people decide what to do.
+	A 3. I join social groups.
+	A 4. I try to have close relationships with people.
+	A 5. I tend to join social organizations when I have an opportunity.
+	A 6. I let other people strongly influence my actions.
+	A 7. I try to be included in informal social activities.
+	A 8. I try to have close, personal relationships with people.
+	A 9. I try to include other people in my plans.
+	A 10. I let other people control my actions.
+	A 11. I try to have people around me.
+	A 12. I try to get close and personal with people.
+	A 13. When people are doing things together I tend to join them.
+	A 14. I am easily led by people.
+	A 15. I try to avoid being alone.
+	A 16. I try to participate in group activities.
+	+skip=2
+
+Q 2. <%qbanner%><P><%q_label%> For each of the next group of statements, choose one of the following answers:<BR><BR>1. Nobody&nbsp;&nbsp;&nbsp;&nbsp;2. One or two people&nbsp;&nbsp;&nbsp;&nbsp;3. A few people&nbsp;&nbsp;&nbsp;&nbsp;4. Some people&nbsp;&nbsp;&nbsp;&nbsp;5. Many people&nbsp;&nbsp;&nbsp;&nbsp;6. Most people
++qtype=grid
++required=all
+# --- Grid headings follow
+	G Nobody
+	G One or two people
+	G A few people
+	G Some people
+	G Many people
+	G Most people
+# --- Attributes follow
+	A 17. I try to be friendly to people.
+	A 18. I let other people decide what to do.
+	A 19. My personal relations with people are cool and distant.
+	A 20. I let other people take charge of things.
+	A 21. I try to have close relationships with people.
+	A 22. I let other people strongly influence my actions.
+	A 23. I try to get close and personal with people.
+	A 24. I let other people control my actions.
+	A 25. I act cool and distant with people.
+	A 26. I am easily led by people.
+	A 27. I try to have close, personal relationships with people.
+	+skip=3
+
+Q 3. <%qbanner%><P><%q_label%> For each of the next group of statements, choose one of the following answers:<BR><BR>1. Nobody&nbsp;&nbsp;&nbsp;&nbsp;2. One or two people&nbsp;&nbsp;&nbsp;&nbsp;3. A few people&nbsp;&nbsp;&nbsp;&nbsp;4. Some people&nbsp;&nbsp;&nbsp;&nbsp;5. Many people&nbsp;&nbsp;&nbsp;&nbsp;6. Most people
++qtype=grid
++required=all
+# --- Grid headings follow
+	G Nobody
+	G One or two people
+	G A few people
+	G Some people
+	G Many people
+	G Most people
+# --- Attributes follow
+	A 28. I like people to invite me to things.
+	A 29. I like people to act close and personal with me.
+	A 30. I try to influence strongly other people's actions.
+	A 31. I like people to invite me to join in their activities.
+	A 32. I like people to act close towards me.
+	A 33. I try to take charge of things when I am with people.
+	A 34. I like people to include me in their activities.
+	A 35. I like people to act cool and distant towards me.
+	A 36. I try to have other people do things the way I want them done.
+	A 37. I like people to ask me to participate in their discussions.
+	A 38. I like people to act friendly towards me.
+	A 39. I like people to invite me to participate in their activities.
+	A 40. I like people to act distant towards me.
+	+skip=4
+      
+Q 4. <%qbanner%><P><%q_label%> For each of the next group of statements, please choose one of the following answers:<BR><BR>1. Never&nbsp;&nbsp;&nbsp;&nbsp;2 .Rarely&nbsp;&nbsp;&nbsp;&nbsp;3. Occasionally&nbsp;&nbsp;&nbsp;&nbsp;4. Sometimes&nbsp;&nbsp;&nbsp;&nbsp;5. Often&nbsp;&nbsp;&nbsp;&nbsp;6. Usually
++qtype=grid
++required=all
++buttons=1
+# --- Grid headings follow
+	G Never
+	G Rarely
+	G Occasionally
+	G Sometimes
+	G Often
+	G Usually
+# --- Attributes follow
+	A 41. I try to be the dominant person when I'm with people.
+	A 42. I like people to invite me to things.
+	A 43. I like people to act close towards me.
+	A 44. I try to have other people do things I want done.
+	A 45. I like people to invite me to join their activities.
+	A 46. I like people to act cool and distant towards me.
+	A 47. I try to influence strongly other people's actions.
+	A 48. I like people to include me in their activities.
+	A 49. I like people to act close and personal with me.
+	A 50. I try to take charge of things when I'm with people.
+	A 51. I like people to invite me to participate in their activities.
+	A 52. I like people to act distant towards me.
+	A 53. I try to have other people do things the way I want them done.
+	A 54. I take charge of things when I'm with people.
+	+skip=CHECK
+       
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)};
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++sscript=../scripts/pwikit_prime_status.pl
++buttons=0
+

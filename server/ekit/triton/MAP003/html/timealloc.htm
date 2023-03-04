@@ -1,0 +1,148 @@
+<HTML>
+<head>
+<TITLE>Triton Information Technology : Time Allocation (<%seqno%>) : Q </TITLE>
+   <META NAME="Triton Information Technology">
+   <META NAME="Author" CONTENT="Mike King">
+   <META NAME="Copyright" CONTENT="Triton Information Technology 1995-2001">
+<link rel="stylesheet" href="/themes/ekit/style.css">
+
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function QValid()
+	{
+	if (!QValid_1()) return false;
+	return true;
+	}
+function QValid_1()
+	{
+	var cnt = 0;
+	if (document.q.opensq1_1.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_2.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_3.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_4.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_5.value != "")
+		cnt = cnt + 1;
+	if (document.q.opensq1_6.value != "")
+		cnt = cnt + 1;
+	if (cnt == 0)
+		return true;
+	if (cnt < 4)
+		{	
+		alert("Q3. Please fill in at least "+4+" activities");
+		return false;
+		}
+	return true;
+	}
+ 
+//-->
+</SCRIPT>
+
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+<BODY class="soria" >
+
+
+<FORM name="q" method="POST" ACTION="/cgi-mr/godb.pl" id="q"
+		ENCTYPE="x-www-form-encoded"
+		OnSubmit="return QValid()"
+>
+
+<%qbanner%>
+<P>
+<table width="670px" border=0> <tr><TD>
+<SPAN class="prompt">
+ <SPAN class="qlabel">1.</SPAN> Analyze how you spend time devoted to your work. <BR><BR>
+ <SPAN class="qlabel">2.</SPAN> Group your activities into four, five, or six general categories. <p> 
+  For example: planning, sales, customer service, administrative, coaching and developing team, self-development, etc.<BR><BR>
+ <SPAN class="qlabel">3.</SPAN> Write these categories in the column under the heading "Activity."<BR><BR>
+ <SPAN class="qlabel">4.</SPAN> Write the approximate percentage of your time devoted to each activity in the column on the left.<BR><BR>
+ <SPAN class="qlabel">5.</SPAN> Write the percentage of your time you should be spending in each activity in the column to the right.<BR><BR>
+ <SPAN class="qlabel">6.</span> Indicate the number of hours in your typical work week in the "Total hours" column. 
+</table>
+</SPAN>
+<BLOCKQUOTE><TABLE CELLPADDING="5" CELLSPACING="0" class="mytable">
+<TR class="options">
+	<TH class="heading">&nbsp;% of time <BR>now spent &nbsp;</Th>
+	<TH class="heading">&nbsp; &nbsp;</Th>
+	<TH class="heading" valign="center">&nbsp; Activity &nbsp;</Th>
+	<TH class="heading">&nbsp;% of time <BR>that should <BR>be spent &nbsp;</Th>
+	</TR>
+<TR class="options">
+	<TD><INPUT NAME="spentq1_1" onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="1" size="6" maxlength="3" ></TD>	
+	<TD align="right">&nbsp;1</TD>
+	<TD><INPUT NAME="opensq1_1"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="2" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_1"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="3" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TD><INPUT NAME="spentq1_2"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="4" size="6" maxlength="3" ></TD>	
+	<TD align="right">&nbsp;2</TD>
+	<TD><INPUT NAME="opensq1_2"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="5" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_2"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="6" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TD><INPUT NAME="spentq1_3"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="7" size="6" maxlength="3" ></TD>	
+	<TD align="right">&nbsp;3</TD>
+	<TD><INPUT NAME="opensq1_3"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="8" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_3"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="9" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TD><INPUT NAME="spentq1_4"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="10" size="6" maxlength="3" ></TD>	
+	<TD align="right">&nbsp;4</TD>
+	<TD><INPUT NAME="opensq1_4"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="11" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_4"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="12" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TD><INPUT NAME="spentq1_5"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="13" size="6" maxlength="3" ></TD>	
+	<TD align="right">&nbsp;5</TD>
+	<TD><INPUT NAME="opensq1_5"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="14" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_5"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="15" size="6" maxlength="3" ></TD>	
+	</TR>
+<TR class="options">
+	<TD><INPUT NAME="spentq1_6"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="16" size="6" maxlength="3" ></TD>	
+	<TD align="right">&nbsp;6</TD>
+	<TD><INPUT NAME="opensq1_6"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="17" size="30" ></TD>
+	<TD><INPUT NAME="shouldq1_6"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="18" size="6" maxlength="3" ></TD>	
+	</TR>	
+<TR class="options">
+	<TH>100%</TH>	
+	<TH class="options" align="right"></TH>
+	<TH>TOTALS</TH>
+	<TH>100%</TD>	
+	</TR>	
+<TR class="options">
+	<TH colspan="4"><HR></TH>	
+<TR class="options">
+	<TD colspan="4">Please put the total hours you currently work and the total hours you should be working.</TH>	
+<TR class="options">
+	<TD><INPUT NAME="spenttot"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="19" size="6" maxlength="3" ></TD>	
+	<TH colspan=2>&lt;==== TOTAL HOURS PER WEEK ====&gt;</TH>
+	<TD><INPUT NAME="shouldtot"  onchange="yuk(this)" class="input" TYPE="TEXT" TABINDEX="20" size="6" maxlength="3" ></TD>	
+	</TR>	
+</TABLE>
+</BLOCKQUOTE>
+<SPAN class="instruction">Columns should add up to 100%.</SPAN>
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="<%seqno%>">
+<INPUT NAME="q_labs" TYPE="hidden" VALUE="<%q_labs%>">
+<INPUT NAME="session" TYPE="hidden" VALUE="">
+</FORM> 
+</BODY>
+</HTML>

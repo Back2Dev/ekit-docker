@@ -1,0 +1,18 @@
+<table border="0" width="100%"><TR><TD>
+<P class="title" > Do you need copies of your completed forms ?</P>
+<P><A HREF="/cgi-mr/pwikit_getzip.pl/<%id%>_<%fullname%>.by.<%who%>.zip?SID=MAP011&id=<%id%>&token=<%password%>"><IMG src="/pwikit/word.gif" 
+alt="Download all completed forms as Microsoft Word documents in a zip file, click to download" >
+Download your responses<a> in a zip file. </P>
+
+<P class="title" > Do you need copies of the blank forms ?</P>
+<P>
+Or you can 
+<A target="_blank" HREF="/cgi-mr/getdoc.pl/Q11-12.doc?sid=MAP001&tsid=MAP101&doc=Q11-12&token=<%password%>"><IMG src="/pix/word.gif" alt="Q11 and Q12 as a Microsoft Word documents, click to download" > Download Q11 and Q12</A> and print the forms, then fax them back to us at <%returnfax%>.</P>
+
+
+<hr>
+<P>If you have any questions, please email 
+<A HREF="mailto:ctwebb@mapconsulting.com?subject=Copies">ctwebb@mapconsulting.com</a>
+</P>
+<P>or call our Workshop Coordinator, Cathy Webb at 818-380-1177 ext. 225
+</table>

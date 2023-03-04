@@ -1,0 +1,53 @@
+#
+# Generated Survey syntax file for MAP003 (Tue Jun 18 10:34:45 2002);
+# 
++survey_name=Time Allocation
++window_title=Q3 - Time Allocation
++one_at_a_time=0
++block_size=5
+#+show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++focus_off=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Time Allocation<TH class="bluebarq">Q3</table>
++qscale=<P><%q_label%> 
+
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C	warning=warning
+C	ws_details=ws_details
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q 1. Main question
++qtype=instruction
++external=timealloc.htm
++buttons=1
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)};
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++sscript=../scripts/pwikit_prime_status.pl
++buttons=0

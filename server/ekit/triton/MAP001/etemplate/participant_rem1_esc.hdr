@@ -1,0 +1,4 @@
+[main]
+from_email=ctwebb@mapconsulting.com
+subject=Escalation Notice: Participant Reminder 1 for [%fullname%]
+from_name=Survey Support

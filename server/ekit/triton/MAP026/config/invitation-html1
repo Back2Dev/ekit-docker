@@ -1,0 +1,37 @@
+  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+  <html>
+  <head>
+  <title>Survey invitation</title>
+<!--  <link type="text/css" rel="stylesheet" href= "http://triton.asp4me.com/EMBADIR/style.css"> -->
+  <STYLE TYPE="text/css">
+	.prompt {  font-family: Verdana, Arial, Helvetica,sans-serif; font-size: 12pt; font-style: normal; font-weight:bold; }
+	.options { background-color: lightskyblue;color:#000000; font-family: Verdana, Arial, Helvetica,sans-serif; font-size: 7pt; font-style: normal;  }
+	.options2 { background-color: PALETURQUOISE;color:#000000; font-family: Verdana, Arial, Helvetica,sans-serif; font-size: 7pt; font-style: normal;  }
+	.instruction {  color:#0000FF; font-family: Arial,Helvetica, sans-serif; font-style: normal; font-size: 12pt;font-weight: bold; }
+	.default {  }
+	.links {  font-family: Arial, Helvetica, sans-serif;font-size: 10pt}
+	.body { background-color: CORNFLOWER;font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+	.mytable { color:black; border-width:2px;border-color:BLUE; border-style:solid;}
+  </STYLE>
+  </head>
+  <body class="body">
+<P><IMG src="http://triton.asp4me.com/cgi-mr/banner.pl?id=I-MAP026-<%password%>"> 
+<TABLE width=597 border=0>
+<TBODY>
+<TR>
+<TD>
+<P>Dear <%firstname%>: </P><FONT face=Arial size=2><SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial"><FONT face=Garamond size=3>
+<P><FONT face=Arial size=2>Thank you for participating in the MAP workshop. We enjoyed working with you and look forward to seeing you at your MAP II.</FONT></P>
+<P><FONT face=Arial size=2>Part of MAP’s mission is to continually improve the level and quality of the services we provide. You can help us by completing the enclosed survey and giving us some feedback on your workshop experience.</FONT></P>
+<P><FONT face=Arial size=2>The survey is available online and should only take a few minutes to complete.</FONT></P></FONT></SPAN></FONT><SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">
+<P>Please click <A href="http://triton.asp4me.com/survey/start/MAP026/<%password%>/<%uid%>" target=_blank>here</A> to start the survey.</P>
+<P>If, for whatever reason, you have difficulties with the above link, use the following information to log in manually and participate in the survey.</P>
+<P>Survey address: <A href="http://www.mappwi.com/survey.html">http://www.mappwi.com/survey.html</A></P>
+<P>Your id is: <%uid%> and your password is:&nbsp;<%password%> (Please remember, your password is case sensitive.)</P></SPAN>
+<P><FONT size=2><SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Thank you very much for your help. Your suggestions and comments are highly valued and <EM>will</EM> be used to improve our services to you.</SPAN></FONT></P>
+<P><FONT size=2><SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Best wishes,</SPAN></FONT></P>
+<P><FONT size=2><SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Lee Froschheiser<BR>
+</SPAN></FONT><FONT size=2><SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">President and CEO<BR>
+<STRONG>MAP</STRONG></SPAN></FONT></P></TD></TR></TBODY></TABLE></P>
+  </body>
+  </html>

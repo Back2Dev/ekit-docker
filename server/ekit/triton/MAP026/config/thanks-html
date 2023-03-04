@@ -1,0 +1,34 @@
+  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+  <html>
+  <head>
+  <title>Survey invitation</title>
+<!--  <link type="text/css" rel="stylesheet" href= "http://triton.asp4me.com/EMBADIR/style.css"> -->
+  <STYLE TYPE="text/css">
+	.prompt {  font-family: Verdana, Arial, Helvetica,sans-serif; font-size: 12pt; font-style: normal; font-weight:bold; }
+	.options { background-color: lightskyblue;color:#000000; font-family: Verdana, Arial, Helvetica,sans-serif; font-size: 7pt; font-style: normal;  }
+	.options2 { background-color: PALETURQUOISE;color:#000000; font-family: Verdana, Arial, Helvetica,sans-serif; font-size: 7pt; font-style: normal;  }
+	.instruction {  color:#0000FF; font-family: Arial,Helvetica, sans-serif; font-style: normal; font-size: 12pt;font-weight: bold; }
+	.default {  }
+	.links {  font-family: Arial, Helvetica, sans-serif;font-size: 10pt}
+	.body { background-color: CORNFLOWER;font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+	.mytable { color:black; border-width:2px;border-color:BLUE; border-style:solid;}
+  </STYLE>
+  </head>
+  <body class="body">
+<IMG src="http://triton.asp4me.com/cgi-mr/banner.pl?id=I-MAP026-<%password%>"> 
+<P>
+<TABLE width=597 border=0>
+<TBODY>
+<TR><FONT size=2>Dear <%firstname%>:</FONT> 
+<P></P><FONT size=2><FONT face=Garamond size=3>
+<P><FONT face=Arial size=2>Thank you very much for taking the time to participate in MAP’s post workshop survey. Your suggestions and comments are highly valued and <I>will</I> be used to improve our services to you.</FONT></P>
+<P><FONT face=Arial size=2>During the workshop, you heard about the MAP Alumni Network, our online service exclusively for MAP clients. I encourage you to register today, and take advantage of the Alumni Network to further your MAP education and consult with the extensive network of MAP alums.</FONT></P>
+<P><FONT face=Arial size=2>To register and log in, to our website (</FONT></FONT><A href="http://www.mapconsulting.com/">http://www.mapconsulting.com/</A>) and click on the Alumni Network button. Your USERID is <B><%uid%> </B>and your PASSWORD is<B> <%apwd%></B> (Please remember, your password is case sensitive.) If, for whatever reason, you experience difficulties activating your Alumni account, please email <A href="mailto:ctwebb@mapconsulting.com">ctwebb@mapconsulting.com</A><FONT face=Garamond size=3><FONT face=Arial size=2>.</FONT></P>
+<P><FONT face=Arial size=2>Thank you very much for your help. Your suggestions and comments are highly valued and <I>will</I> be used to improve our services to you.</FONT></P>
+<P><FONT face=Arial size=2>Best wishes,</FONT></P>
+<P></FONT></FONT><FONT face=Arial><SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Arial"><FONT face=Garamond>
+<P><FONT face=Arial></FONT></P><FONT face=Arial>Lee Froschheiser<BR>
+</FONT><FONT face=Arial>President and CEO<BR>
+</FONT><B><FONT face=Arial>MAP</FONT></B></FONT></SPAN></FONT></TR></TBODY></TABLE></P>
+  </body>
+  </html>

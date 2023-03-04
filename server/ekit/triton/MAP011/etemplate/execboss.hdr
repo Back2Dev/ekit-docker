@@ -1,0 +1,4 @@
+[main]
+from_email=[%adminemail%]
+subject=PWI START: [%bossfullname%] Has Signed On
+from_name=[%adminname%]

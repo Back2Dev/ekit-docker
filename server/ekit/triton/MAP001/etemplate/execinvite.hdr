@@ -1,0 +1,4 @@
+[main]
+from_email=ctwebb@mapconsulting.com
+subject=PWI EMAIL: [%fullname%] Has Been Emailed
+from_name=Cathy Webb

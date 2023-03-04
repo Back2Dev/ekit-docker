@@ -1,0 +1,190 @@
+<HTML><HEAD>
+<STYLE title="localStyle">
+	.BTN {color: blue; display:none}
+</STYLE>
+<SCRIPT language="JavaScript" SRC="goop.js">
+</SCRIPT>
+<TITLE>Triton Survey Systems</TITLE>
+</HEAD><BODY BGCOLOR="#DDDDDD" onload="resetme()">
+<FORM NAME="triton" ACTION="/cgi-triton/go.pl" METHOD="POST">
+<DIV ID="Section1" >
+1. Are there stains on your clothing ?<BR>
+<TABLE CELLPADDING="0">
+<TR><TD>&nbsp<INPUT NAME="radioQ1" TYPE="radio" VALUE="0" onclick="setskip(1,0)">No, my clothes are clean</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ1" TYPE="radio" VALUE="1" onclick="setskip(1,0)">Yes, my pullover wears a pizza stain</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ1" TYPE="radio" VALUE="2" onclick="setskip(1,0)">Yes, but it is an undefinable stain</TD><TD></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<I>SELECT ONE ONLY</I><BR><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="nextbtn1" tag="2" validate="validate('radioQ1')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section2" style="display:none">
+2. How often do you use your computer ?<BR>
+<TABLE CELLPADDING="0">
+<TR><TD>&nbsp<INPUT NAME="radioQ2" TYPE="radio" VALUE="0" onclick="setskip(2,0)">A few times a week</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ2" TYPE="radio" VALUE="1" onclick="setskip(2,0)">Every day</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ2" TYPE="radio" VALUE="2" onclick="setskip(2,0)">Every day AND evening</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ2" TYPE="radio" VALUE="3" onclick="setskip(2,0)">The time I DON'T use it is less than 2 hours a day plus sleep</TD><TD></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<I>(SELECT ONE ONLY)</I><BR><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn2" tag="1" onclick="goback()"> &lt&ltBACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn2" tag="3" validate="validate('radioQ2')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section3" style="display:none">
+3. Have you ever used a programming language<BR>
+<TABLE CELLPADDING="0">
+<TR><TD>&nbsp<INPUT NAME="radioQ3" TYPE="radio" VALUE="0" onclick="setskip(3,0)">Yes, I have written computer programs in Pascal, Basic, or C++ etc</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ3" TYPE="radio" VALUE="1" onclick="setskip(3,0)">Yes, but it was only a simple HTML document</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ3" TYPE="radio" VALUE="2" onclick="setskip(3,0)">No, I have never used a programming language</TD><TD></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<I>(SELECT ONE ONLY)</I><BR><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn3" tag="2" onclick="goback()"> &lt&ltBACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn3" tag="4" validate="validate('radioQ3')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section4" style="display:none">
+4. The weather outside is hot and the sun is shining. What do you do ?<BR>
+<TABLE CELLPADDING="0">
+<TR><TD>&nbsp<INPUT NAME="radioQ4" TYPE="radio" VALUE="0" onclick="setskip(4,0)">I walk outside and lie in the sun</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ4" TYPE="radio" VALUE="1" onclick="setskip(4,0)">I stay inside the house, switch on the fan and take a glass of coke</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ4" TYPE="radio" VALUE="2" onclick="setskip(4,0)">I walk outside but seek for a place with shadow</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ4" TYPE="radio" VALUE="3" onclick="setskip(4,0)">I walk outside but seek for a place with shadow</TD><TD></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<I>(SELECT ONE ONLY)</I><BR><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn4" tag="3" onclick="goback()"> &lt&ltBACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn4" tag="5" validate="validate('radioQ4')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section5" style="display:none">
+5. Do you wear glasses ?<BR>
+<TABLE CELLPADDING="0">
+<TR><TD>&nbsp<INPUT NAME="radioQ5" TYPE="radio" VALUE="0" onclick="setskip(5,0)">Yes, I wear glasses</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ5" TYPE="radio" VALUE="1" onclick="setskip(5,0)">I actually ought to have them, but do not dare to wear them</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ5" TYPE="radio" VALUE="2" onclick="setskip(5,0)">No, I don't need glasses or I have lenses</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ5" TYPE="radio" VALUE="3" onclick="setskip(5,0)">No, but I'd like to</TD><TD></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<I>(SELECT ONE ONLY)</I><BR><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn5" tag="4" onclick="goback()"> &lt&ltBACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn5" tag="6" validate="validate('radioQ5')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section6" style="display:none">
+6. Do you drink alcohol ?<BR>
+<TABLE CELLPADDING="0">
+<TR><TD>&nbsp<INPUT NAME="radioQ6" TYPE="radio" VALUE="0" onclick="setskip(6,0)">No, of course not. It confuses my mind</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ6" TYPE="radio" VALUE="1" onclick="setskip(6,0)">No, my doctor has forbidden me</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ6" TYPE="radio" VALUE="2" onclick="setskip(6,0)">Yes, and I like it</TD><TD></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<I>(SELECT ONE ONLY)</I><BR><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn6" tag="5" onclick="goback()"> &lt&ltBACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn6" tag="7" validate="validate('radioQ6')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section7" style="display:none">
+7. Have you ever thought about the origin of the earth ?<BR>
+<TABLE CELLPADDING="0">
+<TR><TD>&nbsp<INPUT NAME="radioQ7" TYPE="radio" VALUE="0" onclick="setskip(7,0)">Yes, I read about it in the Bible, or heard from my priest</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ7" TYPE="radio" VALUE="1" onclick="setskip(7,0)">Yes, for I read one or more  of Stephen Hawking's books</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ7" TYPE="radio" VALUE="2" onclick="setskip(7,0)">No, I don't care. I just enjoy life !</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ7" TYPE="radio" VALUE="3" onclick="setskip(7,0)">Sortof, I read Douglas Adam's books</TD><TD></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<I>(SELECT ONE ONLY)</I><BR><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn7" tag="6" onclick="goback()"> &lt&ltBACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn7" tag="8" validate="validate('radioQ7')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section8" style="display:none">
+8. How many e-mail addresses do you have ?<BR>
+<TABLE CELLPADDING="0">
+<TR><TD>&nbsp<INPUT NAME="radioQ8" TYPE="radio" VALUE="0" onclick="setskip(8,0)">None</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ8" TYPE="radio" VALUE="1" onclick="setskip(8,0)">1 e-mail address</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ8" TYPE="radio" VALUE="2" onclick="setskip(8,0)">More than one e-mail address</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ8" TYPE="radio" VALUE="3" onclick="setskip(8,0)">More than 15 e-mail addresses</TD><TD></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<I>(SELECT ONE ONLY)</I><BR><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn8" tag="7" onclick="goback()"> &lt&ltBACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn8" tag="9" validate="validate('radioQ8')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section9" style="display:none">
+9. It is Friday or Saturday evening. What will you do ?<BR>
+<TABLE CELLPADDING="0">
+<TR><TD>&nbsp<INPUT NAME="radioQ9" TYPE="radio" VALUE="0" onclick="setskip(9,0)">I will go to bed, but not too late</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ9" TYPE="radio" VALUE="1" onclick="setskip(9,0)">I will watch some porn films</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ9" TYPE="radio" VALUE="2" onclick="setskip(9,0)">I'll go out and drink alot</TD><TD></TD></TR>
+<TR><TD>&nbsp<INPUT NAME="radioQ9" TYPE="radio" VALUE="3" onclick="setskip(9,0)">I'll work until deep in the night to finish a thesis or my latest program</TD><TD></TD></TR>
+<TR><TD></TD><TD></TD></TR>
+</TABLE>
+<I>(SELECT ONE ONLY)</I><BR><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn9" tag="8" onclick="goback()"> &lt&ltBACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn9" tag="10" validate="validate('radioQ9')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section10" style="display:none">
+<H3>10. Thank You !</H3><BR>
+
+Thank you for taking the time to complete our survey. Click the NEXT button below to return you to our home page.
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn9" tag="8" onclick="goback()"> &lt&ltBACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn9" tag="10" validate="validate('radioQ9')" onclick="gofwd()">NEXT &gt&gt</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+</FORM></BODY></HTML>

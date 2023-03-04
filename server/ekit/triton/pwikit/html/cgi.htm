@@ -1,0 +1,14 @@
+<HTML>
+<HEAD>
+</HEAD>
+<FRAMESET ROWS="130,*" FRAMEBORDER="NO" BORDER="0">
+	<FRAME NAME="top" NORESIZE SRC="/<%survey_id%>/top.htm" BORDER="0" SCROLLING="NO">
+	<FRAMESET COLS="130,*" FRAMEBORDER="NO" BORDER="0" SCROLLING="NO">
+		<FRAME NAME="left" NORESIZE BORDER="0"   SCROLLING="NO"
+			SRC="/cgi-mr/getpage.pl/<%survey_id%>/left.htm?survey_id=<%survey_id%>&password=<%pwd%>&id=<%id%>&rolename=<%rolename%>">
+		<FRAME NAME="body" NORESIZE  BORDER="0"
+			SRC="/cgi-mr/pwikit_login.pl?survey_id=<%survey_id%>&password=<%pwd%>&id=<%id%>">
+	</FRAMESET>
+</FRAMESET>
+
+</HTML>

@@ -1,0 +1,7 @@
+AuthUserFile /triton/pwikit/html/admin/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Triton administration panel"
+AuthType Basic
+<limit GET>
+require valid-user
+</limit>

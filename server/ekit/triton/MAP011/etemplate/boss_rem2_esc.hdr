@@ -1,0 +1,4 @@
+[main]
+from_email=ctwebb@mapconsulting.com
+subject=Manager Partner Reminder2 Escalation for [%aboutname%]
+from_name=Cathy Webb

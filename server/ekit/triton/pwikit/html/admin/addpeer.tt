@@ -1,0 +1,103 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(control)
+	{
+	if (control.value == '')
+		{
+		alert(control.desc+' is missing\n\n(All fields are mandatory on this form)');
+		control.focus();
+		return false;
+		}
+	return true;
+	}
+function checkb(control)
+	{
+	if (control.value == '')
+		{
+		alert(control.desc+' is missing\n\n(You should complete all details)');
+		control.focus();
+		return false;
+		}
+	return true;
+	}
+	
+function QValid()
+	{
+	if (!check(document.q.id))
+		return false;
+	if ((document.q.newfirstname.value != '') || (document.q.newlastname.value != '') || (document.q.newemail.value != ''))
+		{
+		if (!checkb(document.q.newfirstname))
+			return false;
+		if (!checkb(document.q.newlastname))
+			return false;
+		if (!checkb(document.q.newemail))
+			return false;
+		}
+	}
+//-->
+</SCRIPT>
+<FORM NAME="q" ACTION="/cgi-adm/pwikit_addnew.pl" ENCTYPE="www-x-formencoded" METHOD="POST" onsubmit="return (QValid())">
+  <table width="80%" cellpadding="5" cellspacing="0" class="mytable">
+    <tr class="heading"> 
+      <td colspan="2" height="27"> 
+        ADD PEER:
+      </td>
+      <td colspan="2" height="27"> 
+        Email format: &nbsp;&nbsp;&nbsp;
+    <INPUT type="RADIO" name="fmt" value="0" id="fmt1" CHECKED><LABEL for="fmt1">2-part</LABEL>
+    <INPUT type="RADIO" name="fmt" value="1" id="fmt2"><LABEL for="fmt2">HTML</LABEL>
+    <INPUT type="RADIO" name="fmt" value="2" id="fmt3"><LABEL for="fmt3">Text</LABEL>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="20%"> 
+        <div align="right">Participant MAP ID:</div>
+      </td>
+      <td width="30%"> 
+        <input type="text" name="id" size="20" desc="Participant ID">
+      </td>
+      <TD>&nbsp;</td>
+      <TD>&nbsp;</td>
+    </tr>
+
+    <tr class="heading"> 
+      <td colspan="4"> 
+        Peer Information:
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="20%"> 
+        <div align="right">First Name:</div>
+      </td>
+      <td width="30%"> 
+        <input type="text" name="newfirstname" size="20" desc="Peer first name">
+      </td>
+      <td width="23%"> 
+        <div align="right">Last Name:</div>
+      </td>
+      <td width="27%"> 
+        <input type="text" name="newlastname" size="20" desc="Peer last name">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="20%"> 
+      </td>
+      <td width="30%"> 
+      </td>
+      <td width="23%"> 
+        <div align="right">Email:</div>
+      </td>
+      <td width="27%"> 
+        <input type="text" name="newemail" size="30" desc="Peer email address">
+      </td>
+    </tr>
+  </table>
+<table WIDTH="80%">
+	<TR>
+		<TD><INPUT TYPE="HIDDEN" VALUE="peer" NAME="role">
+		<INPUT TYPE="SUBMIT" VALUE="Submit"></TD>
+		<TD><INPUT TYPE="RESET" VALUE="Clear all fields"></TD>
+	</TR>
+</TABLE>
+  </FORM>

@@ -1,0 +1,258 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="/themes/ekit/style.css">
+<SCRIPT LANGUAGE="JavaScript">
+function QValid()
+	{
+	return true;
+	}
+ 
+</SCRIPT>
+
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+<BODY class="soria" >
+<FORM NAME="q" id="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST">
+  <p> 
+    <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+    <INPUT NAME="seqno" TYPE="hidden" VALUE="">
+    <INPUT NAME="q_labs" TYPE="hidden" VALUE="<%q_labs%>">
+      <INPUT NAME="session" TYPE="hidden" VALUE="">
+	<table border=0 cellpadding=0 cellspacing=0 style="margin:0;"><tr><TD style="background-image: url('/themes/ekit/maplogo.png');background-repeat:no-repeat;" width="60px" height="90px" >&nbsp;<TD width="50px" >&nbsp;<tr><TD style="background-image:url('/themes/ekit/bluebar.png');font-family:Calibri;font-size:14pt; color:white;" height="30px" width=600px> &nbsp;&nbsp; Professional Career Summary<TH style="background-image:url('/themes/ekit/bluebar.png');font-family:Calibri;font-size:14pt; color:white;">Q4</table>
+
+    <P><span class="qlabel">8.</span> <SPAN class="prompt"> Employment (list your current job first):</SPAN></p>
+  <table cellpadding="8" cellspacing="0"  class="mytable" >
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="employer1" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="from1" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="to1" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="title1" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="begsalary1" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Present Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="endsalary1" size="15" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2">
+	      <td colspan="6" " height="2" ></td>
+	</tr>
+
+    <tr class="options2"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="employer2" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="from2" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="to2" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="title2" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="begsalary2" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Ending Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="endsalary2" size="15" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2">
+	      <td colspan="6" " height="2" ></td>
+	</tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="employer3" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="from3" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="to3" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="title3" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="begsalary3" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Ending Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="endsalary3" size="15" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2">
+	      <td colspan="6" " height="2" ></td>
+	</tr>
+    <tr class="options2"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="employer4" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="from4" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="to4" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options2"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="title4" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="begsalary4" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Ending Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="endsalary4" size="15" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="white" height="2">
+	      <td colspan="6" " height="2" ></td>
+	</tr>
+ 
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="employer5" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="from5" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="to5" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input onchange="yuk()" type="text" name="title5" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input onchange="yuk()" type="text" name="begsalary5" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Ending Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input onchange="yuk()" type="text" name="endsalary5" size="15" class="input">
+      </td>
+    </tr>
+  </table>
+ 
+</FORM>
+
+</BODY>
+</HTML>

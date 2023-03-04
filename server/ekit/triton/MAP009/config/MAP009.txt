@@ -1,0 +1,136 @@
+#
+# Generated Survey syntax file for MAP009 (Tue Jun 18 10:35:04 2002);
+# 
++survey_name=Spreadsheet of Vital Financial Factors
++window_title=Q9 - Spreadsheet of Vital Financial Factors
++one_at_a_time=0
++block_size=5
++show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++focus_off=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Spreadsheet of Vital Financial Factors<TH class="bluebarq">Q9</table>
++qscale=<P><%q_label%> 
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C	warning=warning
+C	ws_details=ws_details
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q A. <%qbanner%><TABLE width="600"><TR><TD class="prompt">A key element of the MAP workshop is the analysis of your organization's Vital Financial Factors. Your Workshop Leader will use the information, as deemed appropriate, to develop a graph, ratios and other statistics that will be presented to you for learning purposes.<P>The information will be treated confidentially by MAP and will not be shared with anyone without your express permission.<HR>Step 1:<BR>Review your last four fiscal year-end (FYE) financial statements (balance sheets, profit and loss statements, etc.) and your current year-to-date financial statement.<BR><BR><HR>Step 2:<BR>In columns 1 through 5, transfer the figures from your financial statements into the appropriate spaces. Place the <U>current year</u> in column <B>5</B>, most recent in columns 4, etc. In current year, indicate the number of months included.<BR><BR>Note: You may round off to the nearest hundred dollars, if convenient. MAP is aware that you may not be able to complete each line item requested due to the nature of your organization's business. Please complete all items that are applicable.<BR><BR><HR>Step 3:<BR>The items under "people" can be obtained from your payroll records.<BR><BR><HR>Step 4:<BR>Total square feet of your plant should include the space occupied by both office and physical plant.<BR><BR><HR>Step 5:<BR>Please complete the spreadsheet as soon as possible prior to <%duedate%>.&nbsp;</TD></TR></TABLE>
++qtype=instruction
+	A bogus 
+	+skip=1
+
+Q 1. <%qbanner%><P><%q_label%> Vital Financial Information
++caption=Vital Financial Factors
++qtype=grid_number
++instr=* if applicable
++scale=-5
++left_word=Prior years
++right_word=Current
++limhi=999999999
+# Grid headings
+	G 1
+	G 2
+	G 3
+	G 4
+	G 5
+# --- Attributes follow
+	A FYE (i.e., 2005, 2006, 2007, etc.)
+	A Sales/Revenue
+	A Cost of sales *
+	A Gross profit
+	A General & administrative (plus selling costs) *
+	A Net profit / (loss) *
+	A Accounts receivable
+	A Accounts payable
+	A Inventory *
+	A Total current assets
+	A Fixed assets
+	A Total assets
+	A Current liabilities
+	A Long-term liabilities
+	A Total liabilities
+	A Net worth
+
+Q 2. People
++qtype=grid_number
++caption=People
++scale=-5
++left_word=Prior years
++right_word=Current
++limhi=999999
+# Grid headings
+	G 1
+	G 2
+	G 3
+	G 4
+	G 5
+# --- Attributes follow
+	A Average number of total employees during this year
+	A Average number of management people
+	A Number of terminations
+
+Q 3. Plant/Office
++qtype=grid_number
++caption=Plant/Office
++scale=-5
++left_word=Prior years
++right_word=Current
++limhi=999999
+# Grid headings
+	G 1
+	G 2
+	G 3
+	G 4
+	G 5
+# --- Attributes follow
+	A Total square feet
+	A Locations
+
+Q 4. Please indicate number of months you are currently into your current fiscal year
++qtype=number
++required=0
++limlo=1
++limhi=12
++buttons=1
+# --- Attributes follow
+	A Months
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)}
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+
+Q BREAK
++qtype=code
++buttons=0
+C	duedate=duedate
+C	id=id
+C	token=token
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++buttons=0
++sscript=../scripts/pwikit_prime_status.pl

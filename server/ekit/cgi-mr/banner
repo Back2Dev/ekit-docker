@@ -1,0 +1,184 @@
+#!/usr/bin/perl
+#$Id: banner,v 1.4 2012-04-30 23:33:11 triton Exp $
+
+# a modern banner.pl that is used for eschemes and conventional stuff too.
+# We aim to always serve an image! see the $trys list below for the choices.
+# we log initially to banner.log, and then to banner-$SID.log when we work out
+# what the SID is.
+#
+
+# The aim is to allow escheme stuff first and formost.  
+# if you want the standard banner, use 
+# /survey/banner/123311.gif and you'll get a read of the EMAIL_SCHEME_STATUS_ID 123311
+# if you want another banner, use /survey/banner/banner2kk123311.gif and we'll strip the 
+# kk123311 out and serve banner2.gif
+# Also 
+# /survey/banner/ will serve banner.png|gif|jpg from the htdoc/pix dir
+# /survey/banner/MAP101/ will look for banner.png|gif|jpg in the MAP101 html dir.
+# /survey/banner/MAP101/goose.jpg will look for goose.jpg in the html dir
+# /survey/banner/MAP101/1234/ will do an event in the MAP101 table IF there is a 1234 pwd.
+
+use strict;
+use CGI::Carp qw(fatalsToBrowser);
+use TPerl::Error;
+use TPerl::TritonConfig;
+use Data::Dumper;
+use TPerl::EScheme;
+# use TPerl::CGI;
+use TPerl::DBEasy;
+use TPerl::Event;
+
+
+my $eso = new TPerl::EScheme (attr=>{RaiseError=>0,PrintError=>0});
+my $dbh = $eso->dbh;
+# my $q = new TPerl::CGI;
+
+my @bits = split /\//,$ENV{PATH_INFO};
+shift @bits if $bits[0] eq '';
+
+
+# In http://devel.triton-tech.com/survey/banner/MAP101/ we don't want to think this is MSGID 101.
+
+my $SID = '';
+my $pwd = '';
+my $event_message = '';
+
+my $e = new TPerl::Error (noSTDOUT=>1,SID=>$SID,ts=>1);
+$e->I("pathinfo: @bits");
+
+### First lets assume we are doing and escheme thing and 
+my $fn = $bits[-1];
+my $ems_id ;
+if (($ems_id) = $fn =~ /kk(\d+)/){
+	# eschemes get the id whacked on the end.  lets get rid of that before we serve an image.
+	$fn =~ s/kk(\d+)//;
+}elsif (($ems_id) = $fn =~ /^(\d+)\./){
+	# no mangling necessary.  default files are set below.
+}
+
+if ($ems_id){
+	my $sql = 'select * from EMAIL_SCHEME_STATUS,EMAIL_TRACK_STATUS,EMAIL_MSG_STATUS 
+		where EMAIL_SCHEME_STATUS.EMAIL_SCHEME_STATUS_ID = EMAIL_TRACK_STATUS.EMAIL_SCHEME_STATUS_ID
+		and EMAIL_TRACK_STATUS.EMAIL_TRACK_STATUS_ID = EMAIL_MSG_STATUS.EMAIL_TRACK_STATUS_ID
+		and EMAIL_MSG_STATUS_ID=?';
+
+	if (my $recs = $dbh->selectall_arrayref($sql,{Slice=>{}},$ems_id)){
+		if (@$recs ==1 ){
+			my $r = $recs->[0];
+			$SID = $r->{SID};
+			$pwd = $r->{PWD};
+			$e->I("SID: $SID, pwd: $pwd");
+
+			# Clear list of filehandles, so logging goes to SID file.
+			$e->fh(undef);
+			$e->SID($SID);
+
+			# announce our presence in the SID log file.
+			$e->I("EMAIL_STATUS_ID=$ems_id pwd=$r->{PWD} TRACK=$r->{EMAIL_TRACK_STATUS_ID} SCHEME=$r->{EMAIL_SCHEME_STATUS_ID} fn=@bits ");
+
+			## Now update the read field.
+			my $usql = 'update EMAIL_TRACK_STATUS set TRACK_READ_FLAG=1 where EMAIL_TRACK_STATUS_ID = ?';
+			if ($dbh->do($usql,{},$r->{EMAIL_TRACK_STATUS_ID})){
+				$e->I("Updated EMAIL_TRACK_STATUS TRACK_READ_FLAG=1 where EMAIL_TRACK_STATUS_ID=$r->{EMAIL_TRACK_STATUS_ID}");
+			}else{
+				$e->E({sql=>$usql,dbh=>$dbh,params=>$r->{EMAIL_TRACK_STATUS_ID}});
+			}
+			$event_message = "MSG=$r->{EMAIL_MSG_STATUS_ID} TRACK=$r->{EMAIL_TRACK_STATUS_ID} SCHEME=$r->{EMAIL_SCHEME_STATUS_ID}";
+			
+		}else{
+			$e->E(sprintf ("'%s' records match $sql with '$ems_id'",scalar(@$recs)));
+			# $q->mydie($recs);
+		}
+	}else{
+		$e->E({sql=>$sql,dbh=>$dbh,params=>[$ems_id]});
+	}
+}else{
+	#fallback to old ways.
+	$SID = $bits[0];
+	$pwd = $bits[1];
+	if ($SID){
+		# Clear list of filehandles, so logging goes to SID file.
+		$e->fh(undef);
+		$e->SID($SID);
+	}
+	$e->I("Could not find an EMAIL_SCHEME_STATUS_ID in @bits");
+}
+
+if ($SID and $pwd){
+	# Now do the event stuff.
+	#
+	# get some stuff from the $SID table to to the event.
+	my $SID_sql = "select * from $SID where PWD = ?";
+	if (my $SID_recs = $dbh->selectall_arrayref($SID_sql,{Slice=>{}},$pwd)){
+		if (@$SID_recs == 1){
+			my $email = $SID_recs->[0]->{EMAIL};
+			my $uid = $SID_recs->[0]->{UID};
+			my $fullname=$SID_recs->[0]->{FULLNAME};
+			# Only do an event if we find them in the job table.
+			my $ev = new TPerl::Event(dbh=>$dbh);
+			my $ev_err = $ev->I(who=>'escheme',code=>216,email=>$email,SID=>$SID,pwd=>$pwd,
+				msg=>"$event_message password=$pwd fullname=$fullname uid=$uid");
+			$e->E($ev_err) if $ev_err;
+			$e->I("did event for $SID and $pwd");
+		}else{
+			$e->I("Could not find pwd '$pwd' in table 'SID'");
+		}
+	}else{
+		$e->E({sql=>$SID_sql,dbh=>$dbh,params=>[$pwd]});
+	}
+}
+
+# one last try incase we did not get the 'fallback to old ways'
+# ie /survey/MAP101/banner.png|gif|jpg shoould still serve an image even if it does not do a read.
+if ($SID eq '' && @bits>1){
+	$SID ||= $bits[0];
+	if ($SID){
+		# Clear list of filehandles, so logging goes to SID file.
+		$e->fh(undef);
+		$e->SID($SID);
+	}
+}
+
+# Now serve an image.  
+
+my $file_base = $fn;
+$file_base ||= 'banner';
+
+my $troot = getConfig("TritonRoot");
+
+my $trys = [
+	join ('/',$troot,$SID,'html',$file_base),
+	join ('/',$troot,$SID,'html','banner.png'),
+	join ('/',$troot,$SID,'html','banner.gif'),
+	join ('/',$troot,$SID,'html','banner.jpg'),
+	join ('/',$ENV{DOCUMENT_ROOT},'pix',$file_base),
+	join ('/',$ENV{DOCUMENT_ROOT},'pix','banner.png'),
+	join ('/',$ENV{DOCUMENT_ROOT},'pix','banner.gif'),
+	join ('/',$ENV{DOCUMENT_ROOT},'pix','banner.jpg'),
+];
+
+my $file='';
+
+foreach my $try (@$trys){
+	if (-e $try){
+		$file = $try;
+		$e->I("file: $file");
+		last;
+	}
+}
+if ($file){	
+	$e->I("Serving $file");
+	open (IMG,"< $file") || $e->F("Could not read $file:$!");
+	my $type = 'png';
+	$type = 'gif' if $file =~ /\.gif$/i;
+	$type = 'jpeg' if $file =~ /\.jpe?g$/i;
+	print "Content-type: image/$type\n\n";
+	binmode (IMG);
+	binmode (STDOUT);
+	print while (<IMG>);
+	close IMG;
+	# now we need to do some events.
+}else{	
+	$e->E( "Could not find any of @$trys");
+}
+

@@ -1,0 +1,370 @@
+#
+# Generated Survey syntax file for MAP006 (Tue Jun 18 10:34:53 2002);
+# 
+
++survey_name=Style Insights&reg; (DISC)
++window_title=Q6 - Style Insights&reg; (DISC)
++one_at_a_time=0
++block_size=5
+#+show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++ExpID=em4853af-0
++focus_off=1
++theme=ekitdisc
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Style Insights&reg; (DISC)<TH class="bluebarq">Q6</table>
++qscale=<P><%q_label%> 
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q 1. <%qbanner%> <table width="600px" border="0"><TR><TD><P><FONT SIZE="+1"> The DISC test takes about 15-20 minutes to complete. You cannot come back and complete the test once you start it. Please be sure you can allocate 15-20 minutes PRIOR to proceeding. If you cannot allocate 15-20 minutes at this time, please <A HREF="$$login_page">click here </a> to return to the list of forms.</FONT> <P>To take the test, click the "Take Test" button, below.<P><font size="-2">The DISC test is Copyright (c) 1999, 2012 - Target Training International, Ltd</FONT></table>
+#+buttons=0
++qtype=instruction
+	A BOGUS
+#	+skip=2
+	
+Q 1A.
++qtype=perl_code
+C use Time::Local;
+C $resp{status} = 4;
+C &update_token_status(4);
+
+#Q 2A. External page which takes you to DISC test - if workshop is BEFORE May 1 2004
+#+qtype=instruction
+#+external=discframe.htm
+#+sscript=../scripts/pwikit_prime_status.pl
+
+#Q 2AZ. Skip to End
+#+qtype=code
+#C	goto END
+
+Q 2B. External page which takes you to DISC test - if workshop is AFTER May 1 2004
++qtype=instruction
++external=disc3.htm
++buttons=0
++sscript=../scripts/pwikit_prime_status.pl
+
+#
+# The TTI site grabs the whole window, so we lose respondents at this point. They will probably not come back here
+#
+Q END. End
++qtype=eval
+
+#Q A. Gender
+#+qtype=single
+#+required=all
+## --- Attributes follow
+#	A Male
+#	A Female
+#
+#Q B. What is your personal focus ?
+#+qtype=single
+#+required=all
+## --- Attributes follow
+#	A Work
+#	A Home
+#	+skip=C
+#
+#Q C. <BOGUS>In the following 24 questions, you will see groups of words describing style.  Each group contains four lines of words.  <BR><BR>For each group select the line of words that most describes you.<BR>-Check the radio button in the <I>Most</I> column for that line.<BR><BR>Next select the line of words that least describes you.<BR>-Check the radio button in the <I>Least</I> column for that line.<BR> <BR>Repeat this process for the remaining 23 word groups.<BR><BR>In each of the 24 boxes, choose <U>only one</U> response for the "Most" column and <U>only one</U> response for the "Least" column.<BR>
+#+qtype=instruction
+#
+#Q 1. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+#+required=all
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Gentle, kindly
+#	A Persuasive, convincing
+#	A Humble, reserved, modest
+#	A Original, inventive, individualistic
+#
+#Q 2. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Attractive, charming, attracts others
+#	A Cooperative, agreeable
+#	A Stubborn, unyielding
+#	A Sweet, pleasing
+#
+#Q 3. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Easily led, follower
+#	A Bold, daring
+#	A Loyal, faithful, devoted
+#	A Charming, delightful
+#
+#Q 4. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Open-minded, receptive
+#	A Obliging, helpful
+#	A Will power, strong-willed
+#	A Cheerful, joyful
+#
+#Q 5. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Jovial, joking
+#	A Precise, exact
+#	A Nervy, gutsy, brazen
+#	A Even-tempered, calm, not easily excited
+#
+#Q 6. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Competitive, seeking to win
+#	A Considerate, caring, thoughtful
+#	A Outgoing, fun loving, socially striving
+#	A Harmonious, agreeable
+#
+#Q 7. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Fussy, hard to please
+#	A Obedient, will do as told, dutiful
+#	A Unconquerable, determined
+#	A Playful, frisky, full of fun
+#
+#Q 8. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Brave, unafraid, courageous
+#	A Inspiring, stimulating, motivating
+#	A Submissive, yielding, gives in
+#	A Timid, shy, quiet
+#
+#Q 9. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Sociable, enjoys company of others
+#	A Patient, steady, tolerant
+#	A Self-reliant, independent
+#	A Soft-spoken, mild, reserved
+#
+#Q 10. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Adventurous, willing to take chances
+#	A Receptive, open to suggestions
+#	A Cordial, warm, friendly
+#	A Moderate, avoids extremes
+#
+#Q 11. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Talkative, chatty
+#	A Controlled, restrained
+#	A Conventional, doing it the usual way, customary
+#	A Decisive, certain, firm in making a decision
+#
+#Q 12. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Polished, smooth-talker
+#	A Daring, risk-taker
+#	A Diplomatic, tactful to people
+#	A Satisfied, content, pleased
+#
+#Q 13. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Aggressive, challenger, takes action
+#	A Life of the party, outgoing, entertaining
+#	A Easy mark, easily taken advantage of
+#	A Fearful, afraid
+#
+#Q 14. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Cautious, wary, careful
+#	A Determined, decided, unwavering, stands firm
+#	A Convincing, assuring
+#	A Good-natured, pleasant
+#
+#Q 15. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Willing, go along with
+#	A Eager, anxious
+#	A Agreeable, consenting
+#	A High-spirited, lively, enthusiastic
+#
+#Q 16. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Confident, believes in self, assured
+#	A Sympathetic, compassionate, understanding
+#	A Tolerant
+#	A Assertive, aggressive
+#
+#Q 17. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Well-disciplined, self-controlled
+#	A Generous, willing to share
+#	A Animated, uses gestures for expression
+#	A Persistent, unrelenting, refuses to quit
+#
+#Q 18. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Admirable, deserving of praise
+#	A Kind, willing to give or help
+#	A Resigned, gives in
+#	A Force of character, powerful
+#
+#Q 19. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Respectful, shows respect
+#	A Pioneering, exploring, enterprising
+#	A Optimistic, positive view
+#	A Accommodating, willing to please, ready to help
+#
+#Q 20. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Argumentative, confronting
+#	A Adaptable, flexible
+#	A Nonchalant, casually indifferent
+#	A Light-hearted, carefree
+#
+#Q 21. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Trusting, faith in others
+#	A Contented, satisfied
+#	A Positive, admitting no doubt
+#	A Peaceful, tranquil
+#
+#Q 22. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Good mixer, likes being with others
+#	A Cultured, educated, knowledgeable
+#	A Vigorous, energetic
+#	A Lenient, not overly strict, tolerant of others' actions
+#
+#Q 23. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Companionable, easy to be with
+#	A Accurate, correct
+#	A Outspoken, speaks freely and boldly
+#	A Restrained, reserved, controlled
+#
+#Q 24. First choose the one attribute that is <I>Most</I> like you, and then choose the one attribute that is <I>Least</I> like you.
+#+qtype=grid
+#+rank_grid=1 
+## --- Grid headings follow
+#	G Most
+#	G Least
+## --- Attributes follow
+#	A Restless, unable to rest or relax
+#	A Neighborly, friendly
+#	A Popular, liked by many or most people
+#	A Orderly, neat, organized
+#

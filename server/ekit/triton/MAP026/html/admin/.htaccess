@@ -1,0 +1,7 @@
+AuthUserFile /home/vhosts/ekit/auth/authdb
+AuthGroupFile /dev/null
+AuthName "Triton administration panel"
+AuthType Basic
+<limit GET POST>
+require valid-user
+</limit>

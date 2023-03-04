@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<TITLE>MAP026 - Post Workshop Survey</TITLE>
+</HEAD>
+<link rel="stylesheet" href="/pwikit/style.css">
+<link rel="stylesheet" href="/themes/ekit/style.css">
+<link rel="shortcut icon" href="favicon.ico" >
+<link rel="icon" href="animated_favicon1.gif" type="image/gif" >
+<SCRIPT Language="JavaScript">
+<!--
+
+function QValid()
+	{
+    if ((document.q.token.value == "") || (document.q.token.value == ""))
+       {
+       alert("Please fill the id and password from the email invitation that you received, and try again");
+       return false;
+       }
+	return true;
+	}
+//-->
+</SCRIPT>
+<BODY class="body" style="margin:0">
+<CENTER>
+<TABLE border=0 cellpadding=0 cellspacing=0 width="600px">
+<TR >
+	<TD colspan=4  height="120px"><table border=0 cellpadding=0 cellspacing=0 class="bannertable" style="margin:0 0 10px 0px;" width="100%"><tr><TD class="bannerlogo" colspan="3">&nbsp;<tr>
+						<TD class="bluebarw" ALIGN="left"> &nbsp;&nbsp; Post Workshop Survey Login Page&nbsp;&nbsp;</table>
+
+<FORM name="q" action="/cgi-mr/tokendb.pl" METHOD="POST" onsubmit="return(QValid())">
+<TABLE class="mytable" cellpadding=5 cellspacing=0 width=600>
+<TR class="heading"><TH colspan=2>Login</TH></TR>
+<TR class=options"><TD colspan=2>
+Please enter the information provided to you in your introductory email.
+</TD></TR>
+<TR class=options"><TD align=right>User ID:</TD><TD><input type="TEXT" name="id"></TD></TR> 
+<TR class=options"><TD align=right>Password:</TD><TD><input type="TEXT" name="token"></TD></TR>
+<TR class=options"><TH colspan=2><INPUT type="SUBMIT" value="Log on"></TD></TR>
+<Tr><Td colspan=2>
+
+
+    
+  <font face="Arial, Helvetica, sans-serif" size="-1"><b>Notes:</b> <br>
+  1) This survey is to be completed by invitation only. Each password can only 
+  be used once. If you experience any difficulties in completing the survey, or 
+  have any questions, please contact <a href="mailto:ctwebb@mapconsulting.com">ctwebb@mapconsulting.com
+  </a></font> <br>
+
+<HR>
+<center>
+<img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" >
+</table>
+            <INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP026">
+</FORM>
+<//body>
+</HTML>

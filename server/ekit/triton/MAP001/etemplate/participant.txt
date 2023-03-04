@@ -1,0 +1,44 @@
+MAP Workshop Materials
+----------------------
+Do NOT share or forward this email to anyone. 
+
+Start here: http://[%vhost%]/survey/pwikit_login.pl?id=[%id%]&password=[%password%]
+
+Alternatively: http://[%vhost%]/    LoginID:  [%id%]     Password:  [%password%] 
+--------------------------------------------------------------------------------------------
+
+Dear [%firstname%]: 
+
+Congratulations on your upcoming participation in the MAP Program.  You are beginning a process that over 160,000 leaders, managers, and key individuals at every level have used to accelerate performance and productivity within their organizations.  Your scheduled workshop date is [%workshopdate%].
+
+Pre-Workshop Questionnaires
+---------------------------
+
+Please click on the link at the start of this email to begin your on-line registration process.  The information you provide in your responses is an integral part of your workshop experience.  Your completed questionnaires must be received by [%duedate%], or your participation in the workshop may be affected.  If you have any difficulty completing the forms, please let us know.  
+ 
+There is an option to download, print, and complete the questionnaires manually.  If you chose this option, please fax the completed questionnaires to [%returnfax%].
+
+Accommodations 
+--------------
+
+Your hotel registration is one of the questionnaires we ask you to complete.  It is important to complete this regardless of your plans to stay overnight at the hotel.  Please list any dietary preferences, your arrival time, and if you will be joined by a guest.  A workshop schedule and directions to the [%location%] are included.
+
+If you are unable to participate in your scheduled workshop, you are required to notify MAP in writing at least seven (7) days before your workshop date or you will incur a $500 rescheduling fee.  In addition, hotel charges for late cancellation of your hotel registration may apply.
+
+Questions and Support 
+---------------------
+
+If you have any questions regarding the registration process, please call your workshop administrator at [%adminphone%], or reply to this email.  [%execname%], your Director of Client Solutions, is also available at any time, should you require assistance.
+
+Thank you again for your participation in the MAP Program.  We look forward to working with you.
+
+Best regards, 
+
+Cathy Webb
+Workshop Administrator
+(800) 540-9003 x225
+ctwebb@mapconsulting.com 
+
+
+If you are having trouble, please email ctwebb@mapconsulting.com for further assistance. 
+ 

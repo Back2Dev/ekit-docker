@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE><%window_title%></TITLE>
+   <META NAME="Hand Made">
+   <META NAME="Author" CONTENT="Mike King">
+   <META NAME="Copyright" CONTENT="Triton Survey Systems">
+</HEAD>
+<link rel="stylesheet" href="style.css">
+<SCRIPT Language="JavaScript">
+<!--
+function loadme()
+	{
+	var w = window.parent;
+	var s = new String(w.location);
+//	alert(s);
+	var x = s.indexOf('password=',0);
+	if (x != -1)
+		{
+		var rest;
+		rest = s.substring(x+9);
+//		alert("rest="+rest);
+		if (rest != "")
+			q.token.value = rest;
+		}
+	}
+
+function QValid()
+	{
+    if ((document.q.token.value == "") || (document.q.token.value == ""))
+       {
+       alert("Please fill the id and password from the email invitation that you received, and try again");
+       return false;
+       }
+	return true;
+	}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY onload="loadme()" BGCOLOR=#FFFFFF class="body">
+<FORM name="q" action="/cgi-mr/tokendb.pl" METHOD="POST" onsubmit="return(QValid())">
+<TABLE class="mytable" cellpadding=5 cellspacing=0 width=600>
+<TR class="heading"><TH colspan=2>Login</TH></TR>
+<TR class=options"><TD colspan=2>
+Please enter the information provided to you in your introductory email.
+</TD></TR>
+<TR class=options"><TD align=right>User ID:</TD><TD><input type="TEXT" name="id"></TD></TR> 
+<TR class=options"><TD align=right>Password:</TD><TD><input type="TEXT" name="token"></TD></TR>
+<TR class=options"><TH colspan=2><INPUT type="SUBMIT" value="Log on"></TD></TR>
+</table>
+            <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+</FORM>
+
+
+    
+  <font face="Arial, Helvetica, sans-serif" size="-1"><b>Notes:</b> <br>
+  1) This survey is to be completed by invitation only. Each password can only 
+  be used once. If you experience any difficulties in completing the survey, or 
+  have any questions, please contact <a href="mailto:ctwebb@mapconsulting.com">ctwebb@mapconsulting.com
+  </a></font> <br>
+
+</BODY>
+</HTML>

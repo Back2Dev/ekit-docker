@@ -1,0 +1,801 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+<link rel="stylesheet" href="/pwikit/style.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function check(control)
+	{
+	if (control.value == '')
+		{
+		alert(control.title+' is missing\n\n(All fields are mandatory on this form, except the boss details)');
+		control.focus();
+		return false;
+		}
+	return true;
+	}
+function checkb(control)
+	{
+	if (control.value == '')
+		{
+		alert(control.title+' is missing\n\n(You should either complete all boss details or leave them all blank)');
+		control.focus();
+		return false;
+		}
+	return true;
+	}
+	
+function QValid()
+	{
+	if (!check(document.q.batchno))
+		return false;
+	if (!check(document.q.firstname))
+		return false;
+	if (!check(document.q.lastname))
+		return false;
+	if (!check(document.q.id))
+		return false;
+	if (!check(document.q.email))
+		return false;
+	var selectedButton = "";
+	var len = new Number(document.q.gender.length);
+	if (!(len > 0))
+		{
+		len = new Number(1);
+		}
+	if (len == 1)
+		selectedButton = document.q.gender.checked == '1'
+	else
+		for (var i=0;i< len;i++)
+			{
+			if (document.q.gender[i].checked == '1')
+				{
+				selectedButton = document.q.gender[i].value;
+				}
+			}
+	if (selectedButton == "")
+		{
+		alert("Please select the gender of the participant");
+		return false;
+		}
+
+	if ((document.q.bossfirstname1.value != '') || (document.q.bosslastname1.value != '') || (document.q.bossemail1.value != ''))
+		{
+		if (!checkb(document.q.bossfirstname1))
+			return false;
+		if (!checkb(document.q.bosslastname1))
+			return false;
+		if (!checkb(document.q.bossemail1))
+			return false;
+		}
+	if (!check(document.q.company))
+		return false;
+	if (!check(document.q.execname))
+		return false;
+	if (!check(document.q.adminphone))
+		return false;
+	if (!check(document.q.adminname))
+		return false;
+	if (!check(document.q.adminemail))
+		return false;
+	if (!check(document.q.locationcode))
+		return false;
+	if (!check(document.q.location))
+		return false;
+	if (!check(document.q.locationaddress))
+		return false;
+	if (!check(document.q.locationcity))
+		return false;
+	if (!check(document.q.locationstate))
+		return false;
+	if (!check(document.q.workshopdate))
+		return false;
+	if (!check(document.q.duedate))
+		return false;
+	if (!check(document.q.returnfax))
+		return false;
+	if (!check(document.q.hotelrate))
+		return false;
+	return true;
+	}
+
+function loadme()
+	{
+	document.q.batchno.focus();
+	if ("<%cms_status%>" != "")
+		{
+		document.q.cms_status.value = "<%cms_status%>";
+		}
+	hide_blank("boss",10);
+	hide_blank("peer",20);
+	}
+	
+function hide_blank(thing,num)
+	{
+	for (i=2;i<=num;i++)
+		{
+		if (document.getElementById(thing+"password"+i))
+			{
+			if (document.getElementById(thing+"password"+i).value == "")
+				{
+//				alert("Hiding "+document.getElementById(thing+i).id);
+				document.getElementById(thing+i).style.display = "none";
+				}
+			}
+		}
+	}
+function show_all(thing,num)
+	{
+	for (i=1;i<=num;i++)
+		{
+		if (document.getElementById(thing+i))
+			{
+			document.getElementById(thing+i).style.display = "";
+			}
+		}
+	}
+//-->
+
+</SCRIPT>
+</HEAD>
+
+<BODY class="body" onload="loadme()">
+<FORM NAME="q" ACTION="/cgi-adm/pwikit_editp.pl" ENCTYPE="www-x-formencoded" METHOD="POST" onsubmit="return (QValid())">
+  <table width="95%" cellpadding="5" cellspacing="0" class="mytable">
+    <tr class="heading"> 
+      <td colspan="2" height="27"> 
+        Information for Participant [<%id%> <%fullname%>]:
+      </td>
+      <td colspan="2" height="27"> 
+        Batch No.: <input type="text" name="batchno" title="Batch Number"> <%batchname%>
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="20%" height="25"> 
+        <div align="right">First Name:</div>
+      </td>
+      <td width="30%" height="25"> 
+        <input type="text" name="firstname" size="20" title="First name">
+      </td>
+      <td width="23%" height="25"> 
+        <div align="right">Last Name:</div>
+      </td>
+      <td width="27%" height="25"> 
+        <input type="text" name="lastname" size="20" title="Last name">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="20%"> 
+        <div align="right">Participant MAP ID:</div>
+        
+      </td>
+      <td width="30%"> <B><%id%></B> (Status=<%cms_status%>)
+        <input type="hidden" name="id" size="20" title="Participant ID" >
+      </td>
+      <td width="23%"> 
+        <div align="right">Email:</div>
+      </td>
+      <td width="27%"> 
+        <input type="text" name="email" size="30" title="Email address">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="20%"> 
+        <div align="right">Password:</div>
+      </td>
+      <td width="30%"> <B><%password%></B>
+        <input type="hidden" name="password" size="10" title="Password">
+      </td>
+      <td width="23%"> 
+        <div align="right">Title:</div>
+      </td>
+      <td width="27%"> 
+        <input type="text" name="title" size="30" title="Title">
+      </td>
+    </tr>
+    <tr class="options" >
+      <td><div align="right">CMS STATUS:</div></td>
+      <TD> <input type="input" name="cms_status" size="2" title="CMS STATUS" ></td>
+      <td><div align="right">Gender:</div></td>
+      <td>&nbsp;<INPUT TYPE="RADIO" NAME="gender" ID="gender1" value="1"><LABEL FOR="gender1">Male</LABEL>
+      	<INPUT TYPE="RADIO" NAME="gender" ID="gender2" value="2"><LABEL FOR="gender2">Female</LABEL>
+      	</td>
+    </tr>
+
+    <tr class="heading"> 
+      <td colspan="4"> 
+        Manager/Partner/CEO Information <a href="javascript:show_all('boss',10)">(show blanks)</a>:
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td> 
+        <B>Boss Password
+      </td>
+      <td> 
+        <B>First Name
+      </td>
+      <td> 
+        <B>Last Name
+      </td>
+      <td> 
+        <B>Email
+      </td>
+    </tr>
+    <tr class="options" id="boss1"> 
+      <td>&nbsp;1. 
+        <input type="text" name="bosspassword1" size="10" id="bosspassword1" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname1" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname1" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail1" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="options" id="boss2"> 
+      <td>&nbsp;2. 
+        <input type="text" name="bosspassword2" size="10" id="bosspassword2" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname2" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname2" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail2" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="options" id="boss3"> 
+      <td>&nbsp;3. 
+        <input type="text" name="bosspassword3" size="10" id="bosspassword3" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname3" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname3" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail3" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="options" id="boss4"> 
+      <td>&nbsp;4. 
+        <input type="text" name="bosspassword4" size="10" id="bosspassword4" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname4" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname4" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail4" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="options" id="boss5"> 
+      <td>&nbsp;5. 
+        <input type="text" name="bosspassword5" size="10" id="bosspassword5" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname5" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname5" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail5" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="options" id="boss6"> 
+      <td>&nbsp;6. 
+        <input type="text" name="bosspassword6" size="10" id="bosspassword6" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname6" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname6" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail6" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="options" id="boss7"> 
+      <td>&nbsp;7. 
+        <input type="text" name="bosspassword7" size="10" id="bosspassword7" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname7" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname7" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail7" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="options" id="boss8"> 
+      <td>&nbsp;8. 
+        <input type="text" name="bosspassword8" size="10" id="bosspassword8" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname8" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname8" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail8" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="options" id="boss9"> 
+      <td>&nbsp;9. 
+        <input type="text" name="bosspassword9" size="10" id="bosspassword9" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname9" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname9" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail9" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="options" id="boss10"> 
+      <td>&nbsp;10. 
+        <input type="text" name="bosspassword10" size="10" id="bosspassword10" title="Boss Password" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="bossfirstname10" size="20" title="Boss first name">
+      </td>
+      <td> 
+        <input type="text" name="bosslastname10" size="20" title="Boss last name">
+      </td>
+      <td> 
+        <input type="text" name="bossemail10" size="30" title="Boss email address">
+      </td>
+    </tr>
+    <tr class="heading"> 
+      <td colspan="4"> 
+        Peer Information <a href="javascript:show_all('peer',20)">(show blanks)</a>:
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td> 
+		<B>Password</B>
+      </td>
+      <td> 
+        <B>First Name
+      </td>
+      <td> 
+        <B>Last Name
+      </td>
+      <td> 
+        <B>Email
+      </td>
+    </tr>
+    <tr class="options" id="peer1"> 
+      <td>
+      &nbsp;1.
+        <input type="text" name="peerpassword1" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname1" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname1" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail1" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer2"> 
+      <td>&nbsp;2.
+        <input type="text" name="peerpassword2" size="10" DISABLED>
+       
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname2" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname2" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail2" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer3"> 
+      <td>&nbsp;3.
+        <input type="text" name="peerpassword3" size="10" DISABLED>
+      
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname3" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname3" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail3" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer4"> 
+      <td>&nbsp;4.
+        <input type="text" name="peerpassword4" size="10" DISABLED>
+       
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname4" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname4" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail4" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer5"> 
+      <td>&nbsp;5.
+        <input type="text" name="peerpassword5" size="10" DISABLED>
+       
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname5" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname5" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail5" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer6"> 
+      <td>&nbsp;6.
+        <input type="text" name="peerpassword6" size="10" DISABLED>
+       
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname6" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname6" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail6" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer7"> 
+      <td>&nbsp;7.
+        <input type="text" name="peerpassword7" size="10" DISABLED>
+       
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname7" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname7" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail7" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer8"> 
+      <td>&nbsp;8.
+        <input type="text" name="peerpassword8" size="10" DISABLED>
+       
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname8" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname8" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail8" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer9"> 
+      <td>&nbsp;9.
+        <input type="text" name="peerpassword9" size="10" DISABLED>
+       
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname9" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname9" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail9" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer10"> 
+      <td>
+      10. 
+        <input type="text" name="peerpassword10" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname10" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname10" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail10" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer11"> 
+      <td>11. 
+        <input type="text" name="peerpassword11" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname11" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname11" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail11" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer12"> 
+      <td>12. 
+        <input type="text" name="peerpassword12" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname12" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname12" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail12" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer13"> 
+      <td>13. 
+        <input type="text" name="peerpassword13" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname13" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname13" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail13" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer14"> 
+      <td>14. 
+        <input type="text" name="peerpassword14" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname14" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname14" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail14" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer15"> 
+      <td>15. 
+        <input type="text" name="peerpassword15" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname15" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname15" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail15" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer16"> 
+      <td>16. 
+        <input type="text" name="peerpassword16" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname16" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname16" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail16" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer17"> 
+      <td>17. 
+        <input type="text" name="peerpassword17" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname17" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname17" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail17" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer18"> 
+      <td>18. 
+        <input type="text" name="peerpassword18" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname18" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname18" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail18" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer19"> 
+      <td>19. 
+        <input type="text" name="peerpassword19" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname19" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname19" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail19" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="options" id="peer20"> 
+      <td>20. 
+        <input type="text" name="peerpassword20" size="10" DISABLED>
+      </td>
+      <td> 
+        <input type="text" name="peerfirstname20" size="20" title="Peer first name">
+      </td>
+      <td> 
+        <input type="text" name="peerlastname20" size="20" title="Peer last name">
+      </td>
+      <td> 
+        <input type="text" name="peeremail20" size="30" title="Peer email address">
+      </td>
+    </tr>
+    <tr class="heading"> 
+      <td colspan="4"> 
+        Organizational Status:
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="23%"> 
+        <div align="right">Organization:</div>
+      </td>
+      <td colspan=3> 
+        <input type="text" name="company" size="50" title="Organization">
+        <input type="checkbox" name="new" id="new" value="1">
+        <label for="new">New company</label></td>
+    </tr>
+  </table>
+  <table width="95%" Cellspacing="0" cellpadding="5" class="mytable">
+    <tr class="heading"> 
+      <td colspan="4">
+        MAP and Workshop Details:
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td> 
+        <div align="right">Exec. Name:</div>
+      </td>
+      <td> 
+        <input type="text" name="execname" title="Exec. name">
+      </td>
+      <td> 
+        <div align="right">Exec. Email:</div>
+      </td>
+      <td> 
+        <input type="text" name="execemail" size="30" title="Exec. Email">
+      </td>
+    </tr>
+    <tr class="options"> 
+    	<TD colspan="4"><HR></TD>
+    </tr>
+    <tr class="options"> 
+      <td> 
+        <div align="right">Admin. Name:</div>
+      </td>
+      <td> 
+        <input type="text" name="adminname" title="Admin. name">
+      </td>
+      <td> 
+        <div align="right">Admin. Email:</div>
+      </td>
+      <td> 
+        <input type="text" name="adminemail" size="30" title="Admin. Email">
+      </td>
+    </tr>
+    <tr class="options">
+      <td> 
+        <div align="right">Return Fax:</div>
+      </td>
+      <td> 
+        <input type="text" name="returnfax" title="Return fax">
+      </td>
+      <td> 
+        <div align="right">Admin. Phone:</div>
+      </td>
+      <td> 
+        <input type="text" name="adminphone"  title="Admin. Phone">
+      </td>
+    </tr>
+    <tr class="options"> 
+    	<TD colspan="4"><HR></TD>
+    </tr>
+    <tr class="options"> 
+      <td> 
+        <div align="right">Workshop Code and Location:</div>
+      </td>
+      <td colspan="3"> 
+	  	<input type="text" name="locationcode" title="Workshop location code" size="6">
+        <input type="text" name="location" title="Workshop location"  size="30">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td> 
+        <div align="right">Address:</div>
+      </td>
+      <td> 
+        <input type="text" name="locationaddress" title="Hotel address"><BR>
+      </td>
+      <td> 
+        <div align="right">Hotel Rate ($):</div>
+      </td>
+      <td> 
+        <input type="text" name="hotelrate" title="Hotel rate">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td> 
+        <div align="right">City and State:</div>
+      </td>
+      <td> 
+        <input type="text" name="locationcity" title="Hotel city"> 
+        <input type="text" name="locationstate" title="Hotel state" size="4"><BR>
+      </td>
+      <TD>
+      <TD>
+	</tr>
+    <tr class="options"> 
+    	<TD colspan="4"><HR></TD>
+    </tr>
+
+    <tr class="options"> 
+      <td> 
+        <div align="right">Due Date:</div>
+      </td>
+      <td> 
+        <input type="text" name="duedate" title="Due date">
+      </td>
+      <td> 
+        <div align="right">Workshop Dates:</div>
+      </td>
+      <td> 
+        <input type="text" name="workshopdate" title="Workshop date">
+      </td>
+    </tr>
+	<TR class="options">
+		<TD colspan=2><CENTER><INPUT TYPE="RESET" VALUE="Reset all fields"></TD>
+		<TD colspan=2><CENTER><INPUT TYPE="SUBMIT" VALUE="Submit"></TD>
+	</TR>
+</TABLE>
+  </FORM>
+
+</BODY>
+</HTML>

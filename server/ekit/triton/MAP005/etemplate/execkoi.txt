@@ -1,0 +1,9 @@
+Dear [%execname%]:
+
+[%fullname%] of [%company%] [%locationcode%] [%workshopdate%] has just modified the KOI list.
+
+KOI LIST
+--------
+
+[%koilisttxt%]
+

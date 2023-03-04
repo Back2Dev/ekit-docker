@@ -1,0 +1,608 @@
+<head>
+<meta http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" comment "ICRAonline v2.0" l gen true for "http://ekit.mappwi.com/"  r (nz 1 vz 1 lz 1 oz 1 cz 1) "http://www.rsac.org/ratingsv01.html" l gen true for "http://ekit.mappwi.com/"  r (n 0 s 0 v 0 l 0))'>
+<META HTTP-EQUIV="Expires" CONTENT="0"><link rel="stylesheet" href="style.css">
+<STYLE title="localStyle">
+	.BTN {color: blue; display:none}
+</STYLE>
+<SCRIPT language="JavaScript" SRC="/triton/stuff/iegoop.js">
+</SCRIPT>
+<TITLE>Triton Technology</TITLE>
+   <META NAME="Triton Technology"> 
+   <META NAME="Author" CONTENT="Mike King"> 
+   <META NAME="Copyright" CONTENT="Triton Technology 1995-2000, all rights reserved"> 
+
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+var numq = 15;
+function Can_Proceed_()
+	{
+	return false
+	}
+function QValid_()
+	{
+	return true;
+	}
+function clr_QAA()
+	{
+	}
+ 
+//-->
+</SCRIPT>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#FF0080" TEXT="#000000"  class="body">
+<DIV ID="Start"><FONT size="+2" face="Arial, Helvetica, sans-serif"> Welcome to Professional Career Summary<BR><BR>
+Please wait a second while the survey loads...</font></DIV>
+<FORM NAME="triton" onsubmit="return false" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST">
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP004">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT NAME="q_no" TYPE="hidden" VALUE="1">
+<DIV ID="Section1" style="display:none">
+<A NAME="A1">
+<SPAN class="prompt">AA. </SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="nextbtn1" tag="2" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section2" style="display:none">
+<A NAME="A2">
+<SPAN class="prompt"><BOGUS><%ws_details%><IMG SRC="/MAP001/banner600.gif"><%warning%></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn2" tag="1" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn2" tag="3" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section3" style="display:none">
+<A NAME="A3">
+<SCRIPT LANGUAGE="JavaScript">
+function QValid()
+	{
+   var selectedButton = "";
+   for (var i=0;i< document.q.radioQ1.length;i++)
+      {
+      if (document.q.radioQ1[i].checked=="1")
+         {
+         selectedButton=document.q.radioQ1[i].value;
+         }
+      }
+if (selectedButton == "")
+   {
+   alert("Please select one of the items in the list");
+   return false;
+   }
+	return true;
+	}
+ 
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="/triton/stuff/goodstuff.js">
+</SCRIPT>
+
+  <p> 
+<TABLE cellspacing=0 cellpadding=0 border=1 >
+<TR><TD><TABLE cellspacing=0 cellpadding=1 border=0 width=596>
+	<TR class="details"><TH align="RIGHT">&nbsp;Participant:&nbsp;<TD>&nbsp; &nbsp;<TD width=10>&nbsp; <TH align="RIGHT">&nbsp;Organization:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Workshop Date:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Due Date:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Return Fax:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Appraiser:&nbsp;<TD>&nbsp;&nbsp;
+</TABLE></TABLE>
+<IMG SRC=/MAP001/banner600.gif><TABLE width="600" cellspacing=0 cellpadding=5>
+	<TR ><TD class="warning" border=1 >
+	<B>Warning:</B> If you use the back button on your browser's tool bar you will lose your 
+	data on this page. Please use the navigation buttons at the bottom of each page to move from page 
+	to page. Doing this will save your responses automatically in our database as you go through each page.</TD></TR></table>
+<BR>
+    <span class="qlabel">1.</span> <SPAN class="prompt"> Please fill in the following details for :</SPAN> </p>
+  <table cellpadding="5" cellspacing="0" class="mytable" >
+    <tr class="options"> 
+      <td  >&nbsp;Home Address:</td>
+      <td  > 
+        <input type="text" name="address" maxlength="100" size="30" class="input">
+      </td>
+      <td  > 
+        <div align="right">&nbsp; Birth Date (MM/DD/YY):</div>
+      </td>
+      <td  > 
+        <input type="text" name="dob" size="20" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td  >
+        <div align="right">Phone:</div>
+      </td>
+      <td  colspan="3"> 
+        <input type="text" name="phone" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options">
+      <td  >
+        <div align="right">&nbsp;City:&nbsp;</div>
+      </td>
+      <td  > 
+        <input type="text" name="city" maxlength="20" size="20" class="input">
+      </td>
+      <td  > 
+        <div align="right">&nbsp;Marital Status:</div>
+      </td>
+      <td  > 
+        <p>Single 
+          <input type="radio" name="married" value="0">
+          Married 
+          <input type="radio" name="married" value="1">
+        </p>
+      </td>
+    </tr>
+    <tr class="options">
+      <td  >
+        <div align="right">State:</div>
+      </td>
+      <td  > 
+        <input type="text" name="state" size="20" class="input">
+      </td>
+      <td  > 
+        <div align="right">Children:</div>
+      </td>
+      <td class="options"  > 
+        <input type="text" name="children" size="10" class="input">
+      </td>
+    </tr>
+    <tr class="options">
+      <td  >
+        <div align="right">Zip Code:</div>
+      </td>
+      <td  > 
+        <input type="text" name="zip" size="10" class="input">
+      </td>
+      <td  > 
+        <div align="right">Ages:</div>
+      </td>
+      <td class="options"  > 
+        <input type="text" name="age" size="20" class="input">
+      </td>
+    </tr>
+  </table>
+ 
+
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn3" tag="2" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn3" tag="4" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section4" style="display:none">
+<A NAME="A4">
+<SPAN class="prompt"><BOGUS><%ws_details%><%warning%><P><%q_label%> Avocational interests and hobbies:</SPAN><BR>
+<SPAN  class="instruction"><I>(PLEASE TYPE YOUR RESPONSE)</I></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn4" tag="3" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn4" tag="5" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section5" style="display:none">
+<A NAME="A5">
+<SPAN class="prompt">3. Organizations (social, service, business, or professional) to which you belong:</SPAN><BR>
+<SPAN  class="instruction"><I>(PLEASE TYPE YOUR RESPONSE)</I></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn5" tag="4" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn5" tag="6" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section6" style="display:none">
+<A NAME="A6">
+<SPAN class="prompt">4. Periodicals you read:</SPAN><BR>
+<SPAN  class="instruction"><I>(PLEASE TYPE YOUR RESPONSE)</I></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn6" tag="5" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn6" tag="7" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section7" style="display:none">
+<A NAME="A7">
+<SPAN class="prompt">5. Educational background:</SPAN><BR>
+<SPAN  class="instruction"><I>(PLEASE TYPE YOUR RESPONSE)</I></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn7" tag="6" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn7" tag="8" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section8" style="display:none">
+<A NAME="A8">
+<SPAN class="prompt"><BOGUS><%ws_details%><%warning%><P><%q_label%> Business or professional seminars taken:</SPAN><BR>
+<SPAN  class="instruction"><I>(PLEASE TYPE YOUR RESPONSE)</I></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn8" tag="7" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn8" tag="9" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section9" style="display:none">
+<A NAME="A9">
+<SPAN class="prompt">7. Key advisors:</SPAN><BR>
+<SPAN  class="instruction"><I>(PLEASE TYPE YOUR RESPONSE)</I></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn9" tag="8" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn9" tag="10" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section10" style="display:none">
+<A NAME="A10">
+<SPAN class="prompt">7A. BREAK1</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn10" tag="9" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn10" tag="11" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section11" style="display:none">
+<A NAME="A11">
+<SCRIPT LANGUAGE="JavaScript">
+function QValid()
+	{
+   var selectedButton = "";
+   for (var i=0;i< document.q.radioQ1.length;i++)
+      {
+      if (document.q.radioQ1[i].checked=="1")
+         {
+         selectedButton=document.q.radioQ1[i].value;
+         }
+      }
+if (selectedButton == "")
+   {
+   alert("Please select one of the items in the list");
+   return false;
+   }
+	return true;
+	}
+ 
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript" SRC="/triton/stuff/goodstuff.js">
+</SCRIPT>
+  <p> 
+<TABLE cellspacing=0 cellpadding=0 border=1 >
+<TR><TD><TABLE cellspacing=0 cellpadding=1 border=0 width=596>
+	<TR class="details"><TH align="RIGHT">&nbsp;Participant:&nbsp;<TD>&nbsp; &nbsp;<TD width=10>&nbsp; <TH align="RIGHT">&nbsp;Organization:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Workshop Date:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Due Date:&nbsp;<TD>&nbsp;&nbsp;
+	<TR class="details"><TH align="RIGHT">&nbsp;Return Fax:&nbsp;<TD>&nbsp;&nbsp;<TD>&nbsp;<TH align="RIGHT">&nbsp;Appraiser:&nbsp;<TD>&nbsp;&nbsp;
+</TABLE></TABLE>
+<TABLE width="600" cellspacing=0 cellpadding=5>
+	<TR ><TD class="warning" border=1 >
+	<B>Warning:</B> If you use the back button on your browser's tool bar you will lose your 
+	data on this page. Please use the navigation buttons at the bottom of each page to move from page 
+	to page. Doing this will save your responses automatically in our database as you go through each page.</TD></TR></table>
+
+    <P><span class="qlabel">8.</span> <SPAN class="prompt"> Employment (list your current job first):</SPAN></p>
+  <table cellpadding="5" cellspacing="0"  class="mytable" >
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="employer1" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="from1" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="to1" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="title1" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="begsalary1" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Present Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="endsalary1" size="15" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="black" height="2"> 
+      <td colspan="6" " height="2" ></td>
+     </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="employer2" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="from2" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="to2" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="title2" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="begsalary2" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Ending Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="endsalary2" size="15" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="black" height="2"> 
+      <td colspan="6" " height="2" ></td>
+     </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="employer3" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="from3" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="to3" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="title3" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="begsalary3" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Ending Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="endsalary3" size="15" class="input">
+      </td>
+    </tr>
+    <tr bgcolor="black" height="2"> 
+      <td colspan="6" " height="2" ></td>
+     </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="employer4" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="from4" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="to4" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="title4" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="begsalary4" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Ending Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="endsalary4" size="15" class="input">
+      </td>
+    </tr>
+ 
+    <tr bgcolor="black" height="2"> 
+      <td colspan="6" " height="2" ></td>
+     </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Employer:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="employer5" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">From:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="from5" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">To:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="to5" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td width="61"   > 
+        <div align="right">Title:</div>
+      </td>
+      <td width="110"   > 
+        <input type="text" name="title5" size="20" class="input">
+      </td>
+      <td width="103"   > 
+        <div align="right">Beginning Salary:</div>
+      </td>
+      <td width="85"   > 
+        <input type="text" name="begsalary5" size="15" class="input">
+      </td>
+      <td width="92"   > 
+        <div align="right">Ending Salary:</div>
+      </td>
+      <td width="93"   > 
+        <input type="text" name="endsalary5" size="15" class="input">
+      </td>
+    </tr>
+  </table>
+ 
+
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn11" tag="10" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn11" tag="12" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section12" style="display:none">
+<A NAME="A12">
+<SPAN class="prompt">CHECK. Check if we have enough data to allow submission of form</SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn12" tag="11" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn12" tag="13" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section13" style="display:none">
+<A NAME="A13">
+	<STYLE TYPE="text/css">
+		.body { background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+	</STYLE>
+<IMG SRC="/MAP001/banner600.gif" width=500>
+<TABLE width="600"><TR><TD>
+
+<H3>
+You have reached the end of this form.<BR><BR>
+
+
+No responses were entered.<BR><BR>
+
+
+You will automatically be redirected to the list of forms.<BR><BR>
+
+<A HREF="/cgi-mr/pwikit_login.pl?id=&password=">Click here</A>
+ if you are NOT automatically redirected. 
+</H3>
+
+
+</TD></TR></TABLE>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn13" tag="12" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn13" tag="14" bogus onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section14" style="display:none">
+<A NAME="A14">
+<SPAN class="prompt">BREAK. </SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn14" tag="13" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn14" tag="15" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+<DIV ID="Section15" style="display:none">
+<A NAME="A15">
+<SPAN class="prompt"><IMG SRC="/MAP001/banner600.gif"><INPUT TYPE="HIDDEN" NAME="finish"><TABLE border="0"width="600"><TR><TD>You are now at the end of this form. If you are finished, please click the SUBMIT button to save your answers and submit them to the workshop leader. If you should change your mind before <%duedate%>, you can come back and change your answers. <BR><BR><TABLE border=0 cellpadding="8"><TR><TH><INPUT type="SUBMIT" VALUE=" SUBMIT " onclick="document.q.finish.value='';"></TD><TD>I am happy with my responses and would like to submit them now</TD></TR><TR><TD> <INPUT TYPE="BUTTON" VALUE="NOT YET" onclick="document.q.finish.value='0';document.q.submit();"></TD><TD>I am not done yet. I need to come back and review my answers later.</TD></TR><TR><TH> <INPUT TYPE="BUTTON" VALUE=" << BACK " tabindex="-1"  alt="BACK" onclick="history.back()"> <TD>Go back and review my answers</tr></TABLE></TABLE></SPAN><BR>
+<DIV Class="BTN">
+<HR>
+<TABLE>
+<TR>
+<TD><BUTTON ID="backbtn15" tag="14" onclick="goback()"> &lt;&lt;BACK</BUTTON></TD>
+<TD><BUTTON ID="nextbtn15" tag="-2" validate="validate('')" onclick="gofwd()" setvars="">NEXT &gt;&gt;</BUTTON></TD>
+</TR></TABLE>
+</DIV>
+</DIV>
+</FORM>
+</BODY>
+</HTML>

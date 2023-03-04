@@ -1,0 +1,15 @@
+Dear [%execname%]:
+
+[%fullname%] has signed on to the PWI system for the first time.
+
+FIRST SIGN ON
+---------------------
+
+Participant: [%fullname%] ([%part_email%])
+Company: [%company%]
+Due Date: [%duedate%]
+Workshop Date: [%workshopdate%]
+Location: [%location%]
+Administrator: Cathy Webb
+
+No action is needed from this email.

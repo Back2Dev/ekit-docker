@@ -1,0 +1,8 @@
+Dear [%execname%]:
+
+[%fullname%] of [%company%] [%locationcode%] [%workshopdate%] has just modified the Key Personnel list (Q10A).
+
+KEY PERSONNEL LIST
+------------------
+
+[%peerlisttxt%]

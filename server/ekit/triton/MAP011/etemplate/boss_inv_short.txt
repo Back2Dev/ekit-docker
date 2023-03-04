@@ -1,0 +1,11 @@
+MAP has tried several times, sending you a formal invitation. It appears as those attempts have failed.
+
+As a result, we are sending this less formal invitation, for you to complete your MAP forms online, as [%aboutname%], who is attending the MAP management program, [%workshopdate%].
+
+More information and instructions can be found at the following link:
+
+link: http://ekit.mappwi.com/
+LoginID: [%id%]
+PWD: [%password%]
+
+If you have any questions, please contact us at any time.

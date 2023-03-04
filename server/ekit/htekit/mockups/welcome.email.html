@@ -1,0 +1,79 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html lang="en-US"><head><title>Participant Welcome email</title>
+<style type="text/css">
+.leftprog { background-color: #ff8888; color:YELLOW; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 7pt; font-style: normal; }
+.rightprog { background-color: #ffffff; color:#ff0000; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 7pt; font-style: normal; }
+.bigheading { background-color: #FF3333; color:#000000; font-family:  Calibri, Verdana, Arial, Helvetica, sans-serif; font-size: 12pt; font-style: normal; font-weight: bold; }
+.small { background-color: #FFFFFF; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 7pt}
+.title { background-color: #FFFFFF; font-family: Calibri, Verdana, Arial, Helvetica, sans-serif; font-size: 12pt; font-weight:bold}
+.prompt {  font-family:  Calibri, Verdana, Arial, Helvetica, sans-serif; font-size: 11pt; font-style: normal; font-weight: bold; }
+.heading { background-color: #888888; color:#ffffff; font-family: Calibri, Verdana, Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: bold; }
+.options { background-color: #ffffcc; color:#000000; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: normal; }
+.options2 { background-color:palegreen;color:black; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: normal; }
+.instruction {  font-family: Calibri, Arial, Helvetica, sans-serif; font-style: italic; font-size: 9pt; }
+.default {  }
+.links {  font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 9pt}
+.body { background-color: #FFFFFF; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 9pt}
+.mytable { color:black; border-width:2px; border-color:#666666; border-style:solid;}
+.warning { color:red; background-color: #EEEEEE; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 10pt; border-color:red;border-style:solid;border-width:1px;}
+.redbar{color: #982906; font-weight: bold; padding: 10px 0 10px 0;}
+Td.options{border-width:0 0 1px 0; border-color:#666666; border-style:solid;}
+.qlabel { background-color: #ffffff;color:#336633; font-family: Calibri, Arial, Helvetica, sans-serif; font-style: normal; font-size: 12pt; font-weight: bold;}
+table { background-color: #FFFFFF; font-family: Calibri, Arial, Helvetica, sans-serif; font-size: 9pt; font-weight: normal;}
+
+</style>
+</head>
+<body class="body">
+<table border=0 cellpadding=0 cellspacing=0 style="margin:0;">
+<tr>
+<TD style="background-image: url('http://[%vhost%]/themes/ekit/maplogo.png');background-repeat:no-repeat;" width="600px" height="90px" >&nbsp;
+
+<tr>
+<TD style="background-image:url('http://[%vhost%]/themes/ekit/bluebar.png');font-family:Calibri;font-size:14pt; color:white;" height="30px" width=600px> &nbsp;&nbsp; Welcome to MAP 
+</table>
+<table border="0" width="600">
+	<tbody>
+		<tr>
+			<td>
+			<p>
+			<strong>Congratulations and Welcome to MAP!</strong> 			
+			</p>
+			<p>
+			We are delighted you are going to participate in the MAP Program and have reserved a place for you in the [%startdate%] MAP Workshop which will be held at the [%location%].&nbsp; 			
+			</p>
+			<p>
+			<strong>Please Confirm Your Email</strong> 			
+			</p>
+			<P>
+			We need you to confirm your email address by clicking this link: <a href="http://[%vhost%]/cgi-mr/pwikit_clickthru.pl?password=[%password%]&id=[%id%]">http://[%vhost%]/cgi-mr/pwikit_clickthru.pl?password=[%password%]&id=[%id%]</a> , this lets us know that we have the right email for you.
+			<p>
+			<strong>Please Mark Your Calendar!</strong> 			
+			</p>
+			<p>
+			Six weeks prior to your Workshop, you will receive the MAP Pre-Workshop Questionnaires and hotel reservation information, via email.&nbsp; The completed Questionnaires will help us to tailor your MAP Workshop to your unique role within your organization.&nbsp; If you have not received the emailed Pre-Workshop Questionnaires by [%invitedate%] please contact MAP Workshop Operations at 800.540.9003, ext. 225. 			
+			</p>
+			<p>
+			<strong>Please keep in mind that if you are unable to participate in the Workshop scheduled above, you must notify us in writing at least 7 days prior to that date or you may incur a $500 reschedule fee.&nbsp; In addition, the cancellation of your hotel reservation in less than 7 days may cause you to incur hotel charges. 			</strong>
+			</p>
+			<p>
+			Please be sure to add ctwebb@mappwi.com to your safe senders list to ensure your Ekit does not go to your spam folders.
+			</p>
+			<p>
+			If you have any questions or require assistance, please call or reply to this email.&nbsp; We look forward to working with you.&nbsp;
+			</p>
+			<p>
+			Sincerely, 			
+			</p>
+			<p>
+			[%execname%]<br />
+			</p>
+			</td>
+		</tr>
+		<tr><TD>
+<HR>
+<center><img src="http://[%vhost%]/themes/ekit/ekit.daa.png" alt="Discipline Accountability Achievement"></center>
+	</tbody>
+</table>
+</body>
+</html>

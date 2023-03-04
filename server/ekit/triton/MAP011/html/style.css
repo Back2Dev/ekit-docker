@@ -1,0 +1,12 @@
+.prompt { color:#336633; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11pt; font-style: normal; font-weight: bold; }
+.heading { background-color: #336633; color:#ffffff; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: bold; }
+.options { background-color: #ffffcc; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style:normal; font-weight: normal; }
+.options2 { background-color: #ffffff; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style:normal; font-weight: normal; }
+.instruction {  font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 9pt; }
+.default {  }
+.qlabel { background-color: #ffffff;color:#336633; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-size: 18pt; border:1}
+.links {  font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.body { background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.details { color:#336633; background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.warning { color:red; background-color: #EEEEEE; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; border-color:red;border-style:solid;border-width:1px;}
+.mytable { color:black; border-width:2px; border-color:#336633; border-style:solid;}

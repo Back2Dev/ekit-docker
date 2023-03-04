@@ -1,0 +1,8 @@
+<HTML>
+<BODY>
+Below is the DISC TEST. Please complete the test now. 
+When you have finished, click 
+<A TARGET="_parent" HREF="/cgi-mr/pwikit_login.pl?id=<%id%>&password=<%token%>">here</A> 
+or <A HREF="/cgi-mr/godb.pl?survey_id=<%survey_id%>&seqno=<%seqno%>&q_label=<%q_label%>>here</A>
+</BODY>
+</HTML>

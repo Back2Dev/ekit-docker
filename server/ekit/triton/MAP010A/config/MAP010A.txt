@@ -1,0 +1,338 @@
+#
+# Generated Survey syntax file for MAP010A (Tue Jun 18 10:35:10 2002);
+# 
++survey_name=Key Personnel List
++survey_id=MAP010A
++window_title=Q10A - Key Personnel List
++one_at_a_time=0
++block_size=5
+#+show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++dive_in=1
++allow_restart=1
++focus_off=1
++theme=ekit2
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Key Personnel List<TH class="bluebarq">Q10A</table>
++qscale=<P><%q_label%> 
+
+Q AA
++qtype=code
+C	ws_details=ws_details
+C	id=id
+C	token=token
+C	warning=warning
+C	q_label=q_label
+C	duedate=duedate
+C	story=story
+C	login_page=login_page
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q A. <%qbanner%>
++qtype=instruction
+
+Q 1. Key Personnel List
++qtype=instruction
++external=keyout2.htm
++buttons=1
+
+Q 1A. Split names
++qtype=perl_code
+C require 'TPerl/360-lib.pl';
+C $simulate_frames = 0;		# Prevent simulated frames from being used
+C require 'TPerl/pwikit_cfg.pl';
+C foreach (my $n=1;$n<=$config{npeer};$n++)
+C	{
+C	$resp{"ext_peerfirstname$n"} = $resp{"peerfirstname$n"};
+C	$resp{"ext_peerlastname$n"} = $resp{"peerlastname$n"};
+C	$resp{"ext_peeremail$n"} = $resp{"peeremail$n"};
+C	}
+
+Q 1B. Receive names
++qtype=perl_code
+C	require 'TPerl/360-lib.pl';
+C	$simulate_frames = 0;		# Prevent simulated frames from being used
+C	require 'TPerl/pwikit_cfg.pl';
+C	my @peers = ();
+C	my @tpeers = ();
+C	my @checks = ();
+C	my $back2 = &input('BACK2');
+C	$back2 =~ s/^\s+//;		# Netscape 4.7 gives us spaces
+C	my $show_password = 0;
+C	# Get a list of the boss email addresses (Can't invite them to do this):
+C	my %verboten = ();
+C	foreach (my $n=1;$n<=$config{nboss};$n++)
+C		{
+C		$verboten{lc($resp{"bossemail$n"})}++ if ($resp{"bossemail$n"} ne '');
+C		}
+C	#
+C	# Also make sure they cannot add themselves to the list (Although we cannot guard against other personal email addresses):
+C	#
+C	$verboten{lc($resp{email})}++;
+C	
+C	&db_conn;
+C	&debug("just saving names...");
+C	my $pwd = $resp{token};
+C	my_require("$qt_root/$config{participant}/web/u$pwd.pl");		# Bring in the ufile first
+C	foreach (my $n=1;$n<=$config{npeer};$n++)
+C		{
+C		$peers[$n-1] = 0;
+C		$checks[$n-1] = '';
+C		my $firstname = &input("peerfirstname$n");	# We grab the input, to prevent it being saved to the resp Hash as ext_...
+C		my $lastname = &input("peerlastname$n");
+C		my $email = &input("peeremail$n");
+C		if ($resp{"disabled$n"} ne '')
+C			{
+C			$firstname = $resp{"peerfirstname$n"};	
+C			$lastname = $resp{"peerlastname$n"};
+C			$email = $resp{"peeremail$n"};
+C			}
+C		my $fullname = mk_fullname($firstname,$lastname);
+C		$ufields{peerfirstname} = $ufields{"peerfirstname$n"} = $resp{"peerfirstname$n"} = $firstname;
+C		$ufields{peerlastname}  = $ufields{"peerlastname$n"}  = $resp{"peerlastname$n"}  = $lastname;
+C		$ufields{who} = $ufields{peerfullname}  = $ufields{"peerfullname$n"}  = $resp{"peerfullname$n"}  = $fullname;
+C		$ufields{"peeremail$n"}     = $resp{"peeremail$n"}     = $email;
+C		if ($fullname ne '')
+C			{
+C			debug("n=$n, ".$resp{"peerfirstname$n"});
+C			$peers[$n-1] = 1;
+C			$tpeers[$n-1] = "$n. $fullname ($email)";
+C			my $pwd = $resp{"peerpassword$n"};
+C			if ($pwd eq '')
+C				{
+C				$resp{"peerpassword$n"} = db_getnextpwd($config{master});
+C				$ufields{"peerpassword$n"} = $resp{"peerpassword$n"};	
+C				$pwd = $resp{"peerpassword$n"};	
+C				db_add_invite($config{index},$config{case},$config{peer},$resp{id},$pwd,$fullname,'Peer',$resp{batchno},0);
+C				db_save_pwd_full($config{master},$resp{id},$pwd,$fullname,0,$resp{batchno},$email);
+C				db_save_pwd_full($config{peer},$resp{id},$pwd,$fullname,0,$resp{batchno},$email);
+C				}
+C			$tpeers[$n-1] .= qq{[$pwd]} if $show_password;
+C			if ($resp{"peersent$n"} ne '')
+C				{
+C				my $now_string = localtime($resp{"peersent$n"});
+C				$tpeers[$n-1] .= qq{ <I><B>email last sent at $now_string <I></B>};
+C				$resp{"disabled$n"} = "DISABLED";
+C				}
+C			$checks[$n-1] = 1 if ($resp{"peersent$n"} eq '');	# Turn new ones (ie unsent) on
+C			$checks[$n-1] = 1 if ($input{"peeremail$n"} ne $resp{"ext_peeremail$n"});	# Turn new ones (ie unsent) on
+C			if ($verboten{lc($email)})
+C				{
+C				$tpeers[$n-1] .= qq{<FONT color="red" size="+1"> - <B>Error:</B> You cannot include yourself, your supervising manager or partner on this list, please go back and correct it.</FONT>};
+C				$checks[$n-1] = -1;	# -1 Means disable the control
+C				}
+C			$checks[$n-1] = 0 if ($resp{"disabled$n"} ne '');
+C			
+C			my @mylist = @{$config{peerlist}};
+C			my $jobtitle = $ufields{jobtitle};
+C#			&debug("roles\->$jobtitle\->peerlist\[0\]=".$config{roles}{$jobtitle}{peerlist}[0]);
+C			if ($config{roles}{$jobtitle}{peerlist}[0] ne '')
+C				{
+C				@mylist = @{$config{roles}{$jobtitle}{peerlist}};
+C				}
+C			my %extras = ();
+C			$extras{fullname} = $ufields{"peerfullname$n"};
+C			&db_save_extras($config{index},$pwd,\%extras);
+C			$extras{email} = $ufields{"peeremail$n"};
+C			foreach my $mysid (@mylist)
+C				{
+C				&debug("Updating peer $n info");
+C				&save_ufile($mysid,$pwd);
+C				update_dfile($mysid,$resp{id},$resp{"peerpassword$n"});
+C				&db_save_extras($mysid,$resp{"peerpassword$n"},\%extras);
+C				}
+C			debug("n=$n, ".$resp{"peerfirstname$n"});
+C			}
+C		}
+C	$resp{mask_peers} = join($array_sep,@peers);
+C	$resp{maskt_peers} = join($array_sep,@tpeers);
+C	$resp{_Q2} = join($array_sep,@checks);	
+C	$data_dir = "${qt_root}/$input{survey_id}/web";
+C	$resp{survey_id} = $input{survey_id};
+C	&qt_save;
+C	save_ufile($config{participant},$resp{token});
+C	&db_disc;
+
+
+Q 2A. Below is a list of the names you have provided. <P>We will send these people an email, giving them the opportunity to complete the form online. If they do so, they will not need to fax the form to us.<P>Please select which of these people should receive emails now:
++qtype=multi
++mask_include=peers
++max_multi_per_col=30
++instr=Click the NEXT button below to send emails to the names checked above
++buttons=1
+A 1
+A 2
+A 3
+A 4
+A 5
+A 6
+A 7
+A 8
+A 9
+A 10
+A 11
+A 12
+A 13
+A 14
+A 15
+A 16
+A 17
+A 18
+A 19
+A 20
+
+Q 2B. Send out emails and assemble a story
++qtype=perl_code
+C	require 'TPerl/360-lib.pl';
+C	$simulate_frames = 0;		# Prevent simulated frames from being used
+C	require 'TPerl/pwikit_cfg.pl';
+C	my @peers = ();
+C	my @tpeers = ();
+C	my @checks = ();
+C	my $back2 = &input('BACK2');
+C	$back2 =~ s/^\s+//;		# Netscape 4.7 gives us spaces
+C	my $show_password = 0;
+C	# Get a list of the boss email addresses (Can't invite them to do this):
+C	my %verboten = ();
+C	foreach (my $n=1;$n<=$config{nboss};$n++)
+C		{
+C		$verboten{lc($resp{"bossemail$n"})}++ if ($resp{"bossemail$n"} ne '');
+C		}
+C	#
+C	# Also make sure they cannot add themselves to the list (Although we cannot guard against other personal email addresses):
+C	#
+C	$verboten{lc($resp{email})}++;
+C	
+C	&db_conn;
+C	if ($back2 eq '')		# Don't send emails if we are being asked to go back
+C		{
+C		my $sent;
+C		my @sendit  = split(/$array_sep/,$resp{_Q2});
+C		our $story = '';
+C	#
+C	# Pull in existing ufields ($resp hash is already present, as we are in godb/qt-libdb context
+C	#
+C		undef %ufields;
+C		my $ufile = "$qt_root/$config{participant}/web/u$resp{'token'}.pl";
+C		my_require ("$ufile",0);
+C		$resp{peerlisthtml} = "";
+C		foreach (my $n=1;$n<=$config{npeer};$n++)
+C			{
+C	#		&debug("I am here in part 2: $n");
+C			$resp{peerlisthtml} .= qq{$n. \[%peerfullname$n%] <BR>\n} if ($resp{"peerfullname$n"});
+C			if ($sendit[$n-1])
+C				{
+C				my $fullname = mk_fullname($resp{"peerfirstname$n"},$resp{"peerlastname$n"});
+C				my $email = lc($resp{"peeremail$n"});
+C#				alert("Sending email to $fullname");
+C				&debug(qq{Trying $fullname: $email"});
+C#				my $pwd = &db_case_id_name_role($config{index},$config{peer},$resp{id},$fullname,'Peer');
+C				my $pwd = $resp{"peerpassword$n"};	# Do we have a password for them already ?
+C				if ($email ne '')			# Only send email if we have an email address
+C					{
+C			#
+C			# Put together the context information
+C			#
+C					my $colleague = $1 if ($fullname =~ /(\w+)\s+/);
+C					$story .= qq{<TR class="options"><TD >Sent peer email to $fullname ($email)</TD></TR>\n};
+C					queue_invite($config{peer},'peer',$resp{id},$pwd,$email);
+C					$sent++;
+C					$resp{"peersent$n"} = time();			# Timestamp when it was last sent
+C					debug("Saving send time as ".$resp{"peersent$n"});
+C					}
+C				}
+C			}
+C		$resp{peerlisttxt} = $resp{peerlisthtml};
+C		$resp{peerlisttxt} =~ s/<br>//ig;
+C		#$ufields{ext_msg} = $save_msg;
+C		save_ufile($config{participant},$resp{token});
+C		if ($story eq '')
+C			{
+C			$story = qq{<TR class="options"><TD >(None sent)</TD></TR>};
+C			}
+C		$story = qq{<TABLE class="mytable" border=0 cellspacing=0 cellpadding=5><TR class="heading"><TH >Sending emails to peers</TH></TR>$story</TABLE><BR>};
+C# Save the data back to the ext_ fields for Ron
+C		foreach (my $n=1;$n<=$config{npeer};$n++)
+C			{
+C			$resp{"ext_peerfirstname$n"} = $resp{"peerfirstname$n"};
+C			$resp{"ext_peerlastname$n"} = $resp{"peerlastname$n"};
+C			$resp{"ext_peeremail$n"} = $resp{"peeremail$n"};
+C			$resp{"ext_peerfullname$n"} = mk_fullname($resp{"peerfirstname$n"},$resp{"peerlastname$n"});
+C			}
+C
+C# Now recalculate mask in case we are coming back to it.
+C		foreach (my $n=1;$n<=$config{npeer};$n++)
+C			{
+C			$peers[$n-1] = 0;
+C			$checks[$n-1] = '';
+C			my $fullname = mk_fullname($resp{"peerfirstname$n"},$resp{"peerlastname$n"});
+C			if ($fullname ne '')
+C				{
+C				$peers[$n-1] = 1;
+C				$tpeers[$n-1] = "$n. $fullname (".$resp{"peeremail$n"}.")";
+C				my $pwd = $resp{"peerpassword$n"};
+C				$tpeers[$n-1] .= qq{[$pwd]} if $show_password;
+C				if ($resp{"peersent$n"} ne '')
+C					{
+C					my $now_string = localtime($resp{"peersent$n"});
+C					$tpeers[$n-1] .= qq{ <I><B>email last sent at $now_string <I></B>};
+C					$resp{"disabled$n"} = "DISABLED";
+C					}
+C				$checks[$n-1] = 1 if ($resp{"peersent$n"} eq '');	# Turn new ones (ie unsent) on
+C				$checks[$n-1] = 1 if ($input{"peeremail$n"} ne $resp{"ext_peeremail$n"});	# Turn new ones (ie unsent) on
+C				my $email = $resp{"peeremail$n"};
+C				if ($verboten{lc($email)})
+C					{
+C					$tpeers[$n-1] .= qq{<FONT color="red" size="+1"> - <B>Error:</B> You cannot include yourself, your supervising manager or partner on this list, please go back and correct it.</FONT>};
+C					$checks[$n-1] = -1;	# -1 Means disable the control
+C					}
+C				$checks[$n-1] = 0 if ($resp{"disabled$n"} ne '');
+C				}
+C			}
+C		$resp{mask_peers} = join($array_sep,@peers);
+C		$resp{maskt_peers} = join($array_sep,@tpeers);
+C		$resp{_Q2} = join($array_sep,@checks);	
+C		$data_dir = "${qt_root}/$input{survey_id}/web";
+C		&qt_save;
+C		if ($sent) {
+C			my $ret = &send_invite_now($config{execq10}, 'execq10', $ufields{id}, $ufields{password}, $ufields{execemail}) if ($ufields{execemail} ne '');
+C			&add2body("<!-- Sent email to Exec: $ufields{execname} ($ufields{execemail}) $ret -->");
+C			foreach (my $n=1;$n<=$config{nboss};$n++)
+C				{
+C               $ufields{bossfullname} = $ufields{"bossfullname$n"};
+C				if ($ufields{"bossemail$n"} ne '')
+C					{
+C					my $ret = &send_invite_now($config{bossq10}, 'bossq10', $ufields{id}, $ufields{password}, $ufields{"bossemail$n"});
+C					&add2body(qq{<!-- Sent email to Boss: $ufields{"bossfullname$n"} ($ufields{"bossemail$n"}) $ret -->});
+C					}
+C				}
+C			}
+C		}
+C	&db_disc;
+
+Q SENT <BOGUS>$$story You can come back and add to the list later if you wish.
++qtype=instruction
++buttons=1
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)};
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++buttons=0
++sscript=../scripts/pwikit_prime_status.pl

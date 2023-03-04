@@ -1,0 +1,4 @@
+[main]
+from_email=ctwebb@mapconsulting.com
+subject=Reminder: MAP - [%duedate%] deadline - MAP Workshop Materials For [%aboutname%]
+from_name=[%execname%]

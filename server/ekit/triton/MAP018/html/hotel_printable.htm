@@ -1,0 +1,242 @@
+<HTML>
+<link rel="stylesheet" href="/themes/ekit/style.css">
+<SCRIPT language="JavaScript">
+<!--
+var f1 = false;
+function focusme(ctl)
+	{
+	if (!f1)
+		{
+		ctl.focus();
+		f1 = true;
+		}
+	}
+function getradio(control)
+	{
+	var selectedButton = "";
+	for (var j=0;j< control.length;j++)
+		{
+		if (control[j].checked)
+			{
+			selectedButton = control[j].value;
+			break;
+			}
+		}
+	return selectedButton;
+	}
+function enforceradio(control)
+	{
+	var msg = '';
+	if (getradio(control) == '')
+		{
+		msg = ' - Please select a response for : "'+control[0].title+'"\n';
+		focusme(control[0]);
+		}
+	return msg;
+	}
+function enforce(control)
+	{
+	var msg = '';
+	if (control.value == '')
+		{
+		msg = ' - Please fill in field: "'+control.title+'"\n';
+		focusme(control);
+		}
+	return msg;
+	}
+function enforcemmyy(control)
+	{
+	var msg = enforce(control);
+	if (msg == '')
+		{		
+	    var exp = new RegExp ("\\d\\d\/\\d\\d");
+	    if (!exp.test (control.value))
+			{
+			msg = ' - "'+control.title+'" must be in the format MM/YY (eg "05/09")\n';
+			focusme(control);
+			}
+		}
+	return msg;
+	}
+function enforcetime(control)
+	{
+	var msg = enforce(control);
+	if (msg == '')
+		{		
+	    var exp = new RegExp ("^(?:0?[1-9]:[0-5]|1(?=[012])\\d:[0-5])\\d\\s*(?:[ap]m)\\s*\$");
+	    if (!exp.test (control.value))
+			{
+			msg = ' - "'+control.title+'" must be in the format HH:MM am/pm (eg "05:30 pm")\n (We understand that arrival time is approximate, so please provide a time plus or minus an hour)';
+			focusme(control);
+			}
+		}
+	return msg;
+	}
+function QValid()
+	{
+	f1 = false;
+	var errmsg = '';
+	errmsg = errmsg + enforceradio(document.q.occupancy);
+//	errmsg = errmsg + enforceradio(document.q.smoker);
+	errmsg = errmsg + enforceradio(document.q.early);
+	if (document.q.early[0].checked)
+		errmsg = errmsg + enforcetime(document.q.arrivaltime);
+	errmsg = errmsg + enforceradio(document.q.guest);
+	if (document.q.guest[0].checked)
+		{
+		errmsg = errmsg + enforceradio(document.q.day1guest);
+		errmsg = errmsg + enforceradio(document.q.day2guest);
+		}
+	errmsg = errmsg + enforce(document.q.cardname);
+	errmsg = errmsg + enforceradio(document.q.cardtype);
+//	errmsg = errmsg + enforce(document.q.cardno);
+	errmsg = errmsg + enforcemmyy(document.q.cardexpiry);
+	if (errmsg != '')
+		{
+		alert('I am sorry, you have the following error(s):\n\n'+errmsg);
+		return false;
+		}
+	return true;
+	}
+ 
+//-->
+</SCRIPT>
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+
+<BODY class="soria">
+<FORM NAME="q" id="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST" onsubmit="return QValid()">
+
+<%qbanner%>
+<table class="mytable" border="0" cellpadding="4" cellspacing="0" width="650">
+<TR class="options">
+	<TD colspan=4>
+	<CENTER><h2><font color="red">PRINT THIS PAGE AND FILL IN YOUR CARD NO AND FAX IT TO <%returnfax%><%faxno%></font></H2></CENTER>
+	<CENTER><h2>HOTEL RESERVATION<BR>for <%salutation%> <%fullname%></h2>
+Accommodations for <%workshopdate%> at <%location%><BR>&nbsp;</CENTER>
+</table>
+<table class="mytable" border="0" cellpadding="4" cellspacing="0" width="650">
+<TR class="options">
+	<TD valign="top" width="30%"><B>1. Room occupancy: 
+	<TD valign="top" colspan="2">
+		<INPUT onchange="yuk(this)" name="occupancy" type="radio" id="occupancy_1" value="One Person" title="Room occupancy"><label for="occupancy_1">One person (one bed)</label><BR>
+		<INPUT onchange="yuk(this)" name="occupancy" type="radio" id="occupancy_2" value="Two (1 bed)"> <label for="occupancy_2">Two people (one bed)</label><BR>
+		<INPUT onchange="yuk(this)" name="occupancy" type="radio" id="occupancy_3" value="Two (2 bed)"><label for="occupancy_3">Two people (two beds)</label><BR>
+		<INPUT onchange="yuk(this)" name="occupancy" type="radio" id="occupancy_4" value="Meals Only"><label for="occupancy_4">No Lodging (meals, refreshment services, tax, service charge, parking if applicable)</label><BR>
+	<td valign="top">
+		* Hotel is a non-smoking facility.
+		<!--
+		<INPUT name="smoker" type="radio" id="smoker_1" value="Yes" title="Smoker ?"><label for="smoker_1">Smoking</label><BR>
+		<INPUT name="smoker" type="radio" id="smoker_2" value="No"><label for="smoker_2">Non-smoking</label>
+-->
+<TR class="options2">
+	<TD valign="top">
+		<B>2. Will you arrive early and need a room on <%dayprior%> ?
+	<TD valign="top" nowrap>
+		<INPUT onchange="yuk(this)" name="early" type="radio" id="early_1" value="Yes" title="Early arrival ?"><label for="early_1">Yes</label>
+		<INPUT onchange="yuk(this)" name="early" type="radio" id="early_2" value="No"><label  for="early_2">No </label>
+	<TD valign="top" align="right">
+		<B>Arrival time: (if arriving early)
+	<TD valign="top">
+			<SELECT onchange="yuk(this)" name="arrivaltime" title="Arrival time" >
+				<OPTION value=''></OPTIO>
+				<OPTION value="01:00 am"> 1 am</OPTION>
+				<OPTION value="02:00 am"> 2 am</OPTION>
+				<OPTION value="03:00 am"> 3 am</OPTION>
+				<OPTION value="04:00 am"> 4 am</OPTION>
+				<OPTION value="05:00 am"> 5 am</OPTION>
+				<OPTION value="06:00 am"> 6 am</OPTION>
+				<OPTION value="07:00 am"> 7 am</OPTION>
+				<OPTION value="08:00 am"> 8 am</OPTION>
+				<OPTION value="09:00 am"> 9 am</OPTION>
+				<OPTION value="10:00 am">10 am</OPTION>
+				<OPTION value="11:00 am">11 am</OPTION>
+				<OPTION value="12:00 am">12 am</OPTION>
+				<OPTION value="01:00 pm"> 1 pm</OPTION>
+				<OPTION value="02:00 pm"> 2 pm</OPTION>
+				<OPTION value="03:00 pm"> 3 pm</OPTION>
+				<OPTION value="04:00 pm"> 4 pm</OPTION>
+				<OPTION value="05:00 pm"> 5 pm</OPTION>
+				<OPTION value="06:00 pm"> 6 pm</OPTION>
+				<OPTION value="07:00 pm"> 7 pm</OPTION>
+				<OPTION value="08:00 pm"> 8 pm</OPTION>
+				<OPTION value="09:00 pm"> 9 pm</OPTION>
+				<OPTION value="10:00 pm">10 pm</OPTION>
+				<OPTION value="11:00 pm">11 pm</OPTION>
+				<OPTION value="12:00 pm">12 pm</OPTION>
+			</SELECT>
+<TR class="options">
+	<TD valign="top"><B>3. Do you plan to have a guest? <%guest%>	
+	<TD valign="top">
+		<INPUT onchange="yuk(this)" name="guest" type="radio" id="guest_1" value="Yes" title="Will you bring a guest for dinner?"><label for="guest_1">Yes</label>
+		<INPUT onchange="yuk(this)" name="guest" type="radio" id="guest_2" value="No"><label  for="guest_2">No </label>
+	<TD valign="top" align="right">
+		<B>If yes, will the guest join the group for dinner?
+	<TD valign="top">
+	<%day1%> <INPUT onchange="yuk(this)" name="day1guest" type="radio" id="day1guest_1" value="Yes" title="<%day1%> dinner guest?"><label for="day1guest_1">Yes</label>
+		<INPUT onchange="yuk(this)" name="day1guest" type="radio" id="day1guest_2" value="No"><label  for="day1guest_2">No </label><BR>
+	<%day2%> <INPUT onchange="yuk(this)" name="day2guest" type="radio" id="day2guest_1" value="Yes" title="<%day2%> dinner guest?"><label for="day2guest_1">Yes</label>
+		<INPUT onchange="yuk(this)" name="day2guest" type="radio" id="day2guest_2" value="No"><label  for="day2guest_2">No </label><BR>
+<TR class="options">
+	<td colspan="4" align="right">Please note, you will be charged for cancelled meals after <%meals_charge%>
+<TR class="options2">
+	<TD valign="top"><B>4. Do you have any comments?
+	<TD valign="top" colspan="3">
+		<textarea onchange="yuk(this)" name="dietnotes" cols="40" rows="5" title="Comments"></textarea>
+<TR class="options">
+	<TD valign="top" colspan="4"><B>5. Credit card information is required in order to reserve lodging and/or meals. Please complete the information below:
+<TR class="options">
+	<TD align="right"><B>Name on credit card: <cardname>
+	<TD valign="top" colspan="3">
+		<INPUT onchange="yuk(this)" name="cardname" type="text"  size="30" title="Name on credit card">
+<TR class="options">
+	<TD align="right"><B>Credit card type:
+	<TD valign="top" colspan="3">
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_1" value="Mastercard" title="Credit Card type"><label for="cardtype_1">Mastercard</label>
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_2" value="Visa"><label for="cardtype_2">Visa</label>
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_3" value="Amex"><label for="cardtype_3">American Express</label>
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_4" value="Diners"><label for="cardtype_4">Diners</label>
+		<INPUT onchange="yuk(this)" name="cardtype" type="radio" id="cardtype_5" value="Discover"><label for="cardtype_5">Discover</label>
+<TR class="options">
+	<TD align="right" valign="top"><B>Credit card number:
+	<TD valign="top" colspan="3">
+		<INPUT onchange="yuk(this)" name="cardno" type="text"  size="20" desc="Credit Card number"> <span class="warning">Write this on form after printing</font>
+<TR class="options">
+	<TD  align="right"><B>Credit card expiration date (MM/YY):
+	<TD valign="top" colspan="3">
+		<INPUT onchange="yuk(this)" name="cardexpiry" type="text"  size="10" title="Credit Card expiry date">
+<TR class="warning"><TD colspan="4"><font size="-1">
+		No charge will be made to your credit card at this time. 
+		Management Action Programs will provide these details to the hotel for confirmation of your reservation only. 
+		Payment for hotel charges will be made when you check out of the hotel. 
+		
+<TR class="options2">
+	<TD valign="top" colspan="4"><B>6. Your name and title as they appear on our records:
+		<font color="blue"><B><%salutation%> <%fullname%>, <%title%></B></font><BR>
+<TR class="options2">
+	<TD valign="top">
+		<B>If you want your name or title to appear differently, please make the changes here:
+	<TD valign="top" colspan="3">
+		<INPUT onchange="yuk(this)" name="revisedfullname" type="text" value="<%salutation%> <%fullname%>, <%title%>"  size="60">
+</table>
+      <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+      <INPUT NAME="seqno" TYPE="hidden" VALUE="<%seqno%>">
+      <INPUT NAME="q_labs" TYPE="hidden" VALUE="<%q_labs%>">
+	<INPUT NAME="jump_to" TYPE="hidden" VALUE="">
+	<INPUT NAME="session" TYPE="hidden" VALUE="">
+</FORM>
+</body>
+</html>

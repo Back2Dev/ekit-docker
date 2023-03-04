@@ -1,0 +1,729 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <script language="JavaScript">
+      <!--
+      function QValid() {
+        //
+        // OK, we have passed all the checks and are about to allow the form to be submitted.
+        // So we gray it out to make sure it cannot be clicked again
+        //
+        document.q.btn_submit.value = "Submitting...";
+        document.q.btn_submit.disabled = true;
+        return true;
+      }
+      function clr_Q1() {}
+
+      //-->
+    </script>
+
+    <link rel="stylesheet" href="./Q18_files/style.css" />
+    <script language="JavaScript">
+      <!--
+      var f1 = false;
+      function focusme(ctl) {
+        if (!f1) {
+          ctl.focus();
+          f1 = true;
+        }
+      }
+      function getradio(control) {
+        var selectedButton = "";
+        for (var j = 0; j < control.length; j++) {
+          if (control[j].checked) {
+            selectedButton = control[j].value;
+            break;
+          }
+        }
+        return selectedButton;
+      }
+      function enforceradio(control) {
+        var msg = "";
+        if (getradio(control) == "") {
+          msg =
+            ' - Please select a response for : "' + control[0].title + '"\n';
+          focusme(control[0]);
+        }
+        return msg;
+      }
+      function enforce(control) {
+        var msg = "";
+        if (control.value == "") {
+          msg = ' - Please fill in field: "' + control.title + '"\n';
+          focusme(control);
+        }
+        return msg;
+      }
+      function enforcemmyy(control) {
+        var msg = enforce(control);
+        if (msg == "") {
+          var exp = new RegExp("\\d\\d\/\\d\\d");
+          if (!exp.test(control.value)) {
+            msg =
+              ' - "' +
+              control.title +
+              '" must be in the format MM/YY (eg "05/09")\n';
+            focusme(control);
+          }
+        }
+        return msg;
+      }
+      function enforcetime(control) {
+        var msg = enforce(control);
+        if (msg == "") {
+          var exp = new RegExp(
+            "^(?:0?[1-9]:[0-5]|1(?=[012])\\d:[0-5])\\d\\s*(?:[ap]m)\\s*\$"
+          );
+          if (!exp.test(control.value)) {
+            msg =
+              ' - "' +
+              control.title +
+              '" must be in the format HH:MM am/pm (eg "05:30 pm")\n (We understand that arrival time is approximate, so please provide a time plus or minus an hour)';
+            focusme(control);
+          }
+        }
+        return msg;
+      }
+      function QValid() {
+        f1 = false;
+        var errmsg = "";
+        errmsg = errmsg + enforceradio(document.q.occupancy);
+        //	errmsg = errmsg + enforceradio(document.q.smoker);
+        errmsg = errmsg + enforceradio(document.q.early);
+        if (document.q.early[0].checked)
+          errmsg = errmsg + enforcetime(document.q.arrivaltime);
+        errmsg = errmsg + enforceradio(document.q.guest);
+        if (document.q.guest[0].checked) {
+          errmsg = errmsg + enforceradio(document.q.day1guest);
+          errmsg = errmsg + enforceradio(document.q.day2guest);
+        }
+        errmsg = errmsg + enforce(document.q.cardname);
+        errmsg = errmsg + enforceradio(document.q.cardtype);
+        errmsg = errmsg + enforceradio(document.q.fax_ccno);
+        errmsg = errmsg + enforcemmyy(document.q.cardexpiry);
+        if (
+          document.q.cardno.value != "" ||
+          (document.q.fax_ccno[1].checked && "XXXX XXXX XXXX 1001" == "")
+        ) {
+          errmsg = errmsg + enforce(document.q.cardno);
+          if (
+            !checkCreditCard(
+              document.q.cardno.value,
+              getradio(document.q.cardtype)
+            )
+          ) {
+            errmsg = errmsg + "Error: " + ccErrors[ccErrorNo];
+            focusme(document.q.cardno);
+          }
+        }
+        if (errmsg != "") {
+          alert("I am sorry, you have the following error(s):\n\n" + errmsg);
+          return false;
+        }
+        return true;
+      }
+      /*============================================================================*/
+
+      /*
+
+This routine checks the credit card number. The following checks are made:
+
+1. A number has been provided
+2. The number is a right length for the card
+3. The number has an appropriate prefix for the card
+4. The number has a valid modulus 10 number check digit if required
+
+If the validation fails an error is reported.
+
+The structure of credit card formats was gleaned from a variety of sources on 
+the web, although the best is probably on Wikepedia ("Credit card number"):
+
+  http://en.wikipedia.org/wiki/Credit_card_number
+
+Parameters:
+            cardnumber           number on the card
+            cardname             name of card as defined in the card list below
+
+Author:     John Gardner
+Date:       1st November 2003
+Updated:    26th Feb. 2005      Additional cards added by request
+Updated:    27th Nov. 2006      Additional cards added from Wikipedia
+
+*/
+
+      /*
+   If a credit card number is invalid, an error reason is loaded into the 
+   global ccErrorNo variable. This can be be used to index into the global error  
+   string array to report the reason to the user if required:
+   
+   e.g. if (!checkCreditCard (number, name) alert (ccErrors(ccErrorNo);
+*/
+
+      var ccErrorNo = 0;
+      var ccErrors = new Array();
+
+      ccErrors[0] = "Unknown card type";
+      ccErrors[1] = "No card number provided";
+      ccErrors[2] =
+        "Credit card number is in invalid format (must be 14-16 digits long)";
+      ccErrors[3] = "Credit card number is invalid (check card type)";
+      ccErrors[4] = "Credit card number has an inappropriate number of digits";
+
+      function checkCreditCard(cardnumber, cardname) {
+        // Array to hold the permitted card characteristics
+        var cards = new Array();
+
+        // Define the cards we support. You may add addtional card types.
+
+        //  Name:      As in the selection box of the form - must be same as user's
+        //  Length:    List of possible valid lengths of the card number for the card
+        //  prefixes:  List of possible prefixes for the card
+        //  checkdigit Boolean to say whether there is a check digit
+
+        cards[0] = {
+          name: "Visa",
+          length: "13,16",
+          prefixes: "4",
+          checkdigit: true,
+        };
+        cards[1] = {
+          name: "MasterCard",
+          length: "16",
+          prefixes: "51,52,53,54,55",
+          checkdigit: true,
+        };
+        cards[2] = {
+          name: "DinersClub",
+          length: "14,16",
+          prefixes: "300,301,302,303,304,305,36,38,55",
+          checkdigit: true,
+        };
+        cards[3] = {
+          name: "CarteBlanche",
+          length: "14",
+          prefixes: "300,301,302,303,304,305,36,38",
+          checkdigit: true,
+        };
+        cards[4] = {
+          name: "AmEx",
+          length: "15",
+          prefixes: "34,37",
+          checkdigit: true,
+        };
+        cards[5] = {
+          name: "Discover",
+          length: "16",
+          prefixes: "6011,650",
+          checkdigit: true,
+        };
+        cards[6] = {
+          name: "JCB",
+          length: "15,16",
+          prefixes: "3,1800,2131",
+          checkdigit: true,
+        };
+        cards[7] = {
+          name: "enRoute",
+          length: "15",
+          prefixes: "2014,2149",
+          checkdigit: true,
+        };
+        cards[8] = {
+          name: "Solo",
+          length: "16,18,19",
+          prefixes: "6334, 6767",
+          checkdigit: true,
+        };
+        cards[9] = {
+          name: "Switch",
+          length: "16,18,19",
+          prefixes: "4903,4905,4911,4936,564182,633110,6333,6759",
+          checkdigit: true,
+        };
+        cards[10] = {
+          name: "Maestro",
+          length: "16",
+          prefixes: "5020,6",
+          checkdigit: true,
+        };
+        cards[11] = {
+          name: "VisaElectron",
+          length: "16",
+          prefixes: "417500,4917,4913",
+          checkdigit: true,
+        };
+
+        // Establish card type
+        var cardType = -1;
+        for (var i = 0; i < cards.length; i++) {
+          // See if it is this card (ignoring the case of the string)
+          if (cardname.toLowerCase() == cards[i].name.toLowerCase()) {
+            cardType = i;
+            break;
+          }
+        }
+
+        // If card type not found, report an error
+        if (cardType == -1) {
+          ccErrorNo = 0;
+          return false;
+        }
+
+        // Ensure that the user has provided a credit card number
+        if (cardnumber.length == 0) {
+          ccErrorNo = 1;
+          return false;
+        }
+
+        // Now remove any spaces from the credit card number
+        cardnumber = cardnumber.replace(/\s/g, "");
+
+        // Check that the number is numeric
+        var cardNo = cardnumber;
+        var cardexp = /^[0-9]{13,19}$/;
+        if (!cardexp.exec(cardNo)) {
+          ccErrorNo = 2;
+          return false;
+        }
+
+        // Now check the modulus 10 check digit - if required
+        if (cards[cardType].checkdigit) {
+          var checksum = 0; // running checksum total
+          var mychar = ""; // next char to process
+          var j = 1; // takes value of 1 or 2
+
+          // Process each digit one by one starting at the right
+          var calc;
+          for (i = cardNo.length - 1; i >= 0; i--) {
+            // Extract the next digit and multiply by 1 or 2 on alternative digits.
+            calc = Number(cardNo.charAt(i)) * j;
+
+            // If the result is in two digits add 1 to the checksum total
+            if (calc > 9) {
+              checksum = checksum + 1;
+              calc = calc - 10;
+            }
+
+            // Add the units element to the checksum total
+            checksum = checksum + calc;
+
+            // Switch the value of j
+            if (j == 1) {
+              j = 2;
+            } else {
+              j = 1;
+            }
+          }
+
+          // All done - if checksum is divisible by 10, it is a valid modulus 10.
+          // If not, report an error.
+          if (checksum % 10 != 0) {
+            ccErrorNo = 3;
+            return false;
+          }
+        }
+
+        // The following are the card-specific checks we undertake.
+        var LengthValid = false;
+        var PrefixValid = false;
+        var undefined;
+
+        // We use these for holding the valid lengths and prefixes of a card type
+        var prefix = new Array();
+        var lengths = new Array();
+
+        // Load an array with the valid prefixes for this card
+        prefix = cards[cardType].prefixes.split(",");
+
+        // Now see if any of them match what we have in the card number
+        for (i = 0; i < prefix.length; i++) {
+          var exp = new RegExp("^" + prefix[i]);
+          if (exp.test(cardNo)) PrefixValid = true;
+        }
+
+        // If it isn't a valid prefix there's no point at looking at the length
+        if (!PrefixValid) {
+          ccErrorNo = 3;
+          return false;
+        }
+
+        // See if the length is valid for this card
+        lengths = cards[cardType].length.split(",");
+        for (j = 0; j < lengths.length; j++) {
+          if (cardNo.length == lengths[j]) LengthValid = true;
+        }
+
+        // See if all is OK by seeing if the length was valid. We only check the
+        // length if all else was hunky dory.
+        if (!LengthValid) {
+          ccErrorNo = 4;
+          return false;
+        }
+
+        // The credit card is in the required format.
+        return true;
+      }
+
+      /*============================================================================*/ //-->
+    </script>
+  </head>
+  <body class="body">
+    <form
+      name="q"
+      action="/donotuse-mr/godb.pl"
+      enctype="www-x-formencoded"
+      method="POST"
+      onsubmit="return QValid()"
+    >
+      <table border="1" cellpadding="0" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>
+              <table border="0" cellpadding="1" cellspacing="0" width="596">
+                <tbody>
+                  <tr class="details">
+                    <th align="RIGHT">&nbsp;Participant:&nbsp;</th>
+                    <td>&nbsp;731224 A.J. Widacki&nbsp;</td>
+                    <td width="10">&nbsp;</td>
+                    <th align="RIGHT">&nbsp;Organization:&nbsp;</th>
+                    <td>&nbsp;Michael Baker, Jr., Inc.&nbsp;</td>
+                  </tr>
+                  <tr class="details">
+                    <th align="RIGHT">&nbsp;Workshop Date:&nbsp;</th>
+                    <td>&nbsp;March 9-11, 2011&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <th align="RIGHT">&nbsp;Due Date:&nbsp;</th>
+                    <td>&nbsp;03/17/2011&nbsp;</td>
+                  </tr>
+                  <tr class="details">
+                    <th align="RIGHT">&nbsp;Return Fax:&nbsp;</th>
+                    <td>&nbsp;(818) 981-2717&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <th align="RIGHT">&nbsp;Appraiser:&nbsp;</th>
+                    <td>&nbsp;A.J. Widacki&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <img src="Q18_files/banner600.gif" />
+      <table cellpadding="5" cellspacing="0" width="600">
+        <tbody>
+          <tr>
+            <td class="warning" border="1">
+              <b>Warning:</b> If you use the back button on your browser's tool
+              bar you will lose your data on this page. Please use the
+              navigation buttons at the bottom of each page to move from page to
+              page. Doing this will save your responses automatically in our
+              database as you go through each page.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table
+        class="mytable"
+        border="0"
+        cellpadding="4"
+        cellspacing="0"
+        width="600"
+      >
+        <tbody>
+          <tr class="options">
+            <td colspan="4">
+              <center>
+                <h2>HOTEL RESERVATION<br />for Mr. A.J. Widacki</h2>
+                Accommodations for March 9-11, 2011 at Newport Beach Marriott
+                Bayview<br />&nbsp;
+              </center>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table
+        class="mytable"
+        border="0"
+        cellpadding="4"
+        cellspacing="0"
+        width="600"
+      >
+        <tbody>
+          <tr class="options">
+            <td valign="top" width="30%"><b>1. Room occupancy: </b></td>
+            <td colspan="2" valign="top">
+              <input
+                name="occupancy"
+                id="occupancy_1"
+                value="One Person"
+                checked="checked"
+                title="Room occupancy"
+                type="radio"
+              /><label for="occupancy_1">One person (one bed)</label><br />
+              <input
+                name="occupancy"
+                id="occupancy_2"
+                value="Two (1 bed)"
+                type="radio"
+              />
+              <label for="occupancy_2">Two people (one bed)</label><br />
+              <input
+                name="occupancy"
+                id="occupancy_3"
+                value="Two (2 bed)"
+                type="radio"
+              /><label for="occupancy_3">Two people (two beds)</label><br />
+              <input
+                name="occupancy"
+                id="occupancy_4"
+                value="Meals Only"
+                type="radio"
+              /><label for="occupancy_4"
+                >No Lodging (meals, refreshment services, tax, service charge,
+                parking if applicable)</label
+              ><br />
+            </td>
+            <td valign="top">
+              * Hotel is a non-smoking facility.
+              <!--
+		<INPUT name="smoker" type="radio" id="smoker_1" value="Yes" title="Smoker ?"><label for="smoker_1">Smoking</label><BR>
+		<INPUT name="smoker" type="radio" id="smoker_2" value="No"><label for="smoker_2">Non-smoking</label>
+		-->
+            </td>
+          </tr>
+          <tr class="options2">
+            <td valign="top">
+              <b>2. Will you arrive early and need a room on Tuesday ? </b>
+            </td>
+            <td valign="top">
+              <input
+                name="early"
+                id="early_1"
+                value="Yes"
+                checked="checked"
+                title="Early arrival ?"
+                type="radio"
+              /><label for="early_1">Yes</label>
+              <input name="early" id="early_2" value="No" type="radio" /><label
+                for="early_2"
+                >No
+              </label>
+            </td>
+            <td align="right" valign="top">
+              <b>Arrival time: (if arriving early) </b>
+            </td>
+            <td valign="top">
+              <input
+                name="arrivaltime"
+                value="09:00 pm"
+                title="Arrival time"
+                maxlength="11"
+                type="text"
+              />
+            </td>
+          </tr>
+          <tr class="options">
+            <td valign="top"><b>3. Do you plan to have a guest? </b></td>
+            <td valign="top">
+              <input
+                name="guest"
+                id="guest_1"
+                value="Yes"
+                title="Will you bring a guest for dinner?"
+                type="radio"
+              /><label for="guest_1">Yes</label>
+              <input
+                name="guest"
+                id="guest_2"
+                value="No"
+                checked="checked"
+                type="radio"
+              /><label for="guest_2">No </label>
+            </td>
+            <td align="right" valign="top">
+              <b>If yes, will the guest join the group for dinner? </b>
+            </td>
+            <td valign="top">
+              Wednesday
+              <input
+                name="day1guest"
+                id="day1guest_1"
+                value="Yes"
+                title="Wednesday dinner guest?"
+                type="radio"
+              /><label for="day1guest_1">Yes</label>
+              <input
+                name="day1guest"
+                id="day1guest_2"
+                value="No"
+                type="radio"
+              /><label for="day1guest_2">No </label><br />
+              Thursday
+              <input
+                name="day2guest"
+                id="day2guest_1"
+                value="Yes"
+                title="Thursday dinner guest?"
+                type="radio"
+              /><label for="day2guest_1">Yes</label>
+              <input
+                name="day2guest"
+                id="day2guest_2"
+                value="No"
+                type="radio"
+              /><label for="day2guest_2">No </label><br />
+            </td>
+          </tr>
+          <tr class="options">
+            <td colspan="4" align="right">
+              Please note, you will be charged for cancelled meals after
+            </td>
+          </tr>
+          <tr class="options2">
+            <td valign="top">
+              <b>4. Do you have any dietary restrictions? </b>
+            </td>
+            <td colspan="3" valign="top">
+              <textarea
+                name="dietnotes"
+                cols="40"
+                rows="5"
+                title="Dietary restrictions"
+              >
+No</textarea
+              >
+            </td>
+          </tr>
+          <tr class="options">
+            <td colspan="4" valign="top">
+              <b
+                >5. You must provide a credit card to secure/pay for your
+                reservation and/or meals package. If you do not require a room,
+                you will still need to provide a credit card for your Meals
+                Package.
+              </b>
+            </td>
+          </tr>
+          <tr class="options">
+            <td colspan="1" valign="top"></td>
+            <td colspan="3" valign="top">
+              <p></p>
+
+              <p>
+                The Marriott will be sending a secured link to provide your
+                credit card details directly. Please be sure to complete right
+                away! After receipt of card details, MAP can retrieve
+                confirmation for you.
+              </p>
+
+              <p>
+                If you are not in receipt of this link a week after completing
+                this form, please reach back out to us.
+              </p>
+
+              <p>Thank you in advance for your prompt attention!</p>
+            </td>
+          </tr>
+          <tr class="options2">
+            <td colspan="4" valign="top">
+              <b
+                >6. Your name and title as they appear on our records:
+                <font color="blue"
+                  ><b>Mr. A.J. Widacki, Assistant Vice President</b></font
+                ><br />
+              </b>
+            </td>
+          </tr>
+          <tr class="options2">
+            <td valign="top">
+              <b
+                >If you want your name or title to appear differently, please
+                make the changes here:
+              </b>
+            </td>
+            <td colspan="3" valign="top">
+              <input
+                name="revisedfullname"
+                value="Mr. A.J. Widacki, Assistant Vice President"
+                size="60"
+                type="text"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <input name="survey_id" value="MAP018" type="hidden" />
+      <input name="seqno" value="1040189" type="hidden" />
+      <input name="q_no" value="4" type="hidden" />
+      <input name="jump_to" value="" type="hidden" />
+      <input
+        name="cardname"
+        value="CARD DONE ONLINE"
+        size="30"
+        title="Name on credit card"
+        type="hidden"
+      />
+      <input
+        name="cardtype"
+        value="NA"
+        title="Credit Card type"
+        type="hidden"
+      />
+      <input name="fax_ccno" value="0" type="hidden" />
+      <input
+        name="cardno"
+        size="20"
+        title="Fake Credit Card number"
+        type="hidden"
+        value="4111111111111111"
+      />
+      <input
+        name="cardexpiry"
+        value="12/29"
+        size="10"
+        title="Credit Card expiry date"
+        type="hidden"
+      />
+
+      <hr class="mytable" />
+      <table border="0" width="100%">
+        <tbody>
+          <tr>
+            <td width="90">
+              <input
+                class="input"
+                value="Next"
+                onclick='document.q.jump_to.value=""; document.q.onsubmit=new Function("return QValid()")'
+                id="btn_submit"
+                type="SUBMIT"
+              />
+            </td>
+            <td>
+              <p>
+                <font face="Arial, Helvetica, sans-serif" size="-2"
+                  >&nbsp;Survey provided by
+                  <a
+                    href="http://www.market-research.com/"
+                    tabindex="-1"
+                    target="triton_home"
+                  >
+                    Triton Information Technology
+                  </a>
+                  <br />&nbsp;� Triton Information Technology 1995-2001 all
+                  rights reserved. &nbsp;&nbsp;<a
+                    href="mailto:pwisupport@mapconsulting.com?subject=MAP018"
+                    tabindex="-1"
+                  >
+                    email : info@market-research.com</a
+                  ></font
+                ><br />
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>

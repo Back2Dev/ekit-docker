@@ -1,0 +1,74 @@
+// $Id: footer.html,v 1.1 2012-11-28 22:10:07 triton Exp $
+// template file - each script tag contains HTML markup. The id defines its name
+// Comment lines start with // or #
+//
+<script type="text/template" id="footer">
+
+[%form.fields%]
+[%form.buttons%]
+</script>
+
+
+
+THIS STUFF SHOULD NOT APPEAR  AS IT IS OUTSIDE A SCRIPT TAG !!!
+
+
+
+<script type="text/template" id="form.buttons">
+<TABLE BORDER="0" WIDTH="650px" class="buttontable">
+	<TR>
+		<TD colspan=5>
+			<HR class="divider">
+	<TR>
+		<TD width="100px"> 
+			[%backbutton%]
+		</TD>
+		<TD width="100px">
+			[%progress%]
+		</TD>
+		<TD width="250px" align="center">
+			[%custom_footer%]
+		<TD width="150px" align="right">
+			[%status%]
+		</TD>
+		<TD width="50px" align="right">
+			[%submitbutton%]
+		</TD>
+	</TR>
+</table>
+</script>
+
+<script type="text/template" id="status">
+<span class="status" id="status">
+	<span id="response" onclick="toggleoutput();">
+	</span>
+# Using a comment (either a # or //) means that the comment stays here, and 
+# doesn't make it into the final html as sent to the client
+#<!-- Hide this completely, as it is messing up the layout, even when not visible
+#<iframe  src="/blank.html" width="600" height="200" id="output" style="visibility:none;">
+#	Ajax output will appear here...
+#	</iframe>
+#	-->
+</span>
+
+</script>
+
+<script type="text/template" id="custom_footer">
+<img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" >
+</script>
+
+<script type="text/template" id="backbutton">
+<!-- This is a nuked them for Q6 (DISC Test), without a BACK button -->
+		<INPUT TYPE="HIDDEN" name="BACK2">
+</script>
+
+<script type="text/template" id="submitbutton">
+		<INPUT class="button" TYPE="SUBMIT" VALUE="Take Test" TABINDEX="6" onclick="return mysubmit();" id="btn_submit" name="btn_submit">
+</script>
+
+<script type="text/template" id="progress">
+	<img src="/themes/[%theme%]/progress.png" alt="[%perc%]%" onclick="document.getElementById('hiddenq').innerHTML = document.q.q_labs.value + ' ' + document.q.seqno.value;return false;">
+<!--	<img src="/themes/[%theme%]/progress[%percimg%].png" alt="[%perc%]%"> -->
+<span class="status" id="hiddenq"></span>
+</script>
+

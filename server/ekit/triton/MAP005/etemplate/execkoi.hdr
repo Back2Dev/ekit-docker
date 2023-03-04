@@ -1,0 +1,4 @@
+[main]
+from_email=[%adminemail%]
+subject=[%aboutname%]: KOI List
+from_name=[%adminname%]

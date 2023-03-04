@@ -1,0 +1,26 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="/<%survey_id%>/style.css">
+<BODY BGCOLOR="#6699FF" LINK="#0000FF" VLINK="#FF0080" TEXT="#000000"  class="body">
+<FORM NAME="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST">
+  <p> 
+    <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+    <INPUT NAME="seqno" TYPE="hidden" VALUE="">
+    <b>Personal Status Page</b><SPAN class="prompt"></SPAN> </p>
+  <table width="75%">
+    <tr> 
+      <td width="24%"><b>Question No.</b></td>
+      <td width="34%"><b>Status:</b></td>
+      <td width="42%"><b>Responsibility:</b></td>
+    </tr>
+    <tr> 
+      <td width="24%"><%qno%></td>
+      <td width="34%"><%status%></td>
+      <td width="42%"><%responsibility%></td>
+    </tr>
+  </table>
+</FORM>
+
+</BODY>
+</HTML>

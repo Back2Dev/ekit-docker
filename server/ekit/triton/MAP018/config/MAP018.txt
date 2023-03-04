@@ -1,0 +1,106 @@
+#
+# MAP018 - Hotel Reservation 
+#
++survey_name=Hotel Reservation
++window_title=Q18 - Hotel Reservation Form
++one_at_a_time=1
++block_size=5
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++written_cols=80
++written_rows=10
++no_validation=1
++allow_restart=1
++dive_in=1
++focus_off=1
++do_footer=0
++allow_leading_0=1
++theme=ekit2
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Hotel Reservation<TH class="bluebarq">Q18</table>
++qscale=<P><%q_label%> 
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C	warning=warning
+C	ws_details=ws_details
+C	fullname=fullname
+C	firstname=firstname
+C	workshopdate=workshopdate
+C	location=location
+C	locationaddress=locationaddress
+C	locationcity=locationcity
+C	hotelrate=hotelrate
+C	day1=day1
+C	maplink=maplink
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q AB perl code to calculate some things
++qtype=perl_code
+C my $when = $resp{startdate};
+C $resp{vday1} = "Wednesday";
+C $resp{vday2} = "Thursday";
+C my $url = qq{http://www.mapquest.com/maps/map.adp?country=US&searchtype=address&address=$resp{locationaddress}&city=$resp{locationcity}&state=$resp{locationstate}};
+C $url =~ s/\s+/\+/g;
+C $resp{maplink} = qq{<A HREF="$url" target="_blank">Here is a map</A>};
+
+Q A First page is external, so we bring in HTTPS now...
++qtype=instruction
++external=intro.htm
+
+Q 1. Reservation form
++qtype=instruction
++external=hotel_form.htm
++required=all
+
+Q 1A Did they give me data at this point ?
++qtype=perl_code
+C if ($resp{ext_cardno} ne '') 
+C	{
+C	$resp{ext_cardno_obscure} = $resp{ext_cardno};
+C	use TPerl::MAP;
+C	my $m = new TPerl::MAP;
+C	$resp{ext_cardno_enc} = $m->map_enc($resp{ext_cardno});
+C	$resp{ext_cardno} = '';			# Make sure we DON'T save the credit card number in the normal place !!!
+C	$resp{ext_cardno_obscure} =~ s/\s+//g;
+C	$resp{ext_cardno_obscure} =~ s/.*(....)$/XXXX XXXX XXXX $1/i;	# Be defensive here in case of dirty data
+C	}
+C if (!$resp{ext_fax_ccno})
+C	{
+C	$q_no = &goto_qlab("3") -1;
+C	}
+
+Q 2. Printable Reservation form
++qtype=instruction
++external=hotel_printable.htm
+	
+Q 3 Last page is external, so we turn off HTTPS now...
++qtype=instruction
++external=schedule.htm
++buttons=1
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)};
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++buttons=0
++sscript=../scripts/pwikit_prime_status.pl

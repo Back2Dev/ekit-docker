@@ -1,0 +1,199 @@
++survey_name=Post Workshop Survey
++window_title=MAP026 - Post Workshop Survey
++one_at_a_time=0
++block_size=3
++show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++written_cols=80
++written_rows=10
++force_expand=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Post Workshop Survey<TH class="bluebarq">Q26</table>
++qscale=<P>For the following questions please use the scale of 1 to 9 where 1 is Poor and 9 is Excellent.<P>If you are not sure or don't know, please use the NA option.<P><%q_label%> 
+
+Q 1. <%qbanner%><%qscale%> Please rate the following aspects of your experience with MAP:
++qtype=grid
++left_word=Poor
++right_word=Excellent
++dk=NA
++scale=-9
++required=all
+# --- Attributes follow
+A 1. The overall MAP experience so far
+A 2. Pre-workshop communication
+A 3. Feedback from within your organization
+	G 1
+	G 2
+	G 3
+	G 4
+	G 5
+	G 6
+	G 7
+	G 8
+	G 9
+
+Q 2. Please rate the presentation of the MAP Management System:
++qtype=grid
++left_word=Poor
++right_word=Excellent
++scale=-9
++dk=NA
+A 4. Overall explanation of MMS
+A 5. Business goal setting
+	G 1
+	G 2
+	G 3
+	G 4
+	G 5
+	G 6
+	G 7
+	G 8
+	G 9
+
+Q 3. Please rate the presentation of the MAP program modules:
++qtype=grid
++left_word=Poor
++right_word=Excellent
++scale=-9
++dk=NA
+# --- Attributes follow
+A 6. Personal Growth Program
+A 7. Controlling
+A 8. Communicating
+A 9. Planning
+A 10. Organizing
+A 11. Time Management
+A 12. Staffing
+A 13. Leading
+	G 1
+	G 2
+	G 3
+	G 4
+	G 5
+	G 6
+	G 7
+	G 8
+	G 9
+
+Q 4. <%qbanner%><%qscale%> Please rate the following:
++qtype=grid
++left_word=Poor
++right_word=Excellent
++scale=-9
++dk=NA
+# --- Attributes follow
+A 14. Checklists / Handouts
+A 15. Wall Charts
+A 16. Video/slide presentation
+A 17. Life Planning
+A 18. Communication video
+A 19. Team consulting
+A 20. DISC Style Analysis
+A 21. FIRO-B
+A 22. Archer Team Project and Video Playback
+A 23. Hotel Facility
+A 24. Hotel Food Quality
+A 25. Hotel Service
+	G 1
+	G 2
+	G 3
+	G 4
+	G 5
+	G 6
+	G 7
+	G 8
+	G 9
+
+Q 5. Please rate your workshop leader on the following:
++qtype=grid
++left_word=Poor
++right_word=Excellent
++scale=-9
++dk=NA
+# --- Attributes follow
+A 26. Overall effectiveness
+A 27. Presentation skills overall
+A 28. Facilitated vs. lectured
+A 29. Knowledge of materials
+A 30. Keeping the workshop fast paced
+A 31. Encouraged and listened to participant's comments
+A 32. Making the workshop interesting
+A 33. Enthusiasm and confidence
+A 34. Sensitivity to needs of the group
+A 35. Asked challenging questions of the participants
+A 36. Balanced communication with participants
+A 37. Could help your organization achieve its goals
+	G 1
+	G 2
+	G 3
+	G 4
+	G 5
+	G 6
+	G 7
+	G 8
+	G 9
+
+Q 6. Please rate the following attributes of the workshop:
++qtype=grid
++left_word=Poor
++right_word=Excellent
++scale=-9
++dk=NA
+# --- Attributes follow
+A 38. Highly participative
+A 39. Life changing
+A 40. Practical
+A 41. Not intimidating
+A 42. Inspirational
+A 43. Very structured
+	G 1
+	G 2
+	G 3
+	G 4
+	G 5
+	G 6
+	G 7
+	G 8
+	G 9
+
+Q 7. <%qbanner%> <P><%q_label%> The length of the workshop was:
++qtype=single
++required=0
+A Very long
+A Moderately long
+A Too short
+A Moderately short
+A Just right
+A NA
+
+Q 8. What would you add, delete, or change about the workshop?
++qtype=written
+
+Q 9. What feedback do you have regarding your workshop leader?
++qtype=written
+
+#Q 9A. Send the thankyou email
+#+qtype=perl_code
+#C    use TPerl::Email;
+#C    my $em = new TPerl::Email(debug=>1) || die "Error $! creating new TPerl::EMail object\n";
+#C    $resp{from_email} = 'ctwebb@mapconsulting.com';
+#C    $resp{from_name} = "C. Lee Froschheiser";
+#C    $resp{subject} = "MAP Thanks you";
+#C    $resp{to} = $resp{email};
+#C    print "Error sending '$template' email: ".$em->err."\n" if (!$em->send_email(
+#C        SID=>$resp{survey_id},
+#C        itype=>'thanks',
+#C        uid=>'',
+#C        pwd=>'',
+#C        fmt=>'',                                    # Default is HTML+Text
+#C        data => \%resp,
+#C        ));
+#
+#Q 10. End of survey (temporary during testing)
+#+qtype=instruction
+

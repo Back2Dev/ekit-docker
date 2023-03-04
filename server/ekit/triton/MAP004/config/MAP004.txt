@@ -1,0 +1,90 @@
+#
+# Generated Survey syntax file for MAP004 (Tue Jun 18 10:34:47 2002);
+# 
++survey_name=Professional Career Summary
++window_title=Q4 - Professional Career Summary
++one_at_a_time=0
++block_size=3
+#+show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++focus_off=1
++theme=ekit
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Professional Career Summary<TH class="bluebarq">Q4</table>
++qscale=
++mike=1
+
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C	warning=warning
+C	ws_details=ws_details
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q 1. Personal Details:
++qtype=instruction
++required=all
++external=address.htm
+
+Q 2. <%qbanner%> <P><%q_label%> Avocational interests and hobbies:
++qtype=written
++required=all
+
+Q 3. Organizations (social, service, business, or professional) to which you belong:
++qtype=written
+
+Q 4. Periodicals you read:
++qtype=written
+
+Q 5.  <%qbanner%> <P><%q_label%> Educational background:
++qtype=written
+
+Q 6.  Business or professional seminars taken:
++qtype=written
+
+Q 7. Key advisors:
++qtype=written
+A x
+
+Q 7A. BREAK1
++qtype=eval
+
+Q 8. Employment:
++qtype=instruction
++required=all
++external=employ.htm
++buttons=1
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)}
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+Q BREAK
++qtype=code
++buttons=0
+C	duedate=duedate
+C	id=id
+C	token=token
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++sscript=../scripts/pwikit_prime_status.pl
++buttons=0

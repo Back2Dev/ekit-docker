@@ -1,0 +1,63 @@
+<HTML><HEAD>
+<link rel="stylesheet" href="style.css">
+<TITLE><%survey_title%></TITLE>
+</HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+function setprog(perc)
+	{
+	var wl = perc;
+	if (wl == 0)
+		wl = 1;
+	document.all.item("td_left").width=wl;
+	var wr = 100-perc;
+	if (wr == 0)
+		wr = 1;
+	document.all.item("td_right").width=wr;
+//	alert('perc is now '+perc);
+	if (perc <= 45)
+		{
+		document.all.item("leftw").innerHTML="";
+		document.all.item("rightw").innerHTML=perc+"%";
+		}
+	else
+		{
+		document.all.item("leftw").innerHTML=perc+"%";
+		document.all.item("rightw").innerHTML="";
+		}
+	}
+function goprev()
+	{
+	var perc = parent.frames.body.goprev();
+	setprog(perc);
+	}
+function gonext()
+	{
+	var perc = parent.frames.body.gonext();
+	setprog(perc);
+	}
+</SCRIPT>
+<BODY BGCOLOR="<%bgcolor%>" class="body" background="/pix/tleft.gif">
+<TABLE>
+	<TR>
+		<TD><BUTTON ID="backbtn" onclick="goprev()"> &lt&ltBACK</BUTTON></TD>
+		<TD><BUTTON ID="nextbtn" onclick="gonext()">NEXT &gt&gt</BUTTON></TD>
+		<TD><DIV ID="progbar">
+				<table width="100" border="0" cellpadding="0" cellspacing="0" >
+				  <tr> 
+				    <td id="td_left" height="15" width="0" align="center" class="heading"> 
+				      <DIV ID="leftw"></DIV>
+				    </td>
+				    <td id="td_right" height="15" width="100" align="Center" class="options">
+				      <DIV ID="rightw">0%</DIV>
+				    </td>
+				  </tr>
+				</table>
+			</DIV>
+		</TD>
+		<TD><FONT size="-2" face="Arial" COLOR="Yellow">Survey Technology provided by 
+                        <A HREF="mailto:info@triton-tech.com">Triton Technology</A>
+                        <br>&copy; Triton Technology 1995.. all rights reserved</TD>
+	</TR>
+</TABLE>
+</BODY>
+</HTML>

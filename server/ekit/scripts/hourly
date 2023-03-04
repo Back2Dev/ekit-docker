@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# MAP hourly script, run every 15 minutes during the day, hourly at night
+#
+
+cd /home/vhosts/ekit/scripts
+perl pwikit_cms_refdata_import.pl
+
+perl pwikit_cms_par_import.pl
+perl pwikit_invite.pl -invite
+

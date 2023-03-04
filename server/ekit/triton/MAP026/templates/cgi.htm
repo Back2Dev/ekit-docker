@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<TITLE><%window_title%></TITLE>
+</HEAD>
+<FRAMESET ROWS="120,*" FRAMEBORDER="NO" BORDER="0">
+	<FRAME NAME="top" NORESIZE SRC="top.htm" BORDER="0" SCROLLING="NO">
+	<FRAMESET COLS="60,*" RESIZE BORDER="0">
+		<FRAME NAME="left" SRC="left.htm" RESIZE >
+<NOSUBST>
+		<FRAME NAME="body" NORESIZE SRC="/cgi-mr/tokendb.pl?survey_id=<%survey_id%>&token=<%pwd%>&id=<%id%>" BORDER="0">
+</NOSUBST>
+	</FRAMESET>
+</FRAMESET>
+<NOFRAMES>
+<NOSUBST>
+Your browser does not support frames. Please click <A HREF="/cgi-mr/tokendb.pl?survey_id=<%survey_id%>&token=<%pwd%>&id=<%id%>">here</A> to continue
+</NOSUBST>
+</NOFRAMES>
+</HTML>

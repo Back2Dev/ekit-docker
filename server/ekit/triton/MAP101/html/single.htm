@@ -1,0 +1,60 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="style.css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+var numq = 1;
+function QValid()
+	{
+//
+// OK, we have passed all the checks and are about to allow the form to be submitted. 
+// So we gray it out to make sure it cannot be clicked again
+//
+	document.q.btn_submit.value = "Submitting...";
+	return true;
+	}
+function clr_QA()
+	{
+	}
+ 
+//-->
+</SCRIPT>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#FF0080" TEXT="#000000"  class="body">
+<FORM NAME="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST"
+		OnSubmit="return QValid()"
+>
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP101">
+<INPUT NAME="jump_to" TYPE="hidden" VALUE="">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT NAME="q_no" TYPE="hidden" VALUE="1">
+<SPAN class="prompt"><SPAN class="qlabel">A.</SPAN> Welcome !</SPAN> <BR>
+<P class="instruction" pos=3>We are currently working on this survey. As soon as we have it finished we'll invite you to do it properly. Right now you can proceed at your own risk</P>
+
+<HR class="mytable"><TABLE BORDER="0" WIDTH="100%">
+<TR>
+		<TD width="90">
+		<INPUT class="input" TYPE="SUBMIT" VALUE="Next" TABINDEX="" onclick='document.q.jump_to.value=""; document.q.onsubmit=new Function("return QValid()")' id="btn_submit">
+		</TD>
+<TD>	<table width="100" border="1" cellpadding="0" cellspacing="0" BORDERCOLOR=#000000>
+	  <tr> 
+	    <td height="15" width="1%" align="center" class="heading"> 
+	      &nbsp
+	    </td>
+	    <td height="15" align="Center" class="options">
+	      0%
+	    </td>
+	  </tr>
+	</table>
+</TD><TD><P><FONT size="-2" face="Arial, Helvetica, sans-serif">&nbsp;Survey provided by
+        <A HREF="http://www.market-research.com/" TABINDEX="-1" target="triton_home"> Triton Information Technology </A> 
+        <br>&nbsp;&copy; Triton Information Technology 1995-2001 all rights reserved.
+        &nbsp;&nbsp;<A HREF="mailto:info@market-research.com?subject=MAP101" TABINDEX="-1">
+        email : info@market-research.com</a></FONT><BR></P>
+	</TD>
+</TR></TABLE>
+</FORM>
+</BODY>
+</HTML>

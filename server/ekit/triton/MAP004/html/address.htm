@@ -1,0 +1,137 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+function QValid()
+	{
+	return true;		// Easier this way!
+	}
+ 
+</SCRIPT>
+
+<link rel="stylesheet" href="/themes/ekit/style.css">
+
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+	dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+<BODY class="soria" >
+
+<FORM NAME="q" id="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST">
+  <p> 
+      <INPUT NAME="survey_id" TYPE="hidden" VALUE="<%survey_id%>">
+      <INPUT NAME="seqno" TYPE="hidden" VALUE="<%seqno%>">
+	<INPUT NAME="q_labs" TYPE="hidden" VALUE="<%q_labs%>">
+      <INPUT NAME="session" TYPE="hidden" VALUE="">
+<%qbanner%>
+<P>
+<span class="qlabel">1.</span> <SPAN class="prompt"> Please fill in the following details for <%fullname%>:</SPAN> </p>
+  <table cellpadding="8" cellspacing="0" class="mytable" width="650px">
+    <tr class="options"> 
+      <td  >&nbsp;Home Address:</td>
+      <td  > 
+        <input onchange="yuk(this)" type="text" name="address" maxlength="100" size="30" class="input">
+      </td>
+      <td  > 
+        <div align="right">&nbsp; Birth Date (MM/DD/YY):</div>
+      </td>
+      <td  > 
+        <input onchange="yuk(this)" type="text" name="dob" size="20" class="input">
+      </td>
+    </tr>
+    <tr class="options"> 
+      <td  >
+        <div align="right">Phone:</div>
+      </td>
+      <td  colspan="3"> 
+        <input onchange="yuk(this)" type="text" name="phone" size="15" class="input">
+      </td>
+    </tr>
+    <tr class="options">
+      <td  >
+        <div align="right">&nbsp;City:&nbsp;</div>
+      </td>
+      <td  > 
+        <input onchange="yuk(this)" type="text" name="city" maxlength="20" size="20" class="input">
+      </td>
+      <td  > 
+        <div align="right">&nbsp;Marital Status:</div>
+      </td>
+      <td  > 
+        <p>Single 
+          <input onchange="yuk(this)" type="radio" name="married" value="0">
+          Married 
+          <input type="radio" name="married" value="1">
+        </p>
+      </td>
+    </tr>
+    <tr class="options">
+      <td  >
+        <div align="right">State:</div>
+      </td>
+      <td  > 
+        <input onchange="yuk(this)" type="text" name="state" size="20" class="input">
+      </td>
+      <td  > 
+        <div align="right">Children:</div>
+      </td>
+      <td > 
+        <input onchange="yuk(this)" type="text" name="children" size="10" class="input">
+      </td>
+    </tr>
+    <tr class="options">
+      <td  >
+        <div align="right">Zip Code:</div>
+      </td>
+      <td  > 
+        <input onchange="yuk(this)" type="text" name="zip" size="10" class="input">
+      </td>
+      <td  > 
+        <div align="right">Ages:</div>
+      </td>
+      <td > 
+        <input onchange="yuk(this)" type="text" name="age" size="20" class="input">
+      </td>
+    </tr>
+    <tr class="options">
+      <td  >
+        <div align="right">Personal email:</div>
+      </td>
+      <td colspan="3" > 
+        <input onchange="yuk(this)" type="text" name="personalemail" size="60" class="input">
+      </td>
+    <tr class="options">
+      <td  > 
+        <div align="right">Linked in:</div>
+      </td>
+      <td colspan="3" > 
+        <input onchange="yuk(this)" type="text" name="linkedin" size="60" class="input">
+      </td>
+    </tr>
+    <tr class="options">
+      <td  >
+        <div align="right">Facebook:</div>
+      </td>
+      <td colspan="3" > 
+        <input onchange="yuk(this)" type="text" name="facebook" size="60" class="input">
+      </td>
+    </tr>
+    <tr class="header">
+		<td colspan="4"><B><U>Privacy Statement</U></B><P>MAP will not sell or otherwise transfer or disclose personally identifiable information to third parties without your prior consent except as may be required by federal, state, or local law, or by exigent circumstances.   That means that MAP will not disclose your name, e-mail address, street address or phone number without your consent.  
+    </tr>
+  </table>
+ 
+</FORM>
+
+</BODY>
+</HTML>

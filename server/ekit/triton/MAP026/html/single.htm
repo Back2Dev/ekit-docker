@@ -1,0 +1,248 @@
+<HTML><HEAD>
+<TITLE>Triton Technology</TITLE>
+</HEAD>
+<link rel="stylesheet" href="/MAP026/style.css">
+<SCRIPT LANGUAGE="JavaScript">
+
+var numq = 9;
+function Can_Proceed_()
+	{
+	return false
+	}
+function QValid_()
+	{
+    var res = validate_grid_("Q1. ",document.q.gridQ1_0,document.q.gridQ1_1,document.q.gridQ1_2);
+return res;
+	return true;
+	}
+function clrradio(control)
+	{
+//
+// Generic script to clear a single select question
+//
+	var len = new Number(control.length);
+//	alert("len="+len);
+	if (isNaN(len))
+   		{
+		control.checked = false;
+		document.getElementById("TD"+control.id).className = toggle_highlight(document.getElementById("TD"+control.id).className,false);
+		}
+	else
+		for (var i=0;i< len;i++)
+			{
+//			alert("Clearing "+control[i].id);
+			control[i].checked = false;
+			document.getElementById("TD"+control[i].id).className = toggle_highlight(document.getElementById("TD"+control[i].id).className,false);
+			}
+	}
+function getradio(control)
+	{
+	var selectedButton = "";
+	var len = new Number(control.length);
+	if (isNaN(len))
+		selectedButton = control.checked == '1'
+	else
+		for (var j=0;j< len;j++)
+			{
+			if (control[j].checked)
+				{
+				selectedButton = control[j].value;
+				break;
+				}
+			}
+	return selectedButton;
+	}
+function getradiolastother(control)
+	{
+	var ok = true;
+	var sel
+	var len = new Number(control.length);
+	var oname;
+	if (isNaN(len))
+		{
+		sel = control.checked;
+		oname = control.name+"other";
+		}
+	else
+		{
+		sel = control[len-1].checked;
+		oname = control[len-1].name+"other";
+		}
+	if (sel && (document.getElementById(oname)))
+		{
+		ok = (document.getElementById(oname).value != '');
+		}
+	return ok;
+	}
+function getradiolastspec(control)
+	{
+	var ok = true;
+	var sel
+	var len = new Number(control.length);
+	var oname;
+	if (isNaN(len))
+		{
+		sel = control.checked;
+		oname = control.name.replace(/(\d+)$/,"other$1");
+		}
+	else
+		{
+		sel = control[len-1].checked;
+		oname = control[len-1].name.replace(/(\d+)$/,"other$1");
+		}
+	if (sel && (document.getElementById(oname)))
+		{
+		ok = (document.getElementById(oname).value != '');
+		}
+	return ok;
+	}
+function getradioothertext(control)
+	{
+	var ok = true;
+	var sel
+	var len = new Number(control.length);
+	var oname;
+	if (isNaN(len))
+		{
+		sel = control.checked;
+		oname = control.name+"other";
+		}
+	else
+		{
+		sel = control[len-1].checked;
+		oname = control[len-1].name+"other";
+		}
+	if (document.getElementById(oname).value)
+		{
+		ok = sel;
+		}
+	return ok;
+	}
+function highlightgrid(control)
+	{
+//
+// Generic script to highlight selections in a grid
+//
+//	alert("Looking for "+control.name);
+	var radios = document.getElementsByName(control.name);
+	if (radios)
+		{
+		var len = new Number(radios.length);
+//		alert("Len="+len);
+		if (isNaN(len))
+			{
+//			alert("id="+radios.id");
+			if (radios.id)
+				document.getElementById("TD"+radios.id).className = toggle_highlight(document.getElementById("TD"+radios.id).className,(radios.checked == '1'));
+			}
+		else
+			for (var i=0;i<len;i++)
+				{
+//				alert("Looking for TD"+radios[i].id);
+				if (radios[i].id)
+					document.getElementById("TD"+radios[i].id).className = toggle_highlight(document.getElementById("TD"+radios[i].id).className,(radios[i].checked == '1'));
+				}
+		}
+	}
+function toggle_highlight(class_name,on_off)
+	{
+//
+// Toggle function
+//
+	var reg = /\D+/;
+	var myclass = class_name;
+	if (myclass == "grid_options" || myclass == "grid_options2" || myclass == "grid_highlight"  || myclass == "grid_highlight2") {
+		var newclass = (on_off) ? 'grid_highlight' : 'grid_options';
+	} else {
+		var newclass = (on_off) ? 'highlight' : 'options';
+	}
+	var newname = myclass.replace(reg,newclass);
+	//alert("Replacing "+myclass+" with "+newname+", "+on_off+", "+newclass);
+	return newname;
+	}
+function validate_grid_()
+	{
+var errs = 0;
+for (i=1;i<validate_grid_.arguments.length;i++)
+	{
+	if (!getradio(validate_grid_.arguments[i]))
+		errs++;
+	}
+if (errs != 0)
+	{
+	alert(validate_grid_.arguments[0]+" Error: please make one choice from each row");
+	document.q.gridQ1_0[0].focus();
+	return false;
+	}
+return true;	
+	}
+ 
+</SCRIPT>
+
+<script type="text/javascript" src="/dojo/triton.dojo.js"></script> <!-- Triton dojo scripts -->
+
+<!-- required: dojo.js -->
+<script type="text/javascript" src="/dojo/dojo/dojo.js"
+	djConfig="isDebug: true, parseOnLoad: true"></script>
+<script type="text/javascript">
+	dojo.require("dijit.dijit"); // optimize: load dijit layer
+	dojo.require("dijit.form.Form");
+			dojo.require("dijit.form.TextBox");
+
+	dojo.require("dojox.timing");
+	dojo.require("dojo.parser");	// scan page for widgets and instantiate them
+
+	dojo.ready(setupSendForm);		// This looks after auto-save and stopping user leaving form
+</script>
+		<BODY  onload="resetme()"  class=" soria " >
+<FORM NAME="q" ACTION="/cgi-mr/godb.pl" ENCTYPE="www-x-formencoded" METHOD="POST"
+>
+<INPUT NAME="survey_id" TYPE="hidden" VALUE="MAP026">
+<INPUT NAME="jump_to" TYPE="hidden" VALUE="">
+<INPUT NAME="seqno" TYPE="hidden" VALUE="">
+<INPUT NAME="q_no" TYPE="hidden" VALUE="1">
+<SPAN class="prompt"><%qbanner%><%qscale%> Please rate the following aspects of your experience with MAP:</SPAN> <BR>
+<BLOCKQUOTE><TABLE border="0" cellspacing="0" class="grid_table" >
+	<TR class="heading">
+		<TH class="heading">&nbsp;</TH>
+		<TH class="heading" COLSPAN=4 ALIGN="LEFT" valign="top">
+			&nbsp;Poor&nbsp;&nbsp;<BR>&nbsp;&lt;==</TH>
+		<TH class="heading"  valign="top">&nbsp;&nbsp;</TH>		<TH class="heading" COLSPAN=4 ALIGN="RIGHT" valign="top">
+			&nbsp;&nbsp;Excellent&nbsp;<BR>==&gt;&nbsp;</TH>
+<TH class="heading" colspan="3">&nbsp;</TH>
+	</TR>
+	<TR class="heading">
+		<TH class="heading">&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>
+		<TH class="heading">&nbsp;&nbsp;&nbsp;</TH>
+		<TH class="heading" valign="top"><IMG src="/themes/ekit/spacer5.png"> NA <IMG src="/themes/ekit/spacer5.png"></TH>
+</TR>
+		<TR class="grid_options_row">
+			<TD class="grid_options">1. The overall MAP experience so far&nbsp;&nbsp;&nbsp;</TD>
+			<TD class="grid_options"><CENTER>&nbsp;</CENTER></TD>			<TD class="grid_options" id="TDgridQ1_0_dk_id"><CENTER>&nbsp;<INPUT onchange="yuk(this)" TYPE="RADIO" ID="gridQ1_0_dk_id" NAME="gridQ1_0"  onclick="highlightgrid(this)" VALUE="9" >&nbsp;</CENTER></TD>
+		</TR>
+		<TR class="grid_options_row2">
+			<TD class="grid_options2">2. Pre-workshop communication&nbsp;&nbsp;&nbsp;</TD>
+			<TD class="grid_options2"><CENTER>&nbsp;</CENTER></TD>			<TD class="grid_options2" id="TDgridQ1_1_dk_id"><CENTER>&nbsp;<INPUT onchange="yuk(this)" TYPE="RADIO" ID="gridQ1_1_dk_id" NAME="gridQ1_1"  onclick="highlightgrid(this)" VALUE="9" >&nbsp;</CENTER></TD>
+		</TR>
+		<TR class="grid_options_row">
+			<TD class="grid_options">3. Feedback from within your organization&nbsp;&nbsp;&nbsp;</TD>
+			<TD class="grid_options"><CENTER>&nbsp;</CENTER></TD>			<TD class="grid_options" id="TDgridQ1_2_dk_id"><CENTER>&nbsp;<INPUT onchange="yuk(this)" TYPE="RADIO" ID="gridQ1_2_dk_id" NAME="gridQ1_2"  onclick="highlightgrid(this)" VALUE="9" >&nbsp;</CENTER></TD>
+		</TR>
+</TABLE>
+</BLOCKQUOTE><BR>
+<HR class="divider"><br>
+<TABLE BORDER="0" WIDTH="600" class="buttontable">
+<TR>
+		<TD width="90">
+		<INPUT class="button" TYPE="SUBMIT" VALUE="Next" TABINDEX="3" onclick='document.q.jump_to.value=""; document.q.onsubmit=new Function("return mysubmit()")' id="btn_submit" name="btn_submit">
+		</TD>
+</TR>
+</table>
+<table width=100% class='custom_footer'>
+<tr><center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center></TR></TABLE>
+</FORM>
+
+<br><br><br><br>
+</BODY>
+</HTML>

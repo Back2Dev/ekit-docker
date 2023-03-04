@@ -1,0 +1,78 @@
+#!/usr/bin/perl
+#
+# start
+#
+# Gets the top level frame for a survey
+#
+require 'TPerl/cgi-lib.pl';
+require 'TPerl/qt-libdb.pl';
+#
+use CGI::Carp qw(fatalsToBrowser);
+#
+#------------------------------------------
+#
+# Mainline starts here
+#
+&ReadParse(*input);
+print "Content-Type: text/html\n\n";
+$uri = $ENV{'REQUEST_URI'};
+$script = $ENV{'SCRIPT_NAME'};
+$uri =~ s/$script\///;
+print "<HTML>\n";
+#print "$uri<BR>\n";
+($survey_id,$pwd,$id,$rolename) = split(/\//,$uri);
+#print "survey_id=$survey_id, pwd=$pwd, id=$id, rolename=$rolename <BR>\n";
+$survey_id = uc($survey_id);
+
+if (!(-d "$ENV{DOCUMENT_ROOT}/$survey_id"))
+	{
+	print <<ERRMSG;
+<HTML><BODY><H2>We are sorry ! <BR><BR>There seems to be no survey with the ID: $survey_id</H2>
+Click <A HREF="http://www.market-research.com/">here</A> to go to our home page,<BR><BR>
+Click <A HREF="mailto:info\@market-research.com">here</A> to send us email<BR><BR>
+<HR>
+</BODY></HTML>
+ERRMSG
+	die "No such survey: $survey_id";
+#	&my_die("No such survey: $survey_id");
+	}
+my $file = "$ENV{DOCUMENT_ROOT}/$survey_id/cgibr.htm";
+if (!open (INDEX,"<$file"))
+    {
+    &my_die("<B><I>Error: [$!] reading html file: $file</B></I>");
+#	my $file = "$www_dir/$survey_id/index.html";
+#	if (!open (INDEX,"<$file"))
+#	    {
+#	    &my_die("<B><I>Error: [$!] reading html file: $file</B></I>");
+#	    };
+    };
+$warn = '';
+while (<INDEX>)
+	{
+	chomp;
+	s/<html>//i;         # Filter out the original <HTML> tag
+	$warn = "<H1>WARNING: SUSPICIOUS LITERAL VALUE: $1 found in cgibr.htm - ABORTING !</H1>\n" if (/\"(\D\D\D\d\d\d)\"/);
+	s/<%survey_id%>/$survey_id/g if (/<%survey_id%>/);
+	s/<%pwd%>/$pwd/ if (/<%pwd%>/g);
+	s/<%id%>/$id/ if (/<%id%>/g);
+	if (/(src=['"]*)\w/i)
+		{
+		$bit = $1;
+		s /$bit/src="\/$survey_id\//;
+		}
+	while (/<%(\w+)%>/)
+		{
+		my $thing = $1;
+		my $newthing = get_thing($thing);
+		&debug("<%$thing%> ==> $newthing\n");
+		s /<%$thing%>/$newthing/gi;
+		}
+	if ($warn ne '')
+		{
+		print $warn;
+		last;
+		}
+	print "$_\n";
+	$warn = '';
+	}
+1;

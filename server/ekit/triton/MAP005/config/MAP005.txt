@@ -1,0 +1,92 @@
+#
+# Generated Survey syntax file for MAP005 (Tue Jun 18 10:34:50 2002);
+# 
+
++survey_name=Key Outside Influences List
++window_title=MAP005 - Key Outside Influences
++one_at_a_time=0
++block_size=5
+#+show_back_button=1
++optional_written=0
++no_progress_bar=1
++thankyou_url=thanks.htm
++mailto=ctwebb@mapconsulting.com
++focus_off=1
++theme=ekit2
++custom_footer=<center><img src="/themes/ekit/ekit.daa.png" alt="Discipline, Accountability, Achievement" ></center>
++no_copy=1
++qbanner=<table border=0 cellpadding=0 cellspacing=0 class="bannertable"><tr><TD class="bannerlogo">&nbsp;<TD width="50px" >&nbsp;<tr><TD class="bluebar"> &nbsp;&nbsp; Key Outside Influences List<TH class="bluebarq">Q5</table>
++qscale=<P><%q_label%> 
+
+Q AA
++qtype=code
+C	duedate=duedate
+C	id=id
+C	token=token
+C	login_page=login_page
+C	story=story
+C   qbanner=qbanner
+C   qscale=qscale
+
+Q A. <%qbanner%>
++qtype=instruction
+
+Q 1. Key Outside Influences List
++qtype=instruction
++required=all
++external=keyout.htm
++execute=pwikit_koilist_cgi.pl
++buttons=1
+
+Q 2. Below is a list of the names you have provided. <P>We will send these people an email, telling them about your upcoming workshop. <P>Please select which of these people should receive emails now:
++qtype=multi
++mask_include=peers
++max_multi_per_col=30
++execute=pwikit_koilist_cgi.pl
++instr=Click the NEXT button below to send emails to the names checked above
++buttons=1
+A 1
+A 2
+A 3
+A 4
+A 5
+A 6
+A 7
+A 8
+A 9
+A 10
+A 11
+A 12
+A 13
+A 14
+A 15
+A 16
+A 17
+A 18
+A 19
+A 20
+
+Q BREAK
++qtype=eval
+
+Q SENT <%qbanner%> <P> $$story You can come back and add to the list later if you wish.
++qtype=instruction
++buttons=1
+
+Q CHECK Check if we have enough data to allow submission of form
++qtype=perl_code
+C	my $dcount = &count_data;
+C	&debug("Datacount = $dcount");
+C	if ($dcount>0) {$q_no = goto_qlab("LAST") - 1;}
+C	if ($dcount==0) {&db_conn;&db_set_status($survey_id,$resp{id},$resp{token},0,0)};
+
+Q NODATA See external page "nodata.htm"
++qtype=instruction
++external=nodata.htm
++buttons=0
+
+Q LAST This is implemented as an external
++external=last.htm
++qtype=instruction
++sscript=../scripts/pwikit_prime_status.pl
++buttons=0

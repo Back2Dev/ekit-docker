@@ -1,0 +1,76 @@
+.prompt { color:#336633; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11pt; font-style: normal; font-weight: bold; }
+.xheading { background-color: #69c; color:#ffffff; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; font-weight: bold; }
+td {
+		border-bottom: 1px solid white;
+		}
+.heading {
+		border-bottom: 1px solid #BBDEFF;
+		font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt;
+		color: navy;
+		font-weight: bold; 
+		}
+.small { background-color: #9cf; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 7pt; font-style:normal; font-weight: normal; }
+.smallinput { background-color: #fff; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 7pt; font-style:normal; font-weight: normal; border : 1px solid orange; }
+.options { background-color: #9cf; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style:normal; font-weight: normal; 
+		border-bottom: 1px solid orange;
+}
+.options2 { background-color: #9cf; x:#BBDEFF; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style:normal; font-weight: normal; 
+}
+.instruction {  font-family: Arial, Helvetica, sans-serif; font-style: italic; font-size: 9pt; }
+.default {  }
+.qlabel { background-color: #ffffff;color:#336633; font-family: Arial, Helvetica, sans-serif; font-style: normal; font-size: 18pt; border:1}
+.links {  font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+body { background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.details { color:#336633; background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 9pt}
+.warning { color:red; background-color: #EEEEEE; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; border-color:red;border-style:solid;border-width:1px;}
+.mytable { color:black; border-width:0px; border-color:#336633; border-style:solid;}
+
+FORM SELECT {
+	font-family: 'Microsoft Sans Serif', Verdana, sans-serif;
+	background-color: #ffffe8;
+	font-size: 8pt;
+	color: #000000;
+}
+FORM INPUT {
+ background-color: #fff; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style:normal; font-weight: normal; border : 1px solid orange; 
+}
+#button FORM INPUT {
+ background-color: #fff; color:#000000; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-style:normal; font-weight: normal; 
+}
+	.boxtopleft {
+		padding: 0;
+		background: #69c url(/pix/box_top_left.gif) no-repeat top left;
+		border-bottom: 1px solid orange;
+		}
+
+	.boxtopmiddle {
+		border-bottom: 1px solid orange;
+		background: #69c;
+		font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9pt;
+		color: #fff; 
+		font-weight: bold; 		}
+	
+	.boxtopright {
+		padding: 0;
+		background: #69c url(/pix/box_top_right.gif) no-repeat top right;
+		border-bottom: 1px solid orange;
+		}
+
+	.boxbottomleft {
+		padding: 0;
+		background: url(/pix/box_bottom_left.gif) no-repeat bottom left;
+		border-top: 1px solid #9cf;
+		}
+	
+	.boxbottommiddle {
+		padding: 0;
+		border-top: 1px solid #9cf;
+		}
+
+	.boxbottomright {
+		padding: 0;
+		background: url(/pix/box_bottom_right.gif) no-repeat bottom right;
+		border-top: 1px solid #9cf;
+		}
+
+.rtable { color:black;  background-color:#9cf;}

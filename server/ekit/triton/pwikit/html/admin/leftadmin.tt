@@ -1,0 +1,46 @@
+<!-- This is a template document, not a fully fledged html page
+-->
+
+<CENTER>
+<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" class="mytable">
+	<TR><TH class="heading" colspan="4">MENU</TH></TR>
+<TR>
+	<TD class="options">
+	<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-adm/serve.pl/kickoff3">New Participant</A><BR>
+	<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-adm/serve.pl/addboss">Add Boss</A><BR>
+
+<!--
+Removed link for adding peers (KP's), because it is done by the participant themselves.
+	<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-adm/serve.pl/addpeer">Add Peer</A><BR>-->
+	<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-adm/pwikit_batches.pl">Batches</A><BR>
+	<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-adm/pwikit_listall.pl">List all</A><BR>
+<BR>
+    <img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-adm/pwikit_mli.pl">MLI</A><BR>
+    <img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-mr/pwikit_status2.pl" target="_ekit_status">Status</A><BR>
+
+<HR>
+	<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-adm/serve.pl/explain">Instructions</A><BR>
+	<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-adm/serve.pl/assist">Help</A><BR>
+	</td>
+</tr>
+</table>
+<BR>
+<TABLE BORDER="0" CELLPADDING="3" CELLSPACING="0" class="mytable">
+	<TR>
+		<TH class="heading" colspan="4">
+		SEARCH
+		</TH>
+	</TR>
+<TR>
+<TR>
+	<TD class="small">
+<FORM action="/cgi-adm/pwikit_find.pl" method="POST">
+ID:<BR><INPUT class="small" type="TEXT" name="id" size="15"> 
+   <INPUT TYPE="SUBMIT" value="Go" class="small"><BR>
+Name:<BR><INPUT class="small" type="TEXT" name="name" size="25"><BR>
+Boss:<BR><INPUT class="small" type="TEXT" name="boss" size="25"><BR>
+Peer:<BR><INPUT class="small" type="TEXT" name="peer" size="25">
+</FORM>
+</table>
+
+</CENTER>

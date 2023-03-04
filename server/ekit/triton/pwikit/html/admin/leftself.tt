@@ -1,0 +1,18 @@
+<!-- This is a template document, not a fully fledged html page
+-->
+<CENTER>
+<TABLE BORDER="0" CELLPADDING="5" CELLSPACING="0" class="mytable">
+	<TR><TH class="heading" colspan="4">MENU</TH></TR>
+<TR>
+	<TD class="options">
+<BR>
+<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-mr/serve.pl/self_explain?survey_id=pwikit&password=<%password%>&id=<%id%>">Instructions</A><BR><BR>
+<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-mr/serve.pl/self_schedule?survey_id=pwikit&password=<%password%>&id=<%id%>">Schedule</A><BR><BR>
+<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="http://www.mapquest.com/maps/map.adp?country=US&searchtype=address&address=<%locationaddress%>&city=<%locationcity%>&state=<%locationstate%>" target="_blank">Hotel location</A><BR><BR>
+<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-mr/pwikit_login.pl?survey_id=pwikit&password=<%password%>&id=<%id%>">Forms</A><BR><BR>
+
+<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-mr/serve.pl/self_contact?survey_id=pwikit&password=<%password%>&id=<%id%>">Contact us</A><BR><BR>
+<img align="center" src="/pwikit/bullet.gif">&nbsp;<A HREF="/cgi-mr/serve.pl/self_copies?survey_id=pwikit&password=<%password%>&id=<%id%>">Completed/Blank forms</A><BR><BR>
+</td></TR>
+</table>
+

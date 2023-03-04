@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>jQuery Spell Checker example</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="description" content="jQuery spellchecker demo page" />
+	<meta http-equiv="keywords" content="jquery, spellchecker, spell, demo, javascript, php, plugin" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/spellchecker.css" />
+	<style type="text/css">
+	body {
+		margin: 1em;
+		font-family: 'lucida grande',helvetica,verdana,arial,sans-serif;
+	}
+	#textarea-example {
+		width: 562px;
+	}
+	textarea {
+		font-size: 90%;
+		margin-bottom:10px;
+		padding: 5px;
+		border: 1px solid #999999;
+		border-color: #888888 #CCCCCC #CCCCCC #888888;
+		border-style: solid;
+		height: 20em;
+		width: 550px;
+	}
+	button {
+		font-size: 90%;
+		cursor: pointer;
+	}
+	.loading {
+		padding: 0.5em 8px;
+		display: none;
+		font-size: small;
+	}
+	</style>
+</head>
+<body>
+	<div id="textarea-example">
+		<p>
+			<label for="text-content">
+				Add your own text and check the spelling.
+			</label>
+		</p>
+		<textarea id="text-content" rows="5" cols="25"></textarea>
+		<div>
+			<button id="check-textarea">
+				Check Spelling
+			</button>&nbsp;
+			<span class="loading">loading..</span>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.spellchecker.js"></script>
+	<script type="text/javascript">
+
+		// check the spelling on a textarea
+		$("#check-textarea").click(function(e){
+			e.preventDefault();
+			$(".loading").show();
+
+			$("#text-content")
+			.spellchecker({
+			url: "dump.php",
+				lang: "en",
+				engine: "google",
+				suggestBoxPosition: "above"
+			})
+			.spellchecker("check", function(result){
+
+				// spell checker has finished checking words
+				$(".loading").hide();
+
+				// if result is true then there are no badly spelt words
+				if (result) {
+					alert('There are no incorrectly spelt words.');
+				}
+			});
+		});
+
+		// you can ignore this; if document is viewed via subversion in google code then re-direct to demo page
+		if (/jquery-spellchecker\.googlecode\.com/.test(window.location.hostname) && /svn/.test(window.location)) {
+			window.location = 'http://spellchecker.jquery.badsyntax.co.uk/';
+		}
+	</script>
+</body>
+</html>
